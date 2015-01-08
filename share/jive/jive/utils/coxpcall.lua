@@ -26,7 +26,7 @@ local performResume, handleReturnValue
 
 function handleReturnValue(err, co, status, ...)
     if not status then
-        return false, err(debug.traceback(co, (...)), ...)
+        return false, err(debug.traceback(co, (...)))
     end
     if coroutine.status(co) == 'suspended' then
         return performResume(err, co, coroutine.yield(...))
