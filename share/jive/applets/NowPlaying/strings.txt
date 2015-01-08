@@ -1,0 +1,229 @@
+#
+# The two letter codes are defined by ISO 639-1
+# http://en.wikipedia.org/wiki/List_of_ISO_639_codes
+
+SCREENSAVER_NOWPLAYING
+	CS	Právě hraje
+	DA	Nu spiller
+	DE	Aktueller Titel
+	EN	Now Playing
+	ES	Reproduciendo
+	FI	Nyt soi
+	FR	Lecture en cours
+	IT	Riproduzione in corso
+	NL	Speelt nu
+	NO	Spilles nå
+	PL	Odtwarzanie
+	RU	Воспроизводится
+	SV	Nu spelas
+
+SCREENSAVER_STOPPED
+	CS	Při zastavení
+	DA	Stoppet
+	DE	Angehalten
+	EN	Stopped
+	ES	Detenido
+	FI	Pysäytetty
+	FR	Arrêté
+	IT	Arrestato
+	NL	Gestopt
+	NO	Stoppet
+	PL	Zatrzymane
+	RU	Остановлено
+	SV	Stoppad
+
+SCREENSAVER_PAUSED
+	CS	Pozastaveno
+	DA	Pause
+	DE	Pause
+	EN	Paused
+	ES	En pausa
+	FI	Tauotettu
+	FR	En pause
+	IT	In pausa
+	NL	Gepauzeerd
+	NO	Pause
+	PL	Wstrzymano
+	RU	Пауза
+	SV	Pausad
+
+SCREENSAVER_OFF
+	CS	Vypnuto
+	DA	Fra
+	DE	Aus
+	EN	Off
+	ES	Apagado
+	FI	Ei käytössä
+	FR	Désactivé
+	IT	Disattivato
+	NL	Uit
+	NO	Når av
+	PL	Wył.
+	RU	Выкл
+	SV	Av
+
+SCREENSAVER_NOWPLAYING_OF
+	CS	%s z %s
+	DA	%s af %s
+	DE	%s von %s
+	EN	%s of %s
+	ES	%s de %s
+	FI	%s / %s
+	FR	%s de %s
+	IT	%s di %s
+	NL	%s van %s
+	NO	%s av %s
+	PL	%s z %s
+	RU	%s из %s
+	SV	%s av %s
+
+SCREENSAVER_ARTWORK_SIZE
+	CS	Velikost obalu právě přehrávané skladby
+	DA	Størrelse af albumcover ved Nu spiller
+	DE	Plattenhüllen-Größe der aktuellen Wiedergabe
+	EN	Now Playing Artwork Size
+	ES	Tamaño de carátula de Reproduciendo
+	FI	Nyt soi -kansitaiteen koko
+	FR	Taille Lecture
+	IT	Dimensioni copertina brano in riproduzione
+	NL	Grootte hoesafbeelding bij 'Speelt nu'
+	NO	Omslagsstørrelse på Spiller av nå
+	PL	Wielkość okładki odtwarzanego utworu
+	RU	Размер обложки, которая воспроизводится
+	SV	Storlek på omslag för album som spelas
+
+SCREENSAVER_ARTWORK_SMALL
+	CS	Malé
+	DA	Lille
+	DE	Klein
+	EN	Small
+	ES	Pequeño
+	FI	Pieni
+	FR	Petit
+	IT	Piccola
+	NL	Klein
+	NO	Lite
+	PL	Małe
+	RU	Маленький
+	SV	Liten
+
+SCREENSAVER_ARTWORK_MEDIUM
+	CS	Střední
+	DA	Mellem
+	DE	Mittel
+	EN	Medium
+	ES	Medio
+	FI	Normaali
+	FR	Moyenne
+	IT	Media
+	NL	Gemiddeld
+	NO	Middels
+	PL	Średnie
+	RU	Средний
+	SV	Medel
+
+SCREENSAVER_ARTWORK_LARGE
+	CS	Velký
+	DA	Stort
+	DE	Groß
+	EN	Large
+	ES	Grande
+	FI	Suuri
+	FR	Grand
+	IT	Grande
+	NL	Groot
+	NO	Stort
+	PL	Duże
+	RU	Крупный
+	SV	Stor
+
+SCREENSAVER_SCROLLMODE
+	CS	Režim rolování
+	DA	Rullefunktion
+	DE	Laufschriftmodus
+	EN	Scroll Mode
+	ES	Modo de desplazamiento
+	FI	Vieritystila
+	FR	Mode de défilement
+	IT	Modalità scorrimento
+	NL	Tekstloopmodus
+	NO	Rullemodus
+	PL	Tryb przewijania
+	RU	Режим прокрутки
+	SV	Rullningsläge
+
+SCREENSAVER_SCROLLMODE_DEFAULT
+	CS	Standardní rolování
+	DA	Standardrulning
+	DE	Standardlaufschrift
+	EN	Standard scrolling
+	ES	Desplazamiento estándar
+	FI	Normaali vieritys
+	FR	Mode de défilement par défaut
+	IT	Scorrimento normale
+	NL	Tekst laten lopen
+	NO	Vanlig rulling
+	PL	Przewijanie standardowe
+	RU	Стандартная прокрутка
+	SV	Standardrullning
+
+SCREENSAVER_SCROLLMODE_SCROLLONCE
+	CS	Rolovat jednou a zastavit
+	DA	Rul én gang og stop
+	DE	Einmal Laufschrift, dann anhalten
+	EN	Scroll once and stop
+	ES	Desplazar una vez y detener
+	FI	Vieritä kerran ja pysähdy
+	FR	Défiler une fois seulement
+	IT	Scorri solo una volta
+	NL	Tekst één keer laten lopen, dan stoppen
+	NO	Rull én gang og stans
+	PL	Przewiń raz i zatrzymaj
+	RU	Прокрутить и остановить
+	SV	Rulla en gång och stanna
+
+SCREENSAVER_SCROLLMODE_NOSCROLL
+	CS	Nerolovat
+	DA	Rul ikke
+	DE	Keine Laufschrift
+	EN	Do not scroll
+	ES	No desplazar
+	FI	Ei vieritystä
+	FR	Pas de défilement
+	IT	Non scorrere
+	NL	Tekst niet laten lopen
+	NO	Ikke rull
+	PL	Nie przewijaj
+	RU	Без прокрутки
+	SV	Rulla inte
+
+NOW_PLAYING_VIEWS
+	CS	Zobrazení Právě hraje
+	DA	Udseende af Nu spiller
+	DE	Ansichten für "Aktueller Titel"
+	EN	Now Playing Views
+	ES	Reproduciendo vistas
+	FI	Nyt soittaa -näkymät
+	FR	Affichages de la lecture en cours
+	IT	Viste Riproduzione in corso
+	NL	Weergaven voor 'Speelt nu'
+	NO	Visninger i Spilles nå
+	PL	Teraz odtwarzane — widoki
+	RU	Вид экрана при воспроизведении
+	SV	Nu spelas-vyer
+
+NOW_PLAYING_VIEWS_HELP
+	CS	Na obrazovce Právě hraje je k dispozici několik různých konfigurací, neboli "zobrazení", mezi kterými můžete přepínat. Zde si můžete zvolit požadovaná zobrazení přehrávače.
+	DA	Vinduet Nu spiller kan vises på forskellige måder som du kan skifte mellem. Her kan du vælge hvordan vinduet skal se ud.
+	DE	Für den Bildschirm "Aktueller Titel" gibt es eine Reihe unterschiedlicher Fensterkonfigurationen oder Ansichten, zwischen denen Sie umschalten können. Wählen Sie die Ansichten aus, die Sie für den vorliegenden Player haben möchten.
+	EN	The Now Playing screen has a number of different window configurations or "views" that can be toggled through. Select the views you'd like for this player here.
+	ES	La pantalla Reproduciendo tiene varias configuraciones o "vistas" de ventana entre las que se puede alternar. Seleccione aquí las vistas que desee para este reproductor.
+	FI	Nyt soittaa -näytössä on monia erilaisia ikkunamäärityksiä tai "näkymiä", joita voidaan vaihdella. Valitse tästä näkymät, joita haluat käytettävän tässä soittimelle.
+	FR	L'écran de lecture en cours vous permet de basculer d'une fenêtre ("affichage") à une autre, selon votre choix. Sélectionnez ici les affichages que vous souhaitez utiliser pour ce lecteur.
+	IT	Nella schermata Riproduzione in corso sono disponibili diverse configurazioni di visualizzazione o "viste" che possono essere selezionate in sequenza. Selezionare qui le viste desiderate per questo lettore.
+	NL	Het scherm Speelt nu biedt een aantal verschillende vensterconfiguraties of 'weergaven' waartussen je kunt schakelen. Selecteer hier de weergaven die je voor dit muzieksysteem wenst.
+	NO	Det er flere konfigurasjoner eller visninger tilgjengelige på skjermen Spilles nå. Du kan bla gjennom dem for å se dem. Velg visningene du vil bruke for denne spilleren, her.
+	PL	Ekran Teraz odtwarzane oferuje kilka różnych konfiguracji okien lub „widoki”, między którymi można się przełączać. Można wybrać widok odpowiedni do używanego odtwarzacza.
+	RU	Существует несколько видов экрана воспроизведения, между которыми можно переключаться. Здесь можно выбрать несколько видов для этого плеера.
+	SV	Skärmbilden Nu spelas har några olika fönsterkonfigurationer eller vyer som du kan växla mellan. Här väljer du vilken vy du vill ha i den här spelaren.
+

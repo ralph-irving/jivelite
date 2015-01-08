@@ -1,0 +1,64 @@
+#
+# The two letter codes are defined by ISO 639-1
+# http://en.wikipedia.org/wiki/List_of_ISO_639_codes
+
+SELECT_PLAYER
+	CS	Zvolit přehrávač
+	DA	Vælg afspiller
+	DE	Player wählen
+	EN	Choose Player
+	ES	Elegir reproductor
+	FI	Valitse soitin
+	FR	Sélectionner une platine
+	IT	Scegli lettore
+	NL	Muzieksysteem kiezen
+	NO	Velg spiller
+	PL	Wybierz odtwarzacz
+	RU	Выберите плеер
+	SV	Välj spelare
+
+SQUEEZEBOX_SETUP
+	CS	Nastavit přijímač
+	DA	Konfiguration af modtager
+	DE	Receiver einrichten
+	EN	Set Up Receiver
+	ES	Configuración de receptor
+	FI	Ota vastaanotin käyttöön
+	FR	Configuration du récepteur
+	IT	Configura Receiver
+	NL	Ontvanger instellen
+	NO	Konfigurer mottaker
+	PL	Skonfiguruj odbiornik
+	RU	Установить ресивер
+	SV	Konfigurera mottagare
+
+SQUEEZEBOX_ACTIVATE
+	CS	Aktivovat %s
+	DA	Aktiver %s
+	DE	%s aktivieren
+	EN	Activate %s
+	ES	Activar %s
+	FI	Aktivoi %s
+	FR	Activer %s
+	IT	Attiva %s
+	NL	%s activeren
+	NO	Aktiver %s
+	PL	Uaktywnij %s
+	RU	Активировать %s
+	SV	Aktivera %s
+
+SEARCHING
+	CS	Vyhledávám přehrávače...
+	DA	Søger efter afspillere...
+	DE	Player werden gesucht...
+	EN	Scanning for Players...
+	ES	Buscando reproductores...
+	FI	Etsitään soittimia...
+	FR	Recherche de platines...
+	IT	Rilevamento lettori in corso...
+	NL	Zoeken naar muzieksystemen...
+	NO	Søker etter spillere ...
+	PL	Wyszukiwanie odtwarzaczy...
+	RU	Поиск плееров...
+	SV	Söker efter spelare ...
+

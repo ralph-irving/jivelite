@@ -1,0 +1,169 @@
+# The two letter codes are defined by ISO 639-1
+# http://en.wikipedia.org/wiki/List_of_ISO_639_codes
+
+DATETIME_TITLE
+	CS	Datum a čas
+	DA	Dato og klokkeslæt
+	DE	Datum & Zeit
+	EN	Date & Time
+	ES	Fecha & Hora
+	FI	Pvm ja aika
+	FR	Date & Heure
+	IT	Data & ora
+	NL	Datum & tijd
+	NO	Tid og dato
+	PL	Data i godzina
+	RU	Дата и время
+	SV	Datum och tid
+
+DATETIME_TIMEFORMAT
+	CS	Formát času
+	DA	Klokkeslætformat
+	DE	Zeitformat
+	EN	Time Format
+	ES	Formato de hora
+	FI	Ajan muoto
+	FR	Format de l'heure
+	IT	Formato ora
+	NL	Tijdnotatie
+	NO	Tidsformat
+	PL	Format godziny
+	RU	Формат времени
+	SV	Tidsformat
+
+DATETIME_TIMEFORMAT_12H
+	CS	12 hours (12hodinový)
+	DA	12 timer
+	DE	12 Stunden
+	EN	12 hours
+	ES	12 horas
+	FI	12 tunnin kello
+	FR	12 heures
+	IT	12 ore
+	NL	12 uur
+	NO	12 timer
+	PL	12 godziny
+	RU	12 часов
+	SV	12 timmar
+
+DATETIME_TIMEFORMAT_24H
+	CS	24 hours (24hodinový)
+	DA	24 timer
+	DE	24 Stunden
+	EN	24 hours
+	ES	24 horas
+	FI	24 tunnin kello
+	FR	24 heures
+	IT	24 ore
+	NL	24 uur
+	NO	24 timer
+	PL	24 godziny
+	RU	24 часа
+	SV	24 timmar
+
+DATETIME_SHORTDATEFORMAT
+	CS	Formát krátkého data
+	DA	Kort datoformat
+	DE	Kurzes Datumsformat
+	EN	Short Date Format
+	ES	Formato de fecha corto
+	FI	Lyhyt päivämäärämuoto
+	FR	Date au format court
+	IT	Formato data breve
+	NL	Korte datumnotatie
+	NO	Kort datoformat
+	PL	Format krótkiej daty
+	RU	Краткий формат даты
+	SV	Kort datumformat
+
+DATETIME_DATEFORMAT
+	CS	Formát data
+	DA	Datoformat
+	DE	Datums Format
+	EN	Date Format
+	ES	Formato de fecha
+	FI	Päivämäärämuoto
+	FR	Format de date
+	IT	Formato data
+	NL	Datumnotatie
+	NO	Datoformat
+	PL	Format daty
+	RU	Формат даты
+	SV	Datumformat
+
+DATETIME_WEEKSTART
+	CS	Začátek týdne
+	DA	Ugen starter
+	DE	Wochenstart
+	EN	Week Start
+	ES	La semana empieza el
+	FI	Viikon alku
+	FR	Début de la semaine
+	IT	Inizio settimana
+	NL	Begin van week
+	NO	Ukestart
+	PL	Początek tygodnia
+	RU	Начало недели
+	SV	Veckostart
+
+DATETIME_MONDAY
+	CS	Pondělí
+	DA	Mandag
+	DE	Montag
+	EN	Monday
+	ES	Lunes
+	FI	maanantai
+	FR	Lundi
+	IT	Lunedì
+	NL	Maandag
+	NO	mandag
+	PL	Poniedziałek
+	RU	Понедельник
+	SV	Måndag
+
+DATETIME_SUNDAY
+	CS	Neděle
+	DA	Søndag
+	DE	Sonntag
+	EN	Sunday
+	ES	Domingo
+	FI	sunnuntai
+	FR	Dimanche
+	IT	Domenica
+	NL	Zondag
+	NO	søndag
+	PL	Niedziela
+	RU	Воскресенье
+	SV	Söndag
+
+DATETIME_LONGDATEFORMAT_DEFAULT
+# SLT: a long date format description, eg. "Montag, 22. Oktober 2009" ([[http://www.opengroup.org/onlinepubs/009695399/functions/strptime.html]])
+	CS	%d. %B %Y
+	DA	%d. %B %Y
+	DE	%a, %d. %b, %Y
+	EN	%a %d %b %Y
+	ES	%a, %d %b, %Y
+	FI	%d. %B %Y
+	FR	%a %d %b %Y
+	IT	%a %d %b %Y
+	NL	%a %d %b %Y
+	NO	%d. %B %Y
+	PL	%d %B %Y
+	RU	%d %B %Y
+	SV	%d %B %Y
+
+DATETIME_SHORTDATEFORMAT_DEFAULT
+# SLT: a short date format description, eg. 22.10.2009 ([[http://www.opengroup.org/onlinepubs/009695399/functions/strptime.html]])
+	CS	%d.%m.%Y
+	DA	%d.%m.%Y
+	DE	%d.%m.%Y
+	EN	%m.%d.%Y
+	ES	%d.%m.%Y
+	FI	%d.%m.%Y
+	FR	%d.%m.%Y
+	IT	%d.%m.%Y
+	NL	%d.%m.%Y
+	NO	%d.%m.%Y
+	PL	%d.%m.%Y
+	RU	%d.%m.%Y
+	SV	%d.%m.%Y

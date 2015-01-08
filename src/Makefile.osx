@@ -1,0 +1,13 @@
+# makefile wrapper for osx
+
+# this is only needed if SDL is installed in /usr/local
+CFLAGS  = -I/usr/local/include/SDL
+
+LDFLAGS = -lSDLmain -lresolv -Wl,-framework,Cocoa
+
+# this is needed for luajit on 64 bit osx
+LDFLAGS += -pagezero_size 10000 -image_base 100000000 
+
+SOURCES = platform_osx.c
+
+include Makefile

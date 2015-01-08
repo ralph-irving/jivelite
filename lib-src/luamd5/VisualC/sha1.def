@@ -1,0 +1,3 @@
+LIBRARY sha1.dll
+EXPORTS
+luaopen_sha1

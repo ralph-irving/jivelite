@@ -1,0 +1,259 @@
+#
+# The two letter codes are defined by ISO 639-1
+# http://en.wikipedia.org/wiki/List_of_ISO_639_codes
+
+MENUS_MY_MUSIC
+	CS	Hudba
+	DA	Musik
+	DE	Eigene Musik
+	EN	My Music
+	ES	Mi música
+	FI	Omat musiikkitiedostot
+	FR	Ma musique
+	IT	Musica
+	NL	Mijn muziek
+	NO	Min musikk
+	PL	Moja muzyka
+	RU	Моя музыка
+	SV	Min musik
+
+MENUS_MY_APPS
+	CS	Moje aplikace
+	DA	Mine programmer
+	DE	Eigene Anwendungen
+	EN	My Apps
+	ES	Mis aplicaciones
+	FI	Omat sovellukset
+	FR	Mes applications
+	IT	Applicazioni
+	NL	Mijn toepassingen
+	NO	Mine tjenester
+	PL	Moje aplikacje
+	RU	Мои приложения
+	SV	Mina program
+
+MENUS_INTERNET_RADIO
+	CS	Rádio
+	DA	Radio
+	DE	Radio
+	EN	Radio
+	ES	Radio
+	FI	Radio
+	FR	Radio
+	IT	Radio
+	NL	Radio
+	NO	Radio
+	PL	Radio
+	RU	Радиостанции
+	SV	Radio
+
+MENUS_SQUEEZENETWORK_SWITCH
+	CS	Přepnout na mysqueezebox.com
+	DA	Skift til mysqueezebox.com
+	DE	Zu mysqueezebox.com umschalten
+	EN	Switch to mysqueezebox.com
+	ES	Cambiar a mysqueezebox.com
+	FI	Vaihda mysqueezebox.com-verkkoon
+	FR	Se connecter à mysqueezebox.com
+	IT	Passa a mysqueezebox.com
+	NL	Overschakelen naar mysqueezebox.com
+	NO	Bytt til mysqueezebox.com
+	PL	Przełącz na mysqueezebox.com
+	RU	Переключиться в mysqueezebox.com
+	SV	Växla till mysqueezebox.com
+
+MENUS_OTHER_LIBRARY
+	CS	Přepnout knihovnu
+	DA	Skift bibliotek
+	DE	Bibliothek umschalten
+	EN	Switch Library
+	ES	Cambiar biblioteca
+	FI	Vaihda kirjastoa
+	FR	Changer de collection
+	IT	Cambia libreria
+	NL	Collectie wisselen
+	NO	Bytt bibliotek
+	PL	Przełącz bibliotekę
+	RU	Сменить медиатеку
+	SV	Byt bibliotek
+
+MENUS_ATTACH_CABLE_DETAILED
+	CS	Nemůžeme nalézt kabelové připojení. Zkontrolujte prosím ethernetový kabel a ujistěte se, že je vaše síť v provozu a k dostupná.
+	DA	Der blev ikke fundet en kabelforbindelse. Kontroller Ethernet-kablet, at netværket er i drift og at der kan etableres forbindelse til det.
+	DE	Es konnte keine verkabelte Verbindung erkannt werden. Prüfen Sie das Ethernet-Kabel und vergewissern Sie sich, dass das Netzwerk verfügbar und aktiviert ist.
+	EN	We can't detect a wired connection. Please check your Ethernet cable, and make sure your network is running and available.
+	ES	No se puede detectar una conexión con cable. Compruebe el cable Ethernet y asegúrese de que la red funciona correctamente y está disponible.
+	FI	Langallista yhteyttä ei havaita. Tarkista ethernet-kaapeli ja varmista, että verkko on käytössä ja että se on saatavilla.
+	FR	Nous ne détectons aucune connexion filaire. Veuillez vérifier votre câble Ethernet et contrôler que le réseau est disponible et opérationnel.
+	IT	Impossibile rilevare una connessione cablata. Verificare il cavo Ethernet e accertarsi che la rete sia in esecuzione e accessibile.
+	NL	Er is geen bedrade aansluiting gedetecteerd. Controleer je ethernetdraad en zorg ervoor dat je netwerk actief en beschikbaar is.
+	NO	Finner ikke en trådet tilkopling. Kontroller Ethernet-kabelen, og forsikre
+	PL	Nie można wykryć połączenia przewodowego. Sprawdź, czy kabel Ethernet jest prawidłowo podłączony oraz czy sieć działa i jest dostępna.
+	RU	Не удалось обнаружить проводное подключение. Проверьте кабель Ethernet и убедитесь, что сеть работает нормально.
+	SV	Ingen kabelanslutning upptäcktes. Kontrollera Ethernet-kabeln och se till att nätverket är igång och tillgängligt.
+
+MENUS_NO_WIRELESS_DETAILED
+	CS	Nemohli jsme detekovat bezdrátové připojení. Zkontrolujte prosím, zda je vaše síť v provozu a k dispozici.
+	DA	Der blev ikke fundet et trådløst netværk. Kontroller at netværket er i drift og at der kan etableres forbindelse til det.
+	DE	Es konnte keine kabellose Verbindung erkannt werden. Vergewissern Sie sich, dass das Netzwerk verfügbar und aktiviert ist.
+	EN	We can't detect a wireless connection. Please check to make sure your network is running and available.
+	ES	No se puede detectar una conexión inalámbrica. Asegúrese de que la red funciona correctamente y está disponible.
+	FI	Langallista yhteyttä ei havaita. Tarkista, että verkko on käytössä ja että se on saatavilla.
+	FR	Aucune connexion sans fil n'a été détectée. Veuillez vérifier que votre réseau est disponible et opérationnel.
+	IT	Impossibile rilevare una connessione senza fili. Verificare che la rete sia in esecuzione e accessibile.
+	NL	Er kan geen bedrade aansluiting worden gedetecteerd. Controleer of je netwerk actief en beschikbaar is.
+	NO	Finner ikke en trådløs tilkopling. Kontroller at nettverket er oppe og tilgjengelig.
+	PL	Nie można wykryć połączenia bezprzewodowego. Sprawdź, czy sieć działa i jest dostępna.
+	RU	Не удается обнаружить беспроводное подключение. Убедитесь, что сеть работает и доступна.
+	SV	Ingen trådlös anslutning upptäcktes. Kontrollera att nätverket körs och är tillgängligt.
+
+MENUS_CONNECTION_ERROR
+	CS	Problém s připojením
+	DA	Forbindelsesfejl
+	DE	Verbindungsproblem
+	EN	Connection Problem
+	ES	Problema de conexión
+	FI	Yhteysongelma
+	FR	Problème de connexion
+	IT	Problema di connessione
+	NL	Verbindingsprobleem
+	NO	Tilkoplingsproblem
+	PL	Problem z połączeniem
+	RU	Ошибка подключения
+	SV	Anslutningsproblem
+
+MENUS_CHOOSE_DIFFERENT_NETWORK
+	CS	Zvolte jinou síť
+	DA	Vælg et andet netværk
+	DE	Anderes Netzwerk wählen
+	EN	Choose Different Network
+	ES	Elija otra red
+	FI	Valitse eri verkko
+	FR	Sélectionner un réseau différent
+	IT	Scegli una rete diversa
+	NL	Ander netwerk kiezen
+	NO	Velg et annet nettverk
+	PL	Wybierz inną sieć
+	RU	Выбрать другую сеть
+	SV	Välj ett annat nätverk
+
+MENUS_TRY_AGAIN
+	CS	Zkuste to znovu
+	DA	Prøv igen
+	DE	Erneut versuchen
+	EN	Try again
+	ES	Vuelva a intentarlo
+	FI	Yritä uudelleen
+	FR	Veuillez réessayer
+	IT	Riprova
+	NL	Opnieuw proberen
+	NO	Prøv igjen
+	PL	Spróbuj ponownie
+	RU	Повторите попытку
+	SV	Försök igen
+
+MENUS_CONTINUE_WITHOUT_NETWORK
+	CS	Pokračovat bez sítě
+	DA	Fortsæt uden netværk
+	DE	Ohne Netzwerk fortfahren
+	EN	Continue without network
+	ES	Continuar sin red
+	FI	Jatka ilman verkkoyhteyttä
+	FR	Continuer sans réseau
+	IT	Continua senza la rete
+	NL	Doorgaan zonder netwerk
+	NO	Fortsett uten nettverk
+	PL	Kontynuuj bez sieci
+	RU	Продолжить без сети
+	SV	Fortsätt utan nätverk
+
+SLIMBROWSER_UPDATING_FIRMWARE_SQUEEZEBOX
+	CS	Aktualizuji firmware Squeezeboxu
+	DA	Opdaterer Squeezebox-firmwaren
+	DE	Squeezebox-Firmware wird aktualisiert
+	EN	Updating Squeezebox firmware
+	ES	Actualizando firmware de Squeezebox
+	FI	Squeezeboxin laitteisto-ohjelmiston päivitys
+	FR	Mise à jour du micrologiciel Squeezebox
+	IT	Aggiornamento firmware Squeezebox
+	NL	Squeezebox-firmware wordt bijgewerkt
+	NO	Oppdaterer Squeezebox-fastvare
+	PL	Aktualizowanie oprogramowania układowego urządzenia Squeezebox
+	RU	Обновление микропрограмм Squeezebox
+	SV	Uppdaterar Squeezebox-spelarens inbyggda programvara
+
+SLIMBROWSER_PLAYER_UPDATE_REQUIRED
+	CS	Aktualizace přehrávače
+	DA	Opdatering af afspiller
+	DE	Player-Update
+	EN	Player Update
+	ES	Actualización de reproductor
+	FI	Soittimen päivitys
+	FR	Mise à jour de la platine
+	IT	Aggiornamento lettore
+	NL	Update van muzieksysteem
+	NO	Spilleroppdatering
+	PL	Aktualizacja odtwarzacza
+	RU	Обновление плеера
+	SV	Spelaruppdatering
+
+SLIMBROWSER_USER_UPDATE_FIRMWARE_SQUEEZEBOX
+	CS	Pro %s je připravena aktualizace softwaru. K jejímu spuštění stiskněte a přidržte tlačítko Brightness (jas) na  originálním dálkovém ovládání IR.
+	DA	Softwareopdateringen til %s er klar. Hold lysstyrkeknappen (Brightness) på den originale fjernbetjening nede for at starte.
+	DE	Software-Update bereit für %s. Halten Sie die Helligkeitstaste auf der Original-Fernbedienung gedrückt.
+	EN	Software Update ready for %s. To begin, press and hold the Brightness button on your original IR remote.
+	ES	La actualización de software para %s está lista. Para iniciarla, mantenga pulsado el botón de brillo en el mando a distancia IR original.
+	FI	Ohjelmistopäivitys valmiina kohteelle %s. Aloita pitämällä alkuperäisen infrapunakaukosäätimen Brightness-painike pohjassa.
+	FR	Mise à jour du logiciel prête pour %s. Pour commencer, appuyez sur le bouton Brightness de votre télécommande infrarouge d'origine et maintenez-le enfoncé.
+	IT	Aggiornamento software pronto per %s. Per iniziare, tenere premuto il tasto BRIGHTNESS sul telecomando IR originale.
+	NL	Software-update gereed voor %s. Houd de helderheidsknop op je oorspronkelijke IR-afstandsbediening ingedrukt om te beginnen.
+	NO	Programvareoppdatering er klar for %s. Trykk og hold nede Brightness-knappen på den opprinnelige ir-fjernkontrollen for å starte.
+	PL	Aktualizacja oprogramowania jest dostępna dla urządzenia %s. Aby rozpocząć, naciśnij i przytrzymaj przycisk Brightness na oryginalnym pilocie zdalnego sterowania.
+	RU	Подготовлено обновление ПО для %s. Чтобы начать, нажмите кнопку BRIGHTNESS на своем ИК-пульте.
+	SV	Det finns en programuppdatering för %s tillgänglig. Om du vill påbörja uppdateringen håller du knappen för ljusstyrka på originalfjärrkontrollen nedtryckt.
+
+INSTALL_SC_TEXT
+	CS	Pro aktivaci "Moje hudba" vyzkoušejte následující: \n\n- Stáhněte si software Logitech Media Server z adresy www.mysqueezebox.com a ujistěte se, že je nainstalovaný a spuštěný na počítači na síti.\n\n- Vložte SD kartu do slotu SD.\n\n- Připojte úložné zařízení k portu USB.
+	DA	Hvis du vil aktivere Musik, kan du prøve følgende:\n\n- Hent Logitech Media Server-softwaren på www.mysqueezebox.com, og sørg for at den er installeret og kører på en computer som er på netværket.\n\n- Sæt et SD-kort i SD-kortpladsen.\n\n- Slut en lagerenhed til USB-porten.
+	DE	Führen Sie zum Aktivieren von 'Eigene Musik' die folgenden Schritte aus:\n\n- Laden Sie sich unter www.mysqueezebox.com die Logitech Media Server-Software herunter. Vergewissern Sie sich, dass die Software auf einem Computer im Netzwerk installiert und ausgeführt wird.\n\n- Stecken Sie eine SD-Karte in das Fach ein.\n\n- Schließen Sie an der USB-Schnittstelle ein Speichergerät an.
+	EN	To enable "My Music" try the following:\n\n- Download the Logitech Media Server software from www.mysqueezebox.com and make sure it is installed and running on a computer on the network.\n\n- Insert a SD card into the SD slot.\n\n- Connect a storage device to the USB port.
+	ES	Para activar "Mi música", haga lo siguiente:\n\n- Descargue el software de Logitech Media Server desde www.mysqueezebox.com e instálelo y ejecútelo en un ordenador de la red.\n\n- Inserte una tarjeta SD en la ranura SD.\n\n- Conecte un dispositivo de almacenamiento al puerto USB.
+	FI	Ota käyttöön Oma musiikki seuraavasti: \n\n- Lataa Logitech Media Server -ohjelmisto osoitteesta www.mysqueezebox.com. Tarkista, että ohjelmisto asennettu ja että se suoritetaan verkossa olevassa tietokoneessa.\n\n- Aseta SD-kortti SD-paikkaan.\n\n- Yhdistä tallennuslaite USB-porttiin.
+	FR	Pour activer «Ma musique», essayez de procéder comme suit:\n\n- Téléchargez le logiciel du Logitech Media Server à partir du site www.mysqueezebox.com et vérifiez qu'il est installé et exécuté sur un ordinateur du réseau.\n\n- Insérez une carte SD dans la fente correspondante.\n\n- Connectez un dispositif de stockage au port USB.
+	IT	Per attivare Musica, provare quanto segue:\n\n- Scaricare il software di Logitech Media Server da www.mysqueezebox.com e accertarsi che sia installato e in esecuzione su un computer della rete.\n\n- Inserire una scheda SD nell'apposito slot.\n\n- Connettere un dispositivo di memorizzazione a una porta USB.
+	NL	Doe het volgende om Mijn muziek te activeren:\n\n- Download de Logitech Media Server-software van www.mysqueezebox.com en zorg dat deze op een computer in het netwerk geïnstalleerd en actief is.\n\n- Plaats een SD-kaart in de SD-sleuf.\n\n- Sluit een opslagapparaat op de USB-poort aan.
+	NO	Hvis du vil aktivere Min musikk, gjør du som følger:\n\n- Last ned Logitech Media Server-programvaren fra www.mysqueezebox.com. Installer den på en datamaskin på nettverket, og sørg for at den er i gang.\n\n- Sett inn et SD-kort i SD-inngangen.\n\n- Kople en lagringsenhet til usb-porten.
+	PL	Aby włączyć opcję „Moja muzyka”, spróbuj wykonać następujące czynności:\n\n- Pobierz oprogramowanie Logitech Media Server z witryny www.mysqueezebox.com, zainstaluj je i uruchom na komputerze podłączonym do sieci.\n\n- Włóż kartę SD do gniazda kart SD.\n\n- Podłącz urządzenie pamięci masowej do portu USB.
+	RU	Чтобы активировать сервис "Моя музыка", попробуйте выполнить следующее:\n\n- загрузите программное обеспечение Logitech Media Server с сайта www.mysqueezebox.com; убедитесь, что оно установлено и выполняется на компьютере, подключенном к сети;\n\n- вставьте SD-карту в SD-гнездо;\n\n- подключите накопитель к USB-порту.
+	SV	Om du vill inaktivera Min musik kan du prova följande:\n\n- Ladda ned Logitech Media Server-programvaran från www.mysqueezebox.com och se till att den är installerad och körs på en dator i nätverket.\n\n- Sätt i ett SD-kort i SD-kortfacket.\n\n- Anslut en lagringsenhet till USB-porten.
+
+INSTALL_SC_TEXT_BABY
+	CS	Pro aktivaci "Moje hudba" si stáhněte software Logitech Media Server z adresy www.mysqueezebox.com a ujistěte se, že je nainstalovaný a spuštěný na počítači na síti.
+	DA	Hent Logitech Media Server-softwaren på www.mysqueezebox.com, og sørg for at den er installeret og kører på en computer som er på netværket.
+	DE	Laden Sie sich unter www.mysqueezebox.com die Logitech Media Server-Software herunter, um 'Eigene Musik' zu aktivieren. Vergewissern Sie sich, dass die Software auf einem Computer im Netzwerk installiert und ausgeführt wird.
+	EN	To enable "My Music", download the Logitech Media Server software from www.mysqueezebox.com and make sure it is installed and running on a computer on the network.
+	ES	Para activar "Mi música", descargue el software de Logitech Media Server desde www.mysqueezebox.com e instálelo y ejecútelo en un ordenador de la red.
+	FI	Ota Oma musiikki käyttöön lataamalla Logitech Media Server -ohjelmisto osoitteesta www.mysqueezebox.com. Tarkista, että se on asennettu ja että sitä suoritetaan verkossa olevalla tietokoneella.
+	FR	Pour activer «Ma musique», téléchargez le logiciel du Logitech Media Server à partir du site www.mysqueezebox.com et vérifiez qu'il est installé et exécuté sur un ordinateur du réseau.
+	IT	Per attivare Musica, scaricare il software di Logitech Media Server da www.mysqueezebox.com e accertarsi che sia installato e in esecuzione su un computer della rete.
+	NL	Download de Logitech Media Server-software van www.mysqueezebox.com en zorg ervoor dat deze op een computer in het netwerk geïnstalleerd en actief is om Mijn muziek te activeren.
+	NO	Hvis du vil aktivere Min musikk, laster du ned Logitech Media Server-programvaren fra www.mysqueezebox.com. Installer den på en datamaskin på nettverket, og sørg for at den er i gang.
+	PL	Aby włączyć opcję „Moja muzyka”, pobierz oprogramowanie Logitech Media Server z witryny www.mysqueezebox.com, zainstaluj je i uruchom na komputerze podłączonym do sieci.
+	RU	Чтобы активизировать сервис "Моя музыка", загрузите программное обеспечение Logitech Media Server с сайта www.mysqueezebox.com и убедитесь, что оно установлено и выполняется на компьютере, подключенном к сети.
+	SV	Om du vill aktivera Min musik laddar du ned Logitech Media Server-programvaran från www.mysqueezebox.com och se till att den är installerad och körs på en dator i nätverket.
+
+INSTALL_SC_TEXT_JIVE
+	CS	Pro aktivaci "Moje hudba" si stáhněte software Logitech Media Server z adresy www.mysqueezebox.com a ujistěte se, že je nainstalovaný a spuštěný na počítači na síti.
+	DA	Hent Logitech Media Server-softwaren på www.mysqueezebox.com, og sørg for at den er installeret og kører på en computer som er på netværket.
+	DE	Laden Sie sich unter www.mysqueezebox.com die Logitech Media Server-Software herunter, um 'Eigene Musik' zu aktivieren. Vergewissern Sie sich, dass die Software auf einem Computer im Netzwerk installiert und ausgeführt wird.
+	EN	To enable "My Music", download the Logitech Media Server software from www.mysqueezebox.com and make sure it is installed and running on a computer on the network.
+	ES	Para activar "Mi música", descargue el software de Logitech Media Server desde www.mysqueezebox.com e instálelo y ejecútelo en un ordenador de la red.
+	FI	Ota Oma musiikki käyttöön lataamalla Logitech Media Server -ohjelmisto osoitteesta www.mysqueezebox.com. Tarkista, että se on asennettu ja että sitä suoritetaan verkossa olevalla tietokoneella.
+	FR	Pour activer «Ma musique», téléchargez le logiciel du Logitech Media Server à partir du site www.mysqueezebox.com et vérifiez qu'il est installé et exécuté sur un ordinateur du réseau.
+	IT	Per attivare Musica, scaricare il software di Logitech Media Server da www.mysqueezebox.com e accertarsi che sia installato e in esecuzione su un computer della rete.
+	NL	Download de Logitech Media Server-software van www.mysqueezebox.com en zorg ervoor dat deze op een computer in het netwerk geïnstalleerd en actief is om Mijn muziek te activeren.
+	NO	Hvis du vil aktivere Min musikk, laster du ned Logitech Media Server-programvaren fra www.mysqueezebox.com. Installer den på en datamaskin på nettverket, og sørg for at den er i gang.
+	PL	Aby włączyć opcję „Moja muzyka”, pobierz oprogramowanie Logitech Media Server z witryny www.mysqueezebox.com, zainstaluj je i uruchom na komputerze podłączonym do sieci.
+	RU	Чтобы активизировать сервис "Моя музыка", загрузите программное обеспечение Logitech Media Server с сайта www.mysqueezebox.com и убедитесь, что оно установлено и выполняется на компьютере, подключенном к сети.
+	SV	Om du vill aktivera Min musik laddar du ned Logitech Media Server-programvaran från www.mysqueezebox.com och se till att den är installerad och körs på en dator i nätverket.
+

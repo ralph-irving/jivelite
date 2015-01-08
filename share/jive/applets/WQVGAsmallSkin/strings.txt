@@ -1,0 +1,161 @@
+#
+# The two letter codes are defined by ISO 639-1
+# http://en.wikipedia.org/wiki/List_of_ISO_639_codes
+
+WQVGA_SMALL_SKIN
+# SLT: WQVGA refers to the "wide quarter VGA" resolution of the display
+	CS	WQVGA skin malého písma
+	DA	WQVGA-tema med små bogstaver
+	DE	WQVGA-Skin – Kleine Schrift
+	EN	WQVGA Small Print Skin
+	ES	Máscara con letra pequeña WQVGA
+	FI	Pieni WQVGA-tulostuspinta
+	FR	Habillage à petits caractères WQVGA
+	IT	Skin WQVGA a caratteri piccoli
+	NL	WQVGA Small Print-skin
+	NO	WQVGA-skall med liten skrift
+	PL	Karnacja WQVGA (mały format)
+	RU	Мелкая обложка, WQVGA
+	SV	WQVGA-skal med liten text
+
+WQVGA_SMALL_SKIN_FAB4
+	CS	Skin s malým textem
+	DA	Tema med lille tekst
+	DE	Skin: kleine Schrift
+	EN	Small Text Skin
+	ES	Máscara con texto pequeño
+	FI	Pienen tekstin olemus
+	FR	Habillage à petits caractères
+	IT	Skin testo piccolo
+	NL	Skin Kleine tekst
+	NO	Skall for liten tekst
+	PL	Karnacja Mały tekst
+	RU	Обложка с мелким текстом
+	SV	Skal med liten text
+
+ENTER_SMALL
+	CS	hotovo
+	DA	udført
+	DE	Fertig
+	EN	done
+	ES	listo
+	FI	valmis
+	FR	terminé
+	IT	fine
+	NL	gereed
+	NO	ferdig
+	PL	gotowe
+	RU	готово
+	SV	klart
+
+ENTER
+	CS	Hotovo
+	DA	OK
+	DE	Fertig
+	EN	Done
+	ES	Listo
+	FI	Valmis
+	FR	Terminé
+	IT	Fatto
+	NL	Gereed
+	NO	Fullført
+	PL	Gotowe
+	RU	Готово
+	SV	Klar
+
+SPACEBAR_SMALL
+	CS	mezera
+	DA	mellemrum
+	DE	Leertaste
+	EN	space
+	ES	espacio
+	FI	välinäppäin
+	FR	espace
+	IT	spazio
+	NL	spatie
+	NO	mellomrom
+	PL	spacja
+	RU	пробел
+	SV	mellanslag
+
+HELP
+	CS	Nápověda
+	DA	Hjælp
+	DE	Hilfe
+	EN	Help
+	ES	Ayuda
+	FI	Ohje
+	FR	Aide
+	IT	Guida
+	NL	Help
+	NO	Hjelp
+	PL	Pomoc
+	RU	Справка
+	SV	Hjälp
+
+MORE_HELP
+	CS	Další
+	DA	Mere
+	DE	Mehr
+	EN	More
+	ES	Más
+	FI	Lisää
+	FR	Plus
+	IT	Altro
+	NL	Meer
+	NO	Mer
+	PL	Więcej
+	RU	Дополнительно
+	SV	Mer
+
+ART_AND_TEXT
+	EN	Artwork and Text
+
+TEXT_ONLY
+	CS	Pouze text
+	DA	Kun tekst
+	DE	Nur Text
+	EN	Text only
+	ES	Sólo texto
+	FI	Vain teksti
+	FR	Texte uniquement
+	IT	Solo testo
+	NL	Alleen tekst
+	NO	Bare tekst
+	PL	Tylko tekst
+	RU	Только текст
+	SV	Endast text
+
+ART_ONLY
+	EN	Artwork only
+
+SPECTRUM_ANALYZER
+	CS	Spektrální analyzátor
+	DA	Spektrumanalyse
+	DE	Oszillograph
+	EN	Spectrum Analyzer
+	ES	Analizador de espectro
+	FI	Asteikon analysointi
+	FR	Analyseur de spectre
+	IT	Analizzatore di spettro
+	NL	Spectrumanalyser
+	NO	Spektralanalyse
+	PL	Analizator widma
+	RU	Анализатор спектра
+	SV	Spektrumanalys
+
+ANALOG_VU_METER
+	CS	Analogový měřič hlasitosti
+	DA	Analogt VU-meter
+	DE	Analoger VU-Meter
+	EN	Analog VU Meter
+	ES	Medidor VU analógico
+	FI	Analoginen VU-mittari
+	FR	VUmètre analogique
+	IT	Indicatore VU analogico
+	NL	Analoge VU-meter
+	NO	Analog VU-måler
+	PL	Analogowy wskaźnik wysterowania
+	RU	Аналоговый волюметр
+	SV	Analog VU-mätare
+

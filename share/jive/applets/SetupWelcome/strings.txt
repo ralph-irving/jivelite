@@ -1,0 +1,34 @@
+#
+# The two letter codes are defined by ISO 639-1
+# http://en.wikipedia.org/wiki/List_of_ISO_639_codes
+
+SETUP_WELCOME
+	CS	Vítejte
+	DA	Velkommen
+	DE	Willkommen
+	EN	Welcome
+	ES	Bienvenido
+	FI	Tervetuloa
+	FR	Bienvenue
+	IT	Benvenuti
+	NL	Welkom
+	NO	Velkommen
+	PL	Zapraszamy
+	RU	Добро пожаловать!
+	SV	Välkommen!
+
+WELCOME
+	CS	Vítejte
+	DA	Velkommen
+	DE	Willkommen
+	EN	Welcome
+	ES	Bienvenido
+	FI	Tervetuloa
+	FR	Bienvenue
+	IT	Benvenuti
+	NL	Welkom
+	NO	Velkommen
+	PL	Zapraszamy
+	RU	Добро пожаловать!
+	SV	Välkommen
+

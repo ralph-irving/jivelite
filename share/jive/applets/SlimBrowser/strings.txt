@@ -1,0 +1,456 @@
+#
+# The two letter codes are defined by ISO 639-1
+# http://en.wikipedia.org/wiki/List_of_ISO_639_codes
+
+SN_SIGNUP
+	CS	Přihlášení do mysqueezebox.com
+	DA	Tilmelding til mysqueezebox.com
+	DE	Anmeldung bei mysqueezebox.com
+	EN	mysqueezebox.com Signup
+	ES	Registro de mysqueezebox.com
+	FI	mysqueezebox.com-rekisteröityminen
+	FR	Inscription à mysqueezebox.com
+	IT	Iscrizione a mysqueezebox.com
+	NL	Aanmelding bij mysqueezebox.com
+	NO	mysqueezebox.com-registrering
+	PL	Rejestracja w usłudze mysqueezebox.com
+	RU	Подписка mysqueezebox.com
+	SV	Registrering för mysqueezebox.com
+
+SLIMBROWSER_PLAYLIST
+	CS	Aktuální seznam
+	DA	Nuværende afspilningsliste
+	DE	Aktuelle Wiedergabeliste
+	EN	Current Playlist
+	ES	Lista de reproducción actual
+	FI	Nykyinen soittoluettelo
+	FR	Liste de lecture en cours
+	IT	Playlist corrente
+	NL	Huidige playlist
+	NO	Gjeldende spilleliste
+	PL	Aktualna lista odtwarzania
+	RU	Текущий плей-лист
+	SV	Aktuell spellista
+
+SLIMBROWSER_ENTER_PASSWORD
+	CS	Zadejte heslo znovu
+	DA	Indtast adgangskoden igen
+	DE	Kennwort erneut eingeben
+	EN	Re-enter password
+	ES	Vuelva a introducir la contraseña
+	FI	Anna salasana uudelleen
+	FR	Entrer à nouveau le mot de passe
+	IT	Immettere di nuovo la password
+	NL	Wachtwoord opnieuw invoeren
+	NO	Angi passord på nytt
+	PL	Wpisz hasło ponownie
+	RU	Повторите ввод пароля
+	SV	Ange lösenordet på nytt
+
+SLIMBROWSER_GO_HOME
+	CS	Přejít Domů
+	DA	Til startside
+	DE	Zurück zum Startmenü
+	EN	Go Home
+	ES	Go Home (Ir a casa)
+	FI	Alkuun
+	FR	Aller à l'accueil
+	IT	Go Home (Torna alla base)
+	NL	Go Home (Naar huis gaan)
+	NO	Gå til hovedmenyen
+	PL	Powrót do początku
+	RU	Домой
+	SV	Startsida
+
+SLIMBROWSER_DIAGNOSTICS
+	CS	Diagnostika
+	DA	Diagnosticering
+	DE	Diagnose
+	EN	Diagnostics
+	ES	Diagnósticos
+	FI	Diagnostiikka
+	FR	Diagnostic
+	IT	Diagnostica
+	NL	Diagnostische gegevens
+	NO	Diagnose
+	PL	Diagnostyka
+	RU	Диагностика
+	SV	Diagnostik
+
+SLIMBROWSER_PAUSED
+	CS	Pozastaveno
+	DA	Pause
+	DE	Pause
+	EN	Paused
+	ES	En pausa
+	FI	Tauotettu
+	FR	En pause
+	IT	In pausa
+	NL	Gepauzeerd
+	NO	Pause
+	PL	Wstrzymano
+	RU	Пауза
+	SV	Pausad
+
+SLIMBROWSER_STOPPED
+	CS	Zastaveno
+	DA	Stoppet
+	DE	Angehalten
+	EN	Stopped
+	ES	Detenido
+	FI	Pysäytetty
+	FR	Arrêté
+	IT	Arrestato
+	NL	Gestopt
+	NO	Stoppet
+	PL	Zatrzymane
+	RU	Остановлено
+	SV	Stoppad
+
+SLIMBROWSER_SEARCH_HELP
+	CS	Pomocí kolečka měňte písmena a stisknutím prostředního tlačítka proveďte výběr. Chcete-li spustit hledání, stiskněte znovu prostřední tlačítko.
+	DA	Brug drejeknappen til at skifte bogstav, og tryk på midterknappen for at vælge det. Tryk på midterknappen igen for at begynde søgningen.
+	DE	Wählen Sie den gewünschten Buchstaben mit dem Rad und drücken Sie zum Bestätigen die mittlere Taste. Drücken Sie zum Starten der Suche die mittlere Taste erneut.
+	EN	Use the scroll wheel to change letters, then press the center button to select that letter. Press the center button again to start your search.
+	ES	Cambie de letra con la rueda de desplazamiento y pulse el botón central para seleccionarla. Pulse de nuevo el botón central para iniciar la búsqueda.
+	FI	Voit vaihtaa kirjainta vierityskiekolla ja valita kirjaimen keskipainikkeella. Käynnistä haku painamalla keskipainiketta uudelleen.
+	FR	Utiliser la molette pour choisir une lettre, puis appuyer sur le bouton central afin de la sélectionner. Appuyer à nouveau sur le bouton central pour démarrer la recherche.
+	IT	Utilizzare la rotellina per cambiare le lettere, quindi premere il pulsante centrale per selezionarle. Premere nuovamente il pulsante centrale per avviare la ricerca.
+	NL	Gebruik het scrollwiel om naar een andere letter te gaan. Druk dan op de middelste knop om die letter te selecteren. Druk nogmaals op de middelste knop om je zoekopdracht te starten.
+	NO	Du kan endre bokstav med rullehjulet, og velge bokstav med midtknappen. Trykk på midtknappen på nytt for å starte søket.
+	PL	Użyj pokrętła, aby zmienić litery, a następnie naciśnij środkowy przycisk w celu wybrania litery. Naciśnij ponownie środkowy przycisk, aby rozpocząć wyszukiwanie.
+	RU	Прокручивая колесико, дойдите до нужной буквы и нажмите центральную кнопку, чтобы выбрать букву. Затем нажмите центральную кнопку еще раз, чтобы запустить поиск.
+	SV	Markera en bokstav med rullningshjulet och tryck sedan på mittenknappen för att välja bokstaven. Tryck på mittenknappen igen när du vill börja söka.
+
+SLIMBROWSER_PROBLEM_CONNECTING
+	CS	Problém s připojováním
+	DA	Problem med forbindelsen
+	DE	Verbindungsproblem
+	EN	Problem Connecting
+	ES	Problema de conexión
+	FI	Yhteyttä ei voi muodostaa
+	FR	Problème de connexion
+	IT	Problema di connessione
+	NL	Probleem bij verbinden
+	NO	Klarer ikke å kople til
+	PL	Problem podczas nawiązywania połączenia
+	RU	Ошибка при подключении
+	SV	Det uppstod ett problem vid anslutningen
+
+SLIMBROWSER_TRY_AGAIN
+	CS	Zkuste to znovu
+	DA	Prøv igen
+	DE	Erneut versuchen
+	EN	Try Again
+	ES	Vuelva a intentarlo
+	FI	Yritä uudelleen
+	FR	Veuillez réessayer
+	IT	Riprova
+	NL	Opnieuw proberen
+	NO	Prøv igjen
+	PL	Spróbuj ponownie
+	RU	Повторите попытку
+	SV	Försök igen
+
+SLIMBROWSER_CHOOSE_MUSIC_SOURCE
+	CS	Přepnout knihovnu
+	DA	Skift bibliotek
+	DE	Bibliothek umschalten
+	EN	Switch Library
+	ES	Cambiar biblioteca
+	FI	Vaihda kirjastoa
+	FR	Changer de collection
+	IT	Cambia libreria
+	NL	Collectie wisselen
+	NO	Bytt bibliotek
+	PL	Przełącz bibliotekę
+	RU	Сменить медиатеку
+	SV	Byt bibliotek
+
+SLIMBROWSER_CHOOSE_PLAYER
+	CS	Zvolit přehrávač
+	DA	Vælg afspiller
+	DE	Player wählen
+	EN	Choose Player
+	ES	Elegir reproductor
+	FI	Valitse soitin
+	FR	Sélectionner une platine
+	IT	Scegli lettore
+	NL	Muzieksysteem kiezen
+	NO	Velg spiller
+	PL	Wybierz odtwarzacz
+	RU	Выберите плеер
+	SV	Välj spelare
+
+SLIMBROWSER_PROBLEM_CONNECTING_HELP
+	CS	Problém s připojením k %s
+	DA	Der er problemer med at oprette forbindelse til %s
+	DE	Problem bei der Verbindung mit %s
+	EN	There is a problem connecting to %s
+	ES	Problema al conectar a %s
+	FI	Yhteyttä ei voida muodostaa kohteeseen %s
+	FR	Impossible de se connecter à %s
+	IT	Problema di connessione a %s
+	NL	Probleem bij verbinden met %s
+	NO	Klarer ikke å kople til %s
+	PL	Wystąpił problem podczas nawiązywania połączenia z %s
+	RU	Ошибка при подключении к %s
+	SV	Det går inte att ansluta till %s.
+
+SLIMBROWSER_NOTHING
+	CS	Žádná
+	DA	Intet
+	DE	Nichts
+	EN	Nothing
+	ES	Nada
+	FI	Ei mitään
+	FR	Rien
+	IT	Niente
+	NL	Niets
+	NO	Ingenting
+	PL	Brak
+	RU	Ничего
+	SV	Ingenting
+
+SLIMBROWSER_OFF
+	CS	Vypnuto
+	DA	Fra
+	DE	Aus
+	EN	Off
+	ES	Desactivado
+	FI	Ei käytössä
+	FR	Désactivé
+	IT	Disattivato
+	NL	Uit
+	NO	Av
+	PL	wył.
+	RU	Выкл.
+	SV	Av
+
+SLIMBROWSER_VOLUME
+	CS	Hlasitost
+	DA	Lydstyrke
+	DE	Lautstärke
+	EN	Volume
+	ES	Volumen
+	FI	Äänenvoimakkuus
+	FR	Volume
+	IT	Volume
+	NL	Volume
+	NO	Volum
+	PL	Głośność
+	RU	Громкость
+	SV	Volym
+
+SLIMBROWSER_MUTED
+	CS	Ztlumeno
+	DA	Lyden er slået fra
+	DE	Stumm
+	EN	Muted
+	ES	Silenciado
+	FI	Mykistetty
+	FR	En sourdine
+	IT	Audio disattivato
+	NL	Gedempt
+	NO	Stille
+	PL	Bez dźwięku
+	RU	Без звука
+	SV	Inget ljud
+
+SLIMBROWSER_VOLUME_MUTED
+	CS	Hlasitost  (ztlumeno)
+	DA	Volumen (lyden er slået fra)
+	DE	Lautstärke (Stumm)
+	EN	Volume (Muted)
+	ES	Volumen (silenciado)
+	FI	Äänenvoimakkuus (mykistetty)
+	FR	Volume (SOURDINE)
+	IT	Volume (DISATTIVATO)
+	NL	Volume (gedempt)
+	NO	Volum (av)
+	PL	Głośność (wyciszona)
+	RU	Громкость (приглушенная)
+	SV	Volym (av)
+
+SLIMBROWSER_ADD_NEXT_1
+# SLT: this is short for "Play this item next", not "Play next item"
+	CS	Přehrát další
+	DA	Spil næste
+	DE	Als nächstes wiedergeben
+	EN	Play Next
+	ES	Reproducir a continuación
+	FI	Soita seuraava
+	FR	Lire à la suite
+	IT	Brano successivo
+	NL	Volgende afspelen
+	NO	Spill av neste
+	PL	Odtwórz następny
+	RU	След. дорожка
+	SV	Spela härnäst
+
+SLIMBROWSER_ADD_NEXT_2
+# SLT: this is short for "Add this item as the next track", not "Add next item"
+	CS	Přidat další
+	DA	Tilføj næste
+	DE	Als nächstes hinzufügen
+	EN	Add Next
+	ES	Agregar a continuación
+	FI	Lisää seuraava
+	FR	Ajouter le suivant
+	IT	Aggiungi prossimo
+	NL	Volgende toevoegen
+	NO	Legg til neste
+	PL	Dodaj następny element
+	RU	Добавить следующий
+	SV	Lägg till text
+
+SLIMBROWSER_PASSWORD_WRONG
+	CS	Neplatné uživatelské jméno/ heslo
+	DA	Brugernavnet/adgangskoden er ugyldig
+	DE	Benutzername/Kennwort ungültig
+	EN	Username/Password Invalid
+	ES	Nombre de usuario/contraseña no válidos
+	FI	Käyttäjätunnus/salasana ei kelpaa
+	FR	Nom d'utilisateur/mot de passe non valide
+	IT	Nome utente/password non validi
+	NL	Gebruikersnaam/wachtwoord ongeldig
+	NO	Brukernavn/passord er ugyldig
+	PL	Nieprawidłowa nazwa użytkownika/hasło
+	RU	Недействительные имя пользователя или пароль
+	SV	Användarnamn/lösenord är felaktigt
+
+SLIMBROWSER_PASSWORD_WRONG_BODY
+	CS	Zadané uživatelské jméno a heslo není platné.
+	DA	Brugernavnet eller adgangskoden er ikke gyldig(t).
+	DE	Der eingegebene Benutzername bzw. das Kennwort ist ungültig.
+	EN	The username or password you entered is not valid.
+	ES	La contraseña o el nombre de usuario que ha introducido no es válido.
+	FI	Antamasi käyttäjänimi tai salasana ei kelpaa.
+	FR	Le nom d'utilisateur ou le mot de passe saisi n'est pas valide.
+	IT	Il nome utente o la password immessi non sono validi.
+	NL	Ingevoerde gebruikersnaam of ingevoerd wachtwoord is niet geldig.
+	NO	Brukernavnet eller passordet du oppga, er ugyldig.
+	PL	Wprowadzona nazwa użytkownika lub hasło są nieprawidłowe.
+	RU	Введены неверные пароль или имя пользователя.
+	SV	Det användarnamn eller lösenord du angav är inte giltigt.
+
+SLIMBROWSER_SCANNER
+	CS	Pozice skladby
+	DA	Nummerets placering
+	DE	Titelposition
+	EN	Song Position
+	ES	Ubicación de canción
+	FI	Kappaleen paikka
+	FR	Emplacement du morceau
+	IT	Posizione brano
+	NL	Positie van nummer
+	NO	Plassering i sangen
+	PL	Położenie utworu
+	RU	Позиция песни
+	SV	Spårets placering
+
+SLIMBROWSER_CONNECTING_TO
+	CS	Připojování k
+	DA	Etablerer forbindelse til
+	DE	Verbinden mit
+	EN	Connecting to
+	ES	Conectando a
+	FI	Yhdistää kohteeseen
+	FR	Connexion à
+	IT	Collegamento a
+	NL	Verbinden met
+	NO	Kopler til
+	PL	Trwa łączenie z
+	RU	Подключение к
+	SV	Ansluts till
+
+SLIMBROWSER_ALARM_PREVIEW
+	CS	Ukázka zvuku budíku
+	DA	Eksempel på vækkelyd
+	DE	Alarmvorschau
+	EN	Alarm Preview
+	ES	Vista previa de alarma
+	FI	Hälytyksen esikuuntelu
+	FR	Ecoute du réveil
+	IT	Anteprima sveglia
+	NL	Voorbeeld van weksignaal
+	NO	Alarmavspilling
+	PL	Podgląd alarmu
+	RU	Предварительное прослушивание сигнала
+	SV	Förhandsgranskning av varningssignal
+
+SLIMBROWSER_DONE
+	CS	Hotovo
+	DA	OK
+	DE	Fertig
+	EN	Done
+	ES	Listo
+	FI	Valmis
+	FR	Terminé
+	IT	Fatto
+	NL	Gereed
+	NO	Fullført
+	PL	Gotowe
+	RU	Готово
+	SV	Klar
+
+SLIMBROWSER_ALARM_SOUND_HELP
+	CS	V těchto nabídkách vyberte položku jako zvuk budíku nebo stiskem play přehrajte ukázku zvuku.
+	DA	I disse menuer skal du vælge en lyd til vækkeuret og trykke på Afspil for at høre et eksempel.
+	DE	Wählen Sie in diesen Menüs ein Element für einen Alarmton aus.  Drücken Sie 'Play', um eine Vorschau anzuzeigen.
+	EN	In these menus, select an item for an alarm sound or press play to preview.
+	ES	En estos menús, seleccione un elemento para un sonido de alarma o pulse el botón de reproducción para obtener una vista previa.
+	FI	Näissä valikoissa valitset kohteen hälytysäänelle tai esikuuntelet painamalla soita.
+	FR	Dans ces menus, choisissez un son pour le réveil, ou appuyez sur le bouton Play pour lancer la lecture.
+	IT	In questi menu, selezionare un elemento per il suono della sveglia. Premere il tasto di riproduzione per riprodurlo.
+	NL	In deze menu's selecteer je een item als weksignaal of druk je op PLAY voor een voorbeeld.
+	NO	I disse menyene velger du et element du vil bruke som alarmlyd, eller trykker på avspillingsknappen for å høre lyden.
+	PL	W tych menu można wybrać element odpowiadający dźwiękowi alarmu i nacisnąć opcję odtwarzania, aby włączyć podgląd.
+	RU	В этом меню для выбора сигнала будильника следует указать соответствующий элемент, для предварительного прослушивания — нажать клавишу воспроизведения.
+	SV	I de här menyerna väljer du ett objekt för ett varningsljud eller trycker på play-knappen för att förhandsgranska.
+
+SLIMBROWSER_ALARM_SOUND_HELP_FAB4
+	CS	V těchto nabídkách můžete dotykem zvolit zvuk budíku a dotykem a podržením přehrát ukázku zvuku.
+	DA	I disse menuer skal du trykke for at vælge en lyd til vækkeuret og holde for at høre et eksempel.
+	DE	Wählen Sie in diesen Menüs einen Alarmton durch Berühren aus. Durch Berühren und Halten können Sie eine Vorschau anzeigen.
+	EN	In these menus, touch to select an alarm sound, touch-hold to preview.
+	ES	En estos menús, toque para seleccionar un sonido de alarma y mantenga la pulsación para obtener una vista previa.
+	FI	Näissä valikoissa valitset hälytysäänen koskettamalla, esikuuntelet koskettamalla pitkään.
+	FR	Dans ces menus, appuyez pour sélectionner un son de réveil et laissez la touche enfoncée pour écouter le son.
+	IT	In questi menu, toccare per selezionare il suono della sveglia. Toccare a lungo per riprodurlo.
+	NL	In deze menu's kun je een weksignaal selecteren door middel van een aanraking, en houd je deze ingedrukt voor een voorbeeld.
+	NO	I disse menyene berører du en alarm for å velge den, og holder fingeren presset mot den for å høre den.
+	PL	W tych menu można wybrać dźwięk alarmu przez dotknięcie oraz włączyć podgląd, dotykając i przytrzymując opcję.
+	RU	В этом меню для выбора сигнала будильника следует коснуться его, для предварительного прослушивания — коснуться и удерживать.
+	SV	I de här menyerna pekar du för att välja ett varningsljud och pekar och håller ned för att förhandsgranska.
+
+SLIMBROWSER_ALARM_SOUND_HELP_BABY
+	CS	V těchto nabídkách můžete stiskem ovladače zvolit zvuk budíku a stiskem play přehrát ukázku zvuku.
+	DA	I disse menuer kan du trykke på drejeknappen for at vælge en lyd til vækkeuret. Tryk på afspil for at høre et eksempel.
+	DE	Drücken Sie in diesen Menüs den Knopf zum Auswählen eines Alarmtons. Drücken Sie 'Play', um eine Vorschau anzuzeigen.
+	EN	In these menus, press the knob to select an alarm sound, press play to preview.
+	ES	En estos menús, pulse el control para seleccionar un sonido de alarma y el botón de reproducción para obtener una vista previa.
+	FI	Näissä valikoissa valitset hälytysäänen painamalla nuppia, esikuuntelet painamalla soita.
+	FR	Dans ces menus, appuyez sur le bouton de commande pour sélectionner un son de réveil et appuyez sur le bouton Play pour l'écouter.
+	IT	In questi menu, premere la manopola per selezionare il suono della sveglia. Premere il tasto di riproduzione per riprodurlo.
+	NL	In deze menu's druk je op de regelaar om een weksignaal te selecteren, en druk je op PLAY voor een voorbeeld.
+	NO	I disse menyene trykker du på knappen for å velge en alarmlyd, og avspillingsknappen for å høre den.
+	PL	W tych menu można nacisnąć pokrętło, aby wybrać dźwięk alarmu, lub nacisnąć przycisk odtwarzania w celu włączenia podglądu.
+	RU	В этом меню для выбора сигнала будильника используется центральная кнопка, для предварительного прослушивания — клавиша воспроизведения.
+	SV	I de här menyerna trycker du på vridknappen för att välja ett varningsljud och på play-knappen för att förhandsgranska.
+
+SLIMBROWSER_ALARM_SOUND_HELP_JIVE
+	CS	V těchto nabídkách můžete stiskem středového tlačítka zvolit zvuk budíku a stiskem play přehrát ukázku zvuku.
+	DA	I disse menuer kan du trykke på midterknappen for at vælge en lyd til vækkeuret. Tryk på afspil for at høre et eksempel.
+	DE	Drücken Sie in diesen Menüs die mittlere Taste zum Auswählen eines Alarmtons. Drücken Sie 'Play', um eine Vorschau anzuzeigen.
+	EN	In these menus, press the center button to select an alarm sound, press play to preview.
+	ES	En estos menús, pulse el botón central para seleccionar un sonido de alarma y el botón de reproducción para obtener una vista previa.
+	FI	Näissä valikoissa valitset hälytysäänen painamalla keskipainiketta, esikuuntelet painamalla soita.
+	FR	Dans ces menus, appuyez sur le bouton central pour sélectionner un son de réveil, puis appuyez sur le bouton Play pour l'écouter.
+	IT	In questi menu, premere il pulsante centrale per selezionare il suono della sveglia. Premere il tasto di riproduzione per riprodurlo.
+	NL	In deze menu's druk je op de middelste knop om een weksignaal te selecteren, en druk je op PLAY voor een voorbeeld.
+	NO	I disse menyene trykker du på midtknappen for å velge en alarmlyd, og avspillingsknappen for å høre den.
+	PL	W tych menu można nacisnąć środkowy przycisk, aby wybrać dźwięk alarmu, i nacisnąć opcję odtwarzania w celu włączenia podglądu.
+	RU	В этом меню для выбора сигнала будильника используется центральная кнопка, для предварительного прослушивания — клавиша воспроизведения.
+	SV	I de här menyerna trycker du på den mittersta knappen för att välja ett varningsljud och på play-knappen för att förhandsgranska.
+

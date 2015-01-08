@@ -1,0 +1,206 @@
+#
+# The two letter codes are defined by ISO 639-1
+# http://en.wikipedia.org/wiki/List_of_ISO_639_codes
+#
+# NOTE: this strings.txt file is a bit special, in that it provides
+# strings for not only squeezeplay/share/applets/SetupWallpaper, but
+# for the platform-specific wallpapers found in 
+# squeezeplay_fab4/share/applets/SetupWallpaper/wallpaper/
+# squeezeplay_jive/share/applets/SetupWallpaper/wallpaper/
+# etc.
+
+WALLPAPER
+	CS	Wallpaper (Tapeta)
+	DA	Tapet
+	DE	Hintergrundbild
+	EN	Wallpaper
+	ES	Papel tapiz
+	FI	Tausta
+	FR	Arrière-plan
+	IT	Sfondo
+	NL	Achtergrond
+	NO	Bakgrunn
+	PL	Tapeta
+	RU	Фоновый рисунок
+	SV	Tapet
+
+WALLPAPER_HELP_PLAYER
+	CS	Zvolte pozadí obrazovky, které se bude zobrazovat pro %s
+	DA	Vælg den baggrund der skal vises for %s
+	DE	Wählen Sie den Hintergrund für %s
+	EN	Choose the screen background to be shown for %s
+	ES	Elija el fondo de pantalla que se mostrará para %s
+	FI	Valitse näytön taustakuva laitteelle %s
+	FR	Sélectionnez l'arrière-plan d'écran à afficher pour %s
+	IT	Scegliere lo sfondo della schermata per %s
+	NL	Kies de schermachtergrond die moet worden weergegeven voor %s
+	NO	Velg bakgrunnen som skal vises for %s
+	PL	Wybierz domyślne tło ekranu do wyświetlenia dla %s
+	RU	Выберите фоновый рисунок экрана, отображаемый для %s
+	SV	Välj skärmbakgrund för %s
+
+WALLPAPER_HELP_NO_PLAYER
+	CS	Zvolte pozadí obrazovky, které se zobrazí jako výchozí
+	DA	Vælg den baggrund der skal vises som standard
+	DE	Wählen Sie den Standard-Hintergrund
+	EN	Choose the default screen background to be shown
+	ES	Elija el fondo de pantalla que se mostrará de forma predeterminada
+	FI	Valitse näytön oletustausta
+	FR	Sélectionnez l'arrière-plan d'écran à afficher par défaut.
+	IT	Scegliere lo sfondo della schermata predefinito
+	NL	Kies de standaard schermachtergrond die moet worden weergegeven
+	NO	Velg standardbakgrunnen som skal vises
+	PL	Wybierz domyślne tło ekranu do wyświetlenia
+	RU	Выберите фоновый рисунок экрана, отображаемый по умолчанию
+	SV	Välj standardbakgrund för skärmen
+
+ALLEGRO
+	CS	Allegro
+	DA	Allegro
+	DE	Allegro
+	EN	Allegro
+	ES	Allegro
+	FI	Allegro
+	FR	Allegro
+	IT	Allegro
+	NL	Allegro
+	NO	Allegro
+	PL	Allegro
+	RU	Аллегро
+	SV	Allegro
+
+BLACK
+	CS	Černá
+	DA	Sort
+	DE	Schwarz
+	EN	Black
+	ES	Negro
+	FI	Musta
+	FR	Noir
+	IT	Nero
+	NL	Zwart
+	NO	Svart
+	PL	Czarny
+	RU	Черный
+	SV	Svart
+
+ENCORE
+	CS	Přídavek
+	DA	Ekstranummer
+	DE	Encore
+	EN	Encore
+	ES	Bis
+	FI	Ylimääräinen numero
+	FR	Bis
+	IT	Encore
+	NL	Encore
+	NO	Dakapo
+	PL	Bis
+	RU	На бис
+	SV	Dakapo
+
+ENCORERED
+	CS	Encore červená
+	DA	Rødt igen
+	DE	Encore Red
+	EN	Encore Red
+	ES	Más rojo
+	FI	Encore-punainen
+	FR	Bis rouge
+	IT	Encore Red
+	NL	Encore Red
+	NO	Dakapo, rødt
+	PL	Czerwony
+	RU	Encore (красный)
+	SV	Dakaporöd
+
+HARMONY
+	CS	Harmonie
+	DA	Harmoni
+	DE	Harmony
+	EN	Harmony
+	ES	Armonía
+	FI	Harmonia
+	FR	Harmonie
+	IT	Armonia
+	NL	Harmony
+	NO	Harmoni
+	PL	Harmonia
+	RU	Harmony
+	SV	Harmony
+
+NOCTURNE
+	CS	Nokturno
+	DA	Nocturne
+	DE	Nocturne
+	EN	Nocturne
+	ES	Nocturno
+	FI	Nokturni
+	FR	Nocturne
+	IT	Notturno
+	NL	Nocturne
+	NO	Nokturne
+	PL	Nokturn
+	RU	Ноктюрн
+	SV	Nocturne
+
+QUARTET
+	CS	Kvartet
+	DA	Kvartet
+	DE	Quartet
+	EN	Quartet
+	ES	Cuarteto
+	FI	Kvartetti
+	FR	Quartet
+	IT	Quartetto
+	NL	Kwartet
+	NO	Kvartett
+	PL	Kwartet
+	RU	Квартет
+	SV	Kvartett
+
+SONATA
+	CS	Sonáta
+	DA	Sonate
+	DE	Sonata
+	EN	Sonata
+	ES	Sonata
+	FI	Sonaatti
+	FR	Sonate
+	IT	Sonata
+	NL	Sonate
+	NO	Sonate
+	PL	Sonata
+	RU	Соната
+	SV	Sonat
+
+SYMPHONY
+	CS	Symfonie
+	DA	Symfoni
+	DE	Symphony
+	EN	Symphony
+	ES	Sinfonía
+	FI	Sinfonia
+	FR	Symphonie
+	IT	Sinfonia
+	NL	Symfonie
+	NO	Symfoni
+	PL	Symfonia
+	RU	Симфония
+	SV	Symfoni
+
+VIBRATO
+	CS	Vibráto
+	DA	Vibrato
+	DE	Vibrato
+	EN	Vibrato
+	ES	Vibrato
+	FI	Vibrato
+	FR	Vibrato
+	IT	Vibrato
+	NL	Vibrato
+	NO	Vibrato
+	PL	Vibrato
+	RU	Вибрато
+	SV	Vibrato
+

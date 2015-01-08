@@ -1,0 +1,17 @@
+#------
+# LuaSocket makefile platform specific configuration
+#
+
+#------
+# Compiler and linker settings
+# for Mac OS X
+#
+#CC=gcc
+DEF=-DLUASOCKET_DEBUG -DUNIX_HAS_SUN_LEN
+MYCFLAGS= $(LUAINC) -I$(COMPAT) $(DEF) -pedantic -Wall -O2 -fno-common
+MYLDFLAGS=-bundle -undefined dynamic_lookup
+LD=gcc
+
+#------
+# End of makefile platform specific configuration
+#

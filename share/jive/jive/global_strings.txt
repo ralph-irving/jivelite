@@ -1,0 +1,998 @@
+#
+# The two letter codes are defined by ISO 639-1
+# http://en.wikipedia.org/wiki/List_of_ISO_639_codes
+
+SETTINGS
+	CS	Nastavení
+	DA	Indstillinger
+	DE	Einstellungen
+	EN	Settings
+	ES	Configuración
+	FI	Asetukset
+	FR	Paramètres
+	IT	Impostazioni
+	NL	Instellingen
+	NO	Innstillinger
+	PL	Ustawienia
+	RU	Настройки
+	SV	Inställningar
+
+INTERNET_RADIO
+	CS	Rádio
+	DA	Radio
+	DE	Radio
+	EN	Radio
+	ES	Radio
+	FI	Radio
+	FR	Radio
+	IT	Radio
+	NL	Radio
+	NO	Radio
+	PL	Radio
+	RU	Радиостанции
+	SV	Radio
+
+MY_MUSIC
+	CS	Hudba
+	DA	Musik
+	DE	Eigene Musik
+	EN	My Music
+	ES	Mi música
+	FI	Omat musiikkitiedostot
+	FR	Ma musique
+	IT	Musica
+	NL	Mijn muziek
+	NO	Min musikk
+	PL	Moja muzyka
+	RU	Моя музыка
+	SV	Min musik
+
+NOW_PLAYING
+	CS	Právě hraje
+	DA	Nu spiller
+	DE	Aktueller Titel
+	EN	Now Playing
+	ES	Reproduciendo
+	FI	Nyt soi
+	FR	Lecture en cours
+	IT	Riproduzione in corso
+	NL	Speelt nu
+	NO	Spilles nå
+	PL	Teraz odtwarzane
+	RU	Воспроизводится
+	SV	Nu spelas
+
+GLOBAL_HELP
+	CS	Nápověda
+	DA	Hjælp
+	DE	Hilfe
+	EN	Help
+	ES	Ayuda
+	FI	Ohje
+	FR	Aide
+	IT	Guida in linea
+	NL	Help
+	NO	Hjelp
+	PL	Pomoc
+	RU	Справка
+	SV	Hjälp
+
+GLOBAL_SUPPORT
+	CS	Další nápověda
+	DA	Mere hjælp
+	DE	Weitere Hilfe
+	EN	More Help
+	ES	Más ayuda
+	FI	Lisäohjeita
+	FR	Aide supplémentaire
+	IT	Ulteriore assistenza
+	NL	Meer Help
+	NO	Ytterligere hjelp
+	PL	Więcej pomocy
+	RU	Дополнительная справка
+	SV	Ytterligare hjälp
+
+REMOTE_SETTINGS
+	CS	Nastavení ovladače
+	DA	Indstillinger for Controller
+	DE	Fernbedienungseinstellungen
+	EN	Controller Settings
+	ES	Configuración del mando
+	FI	Kaukosäätimen asetukset
+	FR	Paramètres de la télécommande
+	IT	Impostazioni telecomando
+	NL	Afstandsbedieningsinstellingen
+	NO	Kontrollinnstillinger
+	PL	Ustawienia urządzenia sterującego
+	RU	Настройки контроллера
+	SV	Controller-inställningar
+
+SCREEN_SETTINGS
+	CS	Obrazovka
+	DA	Skærm
+	DE	Anzeige
+	EN	Screen
+	ES	Pantalla
+	FI	Näyttö
+	FR	Affichage
+	IT	Visualizza
+	NL	Display
+	NO	Skjerm
+	PL	Ekran
+	RU	Экран
+	SV	Skärm
+
+HOME
+	CS	Domů
+	DA	Startside
+	DE	Hauptmenü
+	EN	Home
+	ES	Inicio
+	FI	Koti
+	FR	Accueil
+	IT	Pagina iniziale
+	NL	Hoofdmenu
+	NO	Hovedmeny
+	PL	Strona główna
+	RU	Главное меню
+	SV	Hem
+
+ADVANCED_SETTINGS
+	CS	Pokročilé
+	DA	Avanceret
+	DE	Erweitert
+	EN	Advanced
+	ES	Avanzada
+	FI	Lisäasetukset
+	FR	Avancé
+	IT	Avanzate
+	NL	Geavanceerd
+	NO	Avansert
+	PL	Zaawansowane
+	RU	Дополнительно
+	SV	Avancerat
+
+AUDIO_SETTINGS
+	CS	Nastavení zvuku
+	DA	Lydindstillinger
+	DE	Audioeinstellungen
+	EN	Audio Settings
+	ES	Configuración de audio
+	FI	Ääniasetukset
+	FR	Paramètres audio
+	IT	Impostazioni audio
+	NL	Geluidsinstellingen
+	NO	Lydinnstillinger
+	PL	Ustawienia audio
+	RU	Настройки аудиоканала
+	SV	Ljudinställningar
+
+BETA_FEATURES
+	CS	Beta vlastnosti
+	DA	Beta-funktioner
+	DE	Beta-Funktionen
+	EN	Beta Features
+	ES	Características beta
+	FI	Beeta-ominaisuudet
+	FR	Fonctions bêta
+	IT	Funzionalità Beta
+	NL	Bètafuncties
+	NO	Betafunksjoner
+	PL	Funkcje w wersji beta
+	RU	Функции бета-версии
+	SV	Beta-funktioner
+
+BRIGHTNESS_SETTINGS
+	CS	Jas
+	DA	Lysstyrke
+	DE	Helligkeit
+	EN	Brightness
+	ES	Brillo
+	FI	Kirkkaus
+	FR	Luminosité
+	IT	Luminosità
+	NL	Helderheid
+	NO	Lysstyrke
+	PL	Jasność
+	RU	Яркость
+	SV	Ljusstyrka
+
+NETWORK_NETWORKING
+	CS	Připojování do sítě
+	DA	Netværk
+	DE	Netzwerke
+	EN	Networking
+	ES	Redes
+	FI	Verkko
+	FR	Mise en réseau
+	IT	Connessione alla rete in corso
+	NL	Netwerken
+	NO	Nettverk
+	PL	Sieć
+	RU	Работа в сети
+	SV	Nätverk
+
+FACTORY_TEST
+	CS	Tovární zkouška
+	DA	Fabrikstest
+	DE	Fabriktest
+	EN	Factory Test
+	ES	Prueba de fábrica
+	FI	Tehdastesti
+	FR	Test d'usine
+	IT	Verifica in fabbrica
+	NL	Fabriekstest
+	NO	Fabrikktest
+	PL	Test fabryczny
+	RU	Фабричный тест
+	SV	Test av ursprungsinställningar
+
+DEBUG_LOG
+	CS	Protokolování
+	DA	Logføring
+	DE	Protokoll
+	EN	Logging
+	ES	Registrando
+	FI	Kirjaus
+	FR	Journalisation
+	IT	Registrazione
+	NL	Loggen
+	NO	Loggføring
+	PL	Rejestrowanie
+	RU	Ведение журнала
+	SV	Loggning
+
+EXTRAS
+	CS	Doplňky
+	DA	Ekstra
+	DE	Extras
+	EN	Extras
+	ES	Extras
+	FI	Muut
+	FR	Extras
+	IT	Extra
+	NL	Extra's
+	NO	Tillegg
+	PL	Dodatki
+	RU	Дополнения
+	SV	Extrafunktioner
+
+GAMES
+	CS	Hry
+	DA	Spil
+	DE	Spiele
+	EN	Games
+	ES	Juegos
+	FI	Pelit
+	FR	Jeux
+	IT	Giochi
+	NL	Games
+	NO	Spill
+	PL	Gry
+	RU	Игры
+	SV	Spel
+
+INSERT
+	CS	Vložit
+	DA	Indsæt
+	DE	Einfügen
+	EN	Insert
+	ES	Insertar
+	FI	Lisää
+	FR	Insérer
+	IT	Inserisci
+	NL	Invoegen
+	NO	Sett inn
+	PL	Wstaw
+	RU	Вставить
+	SV	Infoga
+
+DELETE
+	CS	Odstranit
+	DA	Slet
+	DE	Löschen
+	EN	Delete
+	ES	Eliminar
+	FI	Poista
+	FR	Supprimer
+	IT	Elimina
+	NL	Verwijderen
+	NO	Fjern
+	PL	Usuń
+	RU	Удалить
+	SV	Ta bort
+
+ALLOWEDCHARS_NOCAPS
+	CS	 abcdefghijklmnopqrstuvwxyz!@#$%^&*()_+{}|:\"'<>?-=,./~`[];0123456789
+	DA	 abcdefghijklmnopqrstuvwxyz!@#$%^&*()_+{}|:\"'<>?-=,./~`[];0123456789
+	DE	 abcdefghijklmnopqrstuvwxyz!@#$%^&*()_+{}|:\"'<>?-=,./~`[];0123456789
+	EN	 abcdefghijklmnopqrstuvwxyz!@#$%^&*()_+{}|:\"'<>?-=,./~`[];0123456789
+	ES	 abcdefghijklmnopqrstuvwxyz!@#$%^&*()_+{}|:\"'<>?-=,./~`[];0123456789
+	FI	 abcdefghijklmnopqrstuvwxyz!@#$%^&*()_+{}|:\"'<>?-=,./~`[];0123456789
+	FR	 abcdefghijklmnopqrstuvwxyz!@#$%^&*()_+{}|:\"'<>?-=,./~`[];0123456789
+	IT	 abcdefghijklmnopqrstuvwxyz!@#$%^&*()_+{}|:\"'<>?-=,./~`[];0123456789
+	NL	 abcdefghijklmnopqrstuvwxyz!@#$%^&*()_+{}|:\"'<>?-=,./~`[];0123456789
+	NO	 abcdefghijklmnopqrstuvwxyz!@#$%^&*()_+{}|:\"'<>?-=,./~`[];0123456789
+	PL	 abcdefghijklmnopqrstuvwxyz!@#$%^&*()_+{}|:\"'<>?-=,./~`[];0123456789
+	RU	 abcdefghijklmnopqrstuvwxyz!@#$%^&*()_+{}|:\"'<>?-=,./~`[];0123456789
+	SV	 abcdefghijklmnopqrstuvwxyz!@#$%^&*()_+{}|:\"'<>?-=,./~`[];0123456789
+
+ALLOWEDCHARS_CAPS
+	CS	 ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+{}|:\"'<>?-=,./~`[];0123456789
+	DA	 ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+{}|:\"'<>?-=,./~`[];0123456789
+	DE	 ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+{}|:\"'<>?-=,./~`[];0123456789
+	EN	 ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+{}|:\"'<>?-=,./~`[];0123456789
+	ES	 ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+{}|:\"'<>?-=,./~`[];0123456789
+	FI	 ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+{}|:\"'<>?-=,./~`[];0123456789
+	FR	 ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+{}|:\"'<>?-=,./~`[];0123456789
+	IT	 ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+{}|:\"'<>?-=,./~`[];0123456789
+	NL	 ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+{}|:\"'<>?-=,./~`[];0123456789
+	NO	 ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+{}|:\"'<>?-=,./~`[];0123456789
+	PL	 ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+{}|:\"'<>?-=,./~`[];0123456789
+	RU	 ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+{}|:\"'<>?-=,./~`[];0123456789
+	SV	 ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+{}|:\"'<>?-=,./~`[];0123456789
+
+ALLOWEDCHARS_WITHCAPS
+	CS	 abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+{}|:\"'<>?-=,./~`[];0123456789
+	DA	 abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+{}|:\"'<>?-=,./~`[];0123456789
+	DE	 abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+{}|:\"'<>?-=,./~`[];0123456789
+	EN	 abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+{}|:\"'<>?-=,./~`[];0123456789
+	ES	 abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+{}|:\"'<>?-=,./~`[];0123456789
+	FI	 abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+{}|:\"'<>?-=,./~`[];0123456789
+	FR	 abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+{}|:\"'<>?-=,./~`[];0123456789
+	IT	 abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+{}|:\"'<>?-=,./~`[];0123456789
+	NL	 abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+{}|:\"'<>?-=,./~`[];0123456789
+	NO	 abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+{}|:\"'<>?-=,./~`[];0123456789
+	PL	 abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+{}|:\"'<>?-=,./~`[];0123456789
+	RU	 abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+{}|:\"'<>?-=,./~`[];0123456789
+	SV	 abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+{}|:\"'<>?-=,./~`[];0123456789
+
+ALLOWEDCHARS_EMAIL
+	CS	 abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&'*+-/=?^_`{|}~0123456789@.
+	DA	 abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&'*+-/=?^_`{|}~0123456789@.
+	DE	 abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&'*+-/=?^_`{|}~0123456789@.
+	EN	 abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&'*+-/=?^_`{|}~0123456789@.
+	ES	 abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&'*+-/=?^_`{|}~0123456789@.
+	FI	 abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&'*+-/=?^_`{|}~0123456789@.
+	FR	 abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&'*+-/=?^_`{|}~0123456789@.
+	IT	 abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&'*+-/=?^_`{|}~0123456789@.
+	NL	 abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&'*+-/=?^_`{|}~0123456789@.
+	NO	 abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&'*+-/=?^_`{|}~0123456789@.
+	PL	 abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&'*+-/=?^_`{|}~0123456789@.
+	RU	 abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&'*+-/=?^_`{|}~0123456789@.
+	SV	 abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&'*+-/=?^_`{|}~0123456789@.
+
+RETURN_TO_SETUP
+	CS	Zpět k nastavení
+	DA	Tilbage til Konfiguration
+	DE	Zurück zum Setup
+	EN	Return to Setup
+	ES	Regresar a configuración
+	FI	Palaa asetuksiin
+	FR	Retour à la configuration
+	IT	Torna all'installazione
+	NL	Terug naar set-up
+	NO	Gå tilbake til konfigureringen
+	PL	Powrót do konfiguracji
+	RU	Вернуться к установке
+	SV	Återgå till installationen
+
+SHORTCUTS_RESET
+	CS	Opětovně nastavit na výchozí
+	DA	Nulstil
+	DE	Zurücksetzen
+	EN	Reset to Defaults
+	ES	Restablecer a valores predeterminados
+	FI	Palauta oletuksiin
+	FR	Restauration des valeurs par défaut
+	IT	Impostazioni predefinite
+	NL	Standaardwaarden
+	NO	Tilbakestill til standardinnstillinger
+	PL	Resetuj do wartości domyślnych
+	RU	Восстановление стандартных настроек
+	SV	Återställ standardinställningarna
+
+KEYBOARD_DONE
+	CS	hotovo
+	DA	udført
+	DE	Fertig
+	EN	done
+	ES	listo
+	FI	valmis
+	FR	terminé
+	IT	fine
+	NL	gereed
+	NO	ferdig
+	PL	gotowe
+	RU	готово
+	SV	klart
+
+MONTH_1
+	CS	Leden
+	DA	Januar
+	DE	Januar
+	EN	January
+	ES	Enero
+	FI	tammikuu
+	FR	Janvier
+	IT	Gennaio
+	NL	januari
+	NO	januar
+	PL	Styczeń
+	RU	Январь
+	SV	januari
+
+MONTH_2
+	CS	Únor
+	DA	Februar
+	DE	Februar
+	EN	February
+	ES	Febrero
+	FI	helmikuu
+	FR	Février
+	IT	Febbraio
+	NL	februari
+	NO	februar
+	PL	Luty
+	RU	Февраль
+	SV	februari
+
+MONTH_3
+	CS	Březen
+	DA	Marts
+	DE	März
+	EN	March
+	ES	Marzo
+	FI	maaliskuu
+	FR	Mars
+	IT	Marzo
+	NL	maart
+	NO	mars
+	PL	Marzec
+	RU	Март
+	SV	mars
+
+MONTH_4
+	CS	Duben
+	DA	April
+	DE	April
+	EN	April
+	ES	Abril
+	FI	huhtikuu
+	FR	Avril
+	IT	Aprile
+	NL	april
+	NO	april
+	PL	Kwiecień
+	RU	Апрель
+	SV	april
+
+MONTH_5
+	CS	Květen
+	DA	Maj
+	DE	Mai
+	EN	May
+	ES	Mayo
+	FI	toukokuu
+	FR	Mai
+	IT	Maggio
+	NL	mei
+	NO	mai
+	PL	Maj
+	RU	Май
+	SV	maj
+
+MONTH_6
+	CS	Červen
+	DA	Juni
+	DE	Juni
+	EN	June
+	ES	Junio
+	FI	kesäkuu
+	FR	Juin
+	IT	Giugno
+	NL	juni
+	NO	juni
+	PL	Czerwiec
+	RU	Июнь
+	SV	juni
+
+MONTH_7
+	CS	Červenec
+	DA	Juli
+	DE	Juli
+	EN	July
+	ES	Julio
+	FI	heinäkuu
+	FR	Juillet
+	IT	Luglio
+	NL	juli
+	NO	juli
+	PL	Lipiec
+	RU	Июль
+	SV	juli
+
+MONTH_8
+	CS	Srpen
+	DA	August
+	DE	August
+	EN	August
+	ES	Agosto
+	FI	elokuu
+	FR	Août
+	IT	Agosto
+	NL	augustus
+	NO	august
+	PL	Sierpień
+	RU	Август
+	SV	augusti
+
+MONTH_9
+	CS	Září
+	DA	September
+	DE	September
+	EN	September
+	ES	Septiembre
+	FI	syyskuu
+	FR	Septembre
+	IT	Settembre
+	NL	september
+	NO	september
+	PL	Wrzesień
+	RU	Сентябрь
+	SV	september
+
+MONTH_10
+	CS	Říjen
+	DA	Oktober
+	DE	Oktober
+	EN	October
+	ES	Octubre
+	FI	lokakuu
+	FR	Octobre
+	IT	Ottobre
+	NL	oktober
+	NO	oktober
+	PL	Październik
+	RU	Октябрь
+	SV	oktober
+
+MONTH_11
+	CS	Listopad
+	DA	November
+	DE	November
+	EN	November
+	ES	Noviembre
+	FI	marraskuu
+	FR	Novembre
+	IT	Novembre
+	NL	november
+	NO	november
+	PL	Listopad
+	RU	Ноябрь
+	SV	november
+
+MONTH_12
+	CS	Prosinec
+	DA	December
+	DE	Dezember
+	EN	December
+	ES	Diciembre
+	FI	joulukuu
+	FR	Décembre
+	IT	Dicembre
+	NL	december
+	NO	desember
+	PL	Grudzień
+	RU	Декабрь
+	SV	december
+
+MONTHSHORT_1
+# SLT - please use three character short version of the month January
+	CS	Led
+	DA	Jan
+	DE	Jan
+	EN	Jan
+	ES	Ene
+	FI	tam
+	FR	Jan
+	IT	Gen
+	NL	jan
+	NO	jan
+	PL	Sty
+	RU	Янв
+	SV	jan
+
+MONTHSHORT_2
+# SLT - please use three character short version of the month February
+	CS	Úno
+	DA	Feb
+	DE	Feb
+	EN	Feb
+	ES	Feb
+	FI	hel
+	FR	Fév
+	IT	Feb
+	NL	feb
+	NO	feb
+	PL	Lut
+	RU	Фев
+	SV	feb
+
+MONTHSHORT_3
+# SLT - please use three character short version of the month March
+	CS	Bře
+	DA	Mar
+	DE	Mrz
+	EN	Mar
+	ES	Mar
+	FI	maa
+	FR	Mar
+	IT	Mar
+	NL	mrt
+	NO	mar
+	PL	Mar
+	RU	Мар
+	SV	mar
+
+MONTHSHORT_4
+# SLT - please use three character short version of the month April
+	CS	Dub
+	DA	Apr
+	DE	Apr
+	EN	Apr
+	ES	Abr
+	FI	huh
+	FR	Avr
+	IT	Apr
+	NL	apr
+	NO	apr
+	PL	Kwi
+	RU	Апр
+	SV	apr
+
+MONTHSHORT_5
+# SLT - please use three character short version of the month May
+	CS	Květen
+	DA	Maj
+	DE	Mai
+	EN	May
+	ES	May
+	FI	tou
+	FR	Mai
+	IT	Maggio
+	NL	mei
+	NO	mai
+	PL	Maj
+	RU	Май
+	SV	maj
+
+MONTHSHORT_6
+# SLT - please use three character short version of the month June
+	CS	Čer
+	DA	Jun
+	DE	Jun
+	EN	Jun
+	ES	Jun
+	FI	kes
+	FR	Jan
+	IT	Giu
+	NL	jun
+	NO	jun
+	PL	Cze
+	RU	Июн
+	SV	jun
+
+MONTHSHORT_7
+# SLT - please use three character short version of the month July
+	CS	Čec
+	DA	Jul
+	DE	Jul
+	EN	Jul
+	ES	Jul
+	FI	hei
+	FR	Jui
+	IT	Lug
+	NL	jul
+	NO	jul
+	PL	Lip
+	RU	Июл
+	SV	jul
+
+MONTHSHORT_8
+# SLT - please use three character short version of the month August
+	CS	Srp
+	DA	Aug
+	DE	Aug
+	EN	Aug
+	ES	Ago
+	FI	elo
+	FR	Aoû
+	IT	Ago
+	NL	aug
+	NO	aug
+	PL	Sie
+	RU	Авг
+	SV	aug
+
+MONTHSHORT_9
+# SLT - please use three character short version of the month September
+	CS	Zář
+	DA	Sep
+	DE	Sep
+	EN	Sep
+	ES	Sep
+	FI	syy
+	FR	Sep
+	IT	Set
+	NL	sep
+	NO	sept
+	PL	Wrz
+	RU	Сен
+	SV	sep
+
+MONTHSHORT_10
+# SLT - please use three character short version of the month October
+	CS	Říj
+	DA	Okt
+	DE	Okt
+	EN	Oct
+	ES	Oct
+	FI	lok
+	FR	Oct
+	IT	Ott
+	NL	okt
+	NO	okt
+	PL	Paź
+	RU	Окт
+	SV	okt
+
+MONTHSHORT_11
+# SLT - please use three character short version of the month November
+	CS	Lis
+	DA	Nov
+	DE	Nov
+	EN	Nov
+	ES	Nov
+	FI	mar
+	FR	Nov
+	IT	Nov
+	NL	nov
+	NO	nov
+	PL	Lis
+	RU	Ноя
+	SV	nov
+
+MONTHSHORT_12
+# SLT - please use three character short version of the month December
+	CS	Pro
+	DA	Dec
+	DE	Dez
+	EN	Dec
+	ES	Dic
+	FI	jou
+	FR	Déc
+	IT	Dic
+	NL	dec
+	NO	des
+	PL	Gru
+	RU	Дек
+	SV	dec
+
+DAY_1
+	CS	Neděle
+	DA	Søndag
+	DE	Sonntag
+	EN	Sunday
+	ES	Domingo
+	FI	sunnuntai
+	FR	Dimanche
+	IT	Domenica
+	NL	zondag
+	NO	søndag
+	PL	Niedziela
+	RU	Воскресенье
+	SV	söndag
+
+DAY_2
+	CS	Pondělí
+	DA	Mandag
+	DE	Montag
+	EN	Monday
+	ES	Lunes
+	FI	maanantai
+	FR	Lundi
+	IT	Lunedì
+	NL	maandag
+	NO	mandag
+	PL	Poniedziałek
+	RU	Понедельник
+	SV	måndag
+
+DAY_3
+	CS	Úterý
+	DA	Tirsdag
+	DE	Dienstag
+	EN	Tuesday
+	ES	Martes
+	FI	tiistai
+	FR	Mardi
+	IT	Martedì
+	NL	dinsdag
+	NO	tirsdag
+	PL	Wtorek
+	RU	Вторник
+	SV	tisdag
+
+DAY_4
+	CS	Středa
+	DA	Onsdag
+	DE	Mittwoch
+	EN	Wednesday
+	ES	Miércoles
+	FI	keskiviikko
+	FR	Mercredi
+	IT	Mercoledì
+	NL	woensdag
+	NO	onsdag
+	PL	Środa
+	RU	Среда
+	SV	onsdag
+
+DAY_5
+	CS	Čtvrtek
+	DA	Torsdag
+	DE	Donnerstag
+	EN	Thursday
+	ES	Jueves
+	FI	torstai
+	FR	Jeudi
+	IT	Giovedì
+	NL	donderdag
+	NO	torsdag
+	PL	Czwartek
+	RU	Четверг
+	SV	torsdag
+
+DAY_6
+	CS	Pátek
+	DA	Fredag
+	DE	Freitag
+	EN	Friday
+	ES	Viernes
+	FI	perjantai
+	FR	Vendredi
+	IT	Venerdì
+	NL	vrijdag
+	NO	fredag
+	PL	Piątek
+	RU	Пятница
+	SV	fredag
+
+DAY_7
+	CS	Sobota
+	DA	Lørdag
+	DE	Samstag
+	EN	Saturday
+	ES	Sábado
+	FI	lauantai
+	FR	Samedi
+	IT	Sabato
+	NL	zaterdag
+	NO	lørdag
+	PL	Sobota
+	RU	Суббота
+	SV	lördag
+
+DAYSHORT_1
+# SLT - please use three character short version of Sunday
+	CS	Ned
+	DA	Søn
+	DE	So
+	EN	Sun
+	ES	Dom
+	FI	su
+	FR	Dim
+	IT	Dom
+	NL	zo
+	NO	søn
+	PL	Nie
+	RU	Вос
+	SV	sön
+
+DAYSHORT_2
+# SLT - please use three character short version of Monday
+	CS	Pon
+	DA	Man
+	DE	Mo
+	EN	Mon
+	ES	Lun
+	FI	ma
+	FR	Lun
+	IT	Lun
+	NL	ma
+	NO	man
+	PL	Pon
+	RU	Пон
+	SV	mån
+
+DAYSHORT_3
+# SLT - please use three character short version of Tuesday
+	CS	Úte
+	DA	Tir
+	DE	Di
+	EN	Tue
+	ES	Mar
+	FI	ti
+	FR	Mar
+	IT	Mar
+	NL	di
+	NO	tirs
+	PL	Wto
+	RU	Вто
+	SV	tis
+
+DAYSHORT_4
+# SLT - please use three character short version of Wednesday
+	CS	Stř
+	DA	Ons
+	DE	Mi
+	EN	Wed
+	ES	Mié
+	FI	ke
+	FR	Mer
+	IT	Mer
+	NL	wo
+	NO	ons
+	PL	Śro
+	RU	Сре
+	SV	ons
+
+DAYSHORT_5
+# SLT - please use three character short version of Thursday
+	CS	Čtv
+	DA	Tor
+	DE	Do
+	EN	Thu
+	ES	Jue
+	FI	to
+	FR	Jeu
+	IT	Gio
+	NL	do
+	NO	tor
+	PL	Czw
+	RU	Чет
+	SV	tor
+
+DAYSHORT_6
+# SLT - please use three character short version of Friday
+	CS	Pát
+	DA	Fre
+	DE	Fr
+	EN	Fri
+	ES	Vie
+	FI	pe
+	FR	Ven
+	IT	Ven
+	NL	vr
+	NO	fre
+	PL	Pią
+	RU	Пят
+	SV	fre
+
+DAYSHORT_7
+# SLT - please use three character short version of Saturday
+	CS	Sob
+	DA	Lør
+	DE	Sa
+	EN	Sat
+	ES	Sáb
+	FI	la
+	FR	Sam
+	IT	Sab
+	NL	za
+	NO	lør
+	PL	Sob
+	RU	Суб
+	SV	lör
+

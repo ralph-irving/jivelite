@@ -1,0 +1,65 @@
+#
+# The two letter codes are defined by ISO 639-1
+# http://en.wikipedia.org/wiki/List_of_ISO_639_codes
+
+
+CHOOSE_LANGUAGE
+	CS	Zvolit jazyk
+	DA	Vælg sprog
+	DE	Sprache wählen
+	EN	Choose Language
+	ES	Elegir idioma
+	FI	Valitse kieli
+	FR	Choisir une langue
+	IT	Scegliere la lingua
+	NL	Taal kiezen
+	NO	Velg språk
+	PL	Wybierz język
+	RU	Выберите язык
+	SV	Välj språk
+
+LANGUAGE
+	CS	Jazyk
+	DA	Sprog
+	DE	Sprache
+	EN	Language
+	ES	Idioma
+	FI	Kieli
+	FR	Langue
+	IT	Lingua
+	NL	Taal
+	NO	Språk
+	PL	Język
+	RU	Язык
+	SV	Språk
+
+CHOOSE_LANGUAGE_HELP
+	CS	Pro výběr vašeho jazyka použijte kolečko. Pro další úkon prostřední tlačítko.
+	DA	Brug drejeknappen til at vælge sprog. Tryk på midterknappen for at fortsætte.
+	DE	Wählen Sie Ihre Sprache mit dem Rad aus. Drücken Sie zum Fortfahren die mittlere Taste.
+	EN	Use the wheel to choose your language. Press the center button to go on.
+	ES	Use el botón rueda para elegir el idioma. Pulse el botón central para continuar.
+	FI	Valitse kieli vierityskiekolla. Jatka painamalla keskipainiketta.
+	FR	Utilisez la roulette pour choisir une langue. Appuyez sur le bouton central pour continuer.
+	IT	Utilizzare la ghiera per scegliere la lingua. Premere il pulsante centrale per continuare.
+	NL	Gebruik het wiel om je taal te kiezen. Druk op de middelste knop om verder te gaan.
+	NO	Bruk hjulet for å velge språk. Trykk på den midterste knappen for å komme videre.
+	PL	Użyj pokrętła, aby zmienić język. Naciśnij środkowy przycisk, aby kontynuować.
+	RU	Используйте колесико для выбора языка. Для продолжения нажмите центральную кнопку.
+	SV	Välj språk med hjälp av rullningshjulet. Tryck på mittenknappen för att gå vidare.
+
+LOADING_LANGUAGE
+	CS	Nahrávám angličtinu
+	DA	Indlæser dansk
+	DE	Deutsch wird geladen
+	EN	Loading English
+	ES	Cargando español
+	FI	Ladataan suomi
+	FR	Chargement du français
+	IT	Caricamento lingua italiano
+	NL	Nederlands wordt geladen
+	NO	Laster inn norsk
+	PL	Ładowanie języka polskiego
+	RU	Загрузка русского языка
+	SV	Läser in svenska
+

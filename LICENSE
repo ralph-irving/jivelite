@@ -1,0 +1,57 @@
+JiveLite
+
+This program is a derivative of original code with the following license:
+
+Copyright 2010, Logitech, inc.
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+    * Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in the
+      documentation and/or other materials provided with the distribution.
+    * Neither the name of Logitech nor the
+      names of its contributors may be used to endorse or promote products
+      derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL LOGITECH, INC BE LIABLE FOR ANY
+DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+Logitech copyright notices are retained in all files which were authored by Logitech.
+
+Grid layout code by GWENDESIGN / Felix Mueller
+
+Visualizer support based on code by presslab-us (https://github.com/presslab-us/jivelite)
+
+Jivelite ammendments and additional code:
+
+Copyright 2013-2014, Adrian Smith, triode1@btinternet.
+
+These additions are subject to the same license as above.
+
+Also includes image resize adapted from libgd - see source of resize.c for license.
+
+
+Repository also includes source for the following lua libraries.  These are unchanged except for include file modification
+to support luajit-2.0 installed from source:
+and follow their own licenses:
+- cjson
+- luafilesystem
+- luaexpat
+- luamd5
+- luasocket
+
+Repository also includes the following additional skins:
+- Joggler, by "justblair" and others: http://www.justblair.co.uk/more-fixing-of-squeezeplay-for-the-joggler.html
+

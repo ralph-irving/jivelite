@@ -1,0 +1,304 @@
+#
+# The two letter codes are defined by ISO 639-1
+# http://en.wikipedia.org/wiki/List_of_ISO_639_codes
+
+APP_GUIDE
+	CS	Aplikační galerie
+	DA	Programgalleri
+	DE	Anwendungsgalerie
+	EN	App Gallery
+	ES	Galería de aplicaciones
+	FI	Sovellusvalikoima
+	FR	Diaporama d'applications
+	IT	Galleria applicazioni
+	NL	Toep.gallerie
+	NO	Tjenesteliste
+	PL	Galeria aplikacji
+	RU	Галерея приложений
+	SV	Applikationsgalleri
+
+CUSTOMIZE_HOME
+	CS	Výchozí menu
+	DA	Hovedmenu
+	DE	Hauptmenü
+	EN	Home Menu
+	ES	Menú Inicio
+	FI	Kotivalikko
+	FR	Personnalisation du Menu principal
+	IT	Menu iniziale
+	NL	Hoofdmenu
+	NO	Hovedmeny
+	PL	Menu główne
+	RU	Главное меню
+	SV	Hem-meny
+
+CUSTOMIZE_RESTORE_DEFAULTS
+	CS	Obnovit výchozí
+	DA	Standardindstillinger
+	DE	Standardwerte wiederherstellen
+	EN	Restore Defaults
+	ES	Restaurar configuración predeterminada
+	FI	Palauta oletukset
+	FR	Restaurer les valeurs par défaut
+	IT	Ripristina impostazioni predefinite
+	NL	Standaardinstellingen
+	NO	Tilbakestill til standardinnstillinger
+	PL	Przywróć domyślne
+	RU	Восстановить настройки по умолчанию
+	SV	Återställ standardinställningar
+
+CUSTOMIZE_CANCEL
+	CS	Storno
+	DA	Annuller
+	DE	Abbrechen
+	EN	Cancel
+	ES	Cancelar
+	FI	Peruuta
+	FR	Annuler
+	IT	Annulla
+	NL	Annuleren
+	NO	Avbryt
+	PL	Anuluj
+	RU	Отмена
+	SV	Avbryt
+
+CUSTOMIZE_CONTINUE
+	CS	Pokračovat
+	DA	Fortsæt
+	DE	Weiter
+	EN	Continue
+	ES	Continuar
+	FI	Jatka
+	FR	Continuer
+	IT	Continua
+	NL	Verdergaan
+	NO	Fortsett
+	PL	Kontynuuj
+	RU	Продолжить
+	SV	Fortsätt
+
+CUSTOMIZE_RESTORE_DEFAULTS_HELP
+	CS	Pro odstranění všech nastavených hodnot pro organizaci menu zvolte "Pokračovat"
+	DA	Vælg Fortsæt hvis du vil fjerne alle brugerdefinerede menuindstillinger
+	DE	Klicken Sie auf "Weiter", um sämtliche benutzerdefinierte Menüeinstellungen zu entfernen.
+	EN	Select "Continue" to remove all custom menu organization settings
+	ES	Seleccione "Continuar" para eliminar la configuración de organización del menú personalizada
+	FI	Poista kaikki mukautetut valikon järjestelyasetukset valitsemalla Jatka
+	FR	Sélectionnez "Continuer" pour supprimer tous les paramètres de menu personnalisés
+	IT	Selezionare Continua per rimuovere tutte le impostazioni relative all'organizzazione del menu personalizzato
+	NL	Selecteer 'Verdergaan' om alle aangepaste instellingen voor menuorganisatie te verwijderen
+	NO	Velg "Fortsett" for å fjerne alle egendefinerte innstillinger for menyorganisering.
+	PL	Wybierz opcję Kontynuuj, aby usunąć wszystkie niestandardowe ustawienia organizacji menu
+	RU	Нажмите кнопку "Продолжить", чтобы удалить все организационные настройки пользовательского меню.
+	SV	Välj Fortsätt om du vill ta bort alla anpassade inställningar för menyordning
+
+RESTORE_HIDDEN_ITEMS
+	CS	Obnovit skryté položky menu
+	DA	Gendan skjulte menupunkter
+	DE	Ausgeblendete Menüeinträge wiederherstellen
+	EN	Restore Hidden Menu items
+	ES	Restaurar elementos de menú ocultos
+	FI	Palauta piilotetut valikkokohteet
+	FR	Restaurer les éléments masqués du menu
+	IT	Ripristina voci di menu nascoste
+	NL	Verborgen menuopties weergeven
+	NO	Gjenopprett skjulte menyelementer
+	PL	Przywróć ukryte elementy menu
+	RU	Восстановить скрытые элементы меню
+	SV	Återställ dolda menyalternativ
+
+REMOVE_FROM_HOME
+	CS	Skrýt z výchozího menu
+	DA	Skjul i startmenuen
+	DE	Im Hauptmenü ausblenden
+	EN	Hide from Home Menu
+	ES	Ocultar en el menú Inicio
+	FI	Piilota kotivalikosta
+	FR	Masquer dans le menu principal
+	IT	Nascondi da Menu iniziale
+	NL	Verbergen in hoofdmenu
+	NO	Skjul på hovedmenyen
+	PL	Ukryj w menu strony głównej
+	RU	Скрыть из главного меню
+	SV	Dölj från Hem-menyn
+
+ADD_TO_HOME
+	CS	Přidat do výchozího menu
+	DA	Føj til startmenu
+	DE	Dem Hauptmenü hinzufügen
+	EN	Add to Home Menu
+	ES	Agregar a menú Inicio
+	FI	Lisää kotivalikkoon
+	FR	Ajouter au menu principal
+	IT	Aggiungi a Menu iniziale
+	NL	Toevoegen aan hoofdmenu
+	NO	Legg til på hovedmenyen
+	PL	Dodaj do menu strony głównej
+	RU	Добавить в главное меню
+	SV	Lägg till på Hem-menyn
+
+RESTORE_HIDDEN_ITEMS_HELP
+	CS	Vyberte položky, u kterých chcete obnovit zobrazení ve výchozím menu. Následující položky byly skryty:
+	DA	Vælg et punkt der skal gendannes i startmenuen. Følgende punkter er skjult i visningen:
+	DE	Wählen Sie einen Eintrag, der im Hauptmenü wiederhergestellt werden soll. Die folgenden Einträge wurden ausgeblendet:
+	EN	Select an item to restore to the Home Menu. The following items have been hidden from view:
+	ES	Seleccione un elemento para restaurar en el menú Inicio. Los siguientes elementos se han ocultado a la vista:
+	FI	Valitse kotivalikkoon palautettava kohde. Seuraavat kohteet on piilotettu näkyvistä:
+	FR	Sélectionnez un élément à restaurer dans le menu principal. Les éléments suivants ont été masqués:
+	IT	Selezionare una voce per ripristinarla nel Menu iniziale. Le seguenti voci sono attualmente nascoste:
+	NL	Selecteer een optie die je terug wilt zetten in het hoofdmenu. De volgende opties zijn verborgen:
+	NO	Velg et element for å gjenopprette det på hovedmenyen. Følgende elementer er skjult:
+	PL	Wybierz element, aby przywrócić go w menu strony głównej. Ukryte są następujące elementy:
+	RU	Выберите пункт для восстановления в главном меню. Были скрыты следующие пункты:
+	SV	Välj ett alternativ som ska återställas till Hem-menyn. Följande alternativ har varit dolda:
+
+CUSTOMIZE_HOME_HELP
+	CS	Více informací naleznete v nápovědě
+	DA	Vælg hjælp hvis du vil vide mere
+	DE	Weitere Informationen finden Sie in der Hilfe.
+	EN	Select help for more information
+	ES	Seleccione Ayuda para obtener más información
+	FI	Saat lisätietoja valitsemalla ohjeen
+	FR	Sélectionnez l'aide pour plus d'informations
+	IT	Per ulteriori informazioni, selezionare la guida
+	NL	Selecteer 'Help' voor meer informatie
+	NO	Velg Hjelp for mer informasjon
+	PL	Wybierz Pomoc, aby uzyskać więcej informacji
+	RU	Для получения дополнительных сведений щелкните «Справка»
+	SV	Välj Hjälp om du vill ha mer information
+
+CUSTOMIZE_HOME_MORE_HELP
+	CS	Výchozí menu a několik dalších podmenu vašeho přehrávače Squeezebox je možné podle potřeby přizpůsobit. Nastavit můžete jak pořadí položek, tak i obsah jednotlivých menu. Stiskem tlačítka + na vybrané položce menu vyvoláte kontextovou nabídku, ve které jsou uvedeny jednotlivé možnosti jejího přizpůsobení.
+	DA	Startmenuen i din Squeezebox og flere undermenuer kan tilpasses, både hvordan punkterne vises i menuen og deres rækkefølge. Når du trykker på knappen "+" på et punkt i menuen, vises der en genvejsmenu hvor du har flere muligheder for at tilpasse det pågældende punkt.
+	DE	Das Hauptmenü der Squeezebox sowie zahlreiche Untermenüs können angepasst werden. Sie können sowohl die Einträge wählen, die im Menü angezeigt werden, als auch deren Reihenfolge bestimmen. Wenn Sie die '+'-Taste eines bestimmten Menüeintrags drücken, wird ein Kontextmenü mit mehreren Optionen zur Anpassung dieses Eintrags angezeigt.
+	EN	The home menu of your Squeezebox as well as several submenus can be customized, both in what items appear on the menu as well as what order the items take. Pressing the + button on a selected menu item raises a context menu that presents you with several options for customization of that item.
+	ES	Es posible personalizar el menú Inicio así como otros submenús de Squeezebox, tanto en lo que respecta a qué elementos aparecen en el menú como al orden de los mismos. Al pulsar el botón + en un menú seleccionado, se abre un menú contextual que ofrece varias opciones para personalizar ese elemento.
+	FI	Squeezeboxin kotivalikko ja useat sen alivalikoista voidaan mukauttaa sekä valikkokohteiden että niiden järjestyksen osalta. Kun valitun valikkokohteen kohdalta painetaan plus-painiketta (+), näkyviin tulee pikavalikko, jonka toiminnoilla kohdetta voi mukauttaa.
+	FR	Le menu principal de votre Squeezebox ainsi que plusieurs sous-menus sont personnalisables: vous pouvez choisir les éléments qui apparaissent dans le menu ainsi que leur ordre. Appuyez sur le bouton + d'un élément sélectionné pour faire apparaître un menu contextuel vous proposant plusieurs options de personnalisation pour cet élément.
+	IT	Nel Menu iniziale di Squeezebox e in diversi menu secondari è possibile personalizzare le voci visualizzate, nonché l'ordine di visualizzazione di tali voci. Se si preme il pulsante + della voce di menu selezionata, viene visualizzato un menu contestuale contenente diverse opzioni di personalizzazione.
+	NL	Voor het hoofdmenu en bepaalde submenu's op je Squeezebox kun je aanpassen welke opties worden weergegeven en in welke volgorde. Wanneer je bij een geselecteerde menuoptie op de knop + drukt, wordt er een snelmenu geopend met verschillende aanpassingsopties voor die optie.
+	NO	Hovedmenyen og flere av undermenyene på Squeezebox kan tilpasses, både i form av hvilke elementer som vises, og hvilken rekkefølge de vises i. Ved å trykke på +-knappen ved siden av et valgt menyelement, åpner du en kontekstmeny som gir deg flere tilpasningsmuligheter.
+	PL	Menu strony głównej urządzenia Squeezebox a także kilka podmenu można dostosować pod względem wyświetlanych elementów, a także ich kolejności. Naciśnięcie przycisku + po wybraniu menu powoduje wyświetlenie menu kontekstowego, które zawiera kilka opcji dostosowania danego elementu.
+	RU	Главное меню и различные подменю Squeezebox можно настроить, выбрав нужные пункты и расположив их в нужном порядке. Если нажать кнопку «+» на выбранном пункте меню, откроется контекстное меню с несколькими командами для настройки этого пункта.
+	SV	Hem-menyn och flera undermenyer i Squeezebox går att anpassa, både vad gäller de alternativ som visas och den ordning de visas i. Om du trycker på plusknappen (+) på ett menyalternativ så visas en snabbmeny där du kan anpassa menyalternativet på olika sätt.
+
+CUSTOMIZE_HOME_MORE_HELP_FAB4
+	CS	Pro přidání položky do výchozího menu stiskněte a podržte zvolenou položku menu nastavení a vyberte „Přidat do výchozího menu“. Stejným způsobem můžete položky ve výchozím menu skrýt.
+	DA	Tryk på et punkt i menuen Indstillinger, hold knappen nede og vælg  "Føj til startmenu" for at føje punktet til startmenuen. De punkter der allerede er i startmenuen, kan skjules vha. samme metode.
+	DE	Halten Sie einen ausgewählten Menüeintrag gedrückt und wählen Sie 'Dem Hauptmenü hinzufügen', um den Eintrag dem Hauptmenü hinzuzufügen. Einträge, die sich bereits im Hauptmenü befinden, können auf die gleiche Weise ausgeblendet werden.
+	EN	Touch-hold on a selected Settings Menu item and choose "Add to Home Menu" to add the item to the Home Menu. Items already in the Home Menu can be hidden from view via the same method.
+	ES	Mantenga pulsado un elemento seleccionado en el menú Configuración y elija "Agregar a menú Inicio" para agregar el elemento al menú Inicio. Los elementos que ya estén en el menú Inicio pueden ocultarse a la vista con el mismo método.
+	FI	Pidä asetusvalikon kohde valittuna ja lisää kohde kotivalikkoon valitsemalla Lisää kotivalikkoon. Kotivalikossa olevia kohteita voidaan piilottaa näkyvistä samaan tapaan.
+	FR	Appuyez sur un élément du menu de réglage et, sans relâcher la touche, choisissez Ajouter au menu principal pour ajouter l'élément au menu principal. Les éléments déjà présents dans le menu peuvent être masqués de la même manière.
+	IT	Toccare a lungo la voce del menu Impostazioni selezionata e scegliere Aggiungi a Menu iniziale per aggiungere la voce al Menu iniziale. È possibile utilizzare tale metodo anche per nascondere le voci già contenute nel Menu iniziale.
+	NL	Houd een optie in het menu Instellingen ingedrukt en kies 'Toevoegen aan Hoofdmenu' om het in het hoofdmenu te zetten. Opties die zich al in het hoofdmenu bevinden, kunnen zo ook worden verborgen.
+	NO	Trykk og hold på et element på innstillingsmenyen, og velg Legg til på hovedmenyen. Elementet blir lagt til på hovedmenyen. Du kan skjule elementer som allerede befinner seg på hovedmenyen, på samme måte.
+	PL	Dotknij i przytrzymaj wybrany element menu Ustawienia, a następnie wybierz polecenie „Dodaj do menu strony głównej”, aby dodać ten element do menu strony głównej. Elementy już znajdujące się w menu strony głównej można ukryć w ten sam sposób.
+	RU	Нажмите и удерживайте нужный пункт меню настроек и выберите «Добавить в главное меню», чтобы добавить этот пункт в главное меню. Пункты, уже присутствующие в главном меню, можно скрыть тем же образом.
+	SV	Tryck och håll på ett alternativ på menyn Inställningar och lägg till det på Hem-menyn genom att välja Lägg till på Hem-menyn. Alternativ som redan finns på Hem-menyn kan döljas med samma metod.
+
+NONE
+	CS	Žádný
+	DA	Ingen
+	DE	Keine
+	EN	None
+	ES	Ninguno
+	FI	Ei mitään
+	FR	Aucun
+	IT	Nessuna
+	NL	Geen
+	NO	Ingen
+	PL	Brak
+	RU	Нет
+	SV	Inget
+
+NO_HIDDEN_ITEMS
+	CS	Momentálně žádné položky nejsou skryty z výchozího menu.
+	DA	Der er ingen skjulte punkter i visningen af startmenuen.
+	DE	Derzeit sind keine Einträge im Hauptmenü ausgeblendet.
+	EN	Currently no items are hidden from view on the Home Menu.
+	ES	Ahora no hay elementos ocultos a la vista en el menú Inicio.
+	FI	Kotivalikosta ei ole piilotettu kohteita.
+	FR	Aucun élément n'est actuellement masqué dans le menu principal.
+	IT	Attualmente il Menu iniziale non contiene alcuna voce nascosta.
+	NL	Momenteel worden er geen opties verborgen in het Hoofdmenu.
+	NO	Ingen elementer er for øyeblikket skjult på hovedmenyen.
+	PL	Obecnie w menu strony głównej nie ma ukrytych elementów.
+	RU	В данный момент нет ни одного пункта, скрытого в главном меню.
+	SV	Inga objekt är för närvarande dolda på Hem-menyn.
+
+ITEM_CANNOT_BE_HIDDEN
+	CS	Tuto položku nelze skrýt
+	DA	Dette punkt kan ikke skjules
+	DE	Dieser Eintrag kann nicht ausgeblendet werden.
+	EN	This item cannot be hidden
+	ES	Este elemento no puede ocultarse
+	FI	Kohdetta ei voi piilottaa
+	FR	Impossible de masquer cet élément
+	IT	L'elemento non può essere nascosto
+	NL	Deze optie kan niet worden verborgen
+	NO	Dette elementet kan ikke skjules
+	PL	Tego elementu nie można ukryć
+	RU	Этот пункт нельзя скрыть
+	SV	Det här menyalternativet går inte att dölja
+
+MOVE_TO_TOP
+	CS	Posunout nahoru
+	DA	Flyt til toppen
+	DE	Nach oben verschieben
+	EN	Move to top
+	ES	Mover arriba
+	FI	Siirry ensimmäiseen
+	FR	Placer en haut du menu
+	IT	Sposta all'inizio
+	NL	Bovenaan
+	NO	Til toppen
+	PL	Przenieś do góry
+	RU	Переместить на самый верх
+	SV	Flytta längst upp
+
+MOVE_TO_BOTTOM
+	CS	Posunout dolů
+	DA	Flyt til bunden
+	DE	Nach unten verschieben
+	EN	Move to bottom
+	ES	Mover a botón
+	FI	Siirry viimeiseen
+	FR	Placer en bas du menu
+	IT	Sposta alla fine
+	NL	Onderaan
+	NO	Til bunnen
+	PL	Przenieś na dół
+	RU	Переместить в самый низ
+	SV	Flytta längst ner
+
+MOVE_UP_ONE
+	CS	Posunout o položku výše
+	DA	Flyt en plads op
+	DE	Einen Eintrag nach oben
+	EN	Move up one
+	ES	Subir uno
+	FI	Siirry yhtä ylemmäs
+	FR	Monter d'une place
+	IT	Sposta su di uno
+	NL	Eén omhoog
+	NO	Flytt opp
+	PL	Przenieś o jedno miejsce w górę
+	RU	Переместить выше
+	SV	Flytta upp ett steg
+
+MOVE_DOWN_ONE
+	CS	Posunout o položku níže
+	DA	Flyt en plads ned
+	DE	Einen Eintrag nach unten
+	EN	Move down one
+	ES	Bajar uno
+	FI	Siirry yhtä alemmas
+	FR	Descendre d'une place
+	IT	Sposta giù di uno
+	NL	Eén omlaag
+	NO	Flytt ned
+	PL	Przenieś o jedno miejsce w dół
+	RU	Переместить ниже
+	SV	Flytta ner ett steg
+

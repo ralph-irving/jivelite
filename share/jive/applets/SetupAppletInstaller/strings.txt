@@ -1,0 +1,255 @@
+APPLET_INSTALLER
+	CS	Instalátor apletů
+	DA	Installation af underprogram
+	DE	Applet-Installation
+	EN	Applet Installer
+	ES	Instalador de subprogramas
+	FI	Sovelman asennusohjelma
+	FR	Programme d'installation d'applets
+	IT	Progr. di install. applet
+	NL	Appletinstallatieprogr.
+	NO	Installering av tilleggsprogrammer
+	PL	Instalator apletów
+	RU	Установщик Java-приложений
+	SV	Installationsprogram för appletprogram
+
+APPLET_FETCHING
+	CS	Vyvolávám seznam apletů
+	DA	Henter liste med underprogrammer
+	DE	Laden der Applet-Liste
+	EN	Fetching Applet List
+	ES	Obteniendo lista de subprogramas
+	FI	Noudetaan sovelmaluetteloa
+	FR	Récupération de la liste d'applets
+	IT	Recupero elenco applet in corso
+	NL	Appletlijst wordt opgehaald
+	NO	Henter liste over tilleggsprogram
+	PL	Pobieranie listy apletów
+	RU	Получение списка Java-приложений
+	SV	Hämtar lista över appletar
+
+NONE_FOUND
+	CS	Nenalezeny žádné aplety
+	DA	Der blev ikke fundet nogen underprogrammer
+	DE	Keine Applets gefunden
+	EN	No Applets Found
+	ES	No se han encontrado subprogramas
+	FI	Sovelmia ei löytynyt
+	FR	Aucun applet trouvé
+	IT	Nessuna applet trovata
+	NL	Geen applets gevonden
+	NO	Kunne ikke finne noen tilleggsprogram
+	PL	Nie znaleziono żadnych apletów
+	RU	Java-приложения не найдены
+	SV	Det gick inte att hitta några appletprogram
+
+DOWNLOADING
+	CS	Stahuji aplety
+	DA	Henter underprogrammer
+	DE	Applets herunterladen
+	EN	Downloading Applets
+	ES	Descargando subprogramas
+	FI	Ladataan sovelmia
+	FR	Téléchargement des applets
+	IT	Download delle applet
+	NL	Applets worden gedownload
+	NO	Laster ned tilleggsprogrammer
+	PL	Pobieranie apletów
+	RU	Загрузка Java-приложений
+	SV	Laddar ner appletar
+
+RESTART_APP
+	CS	Aby mohly být nové aplety použity, restartujte aplikaci
+	DA	Du skal genstarte programmet før de nye underprogrammer kan bruges
+	DE	Zum Nutzen neuer Applets Anwendung neu starten
+	EN	Restart application to make use of new applets
+	ES	Reiniciar aplicación para utilizar nuevos subprogramas
+	FI	Käynnistä sovellus uudelleen, jotta voit käyttää uusia sovelmia
+	FR	Redémarrez l'application pour utiliser les nouveaux applets
+	IT	Riavviare l'applicazione per usare le nuove applet
+	NL	Start de toepassing opnieuw om nieuwe applets te kunnen gebruiken
+	NO	Start programmet på nytt for å bruke nye tilleggsprogrammer
+	PL	Zrestartuj aplikację, aby użyć nowych apletów
+	RU	Перезагрузите приложение для использования новых Java-приложений
+	SV	Du måste starta om programmet innan du kan börja använda de nya appletprogrammen
+
+RESTART_JIVE
+	CS	Restartuji
+	DA	Genstarter
+	DE	Neustart
+	EN	Restarting
+	ES	Reiniciando
+	FI	Käynnistetään uudelleen
+	FR	Redémarrage
+	IT	Riavvio
+	NL	Bezig met opnieuw starten
+	NO	Starter på nytt
+	PL	Restartowanie
+	RU	Перезапуск
+	SV	Startar om
+
+INSTALL
+	CS	Instalovat
+	DA	Installer
+	DE	Installieren
+	EN	Install
+	ES	Instalar
+	FI	Asenna
+	FR	Installer
+	IT	Installa
+	NL	Installeren
+	NO	Installer
+	PL	Zainstaluj
+	RU	Установить
+	SV	Installera
+
+REMOVE
+	CS	Odebrat
+	DA	Fjern
+	DE	Entfernen
+	EN	Remove
+	ES	Quitar
+	FI	Poista
+	FR	Supprimer
+	IT	Rimuovi
+	NL	Verwijderen
+	NO	Fjern
+	PL	Usuń
+	RU	Удалить
+	SV	Ta bort
+
+UPDATE
+	CS	Aktualizovat
+	DA	Opdater
+	DE	Aktualisieren
+	EN	Update
+	ES	Actualizar
+	FI	Päivitä
+	FR	Mettre à jour
+	IT	Aggiorna
+	NL	Update
+	NO	Oppdater
+	PL	Aktualizuj
+	RU	Обновить
+	SV	Uppdatering
+
+INSTALLED
+	CS	Instalováno
+	DA	Installeret
+	DE	Installiert
+	EN	Installed
+	ES	Instalada
+	FI	Asennettu
+	FR	Installé
+	IT	Installato
+	NL	Geïnstalleerd
+	NO	Installert
+	PL	Zainstalowane
+	RU	Установлено
+	SV	Installerad
+
+UPDATES
+	CS	Aktualizace
+	DA	Opdateringer
+	DE	Updates
+	EN	Updates
+	ES	Actualizaciones
+	FI	Päivitykset
+	FR	Mises à jour
+	IT	Aggiornamenti
+	NL	Updates
+	NO	Oppdateringer
+	PL	Aktualizacje
+	RU	Обновления
+	SV	Uppgraderingar
+
+REINSTALL
+	CS	Přeinstalovat
+	DA	Geninstaller
+	DE	Neu installieren
+	EN	Reinstall
+	ES	Volver a instalar
+	FI	Asenna uudelleen
+	FR	Réinstaller
+	IT	Reinstalla
+	NL	Opnieuw installeren
+	NO	Installer på nytt
+	PL	Zainstaluj ponownie
+	RU	Переустановить
+	SV	Installera om
+
+REINSTALL_ALL
+	CS	Přeinstalovat vše
+	DA	Geninstaller alt
+	DE	Alle neu installieren
+	EN	Reinstall All
+	ES	Volver a instalar todo
+	FI	Asenna kaikki uudelleen
+	FR	Réinstaller tout
+	IT	Reinstalla tutto
+	NL	Alles opnieuw installeren
+	NO	Installer alt på nytt
+	PL	Zainstaluj ponownie wszystko
+	RU	Переустановить все
+	SV	Installera om alla
+
+UPDATE_ALL
+	CS	Aktualizovat vše
+	DA	Opdater alt
+	DE	Alle aktualisieren
+	EN	Update All
+	ES	Actualizar todo
+	FI	Päivitä kaikki
+	FR	Tout mettre à jour
+	IT	Aggiorna tutto
+	NL	Alles bijwerken
+	NO	Oppdater alt
+	PL	Aktualizuj wszystko
+	RU	Обновить все
+	SV	Uppdatera allt
+
+APPLET_WARN
+	CS	Aplety třetích stran nejsou podporovány společností Logitech a měly by být instalovány na vlastní riziko.\nUpozornění: Instalace apletů třetích stran zahrnuje po dokončení instalace automatický restart.
+	DA	Installationen sker på eget ansvar, og tredjepartsprogrammer understøttes ikke af Logitech.\nBemærk: Hvis du installerer tredjepartsprogrammer, genstartes computeren automatisk for at fuldføre installationen.
+	DE	Installation auf eigene Gefahr. Anwendungen anderer Hersteller werden von Logitech nicht unterstützt.\nHinweis: Bei Anwendungen anderer Hersteller wird ein automatischer Neustart vorgenommen, um die Installation abzuschließen.
+	EN	Install at your own risk, 3rd party apps are unsupported.
+	ES	Instale por su cuenta y riesgo, Logitech no admite los subprogramas de terceros.\nTenga en cuenta que: la instalación de subprogramas incluye un reinicio automático para completar la instalación.
+	FI	Asennus tapahtuu omalla vastuulla, sillä Logitech ei tue muiden valmistajien sovelluksia.\nHuomaa: Muiden valmistajien sovellusten lataaminen sisältää automaattisen uudelleenkäynnistyksen, jotta asennus saadaan päätökseen.
+	FR	Les applications tierces ne sont pas pris en charge par Logitech et leur installation s'effectue à vos propres risques.\nVeuillez noter que l'installation d'une application tierce implique un redémarrage automatique.
+	IT	Le applicazioni di terzi non sono supportate da Logitech e vengono installate a rischio dell'utente.\nNota: il completamento dell'installazione di applicazioni di terzi richiede il riavvio automatico.
+	NL	Installeren op eigen risico, externe toepassingen worden niet ondersteund door Logitech.\nLet op: voor externe toepassingen wordt het systeem automatisch opnieuw opgestart om de installatie te voltooien.
+	NO	Tredjepartsapplikasjoner støttes ikke av Logitech, og du installerer dem på egen risiko.\nMerk: Det foretas en automatisk omstart etter installering av tredjepartsapplikasjoner, for å fullføre installasjonsprosessen.
+	PL	Aplikacje innych firm nie są obsługiwane przez firmę Logitech i należy instalować je na własne ryzyko.\nUwaga: instalacja aplikacji innych firm wiąże się z automatycznym ponownym uruchomieniem.
+	RU	Устанавливайте под вашу ответственность: компания Logitech не обеспечивает техническую поддержку сторонних приложений.\n Установка стороннего приложения включает в себя автоматический перезапуск.
+	SV	Du installerar på egen risk. Logitech stöder inte program från tredje part.\nObs! Installation av program från tredje part inbegriper automatisk omstart.
+
+APPLET_RECONLY
+	CS	Pouze doporučené aplety
+	DA	Kun anbefalede underprogrammer
+	DE	Nur empfohlene Applets
+	EN	Recommended Applets Only
+	ES	Sólo subprogramas recomendados
+	FI	Vain suositellut sovelmat
+	FR	Applets recommandés uniquement
+	IT	Solo applet consigliate
+	NL	Alleen aanbevolen applets
+	NO	Kun anbefalte tilleggsprogrammer
+	PL	Tylko zalecane aplety
+	RU	Только рекомендованные Java-приложения
+	SV	Endast rekommenderade appletar
+
+APPLET_AUTOUP
+	CS	Přeinstalovat po aktualizaci firmware
+	DA	Geninstaller efter firmwareopdatering
+	DE	Nach Firmware-Update neu installieren
+	EN	Reinstall after Firmware Update
+	ES	Volver a instalar después de actualizar el firmware
+	FI	Asenna uudelleen laitteisto-ohjelmistopäivityksen jälkeen
+	FR	Réinstaller après la mise à jour du micrologiciel
+	IT	Reinstalla dopo aggiornamento firmware
+	NL	Opnieuw installeren na firmware-update
+	NO	Installer på nytt etter fastvareoppgradering
+	PL	Zainstaluj ponownie po aktualizacji oprogramowania układowego
+	RU	Переустановить после обновления микропрограмм
+	SV	Installera om när den inbyggda programvaran har uppdaterats
+

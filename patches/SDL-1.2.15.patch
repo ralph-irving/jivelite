@@ -1,0 +1,185 @@
+diff -dur SDL-1.2.15.orig/include/SDL_keysym.h SDL-1.2.15/include/SDL_keysym.h
+--- SDL-1.2.15.orig/include/SDL_keysym.h	2012-01-19 06:30:05.000000000 +0000
++++ SDL-1.2.15/include/SDL_keysym.h	2014-02-15 18:12:40.000000000 +0000
+@@ -296,6 +296,74 @@
+ 	SDLK_UNDO		= 322,		/**< Atari keyboard has Undo */
+         /*@}*/
+ 
++    /* "Internet"/"MultiMedia" keyboards */
++    SDLK_Standby            = 323,
++    SDLK_AudioLowerVolume   = 324,
++    SDLK_AudioMute          = 325,
++    SDLK_AudioRaiseVolume   = 326,
++    SDLK_AudioPlay          = 327,
++    SDLK_AudioStop          = 328,
++    SDLK_AudioPrev          = 329,
++    SDLK_AudioNext          = 330,
++    SDLK_HomePage           = 331,
++    SDLK_Mail               = 332,
++    SDLK_Start              = 333,
++    SDLK_Search             = 334,
++    SDLK_AudioRecord        = 325,
++
++    SDLK_Calculator         = 326,
++    SDLK_Memo               = 327,
++    SDLK_ToDoList           = 328,
++    SDLK_Calendar           = 329,
++    SDLK_PowerDown          = 330,
++    SDLK_ContrastAdjust     = 331,
++    SDLK_RockerUp           = 332,
++    SDLK_RockerDown         = 333,
++    SDLK_RockerEnter        = 334,
++
++    SDLK_Back               = 335,
++    SDLK_Forward            = 336,
++    SDLK_Stop               = 337,
++    SDLK_Refresh            = 338,
++    SDLK_PowerOff           = 339,
++    SDLK_WakeUp             = 340,
++    SDLK_Eject              = 341,
++    SDLK_ScreenSaver        = 342,
++    SDLK_WWW                = 343,
++    SDLK_Sleep              = 344,
++    SDLK_Favorites          = 345,
++    SDLK_AudioPause         = 346,
++    SDLK_AudioMedia         = 347,
++    SDLK_MyComputer         = 348,
++    SDLK_VendorHome         = 349,
++    SDLK_LightBulb          = 350,
++    SDLK_Shop               = 351,
++    SDLK_History            = 352,
++    SDLK_OpenURL            = 353,
++    SDLK_AddFavorite        = 354,
++    SDLK_HotLinks           = 355,
++    SDLK_BrightnessAdjust   = 356,
++
++    SDLK_Launch0            = 357,
++    SDLK_Launch1            = 358,
++    SDLK_Launch2            = 359,
++    SDLK_Launch3            = 360,
++    SDLK_Launch4            = 361,
++    SDLK_Launch5            = 362,
++    SDLK_Launch6            = 363,
++    SDLK_Launch7            = 364,
++    SDLK_Launch8            = 365,
++    SDLK_Launch9            = 366,
++    SDLK_LaunchA            = 367,
++    SDLK_LaunchB            = 368,
++    SDLK_LaunchC            = 369,
++    SDLK_LaunchD            = 370,
++    SDLK_LaunchE            = 371,
++    SDLK_LaunchF            = 372,
++
++    SDLK_LeftMouse          = 373,
++    SDLK_RightMouse         = 374,
++
+ 	/* Add any other keys here */
+ 
+ 	SDLK_LAST
+@@ -323,4 +391,6 @@
+ #define KMOD_ALT	(KMOD_LALT|KMOD_RALT)
+ #define KMOD_META	(KMOD_LMETA|KMOD_RMETA)
+ 
++#define SDL_MEDIAKEYS_DEFINED
++
+ #endif /* _SDL_keysym_h */
+diff -dur SDL-1.2.15.orig/src/video/fbcon/SDL_fbevents.c SDL-1.2.15/src/video/fbcon/SDL_fbevents.c
+--- SDL-1.2.15.orig/src/video/fbcon/SDL_fbevents.c	2012-01-19 06:30:06.000000000 +0000
++++ SDL-1.2.15/src/video/fbcon/SDL_fbevents.c	2014-02-15 18:12:59.000000000 +0000
+@@ -61,8 +61,8 @@
+ /* The translation tables from a console scancode to a SDL keysym */
+ #define NUM_VGAKEYMAPS	(1<<KG_CAPSSHIFT)
+ static Uint16 vga_keymap[NUM_VGAKEYMAPS][NR_KEYS];
+-static SDLKey keymap[128];
+-static Uint16 keymap_temp[128]; /* only used at startup */
++static SDLKey keymap[210];
++static Uint16 keymap_temp[210]; /* only used at startup */
+ static SDL_keysym *TranslateKey(int scancode, SDL_keysym *keysym);
+ 
+ /* Ugh, we have to duplicate the kernel's keysym mapping code...
+@@ -998,14 +998,29 @@
+ 	int pressed;
+ 	int scancode;
+ 	SDL_keysym keysym;
+-
+ 	nread = read(keyboard_fd, keybuf, BUFSIZ);
+-	for ( i=0; i<nread; ++i ) {
+-		scancode = keybuf[i] & 0x7F;
+-		if ( keybuf[i] & 0x80 ) {
+-			pressed = SDL_RELEASED;
++	for ( i = 0; i<nread; ++i ) {
++		if ( ((keybuf[i] == 0) || keybuf[i] == 128) && (nread-i >= 2) && (keybuf[i + 1] == 129 || keybuf[i + 1] == 130) ) {
++			/* FIXME: handle extended codes 129 and 130 differently?
++			   is extended character (scancode>128), comes in as three codes,
++			   first code: 0(pressed) or 128(released), second code:129 or 130
++			   third code: actual extended scancode value
++			*/
++			scancode = keybuf[i + 2];
++			if (keybuf[i] == 0) {
++				pressed = SDL_PRESSED;
++			} else {
++				pressed = SDL_RELEASED;
++			}
++			//push past next 2 since the set of 3 are the extended character representation
++			i += 2;
+ 		} else {
+-			pressed = SDL_PRESSED;
++			scancode = keybuf[i] & 0x7F;
++			if ( keybuf[i] & 0x80 ) {
++				pressed = SDL_RELEASED;
++			} else {
++				pressed = SDL_PRESSED;
++			}
+ 		}
+ 		TranslateKey(scancode, &keysym);
+ 		/* Handle Ctrl-Alt-FN for vt switch */
+@@ -1133,6 +1148,40 @@
+ 	  case 127:
+ 	    keymap[i] = SDLK_MENU;
+ 	    break;
++	  case 113:
++	    keymap[i] = SDLK_AudioMute;
++	    break;
++	  case 114:
++	    keymap[i] = SDLK_AudioLowerVolume;
++	    break;
++	  case 115:
++	    keymap[i] = SDLK_AudioRaiseVolume;
++	    break;
++	  case 116:
++	  case 142:
++	    keymap[i] = SDLK_POWER;
++	    break;
++	  case 144:
++	    keymap[i] = SDLK_LeftMouse;
++	    break;
++	  case 145:
++	    keymap[i] = SDLK_RightMouse;
++	    break;
++	  case 163:
++	    keymap[i] = SDLK_AudioNext;
++	    break;
++	  case 164:
++	    keymap[i] = SDLK_AudioPlay;
++	    break;
++	  case 165:
++	    keymap[i] = SDLK_AudioPrev;
++	    break;
++	  case 166:
++	    keymap[i] = SDLK_AudioStop;
++	    break;
++	  case 172:
++	    keymap[i] = SDLK_WWW;
++	    break;
+ 	  /* this should take care of all standard ascii keys */
+ 	  default:
+ 	    keymap[i] = KVAL(vga_keymap[0][i]);
+@@ -1199,7 +1248,7 @@
+ 	    case K_NUM:  keymap[i] = SDLK_NUMLOCK;   break;
+ 	    case K_CAPS: keymap[i] = SDLK_CAPSLOCK;  break;
+ 
+-	    case K_F13:   keymap[i] = SDLK_PRINT;     break;
++	    //case K_F13:   keymap[i] = SDLK_PRINT;     break;
+ 	    case K_HOLD:  keymap[i] = SDLK_SCROLLOCK; break;
+ 	    case K_PAUSE: keymap[i] = SDLK_PAUSE;     break;
+ 

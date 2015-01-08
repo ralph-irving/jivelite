@@ -1,0 +1,8 @@
+HD_GRID_SKIN_1080
+	EN	HD Grid Skin (1920x1080)
+
+ART_AND_TEXT
+	EN	Artwork and Text
+
+SPECTRUM_ANALYZER
+	EN	Spectrum Analyzer

@@ -1,0 +1,5 @@
+# Makefile wrapper for osx
+TARGET = osx
+LD_FLAGS = "-bundle -undefined dynamic_lookup"
+
+include Makefile

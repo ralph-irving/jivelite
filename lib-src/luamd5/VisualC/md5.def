@@ -1,0 +1,3 @@
+LIBRARY md5.dll
+EXPORTS
+luaopen_md5

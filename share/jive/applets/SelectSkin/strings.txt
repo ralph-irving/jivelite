@@ -1,0 +1,74 @@
+#
+# The two letter codes are defined by ISO 639-1
+# http://en.wikipedia.org/wiki/List_of_ISO_639_codes
+
+SELECT_SKIN
+	CS	Zvolit vzhled plochy
+	DA	Vælg tema
+	DE	Skin wählen
+	EN	Select Skin
+	ES	Seleccionar máscara
+	FI	Valitse olemus
+	FR	Sélectionner un habillage
+	IT	Seleziona skin
+	NL	Skin selecteren
+	NO	Velg skall
+	PL	Wybierz karnację
+	RU	Выберите обложку
+	SV	Välj skal
+
+FULLSCREEN_MODE
+	CS	Celá obrazovka
+	DA	Fuld skærm
+	DE	Vollbild
+	EN	Fullscreen
+	ES	Pantalla completa
+	FI	Täysi näyttö
+	FR	Plein écran
+	IT	Schermo intero
+	NL	Volledig scherm
+	NO	Fullskjerm
+	PL	Pełny ekran
+	RU	Во весь экран
+	SV	Helskärm
+
+SELECT_SKIN_TOUCH_SKIN
+# SLT: name of the skin being used when using the touch UI with your fingers
+	CS	Skin pro dotykové ovládání
+	DA	Tema til berøring
+	DE	Touch-Skin
+	EN	Touch Skin
+	ES	Máscara de Touch
+	FI	Kosketusolemus
+	FR	Habillage Squeezebox Touch
+	IT	Skin interfaccia tattile
+	NL	Skin bij aanraken
+	NO	Berøringsskall
+	PL	Karnacja przy dotyku
+	RU	Сенсорная обложка
+	SV	Pekskal
+
+SELECT_SKIN_REMOTE_SKIN
+# SLT: name of the skin being used when using the IR remote control
+	CS	Skin pro dálkové ovládání
+	DA	Tema til fjernbetjening
+	DE	Fernbedienungs-Skin
+	EN	Remote Skin
+	ES	Máscara de mando
+	FI	Kaukosäätimen olemus
+	FR	Habillage de la télécommande
+	IT	Skin telecomando
+	NL	Skin van afstandsbediening
+	NO	Fjernkontrollskall
+	PL	Karnacja podczas użycia pilota
+	RU	Обложка пульта
+	SV	Fjärrskal
+
+CONFIRM_SKIN
+	EN	Confirm Skin Change
+
+REVERT_SKIN
+	EN	Revert to previous skin
+
+KEEP_SKIN
+	EN	Keep this skin

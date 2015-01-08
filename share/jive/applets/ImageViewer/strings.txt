@@ -1,0 +1,1140 @@
+#
+# The two letter codes are defined by ISO 639-1
+# http://en.wikipedia.org/wiki/List_of_ISO_639_codes
+
+IMAGE_VIEWER
+	CS	Prohlížeč obrázků
+	DA	Billedfremviser
+	DE	Image Viewer
+	EN	Image Viewer
+	ES	Visor de imágenes
+	FI	Image Viewer
+	FR	Afficheur d'images
+	IT	Visualizzatore immagini
+	NL	Image-viewer
+	NO	Bildevisning
+	PL	Przeglądarka obrazów
+	RU	Просмотр рисунков
+	SV	Bildvisare
+
+IMAGE_VIEWER_ERROR
+	CS	Chyba
+	DA	Fejl
+	DE	Fehler
+	EN	Error
+	ES	Error
+	FI	Virhe
+	FR	Erreur
+	IT	Errore
+	NL	Fout
+	NO	Feil
+	PL	Błąd
+	RU	Ошибка
+	SV	Fel
+
+IMAGE_VIEWER_EMPTY_LIST
+	CS	Nic k zobrazení, seznam obrázků je prázdný
+	DA	Der er ikke noget at vise; billedlisten er tom
+	DE	Es kann nichts angezeigt werden, da die Bildliste leer ist.
+	EN	Nothing to display, the image list is empty
+	ES	Nada que mostrar, la lista de imágenes está vacía
+	FI	Ei mitään näytettävää, kuvaluettelo on tyhjä
+	FR	Rien à afficher, la liste d'images est vide
+	IT	Nulla da visualizzare. L'elenco delle immagini è vuoto.
+	NL	Niets om weer te geven, de afbeeldingenlijst is leeg
+	NO	Ingenting å vise, bildelisten er tom
+	PL	Nie ma nic do wyświetlenia, lista obrazów jest pusta
+	RU	Нет элементов для отображения, список изображений пуст
+	SV	Det finns inget att visa. Bildlistan är tom.
+
+IMAGE_VIEWER_LIST_NOT_READY
+	CS	Několik pokusů o čtení / vytvoření seznamu obrázků selhalo. Zkontrolujte prosím nastavení Prohlížeče obrázků.
+	DA	Forsøgene på at læse/oprette billedlisten mislykkedes. Kontroller indstillingerne for billedfremviseren.
+	DE	Mehrere Versuche, die Bilderliste zu öffnen / zu erstellen, sind fehlgeschlagen.  Überprüfen Sie die Image Viewer-Einstellungen.
+	EN	Several attempts at reading / creating the image list failed.  Please check the Image Viewer settings.
+	ES	Tras varios intentos, no se ha podido leer/crear la lista de imágenes. Compruebe la configuración del visor de imágenes.
+	FI	Yritykset lukea tai luoda kuvaluettelo epäonnistuivat. Tarkista Image Viewer -toiminnon asetukset.
+	FR	Plusieurs tentatives de lecture/création de la liste d'images ont échoué. Veuillez vérifier les réglages de l'afficheur d'images.
+	IT	Numerosi tentativi di leggere/creare l'immagine non sono riusciti. Verificare le impostazioni del visualizzatore immagini.
+	NL	Lezen/aanmaken van de beeldenlijst is meermaals mislukt. Controleer de instellingen voor de beeldviewer.
+	NO	Flere forsøk på å lese/opprette bildelisten, mislyktes. Kontroller innstillingene for bildevisning.
+	PL	Nie powiodło się kilka kolejnych prób odczytu/utworzenia listy obrazów.  Sprawdź ustawienia przeglądarki obrazów.
+	RU	Попытки чтения / создания списка изображений оказались неудачными. Проверьте настройки средства просмотра изображений.
+	SV	Flera försök att läsa/skapa bildlistan misslyckades. Kontrollera inställningarna för Bildvisaren.
+
+IMAGE_VIEWER_LIST_NOT_READY_SERVER
+	CS	Selhalo několik pokusů o načtení / vytvoření souboru obrázků. Zkontrolujte, prosím, síťové připojení.
+	DA	Forsøgene på at læse/oprette billedlisten mislykkedes. Kontroller netværksforbindelsen.
+	DE	Mehrere Versuche, die Bilderliste zu öffnen/zu erstellen, sind fehlgeschlagen. Überprüfen Sie die Netzwerkverbindung.
+	EN	Several attempts at reading / creating the image list failed.  Please check the network connection.
+	ES	Tras varios intentos, no se ha podido leer/crear la lista de imágenes. Compruebe la conexión de red.
+	FI	Useat yritykset lukea tai luoda kuvaluottelo epäonnistuivat.  Tarkista verkkoyhteys.
+	FR	Plusieurs tentatives de lecture / création de la liste d'images ont échoué. Vérifiez votre connexion réseau.
+	IT	Numerosi tentativi di leggere/creare l'elenco delle immagini non sono riusciti. Verificare la connessione di rete.
+	NL	Het lezen/maken van de lijst met afbeeldingen is meerdere keren mislukt. Controleer de netwerkverbinding.
+	NO	Flere forsøk på å lese/opprette bildelisten mislyktes. Kontroller nettverkstilkoplingen.
+	PL	Nie powiodło się kilka kolejnych prób odczytu/utworzenia listy obrazów.  Sprawdź połączenie sieciowe.
+	RU	Попытки чтения или создания списка изображений завершились неудачей. Проверьте подключение к сети.
+	SV	Det gick inte att läsa/skapa bildlistan trots flera försök. Kontrollera nätverksanslutningen.
+
+IMAGE_VIEWER_SETTINGS
+	CS	Nastavení prohlížeče obrázků
+	DA	Indstillinger for billedfremviser
+	DE	Image Viewer-Einstellungen
+	EN	Image Viewer Settings
+	ES	Configuración de visor de imágenes
+	FI	Image Viewerin asetukset
+	FR	Réglages de l'afficheur d'images
+	IT	Impostazioni del visualizzatore immagini
+	NL	Instellingen van Image Viewer
+	NO	Innstillinger for bildevisning
+	PL	Ustawienia przeglądarki obrazów
+	RU	Настройки просмотра изображений
+	SV	Inställningar för bildvisare
+
+IMAGE_VIEWER_SOURCE
+	CS	Zdroje
+	DA	Kilder
+	DE	Quellen
+	EN	Sources
+	ES	Orígenes
+	FI	Lähteet
+	FR	Sources
+	IT	Origini
+	NL	Bronnen
+	NO	Kilder
+	PL	Źródła
+	RU	Источники
+	SV	Källor
+
+IMAGE_VIEWER_SOURCE_SETTINGS
+	CS	Nastavení specifické pro zdroj
+	DA	Kildespecifikke indstillinger
+	DE	Quellspezifische Einstellungen
+	EN	Source specific settings
+	ES	Configuración específica de origen
+	FI	Lähdekohtaiset asetukset
+	FR	Réglages spécifiques à la source
+	IT	Impostazioni specifiche dell'origine
+	NL	Bronspecifieke instellingen
+	NO	Kildespesifikke innstillinger
+	PL	Ustawienia specyficzne dla źródła
+	RU	Настройки для источника
+	SV	Källspecifika inställningar
+
+IMAGE_VIEWER_SOURCE_CARD
+	CS	Paměťová karta
+	DA	Hukommelseskort
+	DE	Speicherkarte
+	EN	Memory card
+	ES	Tarjeta de memoria
+	FI	Muistikortti
+	FR	Carte mémoire
+	IT	Scheda di memoria
+	NL	Geheugenkaart
+	NO	Minnekort
+	PL	Karta pamięci
+	RU	Карта памяти
+	SV	Minneskort
+
+IMAGE_VIEWER_SOURCE_USB
+	CS	USB disk
+	DA	USB-disk
+	DE	USB-Datenträger
+	EN	USB disk
+	ES	Disco USB
+	FI	USB-asema
+	FR	Disque USB
+	IT	Disco USB
+	NL	USB-schijf
+	NO	Usb-stasjon
+	PL	Dysk USB
+	RU	USB-диск
+	SV	USB-enhet
+
+IMAGE_VIEWER_SOURCE_LOCAL_STORAGE
+	CS	Místní ukládací média
+	DA	Lokalt lagermedie
+	DE	Lokales Speichermedium
+	EN	Local storage media
+	ES	Medio de almacenamiento local
+	FI	Paikallinen tallennustietoväline
+	FR	Support de stockage local
+	IT	Supporto memorizzazione locale
+	NL	Lokale opslagmedia
+	NO	Lokalt lagringsmedium
+	PL	Lokalny nośnik pamięci masowej
+	RU	Локальный носитель данных
+	SV	Lokalt lagringsmedium
+
+IMAGE_VIEWER_SOURCE_SC
+	CS	Logitech Media Server
+	DA	Logitech Media Server
+	DE	Logitech Media Server
+	EN	Logitech Media Server
+	ES	Logitech Media Server
+	FI	Logitech Media Server
+	FR	Logitech Media Server
+	IT	Logitech Media Server
+	NL	Logitech Media Server
+	NO	Logitech Media Server
+	PL	Logitech Media Server
+	RU	Logitech Media Server
+	SV	Logitech Media Server
+
+IMAGE_VIEWER_SOURCE_HTTP
+	CS	Seznam URL
+	DA	Liste med internetadresser
+	DE	URL-Liste
+	EN	URL list
+	ES	Lista de URL
+	FI	URL-luettelo
+	FR	Liste d'URL
+	IT	Elenco URL
+	NL	URL-lijst
+	NO	Url-liste
+	PL	Lista adresów URL
+	RU	Список URL-адресов
+	SV	Webbadresslista
+
+IMAGE_VIEWER_SOURCE_FLICKR
+	CS	Flickr
+	DA	Flickr
+	DE	Flickr
+	EN	Flickr
+	ES	Flickr
+	FI	Flickr
+	FR	Flickr
+	IT	Flickr
+	NL	Flickr
+	NO	Flickr
+	PL	Flickr
+	RU	Flickr
+	SV	Flickr
+
+IMAGE_VIEWER_DELAY
+	CS	Prodleva
+	DA	Forsinkelse
+	DE	Verzögerung
+	EN	Delay
+	ES	Retraso
+	FI	Viive
+	FR	Retard
+	IT	Ritardo
+	NL	Vertraging
+	NO	Forsinkelse
+	PL	Opóźnienie
+	RU	Задержка
+	SV	Fördröjning
+
+IMAGE_VIEWER_DELAY_5_SEC
+	CS	5 s
+	DA	5 sek.
+	DE	5 Sek.
+	EN	5 sec
+	ES	5 s
+	FI	5 s
+	FR	5 sec
+	IT	5 sec
+	NL	5 sec
+	NO	5 sek.
+	PL	5 s
+	RU	5 с
+	SV	5 sek
+
+IMAGE_VIEWER_DELAY_10_SEC
+	CS	10 s
+	DA	10 sek.
+	DE	10 Sek.
+	EN	10 sec
+	ES	10 s
+	FI	10 s
+	FR	10 sec
+	IT	10 sec
+	NL	10 sec
+	NO	10 sek
+	PL	10 s
+	RU	10 с
+	SV	10 sek
+
+IMAGE_VIEWER_DELAY_20_SEC
+	CS	20 s
+	DA	20 sek.
+	DE	20 Sek.
+	EN	20 sec
+	ES	20 s
+	FI	20 s
+	FR	20 sec
+	IT	20 sec
+	NL	20 sec
+	NO	20 sek
+	PL	20 s
+	RU	20 с
+	SV	20 sek
+
+IMAGE_VIEWER_DELAY_30_SEC
+	CS	30 s
+	DA	30 sek.
+	DE	30 Sek.
+	EN	30 sec
+	ES	30 s
+	FI	30 s
+	FR	30 sec
+	IT	30 sec
+	NL	30 sec
+	NO	30 sek
+	PL	30 s
+	RU	30 с
+	SV	30 sek
+
+IMAGE_VIEWER_DELAY_1_MIN
+	CS	1 min
+	DA	1 min
+	DE	1 Min.
+	EN	1 min
+	ES	1 min
+	FI	1 min
+	FR	1 min
+	IT	1 min
+	NL	1 min
+	NO	1 min
+	PL	1 min
+	RU	1 мин.
+	SV	1 min
+
+IMAGE_VIEWER_ORDERING
+# SLT: This is the sort order, not ordering some goods in a shop
+	CS	Objednávání
+	DA	Rækkefølge
+	DE	Reihenfolge
+	EN	Ordering
+	ES	Orden
+	FI	Tilaaminen
+	FR	Classement
+	IT	Ordinamento
+	NL	Volgorde
+	NO	Sortering
+	PL	Kolejność
+	RU	Порядок
+	SV	Sortering
+
+IMAGE_VIEWER_ORDERING_SEQUENTIAL
+	CS	sekvenční
+	DA	sekventielt
+	DE	sequenziell
+	EN	sequential
+	ES	secuencial
+	FI	peräkkäinen
+	FR	séquentiel
+	IT	sequenziale
+	NL	opeenvolgend
+	NO	i rekkefølge
+	PL	sekwencyjne
+	RU	последовательно
+	SV	i följd
+
+IMAGE_VIEWER_ORDERING_RANDOM
+	CS	náhodně
+	DA	vilkårlig rækkefølge
+	DE	zufällig
+	EN	random
+	ES	aleatorio
+	FI	satunnainen
+	FR	aléatoire
+	IT	casuale
+	NL	willekeurig
+	NO	tilfeldig
+	PL	losowo
+	RU	в случайном порядке
+	SV	slumpmässigt
+
+IMAGE_VIEWER_TRANSITION
+	CS	Přechody
+	DA	Overgange
+	DE	Übergänge
+	EN	Transitions
+	ES	Transiciones
+	FI	Siirtymät
+	FR	Transitions
+	IT	Transizioni
+	NL	Overgangen
+	NO	Overganger
+	PL	Przejścia
+	RU	Переходы
+	SV	Övergångar
+
+IMAGE_VIEWER_TRANSITION_RANDOM
+	CS	Náhodné přechody
+	DA	Blandede overgange
+	DE	Zufällige Übergänge
+	EN	Random transitions
+	ES	Transiciones aleatorias
+	FI	Satunnaiset siirtymät
+	FR	Transitions aléatoires
+	IT	Transizioni casuali
+	NL	Willekeurige overgangen
+	NO	Tilfeldige overganger
+	PL	Losowe przejścia
+	RU	Случайные переходы
+	SV	Slumpmässiga övergångar
+
+IMAGE_VIEWER_TRANSITION_FADE
+	CS	Zatmívání obrázků
+	DA	Blød overgang mellem billeder
+	DE	Bilder überblenden
+	EN	Fade images
+	ES	Fundir imágenes
+	FI	Häivytä kuvat
+	FR	Fondu d'images
+	IT	Dissolvi immagini
+	NL	Afbeeldingen vervagen
+	NO	Ton bilder
+	PL	Zanikanie obrazów
+	RU	Затухание изображений
+	SV	Tona bilder
+
+IMAGE_VIEWER_TRANSITION_INSIDE_OUT
+	CS	Prosvětlit ze středu ven
+	DA	Blød overgang indefra og ud
+	DE	von innen nach aussen
+	EN	Fade inside-out
+	ES	Fundido dentro-afuera
+	FI	Häivytys sisältä ulos
+	FR	Fondu inversé
+	IT	Dall'interno verso l'esterno
+	NL	Faden: binnen-buiten
+	NO	Ton fra midten og ut
+	PL	Znikanie od wewnątrz do zewnątrz
+	RU	Угасание изнутри наружу
+	SV	Tona inifrån och ut
+
+IMAGE_VIEWER_TRANSITION_TOP_DOWN
+	CS	Prosvětlit shora dolů
+	DA	Blød overgang fra top til bund
+	DE	von oben nach unten
+	EN	Fade top-down
+	ES	Fundido arriba-abajo
+	FI	Häivytys ylhäältä alas
+	FR	Fondu de haut en bas
+	IT	Dall'alto verso il basso
+	NL	Faden: boven-onder
+	NO	Ton ovenfra og ned
+	PL	Znikanie od góry do dołu
+	RU	Угасание сверху вниз
+	SV	Tona uppifrån och ner
+
+IMAGE_VIEWER_TRANSITION_BOTTOM_UP
+	CS	Prosvětlit zdola nahoru
+	DA	Blød overgang fra bund til top
+	DE	von unten nach oben
+	EN	Fade bottom-up
+	ES	Fundido abajo-arriba
+	FI	Häivytys alhaalta ylös
+	FR	Fondu de bas en haut
+	IT	Dal basso verso l'alto
+	NL	Faden: onder-boven
+	NO	Ton nedenfra og opp
+	PL	Znikanie od dołu do góry
+	RU	Угасание снизу вверх
+	SV	Tona nedifrån och upp
+
+IMAGE_VIEWER_TRANSITION_LEFT_RIGHT
+	CS	Prosvětlit zleva doprava
+	DA	Blød overgang fra venstre til højre
+	DE	von links nach rechts
+	EN	Fade left-right
+	ES	Fundido izquierda-derecha
+	FI	Häivytys vasemmalta oikealle
+	FR	Fondu de gauche à droite
+	IT	Da sinistra verso destra
+	NL	Faden: links-rechts
+	NO	Ton fra venstre mot høyre
+	PL	Znikanie od lewej do prawej
+	RU	Угасание слева направо
+	SV	Tona från vänster till höger
+
+IMAGE_VIEWER_TRANSITION_RIGHT_LEFT
+	CS	Prosvětlit zprava doleva
+	DA	Blød overgang fra højre til venstre
+	DE	von rechts nach links
+	EN	Fade right-left
+	ES	Fundido derecha-izquierda
+	FI	Häivytys oikealta vasemmalle
+	FR	Fondu de droite à gauche
+	IT	Da destra verso sinistra
+	NL	Faden: rechts-links
+	NO	Ton fra høyre mot venstre
+	PL	Znikanie od prawej do lewej
+	RU	Угасание справа налево
+	SV	Tona från höger till vänster
+
+IMAGE_VIEWER_TRANSITION_PUSH_RIGHT
+	CS	posunout doprava
+	DA	skub til højre
+	DE	Nach rechts schieben
+	EN	push to right
+	ES	pulsación a derecha
+	FI	työnnä oikealle
+	FR	pousser vers la droite
+	IT	sposta a destra
+	NL	naar rechts plaatsen
+	NO	dytt til høyre
+	PL	wypychanie w prawo
+	RU	сдвинуть вправо
+	SV	tryck till höger
+
+IMAGE_VIEWER_TRANSITION_PUSH_LEFT
+	CS	posunout doleva
+	DA	skub til venstre
+	DE	Nach links schieben
+	EN	push to left
+	ES	pulsación a izquierda
+	FI	työnnä vasemmalle
+	FR	pousser vers la gauche
+	IT	sposta a sinistra
+	NL	naar links plaatsen
+	NO	dytt til venstre
+	PL	wypychanie w lewo
+	RU	сдвинуть влево
+	SV	tryck till vänster
+
+IMAGE_VIEWER_ROTATION
+	CS	Otočení obrázku
+	DA	Billedrotation
+	DE	Bild drehen
+	EN	Image rotation
+	ES	Giro de imagen
+	FI	Kuvan kääntäminen
+	FR	Rotation de l'image
+	IT	Rotazione immagini
+	NL	Rotatie van afbeelding
+	NO	Bilderotering
+	PL	Obracanie obrazu
+	RU	Поворот изображения
+	SV	Rotera bilden
+
+IMAGE_VIEWER_ROTATION_YES
+	CS	Otáčení obrázků
+	DA	Rotér billeder
+	DE	Bilder drehen
+	EN	Rotate images
+	ES	Girar imágenes
+	FI	Käännä kuvia
+	FR	Faire pivoter les images
+	IT	Ruota immagini
+	NL	Afbeeldingen roteren
+	NO	Roter bilder
+	PL	Obracaj obrazy
+	RU	Поворачивать изображения
+	SV	Rotera bilder
+
+IMAGE_VIEWER_ROTATION_NO
+	CS	Bez otáčení
+	DA	Ingen rotation
+	DE	Nicht drehen
+	EN	No rotation
+	ES	Sin giro
+	FI	Ei kääntöä
+	FR	Sans rotation
+	IT	Nessuna rotazione
+	NL	Geen rotatie
+	NO	Ingen rotering
+	PL	Bez obracania
+	RU	Без поворота
+	SV	Ingen rotering
+
+IMAGE_VIEWER_ZOOM
+	CS	Přiblížení obrázku
+	DA	Zoom på billede
+	DE	Bild vergrößern/verkleinern
+	EN	Image zoom
+	ES	Zoom de imagen
+	FI	Kuvan zoomaus
+	FR	Zoom sur image
+	IT	Zoom immagine
+	NL	Afbeelding zoomen
+	NO	Bildezoom
+	PL	Powiększenie obrazu
+	RU	Масштаб изображения
+	SV	Bildzoom
+
+IMAGE_VIEWER_ZOOM_PICTURE
+	CS	Zobrazit celý obrázek
+	DA	Vis hele billedet
+	DE	Ganzes Bild anzeigen
+	EN	Show complete image
+	ES	Mostrar imagen completa
+	FI	Näytä täydellinen kuva
+	FR	Afficher l'image complète
+	IT	Mostra immagine intera
+	NL	Hele afbeelding weergeven
+	NO	Vis hele bildet
+	PL	Pokaż cały obraz
+	RU	Показать изображение полностью
+	SV	Visa fullständig bild
+
+IMAGE_VIEWER_ZOOM_SCREEN
+	CS	Zaplnit celou obrazovku
+	DA	Udfyld hele skærmen
+	DE	An Bildschirmgröße anpassen
+	EN	Fill complete screen
+	ES	Ajustar a pantalla completa
+	FI	Täytä koko näyttö
+	FR	Occuper tout l'écran
+	IT	Riempi tutto lo schermo
+	NL	Volledig scherm vullen
+	NO	Fyll hele skjermen
+	PL	Wypełnij cały ekran
+	RU	Во весь экран
+	SV	Fyll hela skärmen
+
+IMAGE_VIEWER_TEXTINFO
+	CS	Dodatečné info o obrázku
+	DA	Yderligere oplysninger om billedet
+	DE	Weitere Infos über das Bild
+	EN	Additional info about picture
+	ES	Información adicional sobre imagen
+	FI	Lisätietoa kuvasta
+	FR	Infos supplémentaires sur l'image
+	IT	Ulteriori informazioni sull'immagine
+	NL	Aanvullende informatie over afbeelding
+	NO	Tilleggsinformasjon om bildet
+	PL	Dodatkowe informacje o obrazie
+	RU	Дополнительные сведения об изображении
+	SV	Ytterligare information om bilden
+
+IMAGE_VIEWER_TEXTINFO_YES
+	CS	Zobrazit dodatečné info o obrázku
+	DA	Vis yderligere oplysninger om billedet
+	DE	Weitere Infos über das Bild einblenden
+	EN	Show additional info about picture
+	ES	Mostrar información adicional sobre imagen
+	FI	Näytä kuvan lisätiedot
+	FR	Afficher les infos supplémentaires sur l'image
+	IT	Mostra ulteriori informazioni sull'immagine
+	NL	Aanvullende info over afbeelding weergeven
+	NO	Vis tilleggsinformasjon om bildet
+	PL	Pokaż dodatkowe informacje o obrazie
+	RU	Показать дополнительные сведения об изображении
+	SV	Visa tilläggsinformation om bild
+
+IMAGE_VIEWER_TEXTINFO_NO
+	CS	Skrýt dodatečné info o obrázku
+	DA	Skjul yderligere oplysninger om billede
+	DE	Weitere Infos über das Bild ausblenden
+	EN	Hide additional info about picture
+	ES	Ocultar información adicional sobre imagen
+	FI	Piilota kuvan lisätiedot
+	FR	Masquer les infos supplémentaires sur l'image
+	IT	Nascondi ulteriori informazioni sull'immagine
+	NL	Aanvullende info over afbeelding verbergen
+	NO	Skjul tilleggsinformasjon om bildet
+	PL	Ukryj dodatkowe informacje o obrazie
+	RU	Скрыть дополнительные сведения об изображении
+	SV	Dölj tilläggsinformation om bild
+
+#
+# Strings for Card Source
+#
+IMAGE_VIEWER_CURRENT_FOLDER
+	CS	Aktuální složka:
+	DA	Nuværende mappe:
+	DE	Aktueller Ordner:
+	EN	Current folder:
+	ES	Carpeta actual:
+	FI	Nykyinen kansio:
+	FR	Dossier en cours:
+	IT	Cartella corrente:
+	NL	Huidige map:
+	NO	Gjeldende mappe:
+	PL	Bieżący folder:
+	RU	Текущая папка:
+	SV	Aktuell mapp:
+
+IMAGE_VIEWER_USE_FOLDER
+	CS	Použít složku jako zdrojovou pro prohlížeč obrázků
+	DA	Brug mappen som kilde for Billedfremviser
+	DE	Ordner als Quelle für ImageViewer verwenden
+	EN	Use folder as ImageViewer source
+	ES	Usar carpeta como origen de ImageViewer
+	FI	Käytä kansiota ImageViewerin lähteenä
+	FR	Sélectionner ce dossier pour la source de l'afficheur d'images
+	IT	Usa cartella come origine di Visualizzatore immagini
+	NL	Map als Image Viewer-bron gebruiken
+	NO	Bruk mappen som ImageViewer-kilde
+	PL	Użyj folder jako źródło programu ImageViewer
+	RU	Использовать эту папку в качестве источника для ImageViewer
+	SV	Använd mappen som källa för bildvisaren
+
+IMAGE_VIEWER_CARD_PATH_HELP
+	CS	Definuje cestu pro hledání obrázků.
+	DA	Definerer søgestien til billeder.
+	DE	Definiert den Suchpfad für Bilder.
+	EN	Defines the search path for images.
+	ES	Define la ruta de búsqueda de imágenes.
+	FI	Määrittää kuvien hakupolun.
+	FR	Définit le chemin d'accès dans lequel rechercher les images.
+	IT	Specifica il percorso di ricerca delle immagini.
+	NL	Definieert het zoekpad voor afbeeldingen.
+	NO	Angir søkebane for bilder.
+	PL	Zdefiniuj ścieżkę wyszukiwania obrazów.
+	RU	Задает путь для поиска изображений.
+	SV	Anger sökvägen för bilder.
+
+IMAGE_VIEWER_CARD_ERROR
+	CS	Nenalezeny žádné obrázky. Ujistěte se laskavě, že obrázky jsou umístěny ve správném umístění a v podporovaném formátu.
+	DA	Der blev ikke fundet nogen billeder. Kontroller at billederne er placeret i den angivne mappe og er i et understøttet format.
+	DE	Keine Bilder gefunden. Vergewissern Sie sich, dass die Bilder im korrekten Ordner und in einem unterstützten Format vorliegen.
+	EN	No images found. Please make sure that images are located in the correct path and in a supported format.
+	ES	No se encontraron imágenes. Asegúrese de que las imágenes están ubicadas en la ruta correcta y que tienen un formato admitido.
+	FI	Kuvia ei löytynyt. Varmista, että kuvat sijaitsevat oikeassa polussa ja että ne ovat tuetussa muodossa.
+	FR	Aucune image trouvée. Assurez-vous que le chemin d'accès aux images spécifié est correct et que leur format est pris en charge.
+	IT	Nessuna immagine trovata. Verificare che le immagini si trovino nel percorso corretto e che siano in un formato supportato.
+	NL	Geen afbeeldingen gevonden. Controleer of de afbeeldingen zich op de juiste locatie bevinden en de juiste indeling hebben.
+	NO	Fant ingen bilder. Sjekk at du har angitt riktig bane for bildene, og at formatet de er i, støttes.
+	PL	Nie znaleziono obrazów. Upewnij się, że obrazy znajdują się w prawidłowej ścieżce i są w obsługiwanym formacie.
+	RU	Изображения не найдены. Убедитесь, что указан правильный путь и изображения имеют поддерживаемый формат.
+	SV	Inga bilder hittades. Kontrollera att sökvägarna till bilderna är korrekta och att de har rätt format.
+
+IMAGE_VIEWER_CARD_NOT_DIRECTORY
+	CS	Zadaná cesta hledání není adresářem. Zadejte prosím platný název cesty adresáře.
+	DA	Den angivne søgesti henviser ikke til en mappe. Angiv en sti til en mappe.
+	DE	Beim angegebenen Suchpfad handelt es sich um kein Verzeichnis. Bitte geben Sie einen gültigen Verzeichnispfadnamen an.
+	EN	The defined search path is not a directory. Please provide a valid directory path name.
+	ES	La ruta de búsqueda definida no es un directorio. Proporcione un nombre de ruta de directorio válido.
+	FI	Määritetty hakupolku ei ole hakemisto. Anna kelvollinen hakemistopolun nimi.
+	FR	Le chemin d'accès défini n'est pas un répertoire. Veuillez indiquer un nom de chemin de répertoire valide.
+	IT	Il percorso di ricerca indicato non è una directory. Fornire un percorso valido.
+	NL	Het opgegeven zoekpad is geen directory. Geef een geldige naam voor het directorypad op.
+	NO	Den angitte søkebanen er ikke en katalog. Oppgi en gyldig bane til en katalog.
+	PL	Zdefiniowana ścieżka wyszukiwania nie jest katalogiem. Podaj prawidłową ścieżkę do katalogu.
+	RU	Указанный путь поиска не ведет к каталогу. Укажите действительный путь к каталогу.
+	SV	Den definierade sökvägen är ingen katalog. Ange en giltig sökväg till katalogen.
+
+#
+# Strings for HTTP Source
+#
+IMAGE_VIEWER_HTTP_PATH
+	CS	Definuje umístění seznamu obrázků
+	DA	Definerer hvor billedlisten er placeret
+	DE	Legt den Speicherort der Bildliste fest.
+	EN	Defines the location of the image list
+	ES	Define la ubicación de la lista de imágenes
+	FI	Määrittää kuvaluettelon sijainnin
+	FR	Définit l'emplacement de la liste d'images
+	IT	Specifica la posizione dell'elenco di immagini
+	NL	Hiermee wordt de locatie van de afbeeldingenlijst gedefinieerd.
+	NO	Angir plasseringen av bildelisten
+	PL	Definiuje lokalizację listy obrazów
+	RU	Определяет расположение списка изображений
+	SV	Definierar platsen för bildlistan
+
+IMAGE_VIEWER_HTTP_PATH_HELP
+	CS	Definuje umístění seznamu obrázků
+	DA	Definerer hvor billedlisten er placeret
+	DE	Legt den Speicherort der Bildliste fest.
+	EN	Defines the location of the image list
+	ES	Define la ubicación de la lista de imágenes
+	FI	Määrittää kuvaluettelon sijainnin
+	FR	Définit l'emplacement de la liste d'images
+	IT	Specifica la posizione dell'elenco di immagini
+	NL	Hiermee wordt de locatie van de afbeeldingenlijst gedefinieerd.
+	NO	Angir plasseringen av bildelisten
+	PL	Definiuje lokalizację listy obrazów
+	RU	Определяет расположение списка изображений
+	SV	Definierar platsen för bildlistan
+
+IMAGE_VIEWER_HTTP_ERROR
+	CS	Není možné získat seznam URL. Zkontrolujte laskavě, jestli je definované URL správné.
+	DA	Listen med internetadresser kunne ikke hentes. Kontroller om adresserne er defineret korrekt.
+	DE	URL-Liste konnte nicht geladen werden. Prüfen Sie, ob die definierte URL stimmt.
+	EN	Could not retrieve URL list. Please check whether the defined URL is correct.
+	ES	No se pudo recuperar la lista de URL. Compruebe si la URL definida es correcta.
+	FI	URL-luetteloa ei voitu noutaa. Tarkista määritetty URL-osoite.
+	FR	Impossible de récupérer la liste d'URL. Vérifiez si l'URL spécifié est correct.
+	IT	Impossibile recuperare l'elenco degli URL. Verificare che l'URL specificato sia corretto.
+	NL	Kan URL-lijst niet ophalen. Controleer of de opgegeven URL juist is.
+	NO	Kunne ikke hente url-liste. Sjekk at den angitte url-en er korrekt.
+	PL	Nie można pobrać listy adresów URL. Sprawdź, czy zdefiniowany adres URL jest prawidłowy.
+	RU	Не удалось получить список URL-адресов. Убедитесь, что задан правильный URL-адрес.
+	SV	Det gick inte att hämta webbadresslistan. Kontrollera att den angivna webbadressen är korrekt.
+
+IMAGE_VIEWER_HTTP_ERROR_IMAGE
+	CS	Není možné získat obrazový soubor. Zkontrolujte, prosím, konektivitu sítě přehrávače.
+	DA	Billedfilen blev ikke hentet. Kontroller afspillerens netværksforbindelse.
+	DE	Bilddatei konnte nicht geladen werden. Überprüfen Sie die Netzwerkverbindung des Players.
+	EN	Could not retrieve image file. Please check the player's network connectivity.
+	ES	No se ha podido obtener el archivo de imagen. Compruebe la conexión de red del reproductor.
+	FI	Kuvatiedostoa ei voi noutaa. Tarkista soittimen verkkoyhteys.
+	FR	Impossible de récupérer le fichier image. Vérifiez la connexion réseau de la platine.
+	IT	Impossibile recuperare il file di immagini. Verificare la connessione di rete del lettore.
+	NL	Afbeeldingsbestand kan niet worden opgehaald. Controleer de netwerkverbinding van de muziekspeler.
+	NO	Kan ikke hente bildefil. Kontroller at spilleren er koplet til nettverket.
+	PL	Nie można pobrać pliku obrazu. Sprawdź połączenie sieciowe odtwarzacza.
+	RU	Не удалось извлечь файл изображения. Проверьте, подключен ли плеер к сети.
+	SV	Det gick inte att hämta bildfilen. Kontrollera spelarens nätverksanslutning.
+
+#
+# Strings for Flickr Source
+#
+
+IMAGE_VIEWER_FLICKR_LOADING_PHOTO
+	CS	Flickr nahrává foto...
+	DA	Flickr indlæser billede...
+	DE	Foto wird in Flickr geladen...
+	EN	Flickr loading photo...
+	ES	Flickr al cargar foto...
+	FI	Flickr lataa valokuvaa...
+	FR	Chargement de photo Flickr...
+	IT	Caricamento foto Flickr...
+	NL	Flickr is bezig met laden van foto...
+	NO	Flickr laster inn bilde...
+	PL	Ładowanie zdjęcia do usługi Flickr...
+	RU	Flickr загружает фото...
+	SV	Flickr läser in foto ...
+
+IMAGE_VIEWER_FLICKR_ERROR
+	CS	Chyba Flickr
+	DA	Flickr-fejl
+	DE	Flickr-Fehler
+	EN	Flickr error
+	ES	Error de Flickr
+	FI	Flickr-virhe
+	FR	Erreur Flickr
+	IT	Errore Flickr
+	NL	Flickr-foutmelding
+	NO	Flickr-feil
+	PL	Błąd usługi Flickr
+	RU	Ошибка Flickr
+	SV	Flickr-fel
+
+IMAGE_VIEWER_FLICKR_DISPLAY
+	CS	Zobrazit
+	DA	Display
+	DE	Anzeige
+	EN	Display
+	ES	Pantalla
+	FI	Näyttö
+	FR	Affichage
+	IT	Visualizza
+	NL	Display
+	NO	Skjerm
+	PL	Wyświetlacz
+	RU	Экран
+	SV	Display
+
+IMAGE_VIEWER_FLICKR_DISPLAY_OWN
+	CS	Mé vlastní fotky
+	DA	Mine billeder
+	DE	Meine eigenen Bilder
+	EN	My own pictures
+	ES	Mis imágenes
+	FI	Omat kuvani
+	FR	Mes images
+	IT	Immagini personali
+	NL	Mijn eigen foto's
+	NO	Mine egne bilder
+	PL	Moje własne obrazy
+	RU	Мои изображения
+	SV	Mina egna bilder
+
+IMAGE_VIEWER_FLICKR_DISPLAY_FAVORITES
+	CS	Oblíbené
+	DA	Favoritter
+	DE	Meine Favoriten
+	EN	My favorites
+	ES	Mis favoritos
+	FI	Suosikit
+	FR	Mes favoris
+	IT	I miei Preferiti
+	NL	Mijn favorieten
+	NO	Mine favoritter
+	PL	Moje ulubione
+	RU	Мое выбранное
+	SV	Mina favoriter
+
+IMAGE_VIEWER_FLICKR_DISPLAY_CONTACTS
+	CS	Fotky mých kontaktů
+	DA	Mine kontakters billeder
+	DE	Bilder meiner Kontakte
+	EN	My contacts' pictures
+	ES	Imágenes de mis contactos
+	FI	Yhteyshenkilöiden kuvat
+	FR	Images de mes contacts
+	IT	Immagini dei contatti
+	NL	Foto's van mijn contacten
+	NO	Bilder fra mine kontakter
+	PL	Obrazy moich kontaktów
+	RU	Изображения моих контактов
+	SV	Mina kontakters bilder
+
+IMAGE_VIEWER_FLICKR_DISPLAY_INTERESTING
+	CS	Zajímavé obrázky
+	DA	Interessante billeder
+	DE	Interessante Bilder
+	EN	Interesting pictures
+	ES	Imágenes interesantes
+	FI	Kiinnostavia kuvia
+	FR	Images intéressantes
+	IT	Immagini interessanti
+	NL	Interessante foto's
+	NO	Interessante bilder
+	PL	Interesujące obrazy
+	RU	Интересные изображения
+	SV	Intressanta bilder
+
+IMAGE_VIEWER_FLICKR_DISPLAY_RECENT
+	CS	Nejnovější fotky
+	DA	Senest tilføjede billeder
+	DE	Neu hinzugefügte Bilder
+	EN	Recently added pictures
+	ES	Imágenes agregadas recientemente
+	FI	Äskettäin lisätyt kuvat
+	FR	Images ajoutées récemment
+	IT	Immagini aggiunte di recente
+	NL	Recent toegevoegde foto's
+	NO	Nylig opplastede bilder
+	PL	Ostatnio dodane obrazy
+	RU	Последние добавленные изображения
+	SV	Nyligen tillagda bilder
+
+IMAGE_VIEWER_FLICKR_DISPLAY_TAGGED
+	CS	Označené obrázky
+	DA	Mærkede billeder
+	DE	Getaggte Bilder
+	EN	Tagged images
+	ES	Imágenes con etiquetas
+	FI	Merkityt kuvat
+	FR	Images étiquetées
+	IT	Immagini con tag
+	NL	Getagde afbeeldingen
+	NO	Bilder med etiketter
+	PL	Obrazy ze znacznikami
+	RU	Изображения с метками
+	SV	Taggade bilder
+
+IMAGE_VIEWER_FLICKR_FLICKR_ID
+	CS	Uživatel Flickr
+	DA	Flickr-bruger
+	DE	Flickr-Benutzer
+	EN	Flickr User
+	ES	Usuario de Flickr
+	FI	Flickr-käyttäjä
+	FR	Utilisateur Flickr
+	IT	Utente flickr
+	NL	Flickr-gebruiker
+	NO	Flickr-bruker
+	PL	Użytkownik usługi Flickr
+	RU	Пользователь Flickr
+	SV	Flickr-användare
+
+IMAGE_VIEWER_FLICKR_FLICKR_ID_HELP
+	CS	Zadejte své uživatelské jméno pro službu Flickr nebo váš e-mail
+	DA	Indtast dit Flickr-brugernavn eller din e-post-adresse.
+	DE	Bitte geben Sie Ihren Flickr Benutzernamen oder Ihre Email-Adresse ein
+	EN	Please enter your Flickr Username or your Email address
+	ES	Introduzca su nombre de usuario de Flickr o su dirección de correo electrónico
+	FI	Anna Flickr-käyttäjätunnus tai sähköpostiosoitteesi
+	FR	Spécifiez votre nom d'utilisateur Flickr ou votre adresse électronique
+	IT	Inserire il nome utente flickr o l'indirizzo di posta elettronica
+	NL	Voer je Flickr-gebruikersnaam of je e-mailadres in.
+	NO	Angi ditt Flickr-brukernavn, eller e-postadressen din
+	PL	Wprowadź nazwę użytkownika w usłudze Flickr lub adres e-mail
+	RU	Введите имя пользователя Flickr или свой адрес электронной почты
+	SV	Ange ditt Flickr-användarnamn eller din e-postadress
+
+IMAGE_VIEWER_FLICKR_USERID_ERROR
+	CS	Zadané číslo pro službu Flickr nelze přidělit k účtu uživatele Flickr! Opravte zadanou hodnotu.\n\nPokračujte stiskem jakékoliv klávesy.
+	DA	Der blev ikke fundet en Flickr-brugerkonto som svarer til det indtastede Flickr-id. Du skal rette brugernavnet.\n\nTryk på en vilkårlig knap for at fortsætte.
+	DE	Für den eingegebenen Flickr-Benutzernamen kann keine Flickr-ID gefunden werden. Korrigieren Sie Ihre Eingabe.\n\nDrücken Sie zum Fortfahren eine beliebige Taste.
+	EN	The entered flickr id could not be resolved to a flicker user account! Please correct your entry.\n\nPress any key to continue.
+	ES	El ID de Flickr indicado no se ha podido resolver en una cuenta de usuario de Flickr. Debe corregir el ID.\n\nPulse una tecla cualquiera para continuar.
+	FI	Antamaasi flickr-tunnusta ei voitu käyttää flicker-tilin kanssa. Anna oikea tunnus.\n\nJatka painamalla mitä tahansa näppäintä.
+	FR	L'ID Flickr spécifié n'a pas pu être lié à un compte Flickr. Corrigez les informations spécifiées.\n\nAppuyez sur un bouton pour continuer.
+	IT	Impossibile risolvere l'ID flickr inserito in un account utente flickr. Correggere il valore inserito.\n\nPremere un tasto per continuare.
+	NL	De ingevoerde Flickr-ID kan niet worden opgehaald voor een Flickr-gebruikersaccount! Corrigeer je invoer.\n\nDruk op een willekeurige knop om verder te gaan.
+	NO	Flickr-id-en som ble oppgitt kunne ikke knyttes til en brukerkonto hos flickr. Angi riktig id. \n\nTrykk en tast for å fortsette.
+	PL	Nie można przekształcić wprowadzonego identyfikatora w usłudze Flickr na konto użytkownika usługi Flickr! Popraw wprowadzone informacje.\n\nNaciśnij dowolny klawisz, aby kontynuować.
+	RU	Введенный ID flickr не удалось сопоставить с действительной учетной записью пользователя! Исправьте введенные данные.\n\nДля продолжения нажмите любую клавишу.
+	SV	Det angivna Flickr-namnet överensstämde inte med något Flickr-användarkonto. Korrigera informationen.\n\nTryck på valfri tangent för att fortsätta.
+
+IMAGE_VIEWER_FLICKR_INVALID_DISPLAY_OPTION
+	CS	Vaše identifikační číslo pro službu Flickr zatím není nastaveno. Nastavte platné číslo nebo zvolte jinou volbu zobrazení.\n\nPokračujte stiskem jakékoliv klávesy.
+	DA	Dit Flickr-id er ikke defineret. Angiv et gyldigt Flickr-id, eller vælg en anden visningsmulighed.\n\nTryk på en tast for at fortsætte.
+	DE	Ihre Flickr-ID ist noch nicht festgelegt. Legen Sie eine gültige Flickr-ID fest oder wählen Sie eine andere Anzeige-Option.\n\nDrücken Sie zum Fortfahren eine beliebige Taste.
+	EN	Your flickr id is not set yet. Please set a valid flickr id, or choose another display option.\n\nPress any key to continue.
+	ES	Aún no hay un ID de Flickr configurado. Indique un ID válido o elija otra opción de pantalla.\n\nPulse una tecla cualquiera para continuar.
+	FI	Flickr-tunnusta ei ole vielä määritetty. Määritä kelvollinen flickr-tunnus tai valitse jokin toinen näyttöasetus.\n\nJatka painamalla mitä tahansa näppäintä.
+	FR	Votre ID Flickr n'est pas encore défini. Définissez un ID Flickr valide ou choisissez une option d'affichage différente.\n\nAppuyez sur un bouton pour continuer.
+	IT	Non è stato ancora impostato un ID flickr. Impostare un ID flickr valido o scegliere un'altra opzione di visualizzazione.\n\nPremere un tasto per continuare.
+	NL	Je Flickr-ID is nog niet ingesteld. Stel een geldige Flickr-ID in of kies een andere weergaveoptie.\n\nDruk op een willekeurige knop om verder te gaan.
+	NO	Du har ikke angitt din flickr-id. Oppgi en gyldig flickr-id, eller velg et annet visningsvalg.\n\nTrykk en tast for å fortsette.
+	PL	Identyfikator w usłudze Flickr nie został jeszcze ustawiony. Ustaw poprawny identyfikator w usłudze Flickr lub wybierz inną opcję wyświetlania.\n\nNaciśnij dowolny klawisz, aby kontynuować.
+	RU	Ваш ID в flickr еще не установлен. Установите действительный ID в flickr или выберите другой параметр отображения.\n\nДля продолжения нажмите любую клавишу.
+	SV	Du har inte angett något Flickr-namn än. Ange ett giltigt Flickr-namn eller välj ett annat visningsalternativ.\n\nTryck på valfri tangent för att fortsätta.
+
+IMAGE_VIEWER_FLICKR_TAGS
+	CS	Klíčová slova označení
+	DA	Nøgleord til mærker
+	DE	Tag-Stichwörter
+	EN	Tag Keywords
+	ES	Palabras clave de etiquetas
+	FI	Merkitse avainsanat
+	FR	Mots clés d'étiquette
+	IT	Parole chiave tag
+	NL	Tagtrefwoorden
+	NO	Etikett-nøkkelord
+	PL	Słowa kluczowe znacznika
+	RU	Ключевые слова меток
+	SV	Tagga sökord
+
+IMAGE_VIEWER_FLICKR_QUERY_TAGS
+	CS	Zadejte prosím klíčové slovo / klíčová slova pro vyhledávání v informacích označení. Můžete zadávaná označení oddělovat čárkou.
+	DA	Angiv de nøgleord der skal søges efter i mærkerne. Mærkerne kan adskilles vha. et komma.
+	DE	Geben Sie die Stichwörter ein, nach denen in den Tags gesucht werden soll. Tags können durch ein Komma getrennt werden.
+	EN	Please enter the keyword(s) to search for in the tag information. You can separated tags with a comma.
+	ES	Escriba las palabras clave que desea buscar en la información de etiquetas. Las etiquetas se separan con una coma.
+	FI	Anna avainsanat, jotka haetaan tunnustiedoista. Voit erottaa merkinnät pilkulla.
+	FR	Veuillez saisir les mots clés à rechercher dans les informations d'étiquette. Vous pouvez séparer les étiquettes avec des virgules.
+	IT	Immettere la/le parola/e chiave da cercare nelle informazioni dei tag. È possibile separare i tag con una virgola.
+	NL	Voer het trefwoord/de trefwoorden in waarnaar gezocht moet worden in de taginformatie. Gebruik een komma op tags van elkaar te scheiden.
+	NO	Angi nøkkelord for å søke etter etikettinformasjon. Du kan atskille etiketter med komma.
+	PL	W informacjach znacznika wprowadź słowa kluczowe do wyszukiwania. Znaczniki można rozdzielać przecinkami.
+	RU	Введите ключевые слова для поиска информации по меткам. Метки можно разделять запятой.
+	SV	Ange ett eller flera sökord att söka efter i tagginformationen. Du kan avgränsa taggar med ett komma.
+
+IMAGE_VIEWER_LOADING
+	CS	Načítání...
+	DA	Indlæser...
+	DE	Ladevorgang läuft ...
+	EN	Loading...
+	ES	Cargando...
+	FI	Lataa...
+	FR	Chargement...
+	IT	Caricamento...
+	NL	Bezig met laden...
+	NO	Laster...
+	PL	Ładowanie...
+	RU	Загрузка...
+	SV	Läser in ...
+
+IMAGE_VIEWER_START_SLIDESHOW
+	CS	Spustit Slideshow
+	DA	Start diasshow
+	DE	Diashow starten
+	EN	Start Slideshow
+	ES	Iniciar presentación
+	FI	Käynnistä diaesitys
+	FR	Lancer le diaporama
+	IT	Avvia presentazione
+	NL	Diavoorstelling starten
+	NO	Start lysbildefremvisning
+	PL	Uruchom pokaz slajdów
+	RU	Запустить слайд-шоу
+	SV	Påbörja bildspel
+
+IMAGE_VIEWER_INVALID_IMAGE
+	CS	Nalezen neplatný obrazový objekt
+	DA	Der blev fundet et ugyldigt billedobjekt
+	DE	Ungültiges Bildobjekt gefunden
+	EN	Invalid image object found
+	ES	Se ha encontrado un objeto de imagen no válido
+	FI	Löytyi virheellinen kuvaobjekti
+	FR	Détection d'un objet image non valide
+	IT	Trovato oggetto immagine non valido
+	NL	Ongeldig beeldobject gevonden
+	NO	Fant ugyldig bildeobjekt
+	PL	Znaleziono nieprawidłowy obiekt obrazu
+	RU	Найден недопустимый объект изображения
+	SV	Felaktig bildfil hittades.
+
+IMAGE_VIEWER_SAVE_WALLPAPER
+	CS	Použít obrázek jako tapetu
+	DA	Brug billede som tapet
+	DE	Bild als Hintergrund verwenden
+	EN	Use picture as wallpaper
+	ES	Usar imagen como papel tapiz
+	FI	Käytä kuvaa taustakuvana
+	FR	Utiliser l'image en arrière-plan
+	IT	Usa immagine come sfondo
+	NL	Afbeelding als achtergrond gebruiken
+	NO	Bruk bilde som skrivebordsbakgrunn
+	PL	Użyj obrazu jako tapety
+	RU	Использовать рисунок как фоновый
+	SV	Använd bild som skrivbordsunderlägg
+
+IMAGE_VIEWER_WALLPAPER_SET
+	CS	Tapeta uložena jako\n%s
+	DA	Tapetet er gemt som\n%s
+	DE	Hintergrundbild gespeichert unter\n%s
+	EN	Wallpaper saved as\n%s
+	ES	Papel tapiz guardado como\n%s
+	FI	Taustakuva tallennettiin nimellä\n%s
+	FR	Arrière-plan enregistré sous\n%s
+	IT	Sfondo salvato con nome\n%s
+	NL	Achtergrond opslaan als\n%s
+	NO	Skrivebordsbakgrunn lagret som\n%s
+	PL	Tapeta została zapisana jako\n%s
+	RU	Фоновый рисунок сохранен как\n%s
+	SV	Skrivbordsunderlägg sparades som\n%s
+
+IMAGE_VIEWER_SAVED_SLIDE
+	CS	Uložený slide
+	DA	Gemt dias
+	DE	Gespeichertes Dia
+	EN	Saved Slide
+	ES	Diapositiva guardada
+	FI	Dia tallennettiin
+	FR	Diapositive enregistrée
+	IT	Diapositiva salvata
+	NL	Dia opgeslagen
+	NO	Lagret lysbilde
+	PL	Zapisany slajd
+	RU	Сохраненный слайд
+	SV	Sparad bild
+
+IMAGE_VIEWER_BROWSE_MEDIA
+	CS	Procházení médií
+	DA	Gennemse medie
+	DE	Medien durchsuchen
+	EN	Browse Media
+	ES	Examinar medios
+	FI	Selaa mediaa
+	FR	Parcourir le support
+	IT	Cerca nel supporto
+	NL	Media doorzoeken
+	NO	Bla i medium
+	PL	Przeglądaj multimedia
+	RU	Обзор носителя
+	SV	Visa innehåll på externt lagringsmedium
+
+IMAGE_VIEWER_BROWSE_IMAGES
+	CS	Procházení obrázků
+	DA	Søg efter billeder
+	DE	Nach Bildern suchen
+	EN	Browse for Images
+	ES	Examinar imágenes
+	FI	Selaa kuvia
+	FR	Parcourir les images
+	IT	Cerca immagini
+	NL	Bladeren naar afbeeldingen
+	NO	Bla etter bilder
+	PL	Przeglądaj w poszukiwaniu obrazów
+	RU	Обзор изображений
+	SV	Sök efter bilder
+
+IMAGE_VIEWER_INVALID_FOLDER
+	CS	Nelze otevřít složku:
+	DA	Kan ikke åbne mappen:
+	DE	Dieser Ordner kann nicht geöffnet werden:
+	EN	Cannot open folder:
+	ES	No se puede abrir carpeta:
+	FI	Ei voi avata kansiota:
+	FR	Impossible d'ouvrir le dossier:
+	IT	Impossibile aprire cartella:
+	NL	Kan map niet openen:
+	NO	Kan ikke åpne mappe:
+	PL	Nie można otworzyć folderu:
+	RU	Не удается открыть папку:
+	SV	Det går inte att öppna mappen:
+
