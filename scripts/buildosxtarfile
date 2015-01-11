@@ -1,0 +1,28 @@
+#!/bin/bash
+make -f Makefile.x86_64 clean
+
+SVNVERSION=`svnversion`
+
+make -f Makefile.x86_64
+
+if [ ! -d pkg ]; then
+	echo "Need to create pkg folder first!"
+	exit 1
+fi
+
+cd pkg
+
+if [ -d local ]; then
+	sudo rm -rf local
+fi
+
+mkdir -p local/{bin,lib,share}
+cp -p ../bin/jivelite local/bin
+
+cp -pr ../lib/lua local/lib
+cp -pr ../share/lua local/share
+cp -pr ../share/jive local/share
+
+sudo chown -Rh root:wheel local
+
+tar -czf ~/jivelite-0.1-`date +%Y%m%d`svn${SVNVERSION}-osx-x86_64.tar.gz local
