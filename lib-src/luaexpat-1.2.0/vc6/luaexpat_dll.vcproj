@@ -2,10 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9.00"
-	Name="socket"
-	ProjectGUID="{66E3CE14-884D-4AEA-9F20-15A0BEAF8C5A}"
-	Keyword="Win32Proj"
-	TargetFrameworkVersion="131072"
+	Name="luaexpat_dll"
+	ProjectGUID="{7077510A-F304-4DE8-951E-CE1317273E7D}"
+	TargetFrameworkVersion="0"
 	>
 	<Platforms>
 		<Platform
@@ -20,7 +19,9 @@
 			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="2"
-			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
+			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC60.vsprops"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="false"
 			CharacterSet="2"
 			>
 			<Tool
@@ -37,18 +38,27 @@
 			/>
 			<Tool
 				Name="VCMIDLTool"
+				PreprocessorDefinitions="_DEBUG"
+				MkTypLibCompatible="true"
+				SuppressStartupBanner="true"
+				TargetEnvironment="1"
+				TypeLibraryName=".\../lib/vc6/luaexpat_dll.tlb"
+				HeaderFileName=""
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;..\lua-5.1.1\src&quot;"
-				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;LUASOCKET_EXPORTS;LUASOCKET_API=__declspec(dllexport)"
+				AdditionalIncludeDirectories="../../expat-2.0.1/lib,../../lua-5.1.1/src"
+				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;LUAEXPAT_DLL_EXPORTS"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
-				UsePrecompiledHeader="0"
+				PrecompiledHeaderFile=""
+				AssemblerListingLocation=".\luaexpat_dll/Debug/"
+				ObjectFile=".\luaexpat_dll/Debug/"
+				ProgramDataBaseFileName=".\luaexpat_dll/Debug/"
 				WarningLevel="3"
-				Detect64BitPortabilityProblems="true"
+				SuppressStartupBanner="true"
 				DebugInformationFormat="4"
 			/>
 			<Tool
@@ -56,22 +66,25 @@
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="_DEBUG"
+				Culture="1046"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="ws2_32.lib"
-				OutputFile="$(OutDir)\$(ProjectName)\core.dll"
+				AdditionalDependencies="lua.lib libexpat.lib odbc32.lib odbccp32.lib"
+				OutputFile="$(OutDir)\lxp.dll"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="h:\lib"
+				SuppressStartupBanner="true"
+				AdditionalLibraryDirectories="$(OutDir)"
+				ModuleDefinitionFile=".\lxp.def"
 				GenerateDebugInformation="true"
-				ProgramDatabaseFile="$(OutDir)/socket.pdb"
-				SubSystem="2"
+				ProgramDatabaseFile=".\../lib/vc6/lxpd.pdb"
 				RandomizedBaseAddress="1"
 				DataExecutionPrevention="0"
-				ImportLibrary="$(OutDir)/socket.lib"
+				ImportLibrary=".\../lib/vc6/lxpd.lib"
 				TargetMachine="1"
 			/>
 			<Tool
@@ -85,6 +98,8 @@
 			/>
 			<Tool
 				Name="VCBscMakeTool"
+				SuppressStartupBanner="true"
+				OutputFile=".\../lib/vc6/luaexpat_dll.bsc"
 			/>
 			<Tool
 				Name="VCFxCopTool"
@@ -101,7 +116,9 @@
 			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="2"
-			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
+			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC60.vsprops"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="false"
 			CharacterSet="2"
 			>
 			<Tool
@@ -118,39 +135,52 @@
 			/>
 			<Tool
 				Name="VCMIDLTool"
+				PreprocessorDefinitions="NDEBUG"
+				MkTypLibCompatible="true"
+				SuppressStartupBanner="true"
+				TargetEnvironment="1"
+				TypeLibraryName=".\../lib/vc6/luaexpat_dll.tlb"
+				HeaderFileName=""
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="&quot;..\..\include\luajit-2.0&quot;"
-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;LUASOCKET_EXPORTS;LUASOCKET_API=__declspec(dllexport);  LUASOCKET_DEBUG"
+				Optimization="2"
+				InlineFunctionExpansion="1"
+				AdditionalIncludeDirectories="..\..\..\include;&quot;..\..\..\include\luajit-2.0&quot;"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;LUAEXPAT_DLL_EXPORTS"
+				StringPooling="true"
 				RuntimeLibrary="2"
-				UsePrecompiledHeader="0"
+				EnableFunctionLevelLinking="true"
+				PrecompiledHeaderFile=""
+				AssemblerListingLocation=".\luaexpat_dll/Release/"
+				ObjectFile=".\luaexpat_dll/Release/"
+				ProgramDataBaseFileName=".\luaexpat_dll/Release/"
 				WarningLevel="3"
-				Detect64BitPortabilityProblems="true"
-				DebugInformationFormat="0"
+				SuppressStartupBanner="true"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="NDEBUG"
+				Culture="1046"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="ws2_32.lib lua51.lib"
-				OutputFile="$(OutDir)\$(ProjectName)\core.dll"
+				AdditionalDependencies="lua51.lib libexpat.lib odbc32.lib odbccp32.lib"
+				OutputFile="$(OutDir)\lxp.dll"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="..\..\lib"
-				GenerateDebugInformation="true"
-				SubSystem="2"
-				OptimizeReferences="2"
-				EnableCOMDATFolding="2"
+				SuppressStartupBanner="true"
+				AdditionalLibraryDirectories="&quot;$(OutDir)&quot;;..\..\..\lib"
+				ModuleDefinitionFile=".\lxp.def"
+				ProgramDatabaseFile=".\../lib/vc6/lxp.pdb"
 				RandomizedBaseAddress="1"
 				DataExecutionPrevention="0"
-				ImportLibrary="$(OutDir)/socket.lib"
+				ImportLibrary=".\../lib/vc6/lxp.lib"
 				TargetMachine="1"
 			/>
 			<Tool
@@ -164,6 +194,8 @@
 			/>
 			<Tool
 				Name="VCBscMakeTool"
+				SuppressStartupBanner="true"
+				OutputFile=".\../lib/vc6/luaexpat_dll.bsc"
 			/>
 			<Tool
 				Name="VCFxCopTool"
@@ -173,6 +205,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
+				CommandLine=""
 			/>
 		</Configuration>
 	</Configurations>
@@ -181,76 +214,47 @@
 	<Files>
 		<Filter
 			Name="Source Files"
-			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx"
-			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
+			Filter="cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
 			>
 			<File
-				RelativePath="src\auxiliar.c"
+				RelativePath="lxp.def"
 				>
 			</File>
 			<File
-				RelativePath="src\buffer.c"
+				RelativePath="..\src\lxplib.c"
 				>
-			</File>
-			<File
-				RelativePath="src\except.c"
-				>
-			</File>
-			<File
-				RelativePath="src\inet.c"
-				>
-			</File>
-			<File
-				RelativePath="src\io.c"
-				>
-			</File>
-			<File
-				RelativePath="src\luasocket.c"
-				>
-			</File>
-			<File
-				RelativePath="src\options.c"
-				>
-			</File>
-			<File
-				RelativePath="src\select.c"
-				>
-			</File>
-			<File
-				RelativePath="src\tcp.c"
-				>
-			</File>
-			<File
-				RelativePath="src\timeout.c"
-				>
-			</File>
-			<File
-				RelativePath="src\udp.c"
-				>
-			</File>
-			<File
-				RelativePath="src\wsocket.c"
-				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						AdditionalIncludeDirectories=""
+						PreprocessorDefinitions=""
+					/>
+				</FileConfiguration>
 				<FileConfiguration
 					Name="Release|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
-						GeneratePreprocessedFile="0"
+						AdditionalIncludeDirectories=""
+						PreprocessorDefinitions=""
 					/>
 				</FileConfiguration>
 			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
-			Filter="h;hpp;hxx;hm;inl;inc;xsd"
-			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
+			Filter="h;hpp;hxx;hm;inl"
 			>
+			<File
+				RelativePath="..\src\lxplib.h"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Resource Files"
-			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx"
-			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
+			Filter="ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe"
 			>
 		</Filter>
 	</Files>

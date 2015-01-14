@@ -70,8 +70,9 @@ void copyResampled (SDL_Surface *dst, SDL_Surface *src,
 					int dstW, int dstH, int srcW, int srcH) {
 	int x, y;
 	double sy1, sy2, sx1, sx2;
+	Uint8 bpp;
 
-	Uint8 bpp = src->format->BytesPerPixel;
+	bpp = src->format->BytesPerPixel;
 
 	if ((bpp != 4 && bpp != 2) || dst->format->BytesPerPixel != 4) {
 		LOG_ERROR(log_ui, "Unsupported BytesPerPixel: src:%d dst:%d", src->format->BytesPerPixel, dst->format->BytesPerPixel);
@@ -108,6 +109,9 @@ void copyResampled (SDL_Surface *dst, SDL_Surface *src,
 				do {
 					double xportion;
 					double pcontribution;
+					Uint8 R, G, B, A;
+					Uint32 pixel;
+
 					if (floor2 (sx) == floor2 (sx1)) {
 						xportion = 1.0 - (sx - floor2 (sx));
 						if (xportion > sx2 - sx1) {
@@ -121,11 +125,7 @@ void copyResampled (SDL_Surface *dst, SDL_Surface *src,
 					}
 					pcontribution = xportion * yportion;
 
-					Uint32 pixel = bpp == 2
-						? *((Uint16 *)src->pixels + ((int) sy + srcY) * src->pitch / bpp + ((int) sx + srcX))
-						: *((Uint32 *)src->pixels + ((int) sy + srcY) * src->pitch / bpp + ((int) sx + srcX));
-
-					Uint8 R, G, B, A;
+					pixel = *((Uint32 *)src->pixels + ((int) sy + srcY) * src->pitch / 4 + ((int) sx + srcX));
 					SDL_GetRGBA(pixel, src->format, &R, &G, &B, &A);
 
 					red   += R * pcontribution;

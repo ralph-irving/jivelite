@@ -41,6 +41,13 @@ typedef struct {
     int debug;
 } strbuf_t;
 
+#if defined(WIN32)
+#define inline		__inline
+#define snprintf	_snprintf
+#define strcasecmp	_stricmp
+#define strncasecmp	_strnicmp
+#endif
+
 #ifndef STRBUF_DEFAULT_SIZE
 #define STRBUF_DEFAULT_SIZE 1023
 #endif

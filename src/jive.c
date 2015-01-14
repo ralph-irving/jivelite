@@ -24,7 +24,9 @@ extern int luaopen_jive(lua_State *L);
 extern int luaopen_jive_ui_framework(lua_State *L);
 extern int luaopen_jive_net_dns(lua_State *L);
 extern int luaopen_jive_debug(lua_State *L);
+#if !defined(WIN32)
 extern int luaopen_visualizer(lua_State *L);
+#endif
 
 /* LUA_DEFAULT_SCRIPT
 ** The default script this program runs, unless another script is given
@@ -91,12 +93,18 @@ static void jive_openlibs(lua_State *L) {
 	lua_pushcfunction(L, luaopen_log);
 	lua_call(L, 0, 0);
 
+#if !defined(WIN32)
 	lua_pushcfunction(L, luaopen_visualizer);
 	lua_call(L, 0, 0); 
+#endif
 }
 
 
 #if defined(WIN32)
+
+#include <windows.h>
+#include <direct.h>
+
 char *realpath(const char *filename, char *resolved_name) {
 	GetFullPathName(filename, PATH_MAX, resolved_name, NULL);
 	return resolved_name;
@@ -524,7 +532,9 @@ int main (int argc, char **argv) {
 	lua_State *L;
 
 	// say hello
+#if !defined(WIN32)
 	l_message(NULL, "\nJiveLite " JIVE_VERSION);
+#endif
 	
 	// create state
 	L = lua_open();

@@ -2412,6 +2412,8 @@ int jiveL_tile_load_image(lua_State *L) {
 }
 
 int jiveL_tile_load_tiles(lua_State *L) {
+	JiveTile *tile;
+	JiveTile **p;
 	/*
 	  class
 	  path table [9 entries]
@@ -2435,9 +2437,9 @@ int jiveL_tile_load_tiles(lua_State *L) {
 	paths[7] = lua_isnil(L, -1) ? NULL : luaL_checkstring(L, -1);
 	lua_rawgeti(L, 2, 9);
 	paths[8] = lua_isnil(L, -1) ? NULL : luaL_checkstring(L, -1);
-	JiveTile *tile = jive_tile_load_tiles((char **)paths);
+	tile = jive_tile_load_tiles((char **)paths);
 	lua_pop(L, 9);
-	JiveTile **p = (JiveTile **)lua_newuserdata(L, sizeof(JiveTile *));
+	p = (JiveTile **)lua_newuserdata(L, sizeof(JiveTile *));
 	*p = tile;
 	luaL_getmetatable(L, "JiveTile");
 	lua_setmetatable(L, -2);
@@ -2445,6 +2447,9 @@ int jiveL_tile_load_tiles(lua_State *L) {
 }
 
 int jiveL_tile_load_vtiles(lua_State *L) {
+	JiveTile *tile;
+	JiveTile **p;
+
 	/*
 	  class
 	  path table [3 entries]
@@ -2456,9 +2461,9 @@ int jiveL_tile_load_vtiles(lua_State *L) {
 	paths[1] = lua_isnil(L, -1) ? NULL : luaL_checkstring(L, -1);
 	lua_rawgeti(L, 2, 3);
 	paths[2] = lua_isnil(L, -1) ? NULL : luaL_checkstring(L, -1);
-	JiveTile *tile = jive_tile_load_vtiles((char **)paths);
+	tile = jive_tile_load_vtiles((char **)paths);
 	lua_pop(L, 3);
-	JiveTile **p = (JiveTile **)lua_newuserdata(L, sizeof(JiveTile *));
+	p = (JiveTile **)lua_newuserdata(L, sizeof(JiveTile *));
 	*p = tile;
 	luaL_getmetatable(L, "JiveTile");
 	lua_setmetatable(L, -2);
@@ -2466,6 +2471,9 @@ int jiveL_tile_load_vtiles(lua_State *L) {
 }
 
 int jiveL_tile_load_htiles(lua_State *L) {
+	JiveTile *tile;
+	JiveTile **p;
+
 	/*
 	  class
 	  path table [3 entries]
@@ -2477,9 +2485,9 @@ int jiveL_tile_load_htiles(lua_State *L) {
 	paths[1] = lua_isnil(L, -1) ? NULL : luaL_checkstring(L, -1);
 	lua_rawgeti(L, 2, 3);
 	paths[2] = lua_isnil(L, -1) ? NULL : luaL_checkstring(L, -1);
-	JiveTile *tile = jive_tile_load_htiles((char **)paths);
+	tile = jive_tile_load_htiles((char **)paths);
 	lua_pop(L, 3);
-	JiveTile **p = (JiveTile **)lua_newuserdata(L, sizeof(JiveTile *));
+	p = (JiveTile **)lua_newuserdata(L, sizeof(JiveTile *));
 	*p = tile;
 	luaL_getmetatable(L, "JiveTile");
 	lua_setmetatable(L, -2);

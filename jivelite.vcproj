@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="Windows-1252"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9.00"
-	Name="mime"
-	ProjectGUID="{128E8BD0-174A-48F0-8771-92B1E8D18713}"
+	Name="jivelite"
+	ProjectGUID="{63E48DB8-DCA0-4ED7-AD03-3AC5EB6CB296}"
 	Keyword="Win32Proj"
-	TargetFrameworkVersion="131072"
+	TargetFrameworkVersion="0"
 	>
 	<Platforms>
 		<Platform
@@ -17,11 +17,9 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
-			IntermediateDirectory="$(ConfigurationName)"
-			ConfigurationType="2"
-			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
-			CharacterSet="2"
+			OutputDirectory="Debug"
+			IntermediateDirectory="Debug"
+			ConfigurationType="1"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -41,8 +39,8 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;..\lua-5.1.1\src&quot;"
-				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;MIME_EXPORTS;MIME_API=__declspec(dllexport)"
+				AdditionalIncludeDirectories="\include"
+				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -62,15 +60,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				OutputFile="$(OutDir)\$(ProjectName)\core.dll"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="h:\lib"
 				GenerateDebugInformation="true"
-				ProgramDatabaseFile="$(OutDir)/mime.pdb"
 				SubSystem="2"
-				RandomizedBaseAddress="1"
-				DataExecutionPrevention="0"
-				ImportLibrary="$(OutDir)/mime.lib"
 				TargetMachine="1"
 			/>
 			<Tool
@@ -97,11 +89,9 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
-			IntermediateDirectory="$(ConfigurationName)"
-			ConfigurationType="2"
-			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
-			CharacterSet="2"
+			OutputDirectory="Release"
+			IntermediateDirectory="Release"
+			ConfigurationType="1"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -120,13 +110,13 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="&quot;..\..\include\luajit-2.0&quot;"
-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;MIME_EXPORTS; MIME_API=__declspec(dllexport)"
+				AdditionalIncludeDirectories=".\include\SDL;&quot;.\include\luajit-2.0&quot;;.\include"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;NO_STDIO_REDIRECT"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
-				WarningLevel="4"
+				WarningLevel="3"
 				Detect64BitPortabilityProblems="true"
-				DebugInformationFormat="0"
+				DebugInformationFormat="3"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -139,17 +129,13 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="lua51.lib"
-				OutputFile="$(OutDir)\$(ProjectName)\core.dll"
-				LinkIncremental="1"
-				AdditionalLibraryDirectories="..\..\lib"
+				AdditionalDependencies="SDLmain.lib SDL.lib SDL_gfx.lib SDL_image.lib SDL_ttf.lib lua51.lib ws2_32.lib Iphlpapi.lib"
+				LinkIncremental="2"
+				AdditionalLibraryDirectories=".\lib"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
-				RandomizedBaseAddress="1"
-				DataExecutionPrevention="0"
-				ImportLibrary="$(OutDir)/mime.lib"
 				TargetMachine="1"
 			/>
 			<Tool
@@ -179,26 +165,134 @@
 	</References>
 	<Files>
 		<Filter
-			Name="Source Files"
-			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx"
-			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
-			>
-			<File
-				RelativePath="src\mime.c"
-				>
-			</File>
-		</Filter>
-		<Filter
 			Name="Header Files"
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
+			<File
+				RelativePath=".\src\common.h"
+				>
+			</File>
+			<File
+				RelativePath=".\src\jive.h"
+				>
+			</File>
+			<File
+				RelativePath=".\src\log.h"
+				>
+			</File>
+			<File
+				RelativePath=".\src\types.h"
+				>
+			</File>
+			<File
+				RelativePath=".\src\version.h"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Resource Files"
 			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx"
 			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
 			>
+			<File
+				RelativePath=".\src\jivelite.rc"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="Source Files"
+			Filter="cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx"
+			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
+			>
+			<File
+				RelativePath=".\src\jive.c"
+				>
+			</File>
+			<File
+				RelativePath=".\src\jive_debug.c"
+				>
+			</File>
+			<File
+				RelativePath=".\src\jive_dns.c"
+				>
+			</File>
+			<File
+				RelativePath=".\src\jive_event.c"
+				>
+			</File>
+			<File
+				RelativePath=".\src\jive_font.c"
+				>
+			</File>
+			<File
+				RelativePath=".\src\jive_framework.c"
+				>
+			</File>
+			<File
+				RelativePath=".\src\jive_group.c"
+				>
+			</File>
+			<File
+				RelativePath=".\src\jive_icon.c"
+				>
+			</File>
+			<File
+				RelativePath=".\src\jive_label.c"
+				>
+			</File>
+			<File
+				RelativePath=".\src\jive_menu.c"
+				>
+			</File>
+			<File
+				RelativePath=".\src\jive_slider.c"
+				>
+			</File>
+			<File
+				RelativePath=".\src\jive_style.c"
+				>
+			</File>
+			<File
+				RelativePath=".\src\jive_surface.c"
+				>
+			</File>
+			<File
+				RelativePath=".\src\jive_textarea.c"
+				>
+			</File>
+			<File
+				RelativePath=".\src\jive_textinput.c"
+				>
+			</File>
+			<File
+				RelativePath=".\src\jive_utils.c"
+				>
+			</File>
+			<File
+				RelativePath=".\src\jive_widget.c"
+				>
+			</File>
+			<File
+				RelativePath=".\src\jive_window.c"
+				>
+			</File>
+			<File
+				RelativePath=".\src\log.c"
+				>
+			</File>
+			<File
+				RelativePath=".\src\platform_windows.c"
+				>
+			</File>
+			<File
+				RelativePath=".\src\resize.c"
+				>
+			</File>
+			<File
+				RelativePath=".\src\system.c"
+				>
+			</File>
 		</Filter>
 	</Files>
 	<Globals>

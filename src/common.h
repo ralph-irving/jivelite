@@ -20,10 +20,11 @@
 #include <signal.h>
 #include <stdio.h>
 #include <fcntl.h>
-#include <libgen.h>
-#include <pthread.h>
 #include <stdlib.h>
 #include <string.h>
+#ifndef WIN32
+#include <libgen.h>
+#include <pthread.h>
 #include <sys/time.h>
 #include <sys/shm.h>
 #include <sys/socket.h>
@@ -31,6 +32,7 @@
 #include <unistd.h>
 #include <netdb.h>
 #include <arpa/inet.h>
+#endif
 
 
 #ifndef PATH_MAX

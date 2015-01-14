@@ -1,0 +1,36 @@
+#!/bin/bash
+
+if [ ! -d pkg ]; then
+	echo "Need to create pkg folder first!"
+	exit 1
+fi
+
+SVNVERSION=`svnversion`
+
+cd pkg
+
+if [ -d Jivelite ]; then
+	rm -rf Jivelite
+fi
+
+mkdir -p Jivelite/{fonts,lua/socket}
+cp -p ../Release/jivelite.exe Jivelite/
+
+cp -pr ../lib/mime Jivelite/
+cp -pr ../lib/socket Jivelite/
+cp -pr ../lib/*.dll Jivelite/
+
+cp -pr ../lib-src/lua-cjson-2.1.0/lua/* Jivelite/lua/
+cp -pr ../lib-src/luaexpat-1.2.0/src/lxp Jivelite/lua/
+cp -pr ../lib-src/luasocket-2.0.2/src/*lua Jivelite/lua/socket/
+mv Jivelite/lua/socket/socket.lua Jivelite/lua
+mv Jivelite/lua/socket/mime.lua Jivelite/lua
+cp -pr ../LuaJIT-2.0.3/src/jit Jivelite/lua/
+cp -pr ../LuaJIT-2.0.3/src/luajit.exe Jivelite/
+cp -pr ../share/lua/5.1/* Jivelite/lua/
+cp -pr ../share/jive/fonts Jivelite/
+cp -pr ../share/jive/applets Jivelite/lua
+cp -pr ../share/jive/jive Jivelite/lua
+find Jivelite -type d -name \.svn -exec rm -rf {} \;
+
+7z a -tzip  jivelite-0.1-`date +%Y%m%d`svn${SVNVERSION}-win32.zip Jivelite

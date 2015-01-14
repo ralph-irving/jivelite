@@ -117,7 +117,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="&quot;..\..\lua-5.1.1\src&quot;;..\..\luamd5\libstdcrypto;libstdcrypto"
+				AdditionalIncludeDirectories="&quot;..\..\..\include\luajit-2.0&quot;;..\..\luamd5\libstdcrypto;libstdcrypto"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;SHA1_EXPORTS;MYNAME=MD5;USE_MD5_SKALIBS"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
@@ -136,7 +136,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
+				AdditionalDependencies="lua51.lib"
 				LinkIncremental="1"
+				AdditionalLibraryDirectories="..\..\..\lib"
 				ModuleDefinitionFile="md5.def"
 				GenerateDebugInformation="false"
 				SubSystem="2"

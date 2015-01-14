@@ -533,6 +533,7 @@ Uint32 jive_style_array_color(lua_State *L, int index, const char *array, int n,
 
 JiveSurface *jive_style_image(lua_State *L, int index, const char *key, JiveSurface *def) {
 	JiveSurface *value;
+	JiveSurface **p;
 
 	JIVEL_STACK_CHECK_BEGIN(L);
 
@@ -540,7 +541,7 @@ JiveSurface *jive_style_image(lua_State *L, int index, const char *key, JiveSurf
 	lua_pushvalue(L, index);
 	lua_pushstring(L, key);
 
-	JiveSurface **p = (JiveSurface **)lua_newuserdata(L, sizeof(JiveSurface *));
+	p = (JiveSurface **)lua_newuserdata(L, sizeof(JiveSurface *));
 	*p = def;
 	luaL_getmetatable(L, "JiveSurface");
 	lua_setmetatable(L, -2);
@@ -557,6 +558,7 @@ JiveSurface *jive_style_image(lua_State *L, int index, const char *key, JiveSurf
 
 JiveTile *jive_style_tile(lua_State *L, int index, const char *key, JiveTile *def) {
 	JiveTile *value;
+	JiveTile **p;
 
 	JIVEL_STACK_CHECK_BEGIN(L);
 
@@ -564,7 +566,7 @@ JiveTile *jive_style_tile(lua_State *L, int index, const char *key, JiveTile *de
 	lua_pushvalue(L, index);
 	lua_pushstring(L, key);
 
-	JiveTile **p = (JiveTile **)lua_newuserdata(L, sizeof(JiveTile *));
+	p = (JiveTile **)lua_newuserdata(L, sizeof(JiveTile *));
 	*p = def;
 	luaL_getmetatable(L, "JiveTile");
 	lua_setmetatable(L, -2);
@@ -581,6 +583,7 @@ JiveTile *jive_style_tile(lua_State *L, int index, const char *key, JiveTile *de
 
 
 int jiveL_style_font(lua_State *L) {
+	JiveFont **p;
 	
 	/* stack is:
 	 * 1: widget
@@ -594,7 +597,7 @@ int jiveL_style_font(lua_State *L) {
 		lua_pop(L, 1);
 
 		/* default font */
-		JiveFont **p = (JiveFont **)lua_newuserdata(L, sizeof(JiveFont *));
+		p = (JiveFont **)lua_newuserdata(L, sizeof(JiveFont *));
 		*p = jive_font_load("fonts/FreeSans.ttf", 15);
 		luaL_getmetatable(L, "JiveFont");
 		lua_setmetatable(L, -2);

@@ -54,9 +54,13 @@
 #define CJSON_VERSION   "2.1.0"
 #endif
 
+#if defined(WIN32)
+#include <float.h>
+#define isnan(n) _isnan(n)
+#define isinf(n) (!_finite(n))
 /* Workaround for Solaris platforms missing isinf() */
-#if !defined(isinf) && (defined(USE_INTERNAL_ISINF) || defined(MISSING_ISINF))
-#define isinf(x) (!isnan(x) && isnan((x) - (x)))
+#elif !defined(isinf) && (defined(USE_INTERNAL_ISINF) || defined(MISSING_ISINF))
+#define isinf(x) (!_isnan(x) && _isnan((x) - (x)))
 #endif
 
 #define DEFAULT_SPARSE_CONVERT 0

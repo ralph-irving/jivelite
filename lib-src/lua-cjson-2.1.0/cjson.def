@@ -1,0 +1,5 @@
+LIBRARY cjson.dll
+VERSION 2.1.0
+EXPORTS
+luaopen_cjson
+

@@ -69,7 +69,7 @@ int inet_aton(const char *cp, struct in_addr *inp)
 #endif
 
 
-#ifndef HAVE_SOCKETPAIR
+#if defined(WIN32) || !defined(HAVE_SOCKETPAIR)
 
 /* socketpair.c
  * Copyright 2007 by Nathan C. Myers <ncm@cantrip.org>; all rights reserved.

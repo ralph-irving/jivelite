@@ -184,6 +184,7 @@ int jive_traceback (lua_State *L) {
 static int jiveL_initSDL(lua_State *L) {
 	const SDL_VideoInfo *video_info;
 	JiveSurface *srf, *splash, *icon;
+	JiveSurface **p;
 	Uint16 splash_w, splash_h;
 
 	/* logging */
@@ -260,7 +261,7 @@ static int jiveL_initSDL(lua_State *L) {
 	}
 
 	/* store screen surface */
-	JiveSurface **p = (JiveSurface **)lua_newuserdata(L, sizeof(JiveSurface *));
+	p = (JiveSurface **)lua_newuserdata(L, sizeof(JiveSurface *));
 	*p = jive_surface_ref(srf);
 	luaL_getmetatable(L, "JiveSurface");
 	lua_setmetatable(L, -2);
@@ -822,6 +823,7 @@ int jiveL_dispatch_event(lua_State *L) {
 
 int jiveL_set_video_mode(lua_State *L) {
 	JiveSurface *srf;
+	JiveSurface **p;
 	Uint16 w, h, bpp;
 	bool isfull;
 	const SDL_VideoInfo *video_info;
@@ -858,7 +860,7 @@ int jiveL_set_video_mode(lua_State *L) {
 
 	/* store new screen surface */
 	lua_getfield(L, 1, "screen");
-	JiveSurface **p = (JiveSurface **)lua_newuserdata(L, sizeof(JiveSurface *));
+	p = (JiveSurface **)lua_newuserdata(L, sizeof(JiveSurface *));
 	*p = jive_surface_ref(srf);
 	luaL_getmetatable(L, "JiveSurface");
 	lua_setmetatable(L, -2);
