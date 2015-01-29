@@ -53,7 +53,7 @@ clean:
 	cd luafilesystem-1.6.2; make clean
 	cd luamd5; make MYNAME=sha1 clean
 	cd luamd5; make MYNAME=md5 clean
-	cd luasocket-2.0.2; make PLATFORM=linux clean
+	cd luasocket-2.0.2; make PLATFORM=${TARGET} clean
 	cd luazipfilter; make clean
-	rm ../lib/lua/5.1/cjson.so ../lib/lua/5.1/lxp.so ../lib/lua/5.1/lfs.so ../lib/lua/5.1/socket.so ../lib/lua/5.1/mime.so ../lib/lua/5.1/zipfilter.so
+	rm ../lib/lua/5.1/cjson.so ../lib/lua/5.1/lxp.so ../lib/lua/5.1/lfs.so ../lib/lua/5.1/socket.so ../lib/lua/5.1/mime.so ../lib/lua/5.1/zipfilter.so ../lib/lua/5.1/md5.so ../lib/lua/5.1/sha1.so
 
