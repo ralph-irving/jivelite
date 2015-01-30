@@ -38,7 +38,11 @@ extern int luaopen_visualizer(lua_State *L);
 ** Try relative path to binary first then fixed path to system install
 */
 #define LUA_DEFAULT_REL_PATH "../share/jive"
+#ifdef __sun
+#define LUA_DEFAULT_FIX_PATH "/opt/jivelite/share/jive"
+#else
 #define LUA_DEFAULT_FIX_PATH "/usr/share/jive"
+#endif
 
 
 /* GLOBALS

@@ -1,0 +1,20 @@
+# Jivelite makefile
+
+# set PREFIX for location of luajit include and libs
+PREFIX ?= /home/paddockd/source/jivelite
+
+all: srcs libs
+
+srcs:
+	cd src; PREFIX=$(PREFIX) make -f Makefile.solaris
+
+libs: lib
+
+lib:
+	cd lib-src; PREFIX=$(PREFIX) make -f Makefile.solaris
+
+clean:
+	rm -Rf lib
+	cd src; make -f Makefile.solaris clean
+	cd lib-src; make -f Makefile.solaris clean
+

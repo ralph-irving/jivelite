@@ -1,0 +1,17 @@
+#------
+# LuaSocket makefile platform specific configuration
+#
+
+
+#------
+# Compiler and linker settings
+# for Linux
+#CC=gcc
+#DEF=-DLUASOCKET_DEBUG 
+MYCFLAGS= -I$(PREFIX)/include $(LUAINC) -I$(COMPAT) $(DEF) -pedantic -Wall -O2 -fpic
+MYLDFLAGS=-O -fpic -shared -L$(PREFIX)/lib -R$(PREFIX)/lib
+#LD=gcc 
+
+#------
+# End of makefile platform specific configuration
+#

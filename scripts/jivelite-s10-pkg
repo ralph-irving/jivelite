@@ -1,0 +1,84 @@
+#!/bin/ksh
+#
+PKGNAME=SUNWjivelite
+SVNVER=`cd $HOME/source/jivelite; (svnversion | gsed -e 's/[MS]//g')`
+VERSION=0.1.0.${SVNVER}
+SAVEDIR=`pwd`
+HOSTNAME=`uname -n`
+startdir=$HOME/source/jivelite
+
+if [ -d $startdir/pkg ]; then
+	rm -rf pkg
+fi
+
+cd $startdir
+mkdir -p pkg/jivelite/bin
+cp -p bin/jivelite pkg/jivelite/bin
+cp -pr share pkg/jivelite
+tar -cf - lib | (cd $startdir/pkg/jivelite; tar -xf -)
+cd $startdir/pkg || return 1
+rm jivelite/lib/libSDLmain.a
+find jivelite -name '.svn' -exec rm -rf {} \;
+setrpath jivelite/lib/libexpat.so.1.5.2 "/opt/jivelite/lib"
+setrpath jivelite/lib/liblua.so "/opt/jivelite/lib"
+setrpath jivelite/lib/libfreetype.so.6.3.8 "/opt/jivelite/lib"
+setrpath jivelite/lib/libpng.so.3.32.0 "/opt/jivelite/lib"
+setrpath jivelite/lib/libpng12.so.0.32.0 "/opt/jivelite/lib"
+setrpath jivelite/lib/libSDL_gfx.so.13.9.1 "/opt/jivelite/lib"
+setrpath jivelite/lib/libSDL_image-1.2.so.0.1.4 "/opt/jivelite/lib"
+setrpath jivelite/lib/libSDL_ttf-2.0.so.0.6.2 "/opt/jivelite/lib"
+setrpath jivelite/lib/libSDL-1.2.so.0.11.4 "/opt/jivelite/lib"
+setrpath jivelite/lib/libz.so.1.2.7 "/opt/jivelite/lib"
+setrpath jivelite/lib/lua/5.1/cjson.so "/opt/jivelite/lib"
+setrpath jivelite/lib/lua/5.1/lxp.so "/opt/jivelite/lib"
+setrpath jivelite/lib/lua/5.1/lfs.so "/opt/jivelite/lib"
+setrpath jivelite/lib/lua/5.1/md5.so "/opt/jivelite/lib"
+setrpath jivelite/lib/lua/5.1/sha1.so "/opt/jivelite/lib"
+setrpath jivelite/lib/lua/5.1/socket.so "/opt/jivelite/lib"
+setrpath jivelite/lib/lua/5.1/mime.so "/opt/jivelite/lib"
+setrpath jivelite/lib/lua/5.1/zipfilter.so "/opt/jivelite/lib"
+cd $startdir/pkg/jivelite/lib/lua
+find 5.1 -type f -name '*\.so' -exec strip {} \;
+cd $startdir/pkg/jivelite
+strip bin/jivelite
+setrpath bin/jivelite "/opt/jivelite/lib"
+gpatch -p0 -i $startdir/scripts/remove-ffi.patch || return 1
+
+cd $startdir/pkg
+
+echo "CLASSES=none" > pkginfo
+echo "BASEDIR=/opt" >> pkginfo
+echo "LANG=C" >> pkginfo
+echo "TZ=Canada/Eastern" >> pkginfo
+echo "PATH=/sbin:/usr/sbin:/usr/bin:/usr/sadm/install/bin" >> pkginfo
+echo "OAMBASE=/usr/sadm/sysadm" >> pkginfo
+echo "ARCH=sparc" >> pkginfo
+echo "PKG=${PKGNAME}" >> pkginfo
+echo "NAME=jivelite - client for the logitech streaming media server" >> pkginfo
+echo "VERSION=${VERSION},REV=`date '+%Y.%m.%d'`" >> pkginfo
+echo "CATEGORY=application" >> pkginfo
+echo "VENDOR=https://github.com/ralph-irving packaged by Ralph Irving" >> pkginfo
+echo "HOTLINE=https://github.com/ralph-irving/jivelite/issues" >> pkginfo
+echo "EMAIL=ralph_irving@hotmail.com" >> pkginfo
+echo "PSTAMP=${HOSTNAME%%.*}`date +'%Y%m%d%H%M%S'`" >> pkginfo
+echo "PKGSAV=/var/sadm/pkg/${PKGNAME}/save" >> pkginfo
+
+echo 'i pkginfo=pkginfo' > prototype
+id | sed 's/uid=[0-9]*(//' | sed 's/).*//' > uid.tmp
+id | sed 's/.*(//' | sed 's/)//' > gid.tmp
+find . \! -name pkginfo -a \! -name prototype | \
+pkgproto | sed "s/ `cat uid.tmp`/ root/" | \
+sed "s| `cat gid.tmp`| bin|" | \
+sed "s|f none uid.tmp 0644 root bin||" | \
+sed "s|f none gid.tmp 0644 root bin||" \
+>> prototype
+rm -f uid.tmp gid.tmp
+
+pkgmk -o -r `pwd` -a `uname -m` -v ${VERSION}
+cd /var/spool/pkg
+echo "1" | pkgtrans -s `pwd` ${HOME}/source/packages/${PKGNAME}-${VERSION}.pkg
+rm -rf ${PKGNAME}
+cd $startdir/pkg
+rm pkginfo
+rm prototype
+cd ${SAVEDIR}

@@ -1,0 +1,22 @@
+--- share/jive/jive/net/Process.lua.orig	2015-01-26 11:17:02.000000000 -0500
++++ share/jive/jive/net/Process.lua	2015-01-29 11:18:29.256990000 -0500
+@@ -11,9 +11,6 @@
+ local debug           = require("jive.utils.debug")
+ local log             = require("jive.utils.log").logger("net.socket")
+ 
+--- use ffi as luajit does not appear to support fileno as a method for io objects
+-local ffi             = require("ffi")
+-ffi.cdef[[int fileno(void *)]]
+ 
+ module(..., oo.class)
+ 
+@@ -78,8 +75,7 @@
+ end
+ 
+ function getfd(self)
+-	--return self.fh:fileno()
+-	return ffi.C.fileno(self.fh)
++	return self.fh:fileno()
+ end
+ 
+ 
