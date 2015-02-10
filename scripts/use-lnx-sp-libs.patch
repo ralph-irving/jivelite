@@ -1,0 +1,146 @@
+Index: src/Makefile
+===================================================================
+--- src/Makefile	(revision 549)
++++ src/Makefile	(working copy)
+@@ -1,8 +1,8 @@
+ LDFLAGS ?= -lrt
+ SOURCES ?= platform_linux.c
+ 
+-CFLAGS  += -I. -I$(PREFIX)/include/luajit-2.0 -I/usr/include/SDL -Wall -fPIC
+-LDFLAGS += -lSDL -lSDL_ttf -lSDL_image -lSDL_gfx -lluajit-5.1 -lm -lpthread
++CFLAGS  += -I. -I$(PREFIX)/include -I$(PREFIX)/include/SDL -s -Wall -fPIC -DOPTJIVELITE
++LDFLAGS += -lSDL -lSDL_ttf -lSDL_image -lSDL_gfx -L/opt/jivelite/lib -L$(PREFIX)/lib -llua -lm -lpthread
+ EXE = ../bin/jivelite
+ 
+ DEPS    = jive.h common.h log.h version.h
+Index: src/jive.c
+===================================================================
+--- src/jive.c	(revision 549)
++++ src/jive.c	(working copy)
+@@ -38,7 +38,7 @@
+ ** Try relative path to binary first then fixed path to system install
+ */
+ #define LUA_DEFAULT_REL_PATH "../share/jive"
+-#ifdef __sun
++#if defined(__sun) || defined(OPTJIVELITE)
+ #define LUA_DEFAULT_FIX_PATH "/opt/jivelite/share/jive"
+ #else
+ #define LUA_DEFAULT_FIX_PATH "/usr/share/jive"
+Index: lib-src/luaexpat-1.2.0/config
+===================================================================
+--- lib-src/luaexpat-1.2.0/config	(revision 549)
++++ lib-src/luaexpat-1.2.0/config	(working copy)
+@@ -4,7 +4,7 @@
+ # System's lua directory (where Lua libraries are installed)
+ LUA_DIR= $(PREFIX)/share/lua/5.1
+ # Lua includes directory
+-LUA_INC= $(PREFIX)/include/luajit-2.0
++LUA_INC= $(PREFIX)/include
+ 
+ # OS dependent
+ #LIB_OPTION= -shared #for Linux
+Index: lib-src/lua-cjson-2.1.0/Makefile
+===================================================================
+--- lib-src/lua-cjson-2.1.0/Makefile	(revision 549)
++++ lib-src/lua-cjson-2.1.0/Makefile	(working copy)
+@@ -13,12 +13,12 @@
+ ##### Build defaults #####
+ LUA_VERSION =       5.1
+ TARGET =            cjson.so
+-PREFIX =            /usr/local
++PREFIX =            /opt/squeezeplay
+ #CFLAGS =            -g -Wall -pedantic -fno-inline
+-CFLAGS =            -O3 -Wall -pedantic -DNDEBUG
++CFLAGS =            -s -O3 -Wall -pedantic -DNDEBUG
+ CJSON_CFLAGS =      -fpic
+ #CJSON_LDFLAGS =     -shared
+-LUA_INCLUDE_DIR =   $(PREFIX)/include/luajit-2.0
++LUA_INCLUDE_DIR =   $(PREFIX)/include
+ LUA_CMODULE_DIR =   $(PREFIX)/lib/lua/$(LUA_VERSION)
+ LUA_MODULE_DIR =    $(PREFIX)/share/lua/$(LUA_VERSION)
+ LUA_BIN_DIR =       $(PREFIX)/bin
+Index: lib-src/luamd5/Makefile
+===================================================================
+--- lib-src/luamd5/Makefile	(revision 549)
++++ lib-src/luamd5/Makefile	(working copy)
+@@ -2,7 +2,7 @@
+ 
+ # change these to reflect your Lua installation
+ #LUA= /tmp/lhf/lua-5.1.4
+-LUAINC= $(PREFIX)/include/luajit-2.0
++LUAINC= $(PREFIX)/include
+ LUALIB= $(LUA)/lib
+ LUABIN= $(LUA)/bin
+ 
+Index: lib-src/luasocket-2.0.2/config
+===================================================================
+--- lib-src/luasocket-2.0.2/config	(revision 549)
++++ lib-src/luasocket-2.0.2/config	(working copy)
+@@ -18,7 +18,7 @@
+ #LUAINC=-I/usr/local/include/lua50
+ #LUAINC=-I/usr/local/include/lua5.1
+ #LUAINC=-Ilua-5.1.1/src
+-LUAINC=-I$(PREFIX)/include/luajit-2.0
++LUAINC=-I$(PREFIX)/include
+ 
+ #------
+ # Compat-5.1 directory
+Index: lib-src/luafilesystem-1.6.2/config
+===================================================================
+--- lib-src/luafilesystem-1.6.2/config	(revision 549)
++++ lib-src/luafilesystem-1.6.2/config	(working copy)
+@@ -1,13 +1,13 @@
+ # Installation directories
+ 
+ # Default installation prefix
+-PREFIX=/usr/local
++PREFIX=/opt/squeezeplay
+ 
+ # System's libraries directory (where binary libraries are installed)
+-LUA_LIBDIR= $(PREFIX)/lib/lua/5.1
++LUA_LIBDIR= /opt/jivelite/lib/lua/5.1:$(PREFIX)/lib/lua/5.1
+ 
+ # Lua includes directory
+-LUA_INC= $(PREFIX)/include/luajit-2.0
++LUA_INC= $(PREFIX)/include
+ 
+ # OS dependent
+ #LIB_OPTION= -shared #for Linux
+Index: lib-src/luazipfilter/Makefile
+===================================================================
+--- lib-src/luazipfilter/Makefile	(revision 549)
++++ lib-src/luazipfilter/Makefile	(working copy)
+@@ -1,5 +1,5 @@
+-CFLAGS  = -O2 -I$(PREFIX)/include/luajit-2.0 -fPIC
+-LDFLAGS = $(MYLDFLAGS) -lz
++CFLAGS  = -s -O2 -I$(PREFIX)/include -fPIC
++LDFLAGS = $(MYLDFLAGS) -lz -L/opt/jivelite/lib -L/opt/squeezeplay/lib
+ 
+ SOURCES = luazipfilter.c
+ LIB = zipfilter.so
+Index: lib-src/Makefile
+===================================================================
+--- lib-src/Makefile	(revision 549)
++++ lib-src/Makefile	(working copy)
+@@ -2,7 +2,7 @@
+ # NB - repo has modified paths which assume use of luajit2.0 from source
+ 
+ TARGET   ?= linux
+-LD_FLAGS ?= "-shared"
++LD_FLAGS ?= "-shared -L/opt/jivelite/lib -L/opt/squeezeplay/lib"
+ 
+ LIBS = cjson luaexpat luafilesystem luamd5 luasocket luazipfilter
+ 
+Index: Makefile
+===================================================================
+--- Makefile	(revision 549)
++++ Makefile	(working copy)
+@@ -1,7 +1,7 @@
+ # Jivelite makefile
+ 
+ # set PREFIX for location of luajit include and libs
+-PREFIX ?= /usr/local
++PREFIX ?= /opt/squeezeplay
+ 
+ all: srcs libs
+ 
