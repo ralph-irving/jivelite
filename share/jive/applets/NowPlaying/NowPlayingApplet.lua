@@ -110,6 +110,7 @@ local function _getIcon(self, item, icon, remote)
 	end
 
 	if iconId then
+		log:debug(":_getIcon ",iconId,",", icon,",", ARTWORK_SIZE )
 		-- Fetch an image from SlimServer
 		server:fetchArtwork(iconId, icon, ARTWORK_SIZE) 
 	elseif item and item["params"] and item["params"]["track_id"] then
@@ -209,8 +210,9 @@ function getNPStyles(self)
 		end
 	end
 
-	-- for debug
-	--debug.dump(auditedNPStyles)
+	if log:isDebug() then
+		debug.dump(auditedNPStyles)
+	end
 
 	return auditedNPStyles
 end
@@ -654,8 +656,15 @@ end
 
 
 function notify_skinSelected(self)
+	log:debug("notify_skinSelected")
 	-- update menu
 	notify_playerCurrent(self, self.player)
+	-- update NP style info.
+	self.nowPlayingScreenStyles = self:getNPStyles()
+	if self.window and self.player then
+		-- redisplay with no extra transition
+		self:replaceNPWindow(true)
+	end
 end
 
 
@@ -1332,7 +1341,7 @@ function toggleNPScreenStyle(self)
 end
 
 
-function replaceNPWindow(self)
+function replaceNPWindow(self,noTrans)
 	log:debug("REPLACING NP WINDOW")
 	local oldWindow = self.window
 
@@ -1343,9 +1352,7 @@ function replaceNPWindow(self)
 		self:_updateShuffle(self.player:getPlayerStatus()['playlist shuffle'])
 	end
 	self:_refreshRightButton()
-	self.window:replace(oldWindow, Window.transitionFadeIn)
-
-
+	self.window:replace(oldWindow, noTrans and Window.transitionNone or Window.transitionFadeIn)
 end
 
 
@@ -1962,5 +1969,4 @@ function free(self)
 
 	return true
 end
-
 
