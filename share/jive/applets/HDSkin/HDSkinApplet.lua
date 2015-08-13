@@ -62,6 +62,7 @@ local fontpath = "fonts/"
 local FONT_NAME = "FreeSans"
 local BOLD_PREFIX = "Bold"
 
+local coverSize = 900 -- default value, change by calling skin
 
 function init(self)
 	self.images = {}
@@ -72,7 +73,6 @@ function init(self)
 	self.tiles = {}
 end
 
-local coverSize = 900 -- default value, change by calling skin
 
 function param(self)
 	return {
@@ -219,32 +219,48 @@ end
 
 -- skin
 -- The meta arranges for this to be called to skin the interface.
-function skin_1080p(self, s)
-	Framework:setVideoMode(1920, 1080, 0, false)
-	self:skin(s)
+-- FIXME for full skin info....
+function skin_1080p(self, s, reload, useDefaultSize)
+	self:skin_dxdy(s,reload,useDefaultSize,1920,1080)
 end
 
-function skin_720p(self, s)
-	Framework:setVideoMode(1280, 720, 0, false)
-	self:skin(s)
+function skin_720p(self, s, reload, useDefaultSize)
+	self:skin_dxdy(s,reload,useDefaultSize,1280,720)
 end
 
 function skin_1280_1024(self, s)
-	Framework:setVideoMode(1280, 1024, 0, false)
-	self:skin(s)
+	self:skin_dxdy(s,reload,useDefaultSize,1280,1024)
+end
+
+function skin_800_480(self, s)
+	self:skin_dxdy(s,reload,useDefaultSize,800,480)
 end
 
 -- this is the startup screen - not intended to be used beyond this
 function skin_vga(self, s)
-	Framework:setVideoMode(640, 480, 0, false)
-	self:skin(s)
+	self:skin_dxdy(s,reload,useDefaultSize,640,480)
 end
 
-function skin(self, s)
-	local screenWidth, screenHeight = Framework:getScreenSize()
+function skin_dxdy(self, s, reload, useDefaultSize,dx,dy)
+	local screenWidth, screenHeight = dx, dy
+	if not useDefaultSize then
+                screenWidth, screenHeight = Framework:getScreenSize()
+        end
+	self:skin(s,screenWidth,screenHeight)
+	if useDefaultSize then
+		Framework:setVideoMode(screenWidth,screenHeight, 0, false)
+	end
+	screenWidth, screenHeight = Framework:getScreenSize()
+	if (screenWidth ~= dx or screenHeight ~= dy) and useDefaultSize then
+		log:warn("skin_dxdy but...",screenWidth,"x",screenHeight, " rather than ",dx,"x",dy)
+		self:skin(s,screenWidth,screenHeight)
+	end
+end
 
-	--init lastInputType so selected item style is not shown on skin load
-	Framework.mostRecentInputType = "mouse"
+function skin(self, s, screenWidth, screenHeight, reload)
+
+	--init lastInputType so selected item style is shown on skin load
+	Framework.mostRecentInputType = "ir"
 
 	-- skin
 	local thisSkin = 'remote'
@@ -647,8 +663,8 @@ function skin(self, s)
 	local ALBUMMENU_FONT_SIZE = 32
 	local ALBUMMENU_SMALL_FONT_SIZE = 24
 	local TEXTMENU_FONT_SIZE = 40
-	local POPUP_TEXT_SIZE_1 = 34
-	local POPUP_TEXT_SIZE_2 = 26
+	local POPUP_TEXT_SIZE_1 = 42
+	local POPUP_TEXT_SIZE_2 = 36
 	local TRACK_FONT_SIZE = 18
 	local TEXTAREA_FONT_SIZE = 18
 	local CENTERED_TEXTAREA_FONT_SIZE = 28
@@ -670,7 +686,7 @@ function skin(self, s)
 	local smallSpinny = {
 		img = _loadImage(self, "Alerts/wifi_connecting_med.png"),
 		frameRate = 8,
-		frameWidth = 26,
+		frameWidth = 32,
 		padding = 0,
 		h = WH_FILL,
 	}
