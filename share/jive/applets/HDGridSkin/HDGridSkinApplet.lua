@@ -647,8 +647,8 @@ function skin(self, s)
 	local ALBUMMENU_FONT_SIZE = 32
 	local ALBUMMENU_SMALL_FONT_SIZE = 24
 	local TEXTMENU_FONT_SIZE = 40
-	local POPUP_TEXT_SIZE_1 = 42
-	local POPUP_TEXT_SIZE_2 = 36
+	local POPUP_TEXT_SIZE_1 = 34
+	local POPUP_TEXT_SIZE_2 = 26
 	local TRACK_FONT_SIZE = 18
 	local TEXTAREA_FONT_SIZE = 18
 	local CENTERED_TEXTAREA_FONT_SIZE = 28
@@ -2422,10 +2422,8 @@ function skin(self, s)
 		w = 146,
 	}
 
-	--local no_artwork_iconG = _loadImage(self, "IconsResized/icon_album_noart" .. skinSuffix ):resize(THUMB_SIZE_G, THUMB_SIZE_G)
-	--local no_artwork_iconL = _loadImage(self, "IconsResized/icon_album_noart" .. skinSuffix ):resize(THUMB_SIZE_L, THUMB_SIZE_L)
-	local no_artwork_iconG = _loadImage(self, "IconsResized/icon_album_noart" .. skinSuffix )
-	local no_artwork_iconL = _loadImage(self, "IconsResized/icon_album_noart" .. skinSuffix )
+	local no_artwork_iconG = _loadImage(self, "IconsResized/icon_album_noart" .. skinSuffix ):resize(THUMB_SIZE_G, THUMB_SIZE_G)
+	local no_artwork_iconL = _loadImage(self, "IconsResized/icon_album_noart" .. skinSuffix ):resize(THUMB_SIZE_L, THUMB_SIZE_L)
 
 	-- icon for albums with no artwork
 	s.icon_no_artwork = {
