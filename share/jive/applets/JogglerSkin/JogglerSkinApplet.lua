@@ -2453,6 +2453,8 @@ function skin(self, s)
 		align = 'center',
 	}
 
+	s.icon_no_artwork_playlist = _uses(s.icon_no_artwork)
+
 	s.icon_connecting = _uses(_icon, {
 		img = _loadImage(self, "Alerts/wifi_connecting.png"),
 		frameRate = 8,
