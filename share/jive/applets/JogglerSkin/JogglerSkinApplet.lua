@@ -281,7 +281,7 @@ function skin(self, s)
 	local deleteKeyPressedBackground = _loadImageTile(self,  imgpath .. "Buttons/button_delete_text_entry_press.png")
         local helpTextBackground  = _loadImageTile(self, imgpath .. "Titlebar/tbar_dropdwn_bkrgd.png")
 
-
+	local blackBackground   = Tile:fillColor(0x000000ff)
 	local nocturneWallpaper = _loadImageTile(self, "applets/SetupWallpaper/wallpaper/fab4_nocturne.png")
 
 	--FIXME, _r asset here doesn't work...it's supposed to have a fadeout effect and it doesn't appear on screen
@@ -3158,7 +3158,7 @@ function skin(self, s)
 	
 	s.nowplaying_art_only = _uses(s.nowplaying, {
 
-		bgImg = nocturneWallpaper,
+		bgImg            = blackBackground,
 		title            = { hidden = 1 },
 		nptitle          = { hidden = 1 },
 		npcontrols       = { hidden = 1 },
