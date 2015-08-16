@@ -94,6 +94,7 @@ end
 function param(self)
         return {
 		THUMB_SIZE = 40,
+		THUMB_SIZE_MENU = 40,
 		NOWPLAYING_MENU = true,
 		-- NOWPLAYING_TRACKINFO_LINES used in assisting scroll behavior animation on NP
 		-- 3 is for a three line track, artist, and album (e.g., SBtouch)
@@ -1648,15 +1649,6 @@ function skin(self, s)
 		},
 	})
 
-	s.home_menu.menu.item.icon_no_artwork = {
-		img = _loadImage(self, "IconsResized/icon_loading" .. skinSuffix ),
-		h   = THUMB_SIZE,
-		padding = MENU_ITEM_ICON_PADDING,
-		align = 'center',
-	}
-	s.home_menu.menu.selected.item.icon_no_artwork = s.home_menu.menu.item.icon_no_artwork
-	s.home_menu.menu.locked.item.icon_no_artwork = s.home_menu.menu.item.icon_no_artwork
-
 	-- icon_list window
 	s.icon_list = _uses(s.window, {
 		menu = {
@@ -1840,56 +1832,7 @@ function skin(self, s)
 	})
 
 	--playlist window
-	-- identical to icon_list but with some different formatting on the text
-	s.play_list = _uses(s.icon_list, {
-		menu = {
-			item = {
-				text = {
-					padding = MENU_PLAYLISTITEM_TEXT_PADDING,
-					line = {
-						{
-							font = _boldfont(ALBUMMENU_FONT_SIZE),
-							height = ALBUMMENU_FONT_SIZE
-						},
-						{
-							height = ALBUMMENU_SMALL_FONT_SIZE + 2
-						},
-						{
-							height = ALBUMMENU_SMALL_FONT_SIZE + 2
-						},
-					},	
-				},
-			},
-		},
-	})
-	s.play_list.menu.item_checked = _uses(s.play_list.menu.item, {
-		order = { 'icon', 'text', 'check', 'arrow' },
-		check = {
-			align = ITEM_ICON_ALIGN,
-			padding = CHECK_PADDING,
-			img = _loadImage(self, "Icons/icon_check_5line.png")
-		},
-	})
-	s.play_list.menu.selected = {
-                item = _uses(s.play_list.menu.item, {
-			bgImg = fiveItemSelectionBox
-		}),
-                item_checked = _uses(s.play_list.menu.item_checked, {
-			bgImg = fiveItemSelectionBox
-		}),
-        }
-        s.play_list.menu.pressed = {
-                item = _uses(s.play_list.menu.item, { bgImg = fiveItemPressedBox }),
-                item_checked = _uses(s.play_list.menu.item_checked, { bgImg = fiveItemPressedBox }),
-        }
-	s.play_list.menu.locked = {
-		item = _uses(s.play_list.menu.pressed.item, {
-			arrow = smallSpinny
-		}),
-		item_checked = _uses(s.play_list.menu.pressed.item_checked, {
-			arrow = smallSpinny
-		}),
-	}
+	 s.play_list = _uses(s.icon_list)
 
 	-- toast_popup popup (is now text only)
 	s.toast_popup_textarea = {
