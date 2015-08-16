@@ -100,7 +100,7 @@ function param(self)
 		-- 3 is for a three line track, artist, and album (e.g., SBtouch)
 		-- 2 is for a two line track, artist+album (e.g., SBradio, SBcontroller)
 		NOWPLAYING_TRACKINFO_LINES = 3,
-		POPUP_THUMB_SIZE = 100,
+		POPUP_THUMB_SIZE = 120,
 		radialClock = {
 			hourTickPath     = 'applets/JogglerSkin/images/Clocks/Radial/radial_ticks_hr_on.png',
 			minuteTickPath   = 'applets/JogglerSkin/images/Clocks/Radial/radial_ticks_min_on.png',
@@ -721,7 +721,9 @@ function skin(self, s)
 	local addArrow  = { 
 		img = _loadImage(self, "Icons/selection_add_3line_off.png"),
 	}
-
+	local favItem  = { 
+		img = _loadImage(self, "Icons/icon_toolbar_fav.png"),
+	}
 
 	---- REVIEWED BELOW THIS LINE ----
 
@@ -2075,6 +2077,14 @@ function skin(self, s)
 
 		},
 	}
+
+	s.context_menu.menu.item_fav = _uses(s.context_menu.menu.item, {
+		arrow = {img = favItem.img},
+	})
+
+	s.context_menu.menu.selected.item_fav = _uses(s.context_menu.menu.selected.item, {
+		arrow = {img = favItem.img},
+	})
 	
 	s.context_menu.menu.item_play = _uses(s.context_menu.menu.item, {
 		order = { 'text' },
