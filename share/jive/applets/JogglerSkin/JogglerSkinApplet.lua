@@ -680,8 +680,8 @@ function skin(self, s)
 
 	local CM_MENU_HEIGHT = 45
 
-	local TEXTINPUT_FONT_SIZE = 40
-	local TEXTINPUT_SELECTED_FONT_SIZE = 24
+	local TEXTINPUT_FONT_SIZE = 60
+	local TEXTINPUT_SELECTED_FONT_SIZE = 68
 
 	local HELP_FONT_SIZE = 18
 	local UPDATE_SUBTEXT_SIZE = 20
@@ -1110,13 +1110,13 @@ function skin(self, s)
 	-- text input
 	s.textinput = {
 		h = 72,
-		padding = { 12, 0, 12, 0 },
+		padding = { 24, 0, 24, 0 },
 		font = _boldfont(TEXTINPUT_FONT_SIZE),
-		cursorFont = _boldfont(TEXTINPUT_FONT_SIZE),
+		cursorFont = _boldfont(TEXTINPUT_SELECTED_FONT_SIZE),
 		wheelFont = _boldfont(TEXTINPUT_FONT_SIZE),
 		charHeight = TEXTINPUT_SELECTED_FONT_SIZE,
 		fg = TEXT_COLOR_BLACK,
-		charOffsetY = 8,
+		charOffsetY = 32,
 		wh = { 0x55, 0x55, 0x55 },
 		cursorImg = textinputCursor,
 	}
