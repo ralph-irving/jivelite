@@ -3554,6 +3554,7 @@ function skin(self, s)
                 sh = TEXT_SH_COLOR,
         }
 
+	return s
 
 end
 
