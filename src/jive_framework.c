@@ -858,7 +858,7 @@ int jiveL_set_video_mode(lua_State *L) {
 	/* update video mode */
 	srf = jive_surface_set_video_mode(w, h, bpp, isfull);
 	if (!srf) {
-		fprintf(stderr, "Video mode not supported: %dx%d\n", w, h);
+		LOG_ERROR(log_ui_draw, "Video mode not supported: %dx%d\n", w, h);
 
 		SDL_Quit();
 		exit(-1);
