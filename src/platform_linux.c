@@ -43,9 +43,9 @@ char *platform_get_mac_address() {
     struct ifreq ifreq;
     struct ifreq ifs[4];
     char *utmac;
-	u8_t mac[6];
+    u8_t mac[6];
 
-	mac[0] = mac[1] = mac[2] = mac[3] = mac[4] = mac[5] = 0;
+    mac[0] = mac[1] = mac[2] = mac[3] = mac[4] = mac[5] = 0;
 
     int s = socket(AF_INET, SOCK_DGRAM, 0);
  
@@ -69,9 +69,9 @@ char *platform_get_mac_address() {
 		}
 	}
 
-	close(s);
+    close(s);
 
-	char *macaddr = malloc(18);
+    char *macaddr = malloc(18);
 
     utmac = getenv("UTMAC");
     if (utmac)
