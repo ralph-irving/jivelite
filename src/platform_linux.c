@@ -42,6 +42,7 @@ char *platform_get_mac_address() {
     struct ifreq *ifr, *ifend;
     struct ifreq ifreq;
     struct ifreq ifs[4];
+    char *utmac;
 	u8_t mac[6];
 
 	mac[0] = mac[1] = mac[2] = mac[3] = mac[4] = mac[5] = 0;
@@ -71,6 +72,15 @@ char *platform_get_mac_address() {
 	close(s);
 
 	char *macaddr = malloc(18);
+
+    utmac = getenv("UTMAC");
+    if (utmac)
+    {
+        if ( strlen(utmac) == 17 )
+        {
+            sscanf(utmac,"%2hhx:%2hhx:%2hhx:%2hhx:%2hhx:%2hhx", &mac[0],&mac[1],&mac[2],&mac[3],&mac[4],&mac[5]);
+        }
+    }
 
     sprintf(macaddr, "%02x:%02x:%02x:%02x:%02x:%02x", mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
 
