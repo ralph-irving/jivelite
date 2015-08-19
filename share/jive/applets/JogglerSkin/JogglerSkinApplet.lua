@@ -2077,6 +2077,34 @@ function skin(self, s)
 
 		},
 	}
+	
+	s.context_menu.menu.item_play = _uses(s.context_menu.menu.item, {
+		arrow = {img = playArrow.img},
+	})
+	s.context_menu.menu.selected.item_play = _uses(s.context_menu.menu.selected.item, {
+		arrow = {img = playArrow.img},
+	})
+
+	s.context_menu.menu.item_insert = _uses(s.context_menu.menu.item, {
+		arrow = {img = addArrow.img},
+	})
+	s.context_menu.menu.selected.item_insert = _uses(s.context_menu.menu.selected.item, {
+		arrow = {img = addArrow.img},
+	})
+
+	s.context_menu.menu.item_add = _uses(s.context_menu.menu.item, {
+		arrow = {img = addArrow.img},
+	})
+	s.context_menu.menu.selected.item_add = _uses(s.context_menu.menu.selected.item, {
+		arrow = {img = addArrow.img},
+	})
+
+	s.context_menu.menu.item_playall = _uses(s.context_menu.menu.item, {
+		arrow = {img = playArrow.img},
+	})
+	s.context_menu.menu.selected.item_playall = _uses(s.context_menu.menu.selected.item, {
+		arrow = {img = playArrow.img},
+	})
 
 	s.context_menu.menu.item_fav = _uses(s.context_menu.menu.item, {
 		arrow = {img = favItem.img},
@@ -2085,11 +2113,11 @@ function skin(self, s)
 	s.context_menu.menu.selected.item_fav = _uses(s.context_menu.menu.selected.item, {
 		arrow = {img = favItem.img},
 	})
-	
-	s.context_menu.menu.item_play = _uses(s.context_menu.menu.item, {
+
+	s.context_menu.menu.item_no_arrow = _uses(s.context_menu.menu.item, {
 		order = { 'text' },
 	})
-	s.context_menu.menu.selected.item_play = _uses(s.context_menu.menu.selected.item, {
+	s.context_menu.menu.selected.item_no_arrow = _uses(s.context_menu.menu.selected.item, {
 		order = { 'text' },
 	})
 
