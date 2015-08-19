@@ -2818,7 +2818,7 @@ function skin(self, s)
 		title = _uses(s.title, {
 			zOrder = 1,
 			text = {
-				font = _boldfont(TITLE_FONT_SIZE),
+				font = _boldfont(28),
 				bgImg   = titlebarButtonBox,
 			},
 			rbutton  = {
