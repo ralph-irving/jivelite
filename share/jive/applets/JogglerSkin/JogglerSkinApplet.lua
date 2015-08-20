@@ -669,6 +669,7 @@ function skin(self, s)
 
 	local TITLE_HEIGHT = 65
 	local TITLE_FONT_SIZE = 20
+	local TITLEBAR_FONT_SIZE = 28
 	local ALBUMMENU_FONT_SIZE = 25
 	local ALBUMMENU_SMALL_FONT_SIZE = 18
 	local TEXTMENU_FONT_SIZE = 25
@@ -819,7 +820,7 @@ function skin(self, s)
 			w = WH_FILL,
 			padding = TITLE_PADDING,
 			align = "center",
-			font = _boldfont(TITLE_FONT_SIZE),
+			font = _boldfont(TITLEBAR_FONT_SIZE),
 			fg = TEXT_COLOR,
 		}
 	}
@@ -1486,7 +1487,7 @@ function skin(self, s)
 		text = {
 			line = {
 				{
-					font = _boldfont(30),
+					font = _boldfont(TITLEBAR_FONT_SIZE),
 					height = 32,
 				},
 				{
@@ -2818,7 +2819,7 @@ function skin(self, s)
 		title = _uses(s.title, {
 			zOrder = 1,
 			text = {
-				font = _boldfont(28),
+				font = _boldfont(TITLEBAR_FONT_SIZE),
 				bgImg   = titlebarButtonBox,
 			},
 			rbutton  = {
