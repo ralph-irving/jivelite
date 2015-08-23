@@ -725,6 +725,7 @@ function skin(self, s)
 		img = _loadImage(self, "Icons/icon_toolbar_fav.png"),
 	}
 
+
 	---- REVIEWED BELOW THIS LINE ----
 
 --------- CONSTANTS ---------
@@ -1847,8 +1848,8 @@ function skin(self, s)
 		},
 	})
 
-	--playlist window
-	 s.play_list = _uses(s.icon_list)
+	-- playlist same as icon list
+	s.play_list = _uses(s.icon_list)
 
 	-- toast_popup popup (is now text only)
 	s.toast_popup_textarea = {
@@ -2123,7 +2124,6 @@ function skin(self, s)
 	s.context_menu.menu.item_fav = _uses(s.context_menu.menu.item, {
 		arrow = {img = favItem.img},
 	})
-
 	s.context_menu.menu.selected.item_fav = _uses(s.context_menu.menu.selected.item, {
 		arrow = {img = favItem.img},
 	})
@@ -3055,7 +3055,7 @@ function skin(self, s)
 				w = 290,
 				h = 50,
 				padding = { 0, 0, 0, 0 },
-		        position = LAYOUT_SOUTH,
+			        position = LAYOUT_SOUTH,
 				horizontal = 1,
 				bgImg = _songProgressBackground,
 				img = _songProgressBar,
