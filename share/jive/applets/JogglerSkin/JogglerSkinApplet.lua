@@ -3139,7 +3139,6 @@ function skin(self, s)
 		shuffleSong     = _uses(s.nowplaying.npcontrols.shuffleSong, { bgImg = keyMiddlePressed }),
 		shuffleMode     = _uses(s.nowplaying.npcontrols.shuffleMode, { bgImg = keyMiddlePressed }),
 		shuffleOff      = _uses(s.nowplaying.npcontrols.shuffleOff, { bgImg = keyMiddlePressed }),
-		shuffleDisabled = _uses(s.nowplaying.npcontrols.shuffleOff, { bgImg = keyMiddlePressed }),
 		volDown = _uses(s.nowplaying.npcontrols.volDown, { bgImg = keyMiddlePressed }),
 		volUp   = _uses(s.nowplaying.npcontrols.volUp, { bgImg = keyMiddlePressed }),
 
@@ -3151,6 +3150,8 @@ function skin(self, s)
 		hate        = _uses(s.nowplaying.npcontrols.hate, { bgImg = keyMiddlePressed }),
 		fwdDisabled = _uses(s.nowplaying.npcontrols.fwdDisabled),
 		rewDisabled = _uses(s.nowplaying.npcontrols.rewDisabled),
+		shuffleDisabled = _uses(s.nowplaying.npcontrols.shuffleDisabled),
+		repeatDisabled = _uses(s.nowplaying.npcontrols.repeatDisabled),
 	}
 	
 	s.nowplaying_art_only = _uses(s.nowplaying, {
