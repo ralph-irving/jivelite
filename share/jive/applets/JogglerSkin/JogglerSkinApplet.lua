@@ -2622,10 +2622,10 @@ function skin(self, s)
 		img = _loadImage(self, "IconsResized/icon_settings_adv" .. skinSuffix),
 	})
 	s.hm_radio = _uses(_buttonicon, {
-		img = _loadImage(self, "IconsResized/icon_internet_radio" .. skinSuffix),
+		img = _loadImage(self, "IconsResized/icon_tunein" .. skinSuffix),
 	})
 	s.hm_radios = _uses(_buttonicon, {
-		img = _loadImage(self, "IconsResized/icon_internet_radio" .. skinSuffix),
+		img = _loadImage(self, "IconsResized/icon_tunein" .. skinSuffix),
 	})
 	s.hm_myApps = _uses(_buttonicon, {
 		img = _loadImage(self, "IconsResized/icon_my_apps" .. skinSuffix),
