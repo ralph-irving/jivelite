@@ -3317,13 +3317,12 @@ function skin(self, s)
 			position = LAYOUT_NONE,
 			x = 73,
 			y = 5,
-			-- w = screenWidth - 0,
 			h = TITLE_HEIGHT,
 			border = { 0, 0 ,0, 0 },
 			padding = { 20, 14, 5, 5 },
 			nptrack = {
 				align = "center",
-	            w = screenWidth - 179,
+				w = screenWidth - 179,
 			},
 		},
 
