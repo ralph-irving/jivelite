@@ -3385,10 +3385,9 @@ function skin(self, s)
 		},
 
 		npprogressNB = {
-			x = screenWidth - 40,
-			y = TITLE_HEIGHT,
+			x = screenWidth - 80,
+			y = TITLE_HEIGHT + 22,
 			h = 38,
-			padding = { 0, 15, 0, 0 },
 		},
 	})
 	s.nowplaying_visualizer_common.npprogress.npprogressB_disabled = s.nowplaying_visualizer_common.npprogress.npprogressB
