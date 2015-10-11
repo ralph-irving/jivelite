@@ -282,7 +282,7 @@ function skin(self, s)
 	local deleteKeyPressedBackground = _loadImageTile(self,  imgpath .. "Buttons/button_delete_text_entry_press.png")
         local helpTextBackground  = _loadImageTile(self, imgpath .. "Titlebar/tbar_dropdwn_bkrgd.png")
 
-	local blackBackground   = Tile:fillColor(0x000000ff)
+	local nocturneWallpaper = _loadImageTile(self, "applets/SetupWallpaper/wallpaper/fab4_black.png")
 
 	--FIXME, _r asset here doesn't work...it's supposed to have a fadeout effect and it doesn't appear on screen
 	local fiveItemBox             = _loadHTile(self, {
@@ -719,7 +719,7 @@ function skin(self, s)
 		img = _loadImage(self, "Icons/selection_play_3line_on.png"),
 	}
 	local addArrow  = { 
-		img = _loadImage(self, "Icons/selection_add_3line_off.png"),
+		img = _loadImage(self, "Icons/selection_add_3line_on.png"),
 	}
 	local favItem  = { 
 		img = _loadImage(self, "Icons/icon_toolbar_fav.png"),
@@ -1480,11 +1480,11 @@ function skin(self, s)
 					order = { 'text', 'arrow', },
 				}
 			},
-                        locked = {
-                                item = {
-                                        order = { 'text', 'arrow', },
-                                }
-                        },
+			locked = {
+				item = {
+					order = { 'text', 'arrow', },
+				}
+			},
 		},
 	})
 
@@ -1980,23 +1980,23 @@ function skin(self, s)
 		layer = LAYER_TITLE,
 
 		multiline_text = {
-                        w = WH_FILL,
-                        h = 172,
-                        padding = { 18, 2, 14, 18 },
-                        border = { 0, 0, 6, 15 },
-                        lineHeight = 22,
-                        font = _font(18),
-                        fg = { 0xe6, 0xe6, 0xe6 },
-                        sh = { },
-                        align = "top-left",
-                        scrollbar = {
-                                h = 164,
-                                border = {0, 2, 2, 10},
-                        },
-                },
+            w = WH_FILL,
+            h = 172,
+            padding = { 18, 2, 14, 18 },
+            border = { 0, 0, 6, 15 },
+            lineHeight = 22,
+            font = _font(18),
+            fg = { 0xe6, 0xe6, 0xe6 },
+            sh = { },
+            align = "top-left",
+            scrollbar = {
+                h = 164,
+                border = {0, 2, 2, 10},
+            },
+        },
 
 		title = {
-		layer = LAYER_TITLE,
+			layer = LAYER_TITLE,
 			h = 52,
 			padding = {10,10,10,5},
 			bgImg = false,
@@ -2020,8 +2020,8 @@ function skin(self, s)
 				font = _boldfont(TITLE_FONT_SIZE),
 				fg = TEXT_COLOR,
 			},
-
 		},
+
 		menu = {
 			h = CM_MENU_HEIGHT * 8,
 			border = { 7, 0, 7, 0 },
@@ -2031,7 +2031,7 @@ function skin(self, s)
 			},
 			item = {
 				h = CM_MENU_HEIGHT,
-				order = { "icon", "text", "arrow" },
+				order = { "text", "arrow" },
 				padding = { ITEM_LEFT_PADDING, 0, 12, 0 },
 				text = {
 					padding = { 0, 4, 0, 0 },
@@ -2051,16 +2051,11 @@ function skin(self, s)
 					fg = TEXT_COLOR,
 					sh = TEXT_SH_COLOR,
 				},
-				icon = {
-					h = THUMB_SIZE,
-					padding = MENU_ITEM_ICON_PADDING,
-					align = 'center',
-				},
 				arrow = _uses(s.item.arrow),
 			},
 			selected = {
 				item = {
-					order = { "icon", "text", "arrow" },
+					order = { "text", "arrow" },
 					bgImg = fiveItemSelectionBox,
 					padding = { ITEM_LEFT_PADDING, 0, 12, 0 },
 					text = {
@@ -2080,11 +2075,6 @@ function skin(self, s)
 						},
 						fg = TEXT_COLOR,
 						sh = TEXT_SH_COLOR,
-					},
-					icon = {
-						h = THUMB_SIZE,
-						padding = MENU_ITEM_ICON_PADDING,
-						align = 'center',
 					},
 					arrow = _uses(s.item.arrow),
 				},
@@ -2179,12 +2169,7 @@ function skin(self, s)
 		layer = LAYER_TITLE,
 
      		title = {
-			layer = LAYER_TITLE,
-			w = WH_FILL,
-			h = 52,
-			--padding = { 0, 10, 0, 0 },
-			padding = { 10, 10, 10, 5 },
-			bgImg = false,
+			hidden = 1,
 		},
 
 		menu = {
@@ -2806,13 +2791,6 @@ function skin(self, s)
 		img = touchToolbarKeyDivider,		
 	})
 
-	-- This bit can be used to pad between controls and the volume slider, but I extended the slider instead, because I always want that in-between setting. ;)
-	-- local _transportVolumeBorder = _uses(_transportControlButton, {
-	--	w = 90,
-	--	padding = { 88, 0, 0, 0 },
-	--	img = touchToolbarKeyDivider,
-	-- })
-
 	s.toolbar_spacer = _uses(_transportControlButton, {
 		w = WH_FILL,
 	})
@@ -2855,6 +2833,7 @@ function skin(self, s)
 			h          = 32,
 			nptrack =  {
 				w          = screenWidth - _tracklayout.x - 10,
+				h          = WH_FILL,
 				align      = _tracklayout.align,
 				lineHeight = _tracklayout.lineHeight,
 				fg         = _tracklayout.fg,
@@ -3075,16 +3054,10 @@ function skin(self, s)
 				fg = { 0xe7, 0xe7, 0xe7 },
 				sh = { 0x37, 0x37, 0x37 },
 			},
-			elapsedSmall = {
-				w = WH_FILL,
-				align = "left",
-				font = _boldfont(18),
-				fg = { 0xe7, 0xe7, 0xe7 },
-				sh = { 0x37, 0x37, 0x37 },
-			},
 		},
 
 	})
+	s.nowplaying.npprogressNB.elapsedSmall = s.nowplaying.npprogressNB.elapsed
 
 	-- sliders
 	s.nowplaying.npprogress.npprogressB_disabled = _uses(s.nowplaying.npprogress.npprogressB, {
@@ -3137,7 +3110,7 @@ function skin(self, s)
 		repeatMode      = _uses(s.nowplaying.npcontrols.repeatMode, { bgImg = keyMiddlePressed }),
 		shuffleAlbum    = _uses(s.nowplaying.npcontrols.shuffleAlbum, { bgImg = keyMiddlePressed }),
 		shuffleSong     = _uses(s.nowplaying.npcontrols.shuffleSong, { bgImg = keyMiddlePressed }),
-		shuffleMode     = _uses(s.nowplaying.npcontrols.shuffleMode, { bgImg = keyMiddlePressed }),
+		shuffleMode      = _uses(s.nowplaying.npcontrols.shuffleMode, { bgImg = keyMiddlePressed }),
 		shuffleOff      = _uses(s.nowplaying.npcontrols.shuffleOff, { bgImg = keyMiddlePressed }),
 		volDown = _uses(s.nowplaying.npcontrols.volDown, { bgImg = keyMiddlePressed }),
 		volUp   = _uses(s.nowplaying.npcontrols.volUp, { bgImg = keyMiddlePressed }),
@@ -3156,7 +3129,7 @@ function skin(self, s)
 	
 	s.nowplaying_art_only = _uses(s.nowplaying, {
 
-		bgImg            = blackBackground,
+		bgImg            = nocturneWallpaper,
 		title            = { hidden = 1 },
 		nptitle          = { hidden = 1 },
 		npcontrols       = { hidden = 1 },
@@ -3185,39 +3158,36 @@ function skin(self, s)
 	s.nowplaying_art_only.pressed = s.nowplaying_art_only
 
 	s.nowplaying_text_only = _uses(s.nowplaying, {
-		nptitle = { 
-            x = 40,
-            y = TITLE_HEIGHT + 50,
-            nptrack = {
-                w = screenWidth - 65,
-            },
+		nptitle          = { 
+                        x          = 40,
+                        y          = TITLE_HEIGHT + 50,
+                        nptrack =  {
+                                w          = screenWidth - 65,
+                        },
 		},
-		npartistgroup = { 
-            x = 40,
-            y = TITLE_HEIGHT + 50 + 65,
-            npartist =  {
-                w = screenWidth - 65,
-            },
+		npartistgroup    = { 
+                        x          = 40,
+                        y          = TITLE_HEIGHT + 50 + 65,
+                        npartist =  {
+                                w          = screenWidth - 65,
+                        },
 		},
-		npalbumgroup = { 
-            x = 40,
-            y = TITLE_HEIGHT + 50 + 60 + 55,
-                npalbum =  {
-                    w = screenWidth - 65,
-            },
+		npalbumgroup     = { 
+                        x          = 40,
+                        y          = TITLE_HEIGHT + 50 + 60 + 55,
+                        npalbum =  {
+                                w          = screenWidth - 65,
+                        },
 		},
-
 		npartwork = { hidden = 1 },
 
 		npvisu = { hidden = 1 },
 		
-		-- Progress bar
 		npprogress = {
 			position = LAYOUT_NONE,
 			x = 50,
 			y = 300,
 			padding = { 0, 10, 0, 0 },
-			order = { "elapsed", "slider", "remain" },
 			elapsed = {
 				w = 80,
 				align = 'left',
@@ -3253,37 +3223,19 @@ function skin(self, s)
 			npprogressB = {
 				w = 540,
 				h = 50,
-				padding     = { 0, 0, 0, 0 },
+				padding = { 0, 0, 0, 0 },
 		                position = LAYOUT_SOUTH,
 				horizontal = 1,
 				bgImg = _songProgressBackground,
 				img = _songProgressBar,
 			},
 		},
-	
-		-- special style for when there shouldn't be a progress bar (e.g., internet radio streams)
 		npprogressNB = {
-			order = { "elapsed" },
-			position = LAYOUT_NONE,
 			x = 720,
 			y = TITLE_HEIGHT + 55,
-			elapsed = {
-				w = WH_FILL,
-				align = "left",
-				font = _boldfont(18),
-				fg = { 0xe7, 0xe7, 0xe7 },
-				sh = { 0x37, 0x37, 0x37 },
-			},
-			elapsedSmall = {
-				w = WH_FILL,
-				align = "left",
-				font = _boldfont(18),
-				fg = { 0xe7, 0xe7, 0xe7 },
-				sh = { 0x37, 0x37, 0x37 },
-			},
+			padding = { 0, 0, 0, 0 },
+			position = LAYOUT_NONE,
 		},
-
-
 	})
 	s.nowplaying_text_only.npprogress.npprogressB_disabled = _uses(s.nowplaying_text_only.npprogress.npprogressB, {
 		img = _songProgressBarDisabled,
@@ -3296,7 +3248,7 @@ function skin(self, s)
 	-- Visualizer: Container with titlebar, progressbar and controls.
 	--  The space between title and controls is used for the visualizer.
 	s.nowplaying_visualizer_common = _uses(s.nowplaying, {
-		bgImg = blackBackground,
+		bgImg = nocturneWallpaper,
 
 		npartistgroup = { hidden = 1 },
 		npalbumgroup = { hidden = 1 },
@@ -3311,18 +3263,18 @@ function skin(self, s)
 			},
 		}),
 
-		-- Drawn over regular info between buttons
+		-- Drawn over regular text between buttons
 		nptitle = { 
 			zOrder = 2,
 			position = LAYOUT_NONE,
 			x = 73,
 			y = 5,
+			w = screenWidth - 179,
 			h = TITLE_HEIGHT,
 			border = { 0, 0 ,0, 0 },
 			padding = { 20, 14, 5, 5 },
 			nptrack = {
 				align = "center",
-				w = screenWidth - 179,
 			},
 		},
 
@@ -3350,27 +3302,15 @@ function skin(self, s)
 			w = screenWidth - 30,
 			elapsed = {
 				w = 80,
-				-- align = 'left',
-				-- padding = 0,
-				-- border = 0,
 			},
 			remain = {
 				w = 80,
-				-- align = 'right',
-				-- padding = 0,
-				-- border = 0,
 			},
 			elapsedSmall = {
 				w = 80,
-				-- align = 'left',
-				-- padding = 0,
-				-- border = 0,
 			},
 			remainSmall = {
 				w = 80,
-				-- align = 'right',
-				-- padding = 0,
-				-- border = 0,
 			},
 			npprogressB = {
 				h = 29,
@@ -3380,7 +3320,7 @@ function skin(self, s)
 				horizontal = 1,
 				bgImg = false,
 				img = _vizProgressBar,
-                pillImg = _vizProgressBarPill,
+                		pillImg = _vizProgressBarPill,
 			},
 		},
 
