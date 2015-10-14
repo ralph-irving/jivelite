@@ -125,7 +125,10 @@ void copyResampled (SDL_Surface *dst, SDL_Surface *src,
 					}
 					pcontribution = xportion * yportion;
 
-					pixel = *((Uint32 *)src->pixels + ((int) sy + srcY) * src->pitch / 4 + ((int) sx + srcX));
+					pixel = bpp == 2
+						? *((Uint16 *)src->pixels + ((int) sy + srcY) * src->pitch / bpp + ((int) sx + srcX))
+						: *((Uint32 *)src->pixels + ((int) sy + srcY) * src->pitch / bpp + ((int) sx + srcX));
+
 					SDL_GetRGBA(pixel, src->format, &R, &G, &B, &A);
 
 					red   += R * pcontribution;
