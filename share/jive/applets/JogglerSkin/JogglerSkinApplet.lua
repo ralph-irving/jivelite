@@ -669,8 +669,8 @@ function skin(self, s)
 	local TITLE_HEIGHT = 65
 	local TITLE_FONT_SIZE = 20
 	local TITLEBAR_FONT_SIZE = 28
-	local ALBUMMENU_FONT_SIZE = 25
-	local ALBUMMENU_SMALL_FONT_SIZE = 18
+	local ALBUMMENU_FONT_SIZE = 20
+	local ALBUMMENU_SMALL_FONT_SIZE = 16
 	local TEXTMENU_FONT_SIZE = 25
 	local POPUP_TEXT_SIZE_1 = 34
 	local POPUP_TEXT_SIZE_2 = 26
@@ -1680,7 +1680,7 @@ function skin(self, s)
 					line = {
 						{
 							font = _boldfont(ALBUMMENU_FONT_SIZE),
-							height = 25,
+							height = 22,
 						},
 						{
 							font = _font(ALBUMMENU_SMALL_FONT_SIZE),
