@@ -3274,7 +3274,7 @@ function skin(self, s)
 			padding = { 20, 14, 5, 5 },
 			nptrack = {
 				align = "center",
-				w = screenWidth - 160,
+				w = screenWidth - 196,
 			},
 		},
 
