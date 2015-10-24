@@ -43,6 +43,8 @@ static Uint16 screen_w, screen_h, screen_bpp;
 
 static bool screen_isfull = false;
 
+static bool touchscreen = false;
+
 struct jive_keymap {
 	SDLKey keysym;
 	SDLMod mod;      // 0 for don't care, otherwise expected SDLmod value
@@ -219,6 +221,9 @@ static int jiveL_initSDL(lua_State *L) {
 	SDL_ShowCursor(SDL_DISABLE);
 	SDL_EnableKeyRepeat (100, 100);
 	SDL_EnableUNICODE(1);
+
+	if ( getenv("SDL_TOUCHSCREEN") )
+		touchscreen = true;
 
 	/* load the icon */
 	icon = jive_surface_load_image("jive/app.png");
@@ -1093,9 +1098,12 @@ static int process_event(lua_State *L, SDL_Event *event) {
 	case SDL_MOUSEMOTION:
 
 		/* show mouse cursor */
-		if (pointer_timeout == 0) {
-			SDL_ShowCursor(SDL_ENABLE);
+		if ( !touchscreen ) {
+			if (pointer_timeout == 0) {
+				SDL_ShowCursor(SDL_ENABLE);
+			}
 		}
+
 		pointer_timeout = now + POINTER_TIMEOUT;
 
 		if (event->motion.state & SDL_BUTTON(1)) {
@@ -1345,7 +1353,9 @@ static void process_timers(lua_State *L) {
 	jevent.ticks = now = jive_jiffies();
 
 	if (pointer_timeout && pointer_timeout < now) {
-		SDL_ShowCursor(SDL_DISABLE);
+		if ( !touchscreen ) {
+			SDL_ShowCursor(SDL_DISABLE);
+		}
 		pointer_timeout = 0;
 	}
 
