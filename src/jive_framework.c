@@ -43,8 +43,6 @@ static Uint16 screen_w, screen_h, screen_bpp;
 
 static bool screen_isfull = false;
 
-static bool touchscreen = false;
-
 struct jive_keymap {
 	SDLKey keysym;
 	SDLMod mod;      // 0 for don't care, otherwise expected SDLmod value
@@ -77,6 +75,7 @@ static Uint32 mouse_long_timeout = 0;
 static Uint32 mouse_timeout_arg;
 
 static Uint32 pointer_timeout = 0;
+static bool pointer_enable = true;
 
 static Uint16 mouse_origin_x, mouse_origin_y;
 
@@ -196,6 +195,10 @@ static int jiveL_initSDL(lua_State *L) {
 	/* linux fbcon does not need a mouse */
 	SDL_putenv("SDL_NOMOUSE=1");
 
+	if(SDL_getenv("JIVE_NOCURSOR")) {
+		pointer_enable = false;
+	}
+
 	/* initialise SDL */
 	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
 		LOG_ERROR(log_ui_draw, "SDL_Init(V|T|A): %s\n", SDL_GetError());
@@ -221,9 +224,6 @@ static int jiveL_initSDL(lua_State *L) {
 	SDL_ShowCursor(SDL_DISABLE);
 	SDL_EnableKeyRepeat (100, 100);
 	SDL_EnableUNICODE(1);
-
-	if ( getenv("SDL_TOUCHSCREEN") )
-		touchscreen = true;
 
 	/* load the icon */
 	icon = jive_surface_load_image("jive/app.png");
@@ -1098,12 +1098,9 @@ static int process_event(lua_State *L, SDL_Event *event) {
 	case SDL_MOUSEMOTION:
 
 		/* show mouse cursor */
-		if ( !touchscreen ) {
-			if (pointer_timeout == 0) {
-				SDL_ShowCursor(SDL_ENABLE);
-			}
+		if (pointer_enable && pointer_timeout == 0) {
+			SDL_ShowCursor(SDL_ENABLE);
 		}
-
 		pointer_timeout = now + POINTER_TIMEOUT;
 
 		if (event->motion.state & SDL_BUTTON(1)) {
@@ -1353,9 +1350,7 @@ static void process_timers(lua_State *L) {
 	jevent.ticks = now = jive_jiffies();
 
 	if (pointer_timeout && pointer_timeout < now) {
-		if ( !touchscreen ) {
-			SDL_ShowCursor(SDL_DISABLE);
-		}
+		SDL_ShowCursor(SDL_DISABLE);
 		pointer_timeout = 0;
 	}
 
