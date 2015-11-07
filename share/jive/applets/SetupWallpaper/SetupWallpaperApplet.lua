@@ -177,7 +177,7 @@ function settingsShow(self)
 	
 
 	local screen = screenWidth .. "x" .. screenHeight
-	if screen ~= "480x272" and screen ~= "240x320" and screen ~= "320x240" then
+	if screen ~= "800x480" and screen ~= "480x272" and screen ~= "240x320" and screen ~= "320x240" then
 		screen = nil
 	end
 
@@ -243,6 +243,8 @@ function _readFile(self, img, screenWidth, screenHeight)
 			pattern = 'JIVE_'
 		elseif screenWidth == 480 and screenHeight == 272 then
 			pattern = 'FAB4_'
+		elseif screenWidth == 800 and screenHeight == 480 then
+			pattern = 'PCP_'
 		else
 			pattern = 'HD_'
 		end
