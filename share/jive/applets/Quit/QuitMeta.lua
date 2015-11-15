@@ -47,7 +47,7 @@ function configureApplet(self)
 	-- don't load on Squeeze Player control instance
 	local load = true
 	if string.match(arg[0], "jivelite%-sp") then
-		load = true
+		load = false
 	end
 	for _, a in ipairs(arg) do
 		if a == "--sp-applets" then
