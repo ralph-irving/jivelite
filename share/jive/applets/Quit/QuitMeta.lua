@@ -68,7 +68,8 @@ function configureApplet(self)
 
 				Framework:quit()
 
-				return (bit.bor(EVENT_CONSUME, EVENT_QUIT))
+				-- return (bit.bor(EVENT_CONSUME, EVENT_QUIT))
+				return
 			end,
 			weight = 1010,
 		})

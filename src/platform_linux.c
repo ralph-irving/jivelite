@@ -208,6 +208,8 @@ static void quit_hook(lua_State *L, lua_Debug *ar) {
 	log_sp = LOG_CATEGORY_GET("jivelite");
 
 	LOG_WARN(log_sp, "%s", lua_tostring(L, -1));
+
+	jive_send_quit();
 }
 
 
@@ -240,6 +242,20 @@ static void segv_handler(int signum) {
 }
 
 
+static void term_handler(int  signum) {
+	struct sigaction sa;
+
+	sa.sa_handler = SIG_DFL;
+	sigemptyset(&sa.sa_mask);
+	sa.sa_flags = 0;
+	sigaction(signum, &sa, NULL);
+
+	LOG_ERROR(log_sp, "SIGTERM jivelite %s", JIVE_VERSION);
+
+	// Try and exit gracefully...
+	jive_send_quit();
+}
+
 void platform_init(lua_State *L) {
 	struct sigaction sa;
 
@@ -255,6 +271,10 @@ void platform_init(lua_State *L) {
 
 	sa.sa_handler = segv_handler;
 	sigaction(SIGSEGV, &sa, NULL);
+
+	sa.sa_handler = term_handler;
+	sigaction(SIGTERM, &sa, NULL);
+
 }
 
 #endif

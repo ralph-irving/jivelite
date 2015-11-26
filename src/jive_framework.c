@@ -338,6 +338,11 @@ void jive_send_char_press_event(Uint16 unicode) {
 	jive_queue_event(&event);
 }
 
+void jive_send_quit(void) {
+	SDL_Event event;
+	event.type = SDL_QUIT;
+	SDL_PushEvent(&event);
+}
 
 int jiveL_quit(lua_State *L) {
 
