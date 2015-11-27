@@ -17,8 +17,11 @@
 
 
 /* target frame rate 14 fps (originally) - may be tuned per platform, should be /2 */
-/* updated to the max effective rate of scrolling on a fab4 */
-#define JIVE_FRAME_RATE 30
+/* max effective rate of scrolling on a fab4 is 22 */
+int jive_frame_rate(void);
+
+#define JIVE_FRAME_RATE jive_frame_rate()
+#define JIVE_FRAME_RATE_DEFAULT 30
 
 /* print profile information for blit's */
 #undef JIVE_PROFILE_BLIT

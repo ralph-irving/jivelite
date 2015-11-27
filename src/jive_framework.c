@@ -163,6 +163,26 @@ static void process_timers(lua_State *L);
 static int filter_events(const SDL_Event *event);
 int jiveL_update_screen(lua_State *L);
 
+int jive_frame_rate(void) {
+	int	fr;
+	char	*framerate;
+
+	fr = JIVE_FRAME_RATE_DEFAULT;
+
+	framerate = SDL_getenv("JIVE_FRAMERATE");
+	if (framerate)
+	{
+		fr = atoi(framerate);
+
+		/* Ensure the framerate is reasonable */
+		if ( ( fr < 4 ) || ( fr > 60 ) )
+		{
+			fr = JIVE_FRAME_RATE_DEFAULT;
+		}
+	}
+
+	return fr;
+}
 
 int jive_traceback (lua_State *L) {
 	lua_getfield(L, LUA_GLOBALSINDEX, "debug");

@@ -8,8 +8,8 @@
 #include "jive.h"
 
 
-/* actual FPS will only run as a fraction of JIVE_FRAME_RATE */
-#define SCROLL_FPS	JIVE_FRAME_RATE / 2
+/* actual FPS will only run at half of the JIVE_FRAME_RATE */
+#define SCROLL_FPS	(JIVE_FRAME_RATE / 2)
 #define SCROLL_OFFSET_STEP_MINIMUM	5
 #define FONT_SCROLL_FACTOR	5
 
