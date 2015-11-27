@@ -202,7 +202,6 @@ int jive_traceback (lua_State *L) {
 }
 
 void jive_quit(void) {
-	LOG_WARN(log_ui,"JIVE Quit atexit");
 	SDL_Quit();
 }
 
@@ -1055,7 +1054,6 @@ static int process_event(lua_State *L, SDL_Event *event) {
 
 	switch (event->type) {
 	case SDL_QUIT:
-		LOG_WARN(log_ui, "SDL_QUIT_EVENT");
 		jiveL_quit(L);
 		return JIVE_EVENT_QUIT;
 
