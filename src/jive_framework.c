@@ -240,6 +240,8 @@ static int jiveL_initSDL(lua_State *L) {
 		LOG_INFO(log_ui_draw, "Window manager %s available", video_info->wm_available?"is":"is not");
 	}
 
+	LOG_INFO(log_ui_draw, "Using %d frames per second\n", jive_frame_rate());
+
 	/* Register callback for additional events (used for multimedia keys)*/
 	SDL_EventState(SDL_SYSWMEVENT,SDL_ENABLE);
 	SDL_SetEventFilter(filter_events);
