@@ -31,6 +31,8 @@ cp -pr ../share/lua/5.1/* Jivelite/lua/
 cp -pr ../share/jive/fonts Jivelite/
 cp -pr ../share/jive/applets Jivelite/lua
 cp -pr ../share/jive/jive Jivelite/lua
+rm Jivelite/lua/applets/JogglerSkin/images/UNOFFICIAL/VUMeter/vu_analog_25seq_[ac-vx-z].png
+rm Jivelite/lua/applets/WQVGAsmallSkin/images/UNOFFICIAL/VUMeter/vu_analog_25seq_[ac-vx-z].png
 find Jivelite -type d -name \.svn -exec rm -rf {} \;
 
 7z a -tzip  jivelite-0.1-`date +%Y%m%d`svn${SVNVERSION}-win32.zip Jivelite
