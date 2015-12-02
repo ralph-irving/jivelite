@@ -9,7 +9,9 @@
 
 #include <time.h>
 
+#ifndef __APPLE__
 #include <SDL_syswm.h>
+#endif
 
 int (*jive_sdlevent_pump)(lua_State *L);
 int (*jive_sdlfilter_pump)(const SDL_Event *event);
