@@ -57,6 +57,8 @@ local log                     = require("jive.utils.log").logger("jivelite.ui")
 local max                     = math.max
 local min                     = math.min
 
+local tonumber                = tonumber
+
 local EVENT_ALL               = jive.ui.EVENT_ALL
 local EVENT_ALL_INPUT         = jive.ui.EVENT_ALL_INPUT
 local ACTION                  = jive.ui.ACTION
@@ -1587,7 +1589,7 @@ function _transitionFadeIn(oldWindow, newWindow, duration)
 				--getting start time on first loop avoids initial delay that can occur
 				startT = Framework:getTicks()
 			end
-			local x = remaining * scale
+			local x = tonumber(math.floor((remaining * scale) + .5))
 
 			--support background surfaces, used for instance by ContextMenuWindow
 			if newWindow._bg then
