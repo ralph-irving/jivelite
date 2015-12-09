@@ -1570,7 +1570,7 @@ function _transitionFadeIn(oldWindow, newWindow, duration)
 	local transitionDuration = duration
 	local remaining = transitionDuration
 	local screenWidth = Framework:getScreenSize()
-	local scale = (transitionDuration * transitionDuration * transitionDuration) / screenWidth
+	-- local scale = (transitionDuration * transitionDuration * transitionDuration) / screenWidth
 	local animationCount = 0
 
 	local scale = 255 / transitionDuration
