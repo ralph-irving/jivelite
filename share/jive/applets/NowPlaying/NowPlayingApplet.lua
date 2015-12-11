@@ -571,7 +571,7 @@ function _nowPlayingTrackTransition(oldWindow, newWindow)
 	oldWindow:draw(srf, LAYER_ALL)
 
 	return function(widget, surface)
-		local x = (frames  - 1 ) * scale
+		local x = tonumber(math.floor(((frames  - 1 ) * scale) + .5))
 
 		newWindow:draw(surface, LAYER_ALL)
 		srf:blitAlpha(surface, 0, 0, x)
