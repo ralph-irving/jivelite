@@ -23,6 +23,9 @@ cp -pr ../lib/lua local/lib
 cp -pr ../share/lua local/share
 cp -pr ../share/jive local/share
 
+rm local/share/jive/applets/JogglerSkin/images/UNOFFICIAL/VUMeter/vu_analog_25seq_[ac-vx-z].png
+rm local/share/jive/applets/WQVGAsmallSkin/images/UNOFFICIAL/VUMeter/vu_analog_25seq_[ac-vx-z].png
+
 sudo chown -Rh root:wheel local
 
 tar -czf ~/jivelite-0.1-`date +%Y%m%d`svn${SVNVERSION}-osx-x86_64.tar.gz local
