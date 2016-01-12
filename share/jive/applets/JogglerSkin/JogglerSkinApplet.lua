@@ -3164,7 +3164,7 @@ function skin(self, s)
                         x          = 40,
                         y          = TITLE_HEIGHT + 50,
                         nptrack =  {
-                                w          = screenWidth - 65,
+                                w          = screenWidth - 140,
                         },
 		},
 		npartistgroup    = { 
