@@ -231,7 +231,7 @@ local function _decideFirstChunk(step, jsonAction)
 
 
 	-- don't save browse history for context menus or searches
-	if lastBrowse and not isContextMenu and not string.match(commandString, 'search:') then
+	if lastBrowse and not isContextMenu and not string.match(commandString, 'search:') and not string.match(commandString, 'mode:randomalbums') then
 		from = _getNewStartValue(_player:getLastBrowseIndex(commandString))
 	else
 		lastBrowse = { index = 1 }
