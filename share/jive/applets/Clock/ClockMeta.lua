@@ -32,15 +32,6 @@ function configureApplet(self)
 		"openAnalogClock", _, _, 23
 	)
 
-	--[[
-	appletManager:callService("addScreenSaver",
-		self:string("SCREENSAVER_CLOCK_STYLE_RADIAL"), 
-		"Clock", 
-		"openRadialClock", _, _, 28
-	)
-	--]]
-
-
 	appletManager:callService("addScreenSaver",
 		self:string("SCREENSAVER_CLOCK_STYLE_DIGITAL"), 
 		"Clock", 
