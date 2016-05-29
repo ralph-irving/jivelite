@@ -1,0 +1,485 @@
+#
+# The two letter codes are defined by ISO 639-1
+# http://en.wikipedia.org/wiki/List_of_ISO_639_codes
+
+
+SCREENSAVER_CLOCK_STYLE_ANALOG
+	CS	Analogové hodiny
+	DA	Analogt ur
+	DE	Analoguhr
+	EN	Analog Clock
+	ES	Reloj analógico
+	FI	Analoginen kello
+	FR	Analogique
+	IT	Orologio analogico
+	NL	Analoge klok
+	NO	Analog klokke
+	PL	Zegar analogowy
+	RU	Аналоговые часы
+	SV	Analog klocka
+
+SCREENSAVER_CLOCK_STYLE_RADIAL
+	CS	Paprskové hodiny
+	DA	Radialur
+	DE	Ziffernblattuhr
+	EN	Radial Clock
+	ES	Reloj radial
+	FI	Radiaalikello
+	FR	Horloge radiale
+	IT	Orologio radiale
+	NL	Analoge klok
+	NO	Klokke med visere
+	PL	Zegar promieniowy
+	RU	Радиальные часы
+	SV	Radiell klocka
+
+SCREENSAVER_CLOCK_STYLE_DIGITAL
+	CS	Digitální hodiny
+	DA	Digitalt ur
+	DE	Digitaluhr
+	EN	Digital Clock
+	ES	Reloj digital
+	FI	Digitaalinen kello
+	FR	Numérique
+	IT	Orologio digitale
+	NL	Digitale klok
+	NO	Digital klokke
+	PL	Zegar cyfrowy
+	RU	Цифровые часы
+	SV	Digitalklocka
+
+SCREENSAVER_CLOCK_STYLE_DIGITAL_BLACK
+	CS	Digitální hodiny (černé)
+	DA	Digitalt ur (sort)
+	DE	Digitaluhr (Schwarz)
+	EN	Digital Clock (Black)
+	ES	Reloj digital (negro)
+	FI	Digitaalikello (musta)
+	FR	Horloge numérique (noire)
+	IT	Orologio digitale (nero)
+	NL	Digitale klok (Zwart)
+	NO	Digital klokke (svart)
+	PL	Zegar cyfrowy (czarny)
+	RU	Цифровые часы (черн.)
+	SV	Digital klocka (svart)
+
+SCREENSAVER_CLOCK_STYLE_DIGITAL_TRANSPARENT
+	CS	Digitální hodiny (průhledné)
+	DA	Digitalt ur (gennemsigtigt)
+	DE	Digitaluhr (Transparent)
+	EN	Digital Clock (Transparent)
+	ES	Reloj digital (transparente)
+	FI	Digitaalikello (läpinäkyvä)
+	FR	Horloge numérique (transparente)
+	IT	Orologio digitale (trasparente)
+	NL	Digitale klok (Transparant)
+	NO	Digital klokke (gjennomsiktig)
+	PL	Zegar cyfrowy (przezroczysty)
+	RU	Цифровые часы (прозрачн.)
+	SV	Digital klocka (genomskinlig)
+
+SCREENSAVER_CLOCK_STYLE_DOTMATRIX
+	CS	Hodiny bodového generátoru
+	DA	Ur af punkter
+	DE	Matrixuhr
+	EN	Dot Matrix Clock
+	ES	Reloj de matriz de puntos
+	FI	Pistematriisikello
+	FR	Horloge avec matrice à points
+	IT	Orologio a matrice di punti
+	NL	Digitale clock
+	NO	Punktmatriseklokke
+	PL	Zegar diodowy
+	RU	Часы с точечной матрицей
+	SV	Punktmatrisklocka
+
+SCREENSAVER_CLOCK_MONTH_01
+	CS	Leden
+	DA	Januar
+	DE	Januar
+	EN	January
+	ES	Enero
+	FI	Tammikuu
+	FR	Janvier
+	IT	Gennaio
+	NL	januari
+	NO	januar
+	PL	Styczeń
+	RU	Январь
+	SV	januari
+
+SCREENSAVER_CLOCK_MONTH_02
+	CS	Únor
+	DA	Februar
+	DE	Februar
+	EN	February
+	ES	Febrero
+	FI	Helmikuu
+	FR	Février
+	IT	Febbraio
+	NL	februari
+	NO	februar
+	PL	Luty
+	RU	Февраль
+	SV	februari
+
+SCREENSAVER_CLOCK_MONTH_03
+	CS	Březen
+	DA	Marts
+	DE	März
+	EN	March
+	ES	Marzo
+	FI	Maaliskuu
+	FR	Mars
+	IT	Marzo
+	NL	maart
+	NO	mars
+	PL	Marzec
+	RU	Март
+	SV	mars
+
+SCREENSAVER_CLOCK_MONTH_04
+	CS	Duben
+	DA	april
+	DE	April
+	EN	April
+	ES	Abril
+	FI	Huhtikuu
+	FR	Avril
+	IT	Aprile
+	NL	april
+	NO	april
+	PL	Kwiecień
+	RU	Апрель
+	SV	april
+
+SCREENSAVER_CLOCK_MONTH_05
+	CS	Květen
+	DA	maj
+	DE	Mai
+	EN	May
+	ES	Mayo
+	FI	Toukokuu
+	FR	Mai
+	IT	Maggio
+	NL	mei
+	NO	mai
+	PL	Maj
+	RU	Май
+	SV	maj
+
+SCREENSAVER_CLOCK_MONTH_06
+	CS	Červen
+	DA	Juni
+	DE	Juni
+	EN	June
+	ES	Junio
+	FI	Kesäkuu
+	FR	Juin
+	IT	Giugno
+	NL	juni
+	NO	juni
+	PL	Czerwiec
+	RU	Июнь
+	SV	juni
+
+SCREENSAVER_CLOCK_MONTH_07
+	CS	Červenec
+	DA	Juli
+	DE	Juli
+	EN	July
+	ES	Julio
+	FI	Heinäkuu
+	FR	Juillet
+	IT	Luglio
+	NL	juli
+	NO	juli
+	PL	Lipiec
+	RU	Июль
+	SV	juli
+
+SCREENSAVER_CLOCK_MONTH_08
+	CS	Srpen
+	DA	august
+	DE	August
+	EN	August
+	ES	Agosto
+	FI	Elokuu
+	FR	Août
+	IT	Agosto
+	NL	augustus
+	NO	august
+	PL	Sierpień
+	RU	Август
+	SV	augusti
+
+SCREENSAVER_CLOCK_MONTH_09
+	CS	Září
+	DA	september
+	DE	September
+	EN	September
+	ES	Septiembre
+	FI	Syyskuu
+	FR	Septembre
+	IT	Settembre
+	NL	september
+	NO	september
+	PL	Wrzesień
+	RU	Сентябрь
+	SV	september
+
+SCREENSAVER_CLOCK_MONTH_10
+	CS	Říjen
+	DA	Oktober
+	DE	Oktober
+	EN	October
+	ES	Octubre
+	FI	Lokakuu
+	FR	Octobre
+	IT	Ottobre
+	NL	oktober
+	NO	oktober
+	PL	Październik
+	RU	Октябрь
+	SV	oktober
+
+SCREENSAVER_CLOCK_MONTH_11
+	CS	Listopad
+	DA	november
+	DE	November
+	EN	November
+	ES	Noviembre
+	FI	Marraskuu
+	FR	Novembre
+	IT	Novembre
+	NL	november
+	NO	november
+	PL	Listopad
+	RU	Ноябрь
+	SV	november
+
+SCREENSAVER_CLOCK_MONTH_12
+	CS	Prosinec
+	DA	december
+	DE	Dezember
+	EN	December
+	ES	Diciembre
+	FI	Joulukuu
+	FR	Décembre
+	IT	Dicembre
+	NL	december
+	NO	desember
+	PL	Grudzień
+	RU	Декабрь
+	SV	december
+
+SCREENSAVER_CLOCK_DAY_0
+	CS	Neděle
+	DA	Søndag
+	DE	Sonntag
+	EN	Sunday
+	ES	Domingo
+	FI	sunnuntai
+	FR	Dimanche
+	IT	Domenica
+	NL	Zondag
+	NO	søndag
+	PL	Niedziela
+	RU	Воскресенье
+	SV	Söndag
+
+SCREENSAVER_CLOCK_DAY_1
+	CS	Pondělí
+	DA	Mandag
+	DE	Montag
+	EN	Monday
+	ES	Lunes
+	FI	maanantai
+	FR	Lundi
+	IT	Lunedì
+	NL	Maandag
+	NO	Mandag
+	PL	Poniedziałek
+	RU	Понедельник
+	SV	Måndag
+
+SCREENSAVER_CLOCK_DAY_2
+	CS	Úterý
+	DA	Tirsdag
+	DE	Dienstag
+	EN	Tuesday
+	ES	Martes
+	FI	tiistai
+	FR	Mardi
+	IT	Martedì
+	NL	Dinsdag
+	NO	Tirsdag
+	PL	Wtorek
+	RU	Вторник
+	SV	Tisdag
+
+SCREENSAVER_CLOCK_DAY_3
+	CS	Středa
+	DA	Onsdag
+	DE	Mittwoch
+	EN	Wednesday
+	ES	Miércoles
+	FI	Keskiviikko
+	FR	Mercredi
+	IT	Mercoledì
+	NL	Woensdag
+	NO	Onsdag
+	PL	Środa
+	RU	Среда
+	SV	Onsdag
+
+SCREENSAVER_CLOCK_DAY_4
+	CS	Čtvrtek
+	DA	Torsdag
+	DE	Donnerstag
+	EN	Thursday
+	ES	Jueves
+	FI	torstai
+	FR	Jeudi
+	IT	Giovedì
+	NL	Donderdag
+	NO	torsdag
+	PL	Czwartek
+	RU	Четверг
+	SV	Torsdag
+
+SCREENSAVER_CLOCK_DAY_5
+	CS	Pátek
+	DA	Fredag
+	DE	Freitag
+	EN	Friday
+	ES	Viernes
+	FI	perjantai
+	FR	Vendredi
+	IT	Venerdì
+	NL	Vrijdag
+	NO	Fredag
+	PL	Piątek
+	RU	Пятница
+	SV	Fredag
+
+SCREENSAVER_CLOCK_DAY_6
+	CS	Sobota
+	DA	Lørdag
+	DE	Samstag
+	EN	Saturday
+	ES	Sábado
+	FI	lauantai
+	FR	Samedi
+	IT	Sabato
+	NL	Zaterdag
+	NO	Lørdag
+	PL	Sobota
+	RU	Суббота
+	SV	Lördag
+
+SCREENSAVER_CLOCK_DAYSHORT_MONDAY
+	CS	Po
+	DA	M
+	DE	Mo
+	EN	M
+	ES	L
+	FI	M
+	FR	L
+	IT	L
+	NL	M
+	NO	m
+	PL	P
+	RU	M
+	SV	M
+
+SCREENSAVER_CLOCK_DAYSHORT_TUESDAY
+	CS	Út
+	DA	T
+	DE	A
+	EN	T
+	ES	M
+	FI	T
+	FR	M
+	IT	M
+	NL	D
+	NO	t
+	PL	W
+	RU	Чт
+	SV	T
+
+SCREENSAVER_CLOCK_DAYSHORT_WEDNESDAY
+	CS	St
+	DA	V
+	DE	Mi
+	EN	W
+	ES	X
+	FI	L
+	FR	M
+	IT	M
+	NL	W
+	NO	o
+	PL	Ś
+	RU	Ср
+	SV	V
+
+SCREENSAVER_CLOCK_DAYSHORT_THURSDAY
+	CS	Čt
+	DA	T
+	DE	A
+	EN	T
+	ES	J
+	FI	T
+	FR	J
+	IT	G
+	NL	D
+	NO	t
+	PL	W
+	RU	Чт
+	SV	T
+
+SCREENSAVER_CLOCK_DAYSHORT_FRIDAY
+	CS	Pá
+	DA	F
+	DE	F
+	EN	F
+	ES	V
+	FI	P
+	FR	V
+	IT	V
+	NL	V
+	NO	f
+	PL	P
+	RU	Пт
+	SV	F
+
+SCREENSAVER_CLOCK_DAYSHORT_SATURDAY
+	CS	So
+	DA	L
+	DE	B
+	EN	S
+	ES	S
+	FI	E
+	FR	S
+	IT	S
+	NL	Z
+	NO	l
+	PL	S
+	RU	Сб
+	SV	S
+
+SCREENSAVER_CLOCK_DAYSHORT_SUNDAY
+	CS	Ne
+	DA	S
+	DE	B
+	EN	S
+	ES	D
+	FI	E
+	FR	D
+	IT	D
+	NL	Z
+	NO	s
+	PL	N
+	RU	Сб
+	SV	S
+
