@@ -49,6 +49,7 @@ function configureApplet(self)
 		"Clock", 
 		"openDetailedClockTransparent", _, _, 26
 	)
+
 	appletManager:callService("addScreenSaver",
 		self:string("SCREENSAVER_CLOCK_STYLE_DOTMATRIX"), 
 		"Clock", 
