@@ -1599,7 +1599,7 @@ function Digital:getDigitalClockSkin(skinName)
 		}
 
 		local x = {}
-                x.h1 = 228
+                x.h1 = 208
                 x.h2 = x.h1 + 75
                 x.dots = x.h2 + 75
                 x.m1 = x.dots + 39
@@ -1708,7 +1708,7 @@ function Digital:getDigitalClockSkin(skinName)
 			},
 			ampm = {
 				position = LAYOUT_NONE,
-				x = 583,
+				x = 564,
 				y = 144,
 				font = _font(20),
 				align = 'bottom',
@@ -2438,7 +2438,7 @@ function Analog:getSkinParams(skin)
 			minuteHand = 'applets/JogglerSkin/images/Clocks/Analog/clock_analog_min_hand.png',
 			hourHand   = 'applets/JogglerSkin/images/Clocks/Analog/clock_analog_hr_hand.png',
 			alarmIcon  = 'applets/JogglerSkin/images/Clocks/Analog/icon_alarm_analog.png',
-			alarmX     = 615,
+			alarmX     = 595,
 			alarmY     = 18,
 		}
 	end
