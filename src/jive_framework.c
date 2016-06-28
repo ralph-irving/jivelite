@@ -253,7 +253,7 @@ static int jiveL_initSDL(lua_State *L) {
 	/* open window */
 	SDL_WM_SetCaption("JiveLite", "JiveLite");
 	SDL_ShowCursor(SDL_DISABLE);
-	SDL_EnableKeyRepeat (100, 100);
+	SDL_EnableKeyRepeat (SDL_DEFAULT_REPEAT_DELAY, 100);
 	SDL_EnableUNICODE(1);
 
 	/* load the icon */
