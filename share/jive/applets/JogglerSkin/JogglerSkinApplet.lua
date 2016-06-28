@@ -101,10 +101,6 @@ function param(self)
 		-- 2 is for a two line track, artist+album (e.g., SBradio, SBcontroller)
 		NOWPLAYING_TRACKINFO_LINES = 3,
 		POPUP_THUMB_SIZE = 120,
-		radialClock = {
-			hourTickPath     = 'applets/JogglerSkin/images/Clocks/Radial/radial_ticks_hr_on.png',
-			minuteTickPath   = 'applets/JogglerSkin/images/Clocks/Radial/radial_ticks_min_on.png',
-		},
 		nowPlayingScreenStyles = { 
 			-- every skin needs to start off with a nowplaying style
 			{
