@@ -206,6 +206,9 @@ static int dns_resolver_thread(void *p) {
 		}
 
 		buf = malloc(len + 1);
+		if ( buf == NULL )
+			return 0;
+
 		if (recv(fd, buf, len, 0) < 0) {
 			/* broken pipe */
 			free(buf);
