@@ -29,6 +29,7 @@ local arg           = arg
 module(...)
 oo.class(_M, AppletMeta)
 
+local THUMB_SIZE_MENU = 40
 
 function jiveVersion(meta)
 	return 1, 1
@@ -89,7 +90,7 @@ end
 
 
 function _artworkspec(meta, server)
-	local size = jiveMain:getSkinParam('THUMB_SIZE_MENU')
+	local size = jiveMain:getSkinParam('THUMB_SIZE_MENU',true) or THUMB_SIZE_MENU
 	local spec = size .. 'x' .. size .. '_m'
 	server:request(nil, nil, { 'artworkspec', 'add', spec, 'jiveliteskin' })
 end
