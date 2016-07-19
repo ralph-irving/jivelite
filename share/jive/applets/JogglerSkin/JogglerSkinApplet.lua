@@ -1582,8 +1582,8 @@ function skin(self, s)
 	s.input = _uses(s.window)
 	s.input.title = _uses(s.title, {
 		-- remove 3px from the height and 3px from the bottom padding
-		h = 44,
-		padding = { 0, 5, 0, 2 },
+		-- h = 44,
+		-- padding = { 0, 5, 0, 2 },
 		bgImg = inputTitleBox,
 	})
 
