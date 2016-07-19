@@ -836,14 +836,14 @@ function skin(self, s)
 	s.text_block_black = {
 		bgImg = blackBackground,
 		position = LAYOUT_NORTH,
-		h = 100,
+		h = 300,
 		order = { 'text' },
 		text = {
 			w = WH_FILL,
-			h = 100,
+			h = 300,
                         padding = { 10, 160, 10, 0 },
                         align = "center",
-                        font = _font(100),
+                        font = _font(120),
                         fg = TEXT_COLOR,
                         sh = TEXT_SH_COLOR,
                 },
