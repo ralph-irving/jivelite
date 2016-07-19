@@ -45,9 +45,11 @@ local LAYOUT_NONE            = jive.ui.LAYOUT_NONE
 
 local WH_FILL                = jive.ui.WH_FILL
 
-
 module(..., Framework.constants)
 oo.class(_M, Applet)
+
+local jogglerSkinAlarmX = 748
+local jogglerSkinAlarmY = 11
 
 -- Define useful variables for this skin
 local fontpath = "fonts/"
@@ -364,6 +366,176 @@ function DotMatrix:DrawDate(digit, groupKey)
 	widget:setStyle(style)
 end
 
+-----------------------------------------------------------------------------------------
+
+WordClock = oo.class({}, Clock)
+
+function WordClock:__init(applet)
+	log:debug("Init Word Clock")
+
+	local skinName = jiveMain:getSelectedSkin()
+	log:debug("skinName = " .. skinName)
+  
+	if not self.skin and skinName ~= self.oldSkinName then
+		log:debug("Fetching ClockSkin")
+		self.oldSkinName = skinName
+		self.skin = WordClock:getWordClockSkin(skinName)
+	end
+ 	obj = oo.rawnew(self, Clock(self.skin))
+
+	obj.textdate = Label('textdate')
+	obj.skinParams = WordClock:getSkinParams(skinName)
+
+	if skinName == "JogglerSkin" then
+		obj.pointer_textIt         = Surface:loadImage(obj.skinParams.textIt)  
+		obj.pointer_textIs         = Surface:loadImage(obj.skinParams.textIs)  
+		obj.pointer_textHas        = Surface:loadImage(obj.skinParams.textHas)  
+		obj.pointer_textNearly     = Surface:loadImage(obj.skinParams.textNearly)  
+		obj.pointer_textJustgone   = Surface:loadImage(obj.skinParams.textJustgone)  
+
+		obj.pointer_textHalf       = Surface:loadImage(obj.skinParams.textHalf)  
+		obj.pointer_textTen        = Surface:loadImage(obj.skinParams.textTen)  
+		obj.pointer_textAquarter   = Surface:loadImage(obj.skinParams.textAQuarter)  
+		obj.pointer_textTwenty     = Surface:loadImage(obj.skinParams.textTwenty)  
+
+		obj.pointer_textFive       = Surface:loadImage(obj.skinParams.textFive)  
+		obj.pointer_textMinutes    = Surface:loadImage(obj.skinParams.textMinutes)  
+		obj.pointer_textTo         = Surface:loadImage(obj.skinParams.textTo)  
+		obj.pointer_textPast       = Surface:loadImage(obj.skinParams.textPast)  
+
+		obj.pointer_textHourOne    = Surface:loadImage(obj.skinParams.textHourOne)  
+		obj.pointer_textHourTwo    = Surface:loadImage(obj.skinParams.textHourTwo)  
+		obj.pointer_textHourThree  = Surface:loadImage(obj.skinParams.textHourThree)  
+		obj.pointer_textHourFour   = Surface:loadImage(obj.skinParams.textHourFour)  
+		obj.pointer_textHourFive   = Surface:loadImage(obj.skinParams.textHourFive)  
+		obj.pointer_textHourSix    = Surface:loadImage(obj.skinParams.textHourSix)  
+		obj.pointer_textHourSeven  = Surface:loadImage(obj.skinParams.textHourSeven)  
+		obj.pointer_textHourEight  = Surface:loadImage(obj.skinParams.textHourEight)  
+		obj.pointer_textHourNine   = Surface:loadImage(obj.skinParams.textHourNine)  
+		obj.pointer_textHourTen    = Surface:loadImage(obj.skinParams.textHourTen)  
+		obj.pointer_textHourEleven = Surface:loadImage(obj.skinParams.textHourEleven)  
+		obj.pointer_textHourTwelve = Surface:loadImage(obj.skinParams.textHourTwelve)  
+
+		obj.pointer_textOClock     = Surface:loadImage(obj.skinParams.textOClock)  
+		obj.pointer_textAM         = Surface:loadImage(obj.skinParams.textAM)  
+		obj.pointer_textPM         = Surface:loadImage(obj.skinParams.textPM)  
+	else
+		obj.pointer_hour           = Surface:loadImage(obj.skinParams.hourHand)
+		obj.pointer_minute         = Surface:loadImage(obj.skinParams.minuteHand)
+	end
+	
+	obj.alarmIcon = Surface:loadImage(obj.skinParams.alarmIcon)
+
+	-- bring in applet's self so strings are available
+	obj.applet    = applet
+
+	obj.canvas   = Canvas('debug_canvas', function(screen)
+		obj:_reDraw(screen)
+	end)
+	obj.window:addWidget(obj.canvas)
+	obj.window:addWidget(obj.textdate)
+
+	obj.clock_format = "%H:%M"
+	return obj
+end
+
+function WordClock:Draw()
+	log:debug("WordClock:Draw")
+	self.canvas:reDraw()
+end
+
+function WordClock:_reDraw(screen)
+	log:debug("WordClock:_reDraw")
+	log:debug("WordClock:_reDraw self.skinName = " .. self.skinName)
+
+	if self.skinName == "JogglerSkin" then
+		local timenow = os.date("*t",os.time())
+
+		local flags = WordClock:getwordflags(timenow)
+
+		local all = false  -- Just for debugging screen position
+	  
+	-- Row 1
+		self.pointer_textIt:blit(screen, 20, 50)
+		if all or flags.is         then self.pointer_textIs:blit(screen, 86, 50) end
+		if all or flags.has        then self.pointer_textHas:blit(screen, 156, 50) end
+		if all or flags.nearly     then self.pointer_textNearly:blit(screen, 280, 50) end
+		if all or flags.justgone   then self.pointer_textJustgone:blit(screen, 496, 50) end
+
+	-- Row 2
+		if all or flags.half       then self.pointer_textHalf:blit(screen, 20, 108) end
+		if all or flags.ten        then self.pointer_textTen:blit(screen, 163, 108) end
+		if all or flags.aquarter   then self.pointer_textAquarter:blit(screen, 274, 108) end
+		if all or flags.twenty     then self.pointer_textTwenty:blit(screen, 579, 108) end
+
+	-- Row 3
+		if all or flags.five       then self.pointer_textFive:blit(screen, 20, 165) end
+		if all or flags.minutes    then self.pointer_textMinutes:blit(screen, 169, 165) end
+		if all or flags.to         then self.pointer_textTo:blit(screen, 425, 165) end
+		if all or flags.past       then self.pointer_textPast:blit(screen, 537, 165) end
+		if all or flags.hsix       then self.pointer_textHourSix:blit(screen, 707, 165) end
+
+	-- Row 4
+		if all or flags.hseven     then self.pointer_textHourSeven:blit(screen, 20, 222) end
+		if all or flags.hone       then self.pointer_textHourOne:blit(screen, 222, 222) end
+		if all or flags.htwo       then self.pointer_textHourTwo:blit(screen, 363, 222) end
+		if all or flags.hten       then self.pointer_textHourTen:blit(screen, 513, 222) end
+		if all or flags.hfour      then self.pointer_textHourFour:blit(screen, 650, 222) end
+
+	-- Row 5
+		if all or flags.hfive      then self.pointer_textHourFive:blit(screen, 20, 280) end
+		if all or flags.hnine      then self.pointer_textHourNine:blit(screen, 193, 280) end
+		if all or flags.htwelve    then self.pointer_textHourTwelve:blit(screen, 371, 280) end
+		if all or flags.height     then self.pointer_textHourEight:blit(screen, 639, 280) end
+
+	-- Row 6
+		if all or flags.heleven    then self.pointer_textHourEleven:blit(screen, 20, 338) end
+		if all or flags.hthree     then self.pointer_textHourThree:blit(screen, 222, 338) end
+		if all or flags.oclock     then self.pointer_textOClock:blit(screen, 398, 338) end
+		if all or flags.am         then self.pointer_textAM:blit(screen, 627, 338) end
+		if all or flags.pm         then self.pointer_textPM:blit(screen, 716, 338) end
+
+		self.textdate:setValue("ON " .. string.upper(WordClock:getDateAsWords(tonumber(os.date("%d")))))
+	else
+		local x, y
+
+		-- Setup Time Objects
+		local time = os.date("*t")
+		local m = time.min
+		local h = time.hour % 12
+
+		-- Hour Pointer
+		local angle = (360 / 12) * (h + (m/60))
+
+		local tmp = self.pointer_hour:rotozoom(-angle, 1, 5)
+		local facew, faceh = tmp:getSize()
+		x = math.floor((self.screen_width/2) - (facew/2))
+		y = math.floor((self.screen_height/2) - (faceh/2))
+		tmp:blit(screen, x, y)
+		tmp:release()
+
+		-- Minute Pointer
+		local angle = (360 / 60) * m 
+
+		local tmp = self.pointer_minute:rotozoom(-angle, 1, 5)
+		local facew, faceh = tmp:getSize()
+		x = math.floor((self.screen_width/2) - (facew/2))
+		y = math.floor((self.screen_height/2) - (faceh/2))
+		tmp:blit(screen, x, y)
+		tmp:release()	
+
+		self.textdate:setValue(string.upper(WordClock:getDateAsWords(tonumber(os.date("%d")))))
+	end
+	
+	if self.alarmSet then
+		local tmp = self.alarmIcon
+		tmp:blit(screen, self.skinParams.alarmX, self.skinParams.alarmY)
+	end
+  
+end
+
+-----------------------------------------------------------------------------------------
+
 Analog = oo.class({}, Clock)
 
 function Analog:__init(applet)
@@ -396,7 +568,6 @@ end
 
 function Analog:Draw()
 	self.canvas:reDraw()
-
 end
 
 
@@ -677,6 +848,11 @@ function openStyledClock(self, force)
 	return self:_openScreensaver("DotMatrix", _, force)
 end
 
+-----------------------------------------------------------------------------------------
+function openWordClock(self, force)
+	return self:_openScreensaver("WordClock", _, force)
+end
+-----------------------------------------------------------------------------------------
 
 function _tick(self)
 	local theTime = os.date(self.clock.clock_format)
@@ -726,6 +902,10 @@ function _openScreensaver(self, type, windowStyle, force)
 		self.clock = Digital(self, hours)
 	elseif type == "Analog" then
 		self.clock = Analog(self)
+-----------------------------------------------------------------------------------------
+	elseif type == "WordClock" then
+		self.clock = WordClock(self)
+-----------------------------------------------------------------------------------------
 	else
 		log:error("Unknown clock type")
 		return
@@ -992,26 +1172,33 @@ function DotMatrix:getDotMatrixClockSkin(skinName)
 		s.icon_alarm_off = _uses(s.icon_alarm_on, {
 			img = false,
 		})
-	
+
+		local jogglerSkinAlignWithBackgroundXOffset = 2
+		local jogglerSkinAlignWithBackgroundYOffset = 1
+		local jogglerSkinXOffset = 160 + jogglerSkinAlignWithBackgroundXOffset + 9
+		local jogglerSkinYOffset = 104 + jogglerSkinAlignWithBackgroundYOffset
+		
 		local _clockDigit = {
 			position = LAYOUT_NONE,
-			w = 68,
-			y = 38,
+			w = 68 + 4,
+			y = 38 + jogglerSkinYOffset,
 		}
 		local _dateDigit = {
 			position = LAYOUT_NONE,
 			w = 27,
-			y = 192,
+			y = 192 + jogglerSkinYOffset,
 		}
-
+		
 		local x = {}
-		x.h1 = 68
+		x.h1 = 68 + jogglerSkinXOffset
 		x.h2 = x.h1 + 72
-		x.dots = x.h2 + 75
-		x.m1 = x.dots + 27
+		x.dots = x.h2 + 75 - 1
+		x.m1 = x.dots + 27 + 1
 		x.m2 = x.m1 + 72
-		x.alarm = 73
-		x.M1 = x.alarm + 36 + 13
+		-- x.alarm = 73 + jogglerSkinXOffset
+		x.alarm = jogglerSkinAlarmX
+		-- x.M1 = x.alarm + 36 + 13 + 1 - 3
+		x.M1 = 73 + jogglerSkinXOffset + 36 + 13 + 1 - 3
 		x.M2 = x.M1 + 30
 		x.dot1 = x.M2 + 26 + 6
 		x.D1 = x.dot1 + 10
@@ -1020,11 +1207,11 @@ function DotMatrix:getDotMatrixClockSkin(skinName)
 		x.Y1 = x.dot2 + 10
 		x.Y2 = x.Y1 + 30
 		x.Y3 = x.Y2 + 30
-		x.Y4 = x.Y3 + 29
+		x.Y4 = x.Y3 + 29 + 1
 
 		s.Clock = {
-			w = 480,
-			h = 272,
+			w = 800, --480,
+			h = 480, --272,
 			bgImg = dotMatrixBackground,
 			h1 = _uses(_clockDigit, {
 				x = x.h1,
@@ -1036,7 +1223,7 @@ function DotMatrix:getDotMatrixClockSkin(skinName)
 				position = LAYOUT_NONE,
 				x = x.dots,
 				w = 38,
-				y = 75,
+				y = 75 + jogglerSkinYOffset,
 			},
 			m1 = _uses(_clockDigit, {
 				x = x.m1,
@@ -1047,7 +1234,8 @@ function DotMatrix:getDotMatrixClockSkin(skinName)
 
 			alarm = _uses(_dateDigit, {
 				w = 45,
-				y = 191,
+				-- y = 191 + jogglerSkinYOffset,
+				y = jogglerSkinAlarmY,
 				x = x.alarm,
 			}),
 			M1 = _uses(_dateDigit, {
@@ -1059,7 +1247,7 @@ function DotMatrix:getDotMatrixClockSkin(skinName)
 			dot1 = _uses(_dateDigit, {
 				x = x.dot1,
 				w = 13,
-				y = 222,
+				y = 222 + jogglerSkinYOffset,
 			}),
 			D1 = _uses(_dateDigit, {
 				x = x.D1,
@@ -1070,7 +1258,7 @@ function DotMatrix:getDotMatrixClockSkin(skinName)
 			dot2 = _uses(_dateDigit, {
 				x = x.dot2,
 				w = 13,
-				y = 222,
+				y = 222 + jogglerSkinYOffset,
 			}),
 			Y1 = _uses(_dateDigit, {
 				x = x.Y1,
@@ -1363,6 +1551,326 @@ function DotMatrix:getDotMatrixClockSkin(skinName)
 	return s
 end
 
+-----------------------------------------------------------------------------------------
+
+function WordClock:getWordClockSkin(skinName)
+	log:debug("WordClock:getWordClockSkin - " .. skinName)
+
+	self.skinName = skinName
+	self.imgpath = _imgpath(self)
+	if skinName == 'WQVGAlargeSkin' then
+		skinName = 'WQVGAsmallSkin'
+	end
+	
+	log:debug("Image path - " .. self.imgpath)
+	local s = {}
+
+	local wordClockBackground = Tile:loadImage(self.imgpath .. "Clocks/WordClock/wallpaper_clock_word.png")
+		
+	if skinName == "JogglerSkin" then
+		s.Clock = {
+			bgImg = wordClockBackground,
+			textdate = {
+				position = LAYOUT_NONE,
+				x = 0,
+				y = 420,
+				w = 800,
+				font = _font(26),
+				align = 'bottom',
+				fg = { 0xff, 0xff, 0xff },
+			},
+		}
+	elseif skinName == "WQVGAsmallSkin" then
+		s.Clock = {
+			bgImg = wordClockBackground,
+			textdate = {
+				position = LAYOUT_NONE,
+				x = 0,
+				y = 250,
+				w = 480,
+				font = _font(13),
+				align = 'bottom',
+				fg = { 0xff, 0xff, 0xff },
+			},
+		}
+	else
+	--do nothing
+	end
+	
+	return s
+end
+
+function WordClock:getSkinParams(skinName)
+	log:debug("WordClock:getSkinParams - " .. skinName)
+
+	self.skinName = skinName
+	self.imgpath = _imgpath(self)
+
+	log:debug("Image path - " .. self.imgpath)
+	
+	if skinName == "JogglerSkin" then
+		return {
+			textIt        = self.imgpath .. "Clocks/WordClock/" .. 'text-it.png',
+			textIs        = self.imgpath .. "Clocks/WordClock/" .. 'text-is.png',
+			textHas       = self.imgpath .. "Clocks/WordClock/" .. 'text-has.png',
+			textNearly    = self.imgpath .. "Clocks/WordClock/" .. 'text-nearly.png',
+			textJustgone  = self.imgpath .. "Clocks/WordClock/" .. 'text-justgone.png',
+
+			textHalf      = self.imgpath .. "Clocks/WordClock/" .. 'text-half.png',
+			textTen       = self.imgpath .. "Clocks/WordClock/" .. 'text-ten.png',
+			textAQuarter  = self.imgpath .. "Clocks/WordClock/" .. 'text-aquarter.png',
+			textTwenty    = self.imgpath .. "Clocks/WordClock/" .. 'text-twenty.png',
+
+			textFive       = self.imgpath .. "Clocks/WordClock/" .. 'text-five.png',
+			textMinutes    = self.imgpath .. "Clocks/WordClock/" .. 'text-minutes.png',
+			textTo         = self.imgpath .. "Clocks/WordClock/" .. 'text-to.png',
+			textPast       = self.imgpath .. "Clocks/WordClock/" .. 'text-past.png',
+
+			textHourOne    = self.imgpath .. "Clocks/WordClock/" .. 'text-hour-one.png',
+			textHourTwo    = self.imgpath .. "Clocks/WordClock/" .. 'text-hour-two.png',
+			textHourThree  = self.imgpath .. "Clocks/WordClock/" .. 'text-hour-three.png',
+			textHourFour   = self.imgpath .. "Clocks/WordClock/" .. 'text-hour-four.png',
+			textHourFive   = self.imgpath .. "Clocks/WordClock/" .. 'text-hour-five.png',
+			textHourSix    = self.imgpath .. "Clocks/WordClock/" .. 'text-hour-six.png',
+			textHourSeven  = self.imgpath .. "Clocks/WordClock/" .. 'text-hour-seven.png',
+			textHourEight  = self.imgpath .. "Clocks/WordClock/" .. 'text-hour-eight.png',
+			textHourNine   = self.imgpath .. "Clocks/WordClock/" .. 'text-hour-nine.png',
+			textHourTen    = self.imgpath .. "Clocks/WordClock/" .. 'text-hour-ten.png',
+			textHourEleven = self.imgpath .. "Clocks/WordClock/" .. 'text-hour-eleven.png',
+			textHourTwelve = self.imgpath .. "Clocks/WordClock/" .. 'text-hour-twelve.png',
+
+			textOClock     = self.imgpath .. "Clocks/WordClock/" .. 'text-oclock.png',
+			textAM         = self.imgpath .. "Clocks/WordClock/" .. 'text-am.png',
+			textPM         = self.imgpath .. "Clocks/WordClock/" .. 'text-pm.png',
+
+			alarmIcon  = self.imgpath .. "Clocks/WordClock/" .. 'icon_alarm_word.png',
+			alarmX     = jogglerSkinAlarmX,
+			alarmY     = jogglerSkinAlarmY,
+		}
+	else
+	    return {
+			minuteHand = self.imgpath .. "Clocks/WordClock/" .. 'clock_word_min_hand.png',
+			hourHand   = self.imgpath .. "Clocks/WordClock/" .. 'clock_word_hr_hand.png',
+			alarmIcon  = self.imgpath .. "Clocks/WordClock/" .. 'icon_alarm_word.png',
+			alarmX     = 435,
+			alarmY     = 18,
+		}
+	end
+end
+
+function WordClock:getwordflags(timenow)
+	local flags = {}
+
+	local fifths = {
+		function(x) flags.zero = true end,
+		function(x) flags.five = true flags.minutes = true end,
+		function(x) flags.ten = true flags.minutes = true end,
+		function(x) flags.aquarter = true end,
+		function(x) flags.twenty = true flags.minutes = true end,
+		function(x) flags.twenty = true flags.five = true flags.minutes = true end,
+		function(x) flags.half = true end,
+		function(x) flags.twenty = true flags.five = true flags.minutes = true end,
+		function(x) flags.twenty = true flags.minutes = true end,
+		function(x) flags.aquarter = true end,
+		function(x) flags.ten = true flags.minutes = true end,
+		function(x) flags.five = true flags.minutes = true end,
+		function(x) flags.zero = true end
+	}
+
+	-- Work out IS, HAS, NEARLY and JUST GONE
+
+	local tmp = timenow.min % 5
+
+	if tmp == 0 then
+	  flags.is = true flags.exactly = true
+	elseif tmp == 1 or tmp == 2 then
+	  flags.has = true flags.justgone = true
+	elseif tmp == 3 or tmp == 4 then
+	  flags.is = true flags.nearly = true
+	end
+
+	-- Work out five minute divisions
+
+	tmp = math.floor(timenow.min / 5) + 2
+
+	if flags.exactly or flags.justgone then
+	  tmp = tmp - 1
+	end
+
+	fifths[tmp]()
+
+	-- Work out TO, PAST and OCLOCK
+
+	if (timenow.min >= 0 and timenow.min <= 2) or timenow.min == 58 or timenow.min == 59 then
+	  flags.oclock = true
+	elseif (timenow.min >= 3 and timenow.min <= 32) then
+	  flags.past = true
+	elseif (timenow.min >= 33 and timenow.min <= 57) then
+	  flags.to = true
+	end
+
+	-- Work out whether AM or PM
+
+	  if timenow.hour <= 11 then
+		flags.am = true
+	  else
+		flags.pm = true
+	  end
+
+	-- Work out hour
+
+	local hours = {
+		function(x) flags.htwelve = true end,
+		function(x) flags.hone = true end,
+		function(x) flags.htwo = true end,
+		function(x) flags.hthree = true end,
+		function(x) flags.hfour = true end,
+		function(x) flags.hfive = true end,
+		function(x) flags.hsix = true end,
+		function(x) flags.hseven = true end,
+		function(x) flags.height = true end,
+		function(x) flags.hnine = true end,
+		function(x) flags.hten = true end,
+		function(x) flags.heleven = true end,
+		function(x) flags.htwelve = true end
+	}
+
+	local hour12 = (timenow.hour % 12) + 1
+
+	if timenow.min >= 0 and timenow.min <=32 then
+	  hours[hour12]()
+	elseif timenow.min >= 33 and timenow.min <=59 then
+	  hours[hour12 + 1]()
+	end
+
+	return flags
+end
+
+-- Generate output
+function WordClock:timeastext(flags)
+
+	local timestr = "IT"
+
+	if flags.is == true then
+	  timestr = timestr .. " IS"
+	end
+
+	if flags.has == true then
+	  timestr = timestr .. " HAS"
+	end
+
+	if flags.justgone == true then
+	  timestr = timestr .. " JUST GONE"
+	end
+
+	if flags.nearly == true then
+	  timestr = timestr .. " NEARLY"
+	end
+
+	if flags.ten == true then
+	  timestr = timestr .. " TEN"
+	elseif flags.aquarter == true then
+	  timestr = timestr .. " A QUARTER"
+	elseif flags.twenty == true then
+	  timestr = timestr .. " TWENTY"
+	end
+
+	if flags.five == true then
+	  timestr = timestr .. " FIVE"
+	end
+
+	if flags.half == true then
+	  timestr = timestr .. " HALF"
+	end
+
+	if flags.past == true then
+	  timestr = timestr .. " PAST"
+	end
+
+	if flags.to == true then
+	  timestr = timestr .. " TO"
+	end
+
+	if flags.hone == true then
+	  timestr = timestr .. " ONE"
+	elseif flags.htwo == true then
+	  timestr = timestr .. " TWO"
+	elseif flags.hthree == true then
+	  timestr = timestr .. " THREE"
+	elseif flags.hfour == true then
+	  timestr = timestr .. " FOUR"
+	elseif flags.hfive == true then
+	  timestr = timestr .. " FIVE"
+	elseif flags.hsix == true then
+	  timestr = timestr .. " SIX"
+	elseif flags.hseven == true then
+	  timestr = timestr .. " SEVEN"
+	elseif flags.height == true then
+	  timestr = timestr .. " EIGHT"
+	elseif flags.hnine == true then
+	  timestr = timestr .. " NINE"
+	elseif flags.hten == true then
+	  timestr = timestr .. " TEN"
+	elseif flags.heleven == true then
+	  timestr = timestr .. " ELEVEN"
+	elseif flags.htwelve == true then
+	  timestr = timestr .. " TWELVE"
+	end
+
+	if flags.oclock == true then
+	  timestr = timestr .. " O'CLOCK"
+	end
+
+	if flags.am == true then
+	  timestr = timestr .. " AM"
+	elseif flags.pm == true then
+	  timestr = timestr .. " PM"
+	end
+
+	return timestr
+end
+
+function WordClock:getDateAsWords(day)
+	local w = {
+		"First",
+		"Second",
+		"Third",
+		"Fourth",
+		"Fifth",
+		"Sixth",
+		"Seventh",
+		"Eighth",
+		"Ninth",
+		"Tenth",
+		"Eleventh",
+		"Twelfth",
+		"Thirteenth",
+		"Fourteenth",
+		"Fifteenth",
+		"Sixteenth",
+		"Seventeenth",
+		"Eighteenth",
+		"Nineteenth",
+		"Twentieth",
+		"Twenty First",
+		"Twenty Second",
+		"Twenty Third",
+		"Twenty Fourth",
+		"Twenty Fifth",
+		"Twenty Sixth",
+		"Twenty Seventh",
+		"Twenty Eighth",
+		"Twenty Ninth",
+		"Thirtieth",
+		"Thirty First"
+	}
+
+    return( os.date("%A the ") .. w[day] .. " of " .. os.date("%B"))
+end
+
+-----------------------------------------------------------------------------------------
+
+
 -- DIGITAL CLOCK SKIN
 function Digital:getDigitalClockSkin(skinName)
 	if skinName == 'WQVGAlargeSkin' then
@@ -1598,25 +2106,30 @@ function Digital:getDigitalClockSkin(skinName)
 			w = 76,
 		}
 
+		local jogglerSkinXOffset = 20
+		local jogglerSkinYOffset = 104
+
 		local x = {}
-                x.h1 = 208
-                x.h2 = x.h1 + 75
-                x.dots = x.h2 + 75
-                x.m1 = x.dots + 39
-                x.m2 = x.m1 + 86 
-                x.alarm = x.m2 + 80
-		x.ampm = x.alarm
+		x.h1 = 208 + jogglerSkinXOffset
+		x.h2 = x.h1 + 75
+		x.dots = x.h2 + 75
+		x.m1 = x.dots + 39
+		x.m2 = x.m1 + 86 
+		-- x.alarm = x.m2 + 80
+		x.alarm = jogglerSkinAlarmX
+		-- x.ampm = x.alarm
+		x.ampm = x.m2 + 80
 
 		local _clockDigit = {
 			position = LAYOUT_NONE,
 			font = _font(143),
 			align = 'center',
 			fg = { 0xcc, 0xcc, 0xcc },
-			y = 54,
+			y = 54 + jogglerSkinYOffset,
 			zOrder = 10,
 		}
 		local _digitShadow = _uses(_clockDigit, {
-			y = 54 + 100,
+			y = 54 + 100 + jogglerSkinYOffset,
 			zOrder = 1,
 		})
 	
@@ -1677,7 +2190,7 @@ function Digital:getDigitalClockSkin(skinName)
 			}),
 			dots = _uses(_clockDigit, {
 				x = x.dots,
-				y = 83,
+				y = 83 + jogglerSkinYOffset,
 				w = 40,
 			}),
 			m1 = _uses(_clockDigit, {
@@ -1696,7 +2209,7 @@ function Digital:getDigitalClockSkin(skinName)
 			ampm = {
 				position = LAYOUT_NONE,
 				x = x.ampm,
-				y = 112,
+				y = 112 + jogglerSkinYOffset,
 				font = _font(11),
 				align = 'bottom',
 				fg = { 0xcc, 0xcc, 0xcc },
@@ -1704,12 +2217,13 @@ function Digital:getDigitalClockSkin(skinName)
 			alarm = {
 				position = LAYOUT_NONE,
 				x = x.alarm,
-				y = 56,
+				-- y = 56,
+				y = jogglerSkinAlarmY,
 			},
 			ampm = {
 				position = LAYOUT_NONE,
-				x = 564,
-				y = 144,
+				x = 564 + jogglerSkinXOffset,
+				y = 144 + jogglerSkinYOffset,
 				font = _font(20),
 				align = 'bottom',
 				fg = { 0xcc, 0xcc, 0xcc },
@@ -1719,7 +2233,7 @@ function Digital:getDigitalClockSkin(skinName)
 			horizDivider = {
 				position = LAYOUT_NONE,
 				x = 0,
-				y = 194,
+				y = 194 + 213,
 			},
 			date = {
 				position = LAYOUT_SOUTH,
@@ -1731,7 +2245,7 @@ function Digital:getDigitalClockSkin(skinName)
 					align = 'center',
 					w = 348,
 					h = WH_FILL,
-					font = _font(20),
+					font = _font(30),
 					fg = { 0xcc, 0xcc, 0xcc },
 					padding  = { 1, 0, 0, 6 },
 				},
@@ -1752,7 +2266,7 @@ function Digital:getDigitalClockSkin(skinName)
 					w = 3,
 				},
 				month = {
-					font = _font(20),
+					font = _font(30),
 					w = WH_FILL,
 					h = WH_FILL,
 					align = 'center',
@@ -1760,7 +2274,7 @@ function Digital:getDigitalClockSkin(skinName)
 					padding = { 0, 0, 0, 5 },
 				},
 				year = {
-					font = _boldfont(20),
+					font = _boldfont(30),
 					w = 50,
 					h = WH_FILL,
 					align = 'left',
@@ -2374,6 +2888,7 @@ function Digital:getDigitalClockSkin(skinName)
 	return s
 end
 
+
 -- ANALOG CLOCK
 function Analog:getAnalogClockSkin(skinName)
 	if skinName == 'WQVGAlargeSkin' then
@@ -2438,8 +2953,8 @@ function Analog:getSkinParams(skin)
 			minuteHand = 'applets/JogglerSkin/images/Clocks/Analog/clock_analog_min_hand.png',
 			hourHand   = 'applets/JogglerSkin/images/Clocks/Analog/clock_analog_hr_hand.png',
 			alarmIcon  = 'applets/JogglerSkin/images/Clocks/Analog/icon_alarm_analog.png',
-			alarmX     = 595,
-			alarmY     = 18,
+			alarmX     = jogglerSkinAlarmX,
+			alarmY     = jogglerSkinAlarmY,
 		}
 	end
 end

@@ -55,6 +55,13 @@ function configureApplet(self)
 		"Clock", 
 		"openStyledClock", _, _, 27
 	)
+-----------------------------------------------------------------------------------------
+	appletManager:callService("addScreenSaver",
+		self:string("Word Clock"), 
+		"Clock", 
+		"openWordClock", _, _, 28
+	)
+-----------------------------------------------------------------------------------------
 end
 
 
