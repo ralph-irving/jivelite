@@ -1,0 +1,20 @@
+#
+# The two letter codes are defined by ISO 639-1
+# http://en.wikipedia.org/wiki/List_of_ISO_639_codes
+
+
+LINE_IN
+	CS	Vstupní linka
+	DA	Linjeindgang
+	DE	Line-In
+	EN	Line In
+	ES	Entrada de línea
+	FI	Linjatulo
+	FR	Entrée ligne
+	IT	Ingresso
+	NL	Lijningang
+	NO	Lydinngang
+	PL	Wejście liniowe
+	RU	Линейный вход
+	SV	Ljudingång
+
