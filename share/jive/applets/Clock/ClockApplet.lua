@@ -1,4 +1,3 @@
-
 local ipairs, pairs, tonumber, setmetatable, type, tostring = ipairs, pairs, tonumber, setmetatable, type, tostring
 
 local math             = require("math")
@@ -188,7 +187,11 @@ function DotMatrix:__init(ampm, shortDateFormat)
 	log:debug("Init Dot Matrix Clock")
 
 	local skinName   = jiveMain:getSelectedSkin()
-	if not self.skin and skinName ~= self.oldSkinName then
+
+	--changed the following if statement because otherwise getDotMatrixClockSkin() is never called
+	--after a skin change -> self.skin ~= nil
+	-- if not self.skin and skinName ~= self.oldSkinName then
+	if (not self.skin and skinName ~= self.oldSkinName) or (self.skin and skinName ~= self.oldSkinName) then
 		self.oldSkinName = skinName
 		self.skin = DotMatrix:getDotMatrixClockSkin(skinName)
 	end
@@ -372,16 +375,23 @@ WordClock = oo.class({}, Clock)
 
 function WordClock:__init(applet)
 	log:debug("Init Word Clock")
-
-	local skinName = jiveMain:getSelectedSkin()
-	log:debug("skinName = " .. skinName)
   
-	if not self.skin and skinName ~= self.oldSkinName then
-		log:debug("Fetching ClockSkin")
+	local skinName   = jiveMain:getSelectedSkin()
+	
+	log:debug("self.skin: ", self.skin)
+	log:debug("self.skinName: ", self.skinName)
+	log:debug("skinName: ", skinName)
+	log:debug("self.oldSkinName: ", self.oldSkinName)
+
+	--changed the following if statement because otherwise getWordClockSkin() is never called
+	--after a skin change -> self.skin ~= nil
+	-- if not self.skin and skinName ~= self.oldSkinName then
+	if (not self.skin and skinName ~= self.oldSkinName) or (self.skin and skinName ~= self.oldSkinName) then
+		log:debug("Fetching WordClock clock skin")
 		self.oldSkinName = skinName
 		self.skin = WordClock:getWordClockSkin(skinName)
 	end
- 	obj = oo.rawnew(self, Clock(self.skin))
+	obj = oo.rawnew(self, Clock(self.skin))
 
 	obj.textdate = Label('textdate')
 	obj.skinParams = WordClock:getSkinParams(skinName)
@@ -419,7 +429,7 @@ function WordClock:__init(applet)
 		obj.pointer_textOClock     = Surface:loadImage(obj.skinParams.textOClock)  
 		obj.pointer_textAM         = Surface:loadImage(obj.skinParams.textAM)  
 		obj.pointer_textPM         = Surface:loadImage(obj.skinParams.textPM)  
-	else
+	elseif skinName == "WQVGAsmallSkin" or skinName == "WQVGAlargeSkin" or skinName == "QVGAlandscapeSkin" or skinName == "QVGAportraitSkin" then
 		obj.pointer_hour           = Surface:loadImage(obj.skinParams.hourHand)
 		obj.pointer_minute         = Surface:loadImage(obj.skinParams.minuteHand)
 	end
@@ -496,7 +506,7 @@ function WordClock:_reDraw(screen)
 		if all or flags.pm         then self.pointer_textPM:blit(screen, 716, 338) end
 
 		self.textdate:setValue("ON " .. string.upper(WordClock:getDateAsWords(tonumber(os.date("%d")))))
-	else
+	elseif self.skinName == "WQVGAsmallSkin" or self.skinName == "WQVGAlargeSkin" or self.skinName == "QVGAlandscapeSkin" or self.skinName == "QVGAportraitSkin" then
 		local x, y
 
 		-- Setup Time Objects
@@ -524,7 +534,9 @@ function WordClock:_reDraw(screen)
 		tmp:blit(screen, x, y)
 		tmp:release()	
 
-		self.textdate:setValue(string.upper(WordClock:getDateAsWords(tonumber(os.date("%d")))))
+		-- if self.skinName == "WQVGAsmallSkin" or self.skinName == "WQVGAlargeSkin" then
+			self.textdate:setValue(string.upper(WordClock:getDateAsWords(tonumber(os.date("%d")))))
+		-- end
 	end
 	
 	if self.alarmSet then
@@ -542,7 +554,12 @@ function Analog:__init(applet)
 	log:info("Init Analog Clock")
 
 	local skinName   = jiveMain:getSelectedSkin()
-	if not self.skin and skinName ~= self.oldSkinName then
+	
+	--changed the following if statement because otherwise getAnalogClockSkin() is never called
+	--after a skin change -> self.skin ~= nil
+	-- if not self.skin and skinName ~= self.oldSkinName then
+	if (not self.skin and skinName ~= self.oldSkinName) or (self.skin and skinName ~= self.oldSkinName) then
+		log:debug("Fetching Analog clock skin")
 		self.oldSkinName = skinName
 		self.skin = Analog:getAnalogClockSkin(skinName)
 	end
@@ -615,7 +632,10 @@ function Digital:__init(applet, ampm)
 
 	local skinName   = jiveMain:getSelectedSkin()
 
-	if not self.skin and skinName ~= self.oldSkinName then
+	--changed the following if statement because otherwise getDigitalClockSkin() is never called
+	--after a skin change -> self.skin ~= nil
+	-- if not self.skin and skinName ~= self.oldSkinName then
+	if (not self.skin and skinName ~= self.oldSkinName) or (self.skin and skinName ~= self.oldSkinName) then
 		self.oldSkinName = skinName
 		self.skin = Digital:getDigitalClockSkin(skinName)
 	end
@@ -1556,11 +1576,11 @@ end
 function WordClock:getWordClockSkin(skinName)
 	log:debug("WordClock:getWordClockSkin - " .. skinName)
 
-	self.skinName = skinName
-	self.imgpath = _imgpath(self)
 	if skinName == 'WQVGAlargeSkin' then
 		skinName = 'WQVGAsmallSkin'
 	end
+	self.skinName = skinName
+	self.imgpath = _imgpath(self)
 	
 	log:debug("Image path - " .. self.imgpath)
 	local s = {}
@@ -1593,8 +1613,32 @@ function WordClock:getWordClockSkin(skinName)
 				fg = { 0xff, 0xff, 0xff },
 			},
 		}
-	else
-	--do nothing
+	elseif skinName == "QVGAlandscapeSkin" then
+		s.Clock = {
+			bgImg = wordClockBackground,
+			textdate = {
+				position = LAYOUT_NONE,
+				x = 0,
+				y = 222,
+				w = 320,
+				font = _font(11),
+				align = 'bottom',
+				fg = { 0xff, 0xff, 0xff },
+			},
+		}
+	elseif skinName == "QVGAportraitSkin" then
+		s.Clock = {
+			bgImg = wordClockBackground,
+			textdate = {
+				position = LAYOUT_NONE,
+				x = 0,
+				y = 300,
+				w = 240,
+				font = _font(9),
+				align = 'bottom',
+				fg = { 0xff, 0xff, 0xff },
+			},
+		}
 	end
 	
 	return s
@@ -1603,9 +1647,12 @@ end
 function WordClock:getSkinParams(skinName)
 	log:debug("WordClock:getSkinParams - " .. skinName)
 
+	if skinName == 'WQVGAlargeSkin' then
+		skinName = 'WQVGAsmallSkin'
+	end
 	self.skinName = skinName
 	self.imgpath = _imgpath(self)
-
+	
 	log:debug("Image path - " .. self.imgpath)
 	
 	if skinName == "JogglerSkin" then
@@ -1647,13 +1694,29 @@ function WordClock:getSkinParams(skinName)
 			alarmX     = jogglerSkinAlarmX,
 			alarmY     = jogglerSkinAlarmY,
 		}
-	else
+	elseif skinName == "WQVGAsmallSkin" then
 	    return {
 			minuteHand = self.imgpath .. "Clocks/WordClock/" .. 'clock_word_min_hand.png',
 			hourHand   = self.imgpath .. "Clocks/WordClock/" .. 'clock_word_hr_hand.png',
 			alarmIcon  = self.imgpath .. "Clocks/WordClock/" .. 'icon_alarm_word.png',
 			alarmX     = 435,
 			alarmY     = 18,
+		}
+	elseif skinName == "QVGAlandscapeSkin" then
+	    return {
+			minuteHand = self.imgpath .. "Clocks/WordClock/" .. 'clock_word_min_hand.png',
+			hourHand   = self.imgpath .. "Clocks/WordClock/" .. 'clock_word_hr_hand.png',
+			alarmIcon  = self.imgpath .. "Clocks/WordClock/" .. 'icon_alarm_word.png',
+			alarmX     = 280,
+			alarmY     = 15,
+		}
+	elseif skinName == "QVGAportraitSkin" then
+	    return {
+			minuteHand = self.imgpath .. "Clocks/WordClock/" .. 'clock_word_min_hand.png',
+			hourHand   = self.imgpath .. "Clocks/WordClock/" .. 'clock_word_hr_hand.png',
+			alarmIcon  = self.imgpath .. "Clocks/WordClock/" .. 'icon_alarm_word.png',
+			alarmX     = 200,
+			alarmY     = 15,
 		}
 	end
 end
@@ -2500,196 +2563,6 @@ function Digital:getDigitalClockSkin(skinName)
 			m1Shadow = { hidden = 1 },
 			m2Shadow = { hidden = 1 },
 		})
-	elseif skinName == 'QVGAlandscapeSkin'  then
-
-		local digitalClockBackground = Tile:loadImage(self.imgpath .. "Clocks/Digital/bb_clock_digital.png")
-		local shadow = {
-			w = 62,
-		}
-		local _clockDigit = {
-			position = LAYOUT_NONE,
-			font = _font(100),
-			align = 'right',
-			fg = { 0xcc, 0xcc, 0xcc },
-			w = 62,
-			y = 48,
-			zOrder = 10,
-		}
-		local _digitShadow = _uses(_clockDigit, {
-			y = 116,
-			zOrder = 1,
-		})
-	
-		local x = {}
-                x.h1 = 19
-                x.h2 = x.h1 + 50 
-                x.dots = x.h2 + 65
-                x.m1 = x.dots + 15
-                x.m2 = x.m1 + 64
-                x.alarm = x.m2 + 61
-		x.ampm = x.alarm
-
-		s.icon_digitalClockDropShadow = {
-			img = _loadImage(self, "Clocks/Digital/drop_shadow_digital.png"),
-			align = 'center',
-			padding = { 4, 0, 0, 0 },
-			w = 62,
-		}
-
-		s.icon_alarm_on = {
-			img = _loadImage(self, "Clocks/Digital/icon_alarm_digital.png")
-		}
-		s.icon_alarm_off = _uses(s.icon_alarm_on, {
-			img = false
-		})
-		s.icon_digitalClockNoShadow = _uses(s.icon_digitalClockDropShadow, {
-				img = false
-		})
-
-		s.icon_digitalClockHDivider = {
-			w = WH_FILL,
-			img = _loadImage(self, "Clocks/Digital/divider_hort_digital.png"),
-		}
-
-		s.icon_digitalClockVDivider = {
-			w = 3,
-			img = _loadImage(self, "Clocks/Digital/divider_vert_digital.png"),
-			padding = { 0, 0, 0, 8 },
-			align = 'center',
-		}
-
-		s.icon_digitalDots = {
-			img = _loadImage(self, 'Clocks/Digital/clock_dots_digital.png'),
-			align = 'center',
-			w = 16,
-			padding = { 0, 26, 0, 0 },
-		}
-
-		s.icon_digitalClockBlank = {
-			img = false,
-		}
-
-
-		s.Clock = {
-			bgImg = digitalClockBackground,
-			h1 = _uses(_clockDigit, {
-				x = x.h1,
-			}),
-			h1Shadow = _uses(_digitShadow, {
-				x = x.h1,
-			}),
-			h2 = _uses(_clockDigit, {
-				x = x.h2,
-			}),
-			h2Shadow = _uses(_digitShadow, {
-				x = x.h2,
-			}),
-			dots = _uses(_clockDigit, {
-				x = x.dots,
-				w = 16,
-			}),
-			m1 = _uses(_clockDigit, {
-				x = x.m1,
-			}),
-			m1Shadow = _uses(_digitShadow, {
-				x = x.m1,
-			}),
-			m2 = _uses(_clockDigit, {
-				x = x.m2,
-			}),
-			m2Shadow = _uses(_digitShadow, {
-				x = x.m2,
-			}),
-
-			ampm = {
-				position = LAYOUT_NONE,
-				x = x.ampm,
-				y = 112,
-				font = _font(11),
-				align = 'bottom',
-				fg = { 0xcc, 0xcc, 0xcc },
-			},
-			alarm = {
-				position = LAYOUT_NONE,
-				x = x.alarm,
-				y = 50,
-			},
-			horizDivider2 = { hidden = 1 },
-			horizDivider = {
-				position = LAYOUT_NONE,
-				x = 0,
-				y = 173,
-			},
-			today = { hidden = '1' },
-			date = {
-				position = LAYOUT_SOUTH,
-				order = { 'dayofweek', 'vdivider1', 'dayofmonth', 'vdivider2', 'month' },
-				w = WH_FILL,
-				h = 65,
-				padding = { 0, 10, 0, 0 },
-				dayofweek = {
-					align = 'center',
-					w = 115,
-					h = WH_FILL,
-					font = _font(18),
-					fg = { 0xcc, 0xcc, 0xcc },
-					padding = { 0, 0, 0, 14 },
-				},
-				vdivider1 = {
-					align = 'center',
-					w = 2,
-				},
-				dayofmonth = {
-					font = _font(48),
-					w = 86,
-					h = WH_FILL,
-					align = 'center',
-					fg = { 0xcc, 0xcc, 0xcc },
-					padding = { 0, 0, 0, 12 },
-				},
-				vdivider2 = {
-					align = 'center',
-					w = 2,
-				},
-				month = {
-					font = _font(18),
-					w = WH_FILL,
-					h = WH_FILL,
-					align = 'center',
-					fg = { 0xcc, 0xcc, 0xcc },
-					padding = { 0, 0, 0, 14 },
-				},
-			},
-		}
-	
-		local blackMask = Tile:fillColor(0x000000ff)
-		s.ClockBlack = _uses(s.Clock, {
-			bgImg = blackMask,
-			horizDivider = { hidden = 1 },
-			horizDivider2 = { hidden = 1 },
-			today = { hidden = 1 },
-			date = {
-				order = { 'dayofweek', 'dayofmonth', 'month', 'year' },
-			},
-			h1Shadow = { hidden = 1 },
-			h2Shadow = { hidden = 1 },
-			m1Shadow = { hidden = 1 },
-			m2Shadow = { hidden = 1 },
-		})
-		s.ClockTransparent = _uses(s.Clock, {
-			bgImg = false,
-			horizDivider = { hidden = 1 },
-			horizDivider2 = { hidden = 1 },
-			today = { hidden = 1 },
-			date = {
-				order = { 'dayofweek', 'dayofmonth', 'month', 'year' },
-			},
-			h1Shadow = { hidden = 1 },
-			h2Shadow = { hidden = 1 },
-			m1Shadow = { hidden = 1 },
-			m2Shadow = { hidden = 1 },
-		})
-
 	elseif skinName == 'QVGAportraitSkin'  then
 		local digitalClockBackground = Tile:loadImage(self.imgpath .. "Clocks/Digital/jive_clock_digital.png")
 		local digitalClockDigit = {
