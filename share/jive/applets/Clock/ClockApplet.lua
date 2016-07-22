@@ -191,7 +191,7 @@ function DotMatrix:__init(ampm, shortDateFormat)
 	--changed the following if statement because otherwise getDotMatrixClockSkin() is never called
 	--after a skin change -> self.skin ~= nil
 	-- if not self.skin and skinName ~= self.oldSkinName then
-	if (not self.skin and skinName ~= self.oldSkinName) or (self.skin and skinName ~= self.oldSkinName) then
+	if not self.skin or skinName ~= self.oldSkinName then
 		self.oldSkinName = skinName
 		self.skin = DotMatrix:getDotMatrixClockSkin(skinName)
 	end
@@ -386,7 +386,7 @@ function WordClock:__init(applet)
 	--changed the following if statement because otherwise getWordClockSkin() is never called
 	--after a skin change -> self.skin ~= nil
 	-- if not self.skin and skinName ~= self.oldSkinName then
-	if (not self.skin and skinName ~= self.oldSkinName) or (self.skin and skinName ~= self.oldSkinName) then
+	if not self.skin or skinName ~= self.oldSkinName then
 		log:debug("Fetching WordClock clock skin")
 		self.oldSkinName = skinName
 		self.skin = WordClock:getWordClockSkin(skinName)
@@ -558,7 +558,7 @@ function Analog:__init(applet)
 	--changed the following if statement because otherwise getAnalogClockSkin() is never called
 	--after a skin change -> self.skin ~= nil
 	-- if not self.skin and skinName ~= self.oldSkinName then
-	if (not self.skin and skinName ~= self.oldSkinName) or (self.skin and skinName ~= self.oldSkinName) then
+	if not self.skin or skinName ~= self.oldSkinName then
 		log:debug("Fetching Analog clock skin")
 		self.oldSkinName = skinName
 		self.skin = Analog:getAnalogClockSkin(skinName)
@@ -635,7 +635,7 @@ function Digital:__init(applet, ampm)
 	--changed the following if statement because otherwise getDigitalClockSkin() is never called
 	--after a skin change -> self.skin ~= nil
 	-- if not self.skin and skinName ~= self.oldSkinName then
-	if (not self.skin and skinName ~= self.oldSkinName) or (self.skin and skinName ~= self.oldSkinName) then
+	if not self.skin or skinName ~= self.oldSkinName then
 		self.oldSkinName = skinName
 		self.skin = Digital:getDigitalClockSkin(skinName)
 	end
