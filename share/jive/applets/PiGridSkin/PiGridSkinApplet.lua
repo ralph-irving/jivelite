@@ -75,6 +75,7 @@ oo.class(_M, Applet)
 
 -- Define useful variables for this skin
 local imgpath = "applets/PiGridSkin/images/"
+local jogglerImgpath = "applets/JogglerSkin/images/"
 local fontpath = "fonts/"
 local FONT_NAME = "FreeSans"
 local BOLD_PREFIX = "Bold"
@@ -138,6 +139,10 @@ end
 
 local function _loadImage(self, file)
 	return Surface:loadImage(imgpath .. file)
+end
+
+local function _loadJogglerImage(self, file)
+	return Surface:loadImage(jogglerImgpath .. file)
 end
 
 
@@ -263,21 +268,21 @@ function skin(self, s)
 	local skinSuffix = "_" .. thisSkin .. ".png"
 
 	-- Images and Tiles
-	local inputTitleBox           = _loadImageTile(self,  imgpath .. "Titlebar/titlebar.png" )
-	local backButton              = _loadImageTile(self,  imgpath .. "Icons/icon_back_button_tb.png")
-	local cancelButton            = _loadImageTile(self,  imgpath .. "Icons/icon_close_button_tb.png")
-	local homeButton              = _loadImageTile(self,  imgpath .. "Icons/icon_home_button_tb.png")
-	local helpButton              = _loadImageTile(self,  imgpath .. "Icons/icon_help_button_tb.png")
-	local powerButton             = _loadImageTile(self,  imgpath .. "Icons/icon_power_button_tb.png")
-	local nowPlayingButton        = _loadImageTile(self,  imgpath .. "Icons/icon_nplay_button_tb.png")
-	local playlistButton          = _loadImageTile(self,  imgpath .. "Icons/icon_nplay_list_tb.png")
-	local moreButton              = _loadImageTile(self,  imgpath .. "Icons/icon_more_tb.png")
-	local touchToolbarBackground  = _loadImageTile(self,  imgpath .. "Touch_Toolbar/toolbar_tch_bkgrd.png")
-	local sliderBackground        = _loadImageTile(self,  imgpath .. "Touch_Toolbar/toolbar_lrg.png")
-	local touchToolbarKeyDivider  = _loadImageTile(self,  imgpath .. "Touch_Toolbar/toolbar_divider.png")
-	local deleteKeyBackground     = _loadImageTile(self,  imgpath .. "Buttons/button_delete_text_entry.png")
-	local deleteKeyPressedBackground = _loadImageTile(self,  imgpath .. "Buttons/button_delete_text_entry_press.png")
-        local helpTextBackground  = _loadImageTile(self, imgpath .. "Titlebar/tbar_dropdwn_bkrgd.png")
+	local inputTitleBox           = _loadImageTile(self,  jogglerImgpath .. "Titlebar/titlebar.png" )
+	local backButton              = _loadImageTile(self,  jogglerImgpath .. "Icons/icon_back_button_tb.png")
+	local cancelButton            = _loadImageTile(self,  jogglerImgpath .. "Icons/icon_close_button_tb.png")
+	local homeButton              = _loadImageTile(self,  jogglerImgpath .. "Icons/icon_home_button_tb.png")
+	local helpButton              = _loadImageTile(self,  jogglerImgpath .. "Icons/icon_help_button_tb.png")
+	local powerButton             = _loadImageTile(self,  jogglerImgpath .. "Icons/icon_power_button_tb.png")
+	local nowPlayingButton        = _loadImageTile(self,  jogglerImgpath .. "Icons/icon_nplay_button_tb.png")
+	local playlistButton          = _loadImageTile(self,  jogglerImgpath .. "Icons/icon_nplay_list_tb.png")
+	local moreButton              = _loadImageTile(self,  jogglerImgpath .. "Icons/icon_more_tb.png")
+	local touchToolbarBackground  = _loadImageTile(self,  jogglerImgpath .. "Touch_Toolbar/toolbar_tch_bkgrd.png")
+	local sliderBackground        = _loadImageTile(self,  jogglerImgpath .. "Touch_Toolbar/toolbar_lrg.png")
+	local touchToolbarKeyDivider  = _loadImageTile(self,  jogglerImgpath .. "Touch_Toolbar/toolbar_divider.png")
+	local deleteKeyBackground     = _loadImageTile(self,  jogglerImgpath .. "Buttons/button_delete_text_entry.png")
+	local deleteKeyPressedBackground = _loadImageTile(self,  jogglerImgpath .. "Buttons/button_delete_text_entry_press.png")
+	local helpTextBackground      = _loadImageTile(self, jogglerImgpath .. "Titlebar/tbar_dropdwn_bkrgd.png")
 
 
 	local blackBackground   = Tile:fillColor(0x000000ff)
@@ -285,19 +290,19 @@ function skin(self, s)
 
 	--FIXME, _r asset here doesn't work...it's supposed to have a fadeout effect and it doesn't appear on screen
 	local fiveItemBox             = _loadHTile(self, {
-		 imgpath .. "5_line_lists/tch_5line_divider_l.png",
-		 imgpath .. "5_line_lists/tch_5line_divider.png",
-		 imgpath .. "5_line_lists/tch_5line_divider_r.png",
+		jogglerImgpath .. "5_line_lists/tch_5line_divider_l.png",
+		jogglerImgpath .. "5_line_lists/tch_5line_divider.png",
+		jogglerImgpath .. "5_line_lists/tch_5line_divider_r.png",
 	})
 	local fiveItemSelectionBox    = _loadHTile(self, {
-		 nil,
-		 imgpath .. "5_line_lists/menu_sel_box_5line.png",
-		 imgpath .. "5_line_lists/menu_sel_box_5line_r.png",
+		nil,
+		jogglerImgpath .. "5_line_lists/menu_sel_box_5line.png",
+		jogglerImgpath .. "5_line_lists/menu_sel_box_5line_r.png",
 	})
 	local fiveItemPressedBox      = _loadHTile(self, {
-		 nil,
-		 imgpath .. "5_line_lists/menu_sel_box_5line_press.png",
-		 imgpath .. "5_line_lists/menu_sel_box_5line_press_r.png",
+		nil,
+		jogglerImgpath .. "5_line_lists/menu_sel_box_5line_press.png",
+		jogglerImgpath .. "5_line_lists/menu_sel_box_5line_press_r.png",
 	})
 
 	local gridItemSelectionBox    = _loadTile(self, {
@@ -313,110 +318,110 @@ function skin(self, s)
 	})
 
 	local threeItemSelectionBox            = _loadHTile(self, {
-		 imgpath .. "3_line_lists/menu_sel_box_3line_l.png",
-		 imgpath .. "3_line_lists/menu_sel_box_3line.png",
-		 imgpath .. "3_line_lists/menu_sel_box_3line_r.png",
+		jogglerImgpath .. "3_line_lists/menu_sel_box_3line_l.png",
+		jogglerImgpath .. "3_line_lists/menu_sel_box_3line.png",
+		jogglerImgpath .. "3_line_lists/menu_sel_box_3line_r.png",
 	})
-	local threeItemPressedBox = _loadImageTile(self, imgpath .. "3_line_lists/menu_sel_box_3item_press.png")
+	local threeItemPressedBox = _loadImageTile(self, jogglerImgpath .. "3_line_lists/menu_sel_box_3item_press.png")
 	
 	local contextMenuPressedBox    = _loadTile(self, {
-		imgpath .. "Popup_Menu/button_cm_press.png",
-		imgpath .. "Popup_Menu/button_cm_tl_press.png",
-		imgpath .. "Popup_Menu/button_cm_t_press.png",
-		imgpath .. "Popup_Menu/button_cm_tr_press.png",
-		imgpath .. "Popup_Menu/button_cm_r_press.png",
-		imgpath .. "Popup_Menu/button_cm_br_press.png",
-		imgpath .. "Popup_Menu/button_cm_b_press.png",
-		imgpath .. "Popup_Menu/button_cm_bl_press.png",
-		imgpath .. "Popup_Menu/button_cm_l_press.png",
+		jogglerImgpath .. "Popup_Menu/button_cm_press.png",
+		jogglerImgpath .. "Popup_Menu/button_cm_tl_press.png",
+		jogglerImgpath .. "Popup_Menu/button_cm_t_press.png",
+		jogglerImgpath .. "Popup_Menu/button_cm_tr_press.png",
+		jogglerImgpath .. "Popup_Menu/button_cm_r_press.png",
+		jogglerImgpath .. "Popup_Menu/button_cm_br_press.png",
+		jogglerImgpath .. "Popup_Menu/button_cm_b_press.png",
+		jogglerImgpath .. "Popup_Menu/button_cm_bl_press.png",
+		jogglerImgpath .. "Popup_Menu/button_cm_l_press.png",
 	})
 	
 	local keyTopLeft = _loadTile(self, {
-		imgpath .. "Text_Entry/Keyboard_Touch/keyboard_bkgrd.png",
-		imgpath .. "Text_Entry/Keyboard_Touch/keyboard_bkgrd_tl.png",
-		imgpath .. "Text_Entry/Keyboard_Touch/keyboard_bkgrd_t.png",
+		jogglerImgpath .. "Text_Entry/Keyboard_Touch/keyboard_bkgrd.png",
+		jogglerImgpath .. "Text_Entry/Keyboard_Touch/keyboard_bkgrd_tl.png",
+		jogglerImgpath .. "Text_Entry/Keyboard_Touch/keyboard_bkgrd_t.png",
 		nil,
 		nil,
 		nil,
 		nil,
 		nil,
-		imgpath .. "Text_Entry/Keyboard_Touch/keyboard_bkgrd_l.png",
+		jogglerImgpath .. "Text_Entry/Keyboard_Touch/keyboard_bkgrd_l.png",
 	})
 
 	local keyTopLeftPressed = _loadTile(self, {
-		imgpath .. "Buttons/keybrd_n_button_press.png",
-		imgpath .. "Buttons/keybrd_nw_button_press_tl.png",
-		imgpath .. "Buttons/keybrd_n_button_press_t.png",
+		jogglerImgpath .. "Buttons/keybrd_n_button_press.png",
+		jogglerImgpath .. "Buttons/keybrd_nw_button_press_tl.png",
+		jogglerImgpath .. "Buttons/keybrd_n_button_press_t.png",
 		nil,
 		nil,
 		nil,
 		nil,
 		nil,
-		imgpath .. "Buttons/keybrd_nw_button_press_l.png",
+		jogglerImgpath .. "Buttons/keybrd_nw_button_press_l.png",
 	})
 
 	local keyTop = _loadTile(self, {
-		imgpath .. "Text_Entry/Keyboard_Touch/keyboard_bkgrd.png",
+		jogglerImgpath .. "Text_Entry/Keyboard_Touch/keyboard_bkgrd.png",
 		nil,
-		imgpath .. "Text_Entry/Keyboard_Touch/keyboard_bkgrd_t_wvert.png",
-		nil,
-		nil,
+		jogglerImgpath .. "Text_Entry/Keyboard_Touch/keyboard_bkgrd_t_wvert.png",
 		nil,
 		nil,
 		nil,
-		imgpath .. "Text_Entry/Keyboard_Touch/keyboard_divider_vert.png",
+		nil,
+		nil,
+		jogglerImgpath .. "Text_Entry/Keyboard_Touch/keyboard_divider_vert.png",
 	})
 
 	local keyTopPressed = _loadTile(self, {
-		imgpath .. "Buttons/keybrd_n_button_press.png",
+		jogglerImgpath .. "Buttons/keybrd_n_button_press.png",
 		nil,
-		imgpath .. "Buttons/keybrd_n_button_press_t.png",
-		nil,
-		nil,
+		jogglerImgpath .. "Buttons/keybrd_n_button_press_t.png",
 		nil,
 		nil,
 		nil,
-		imgpath .. "Text_Entry/Keyboard_Touch/keyboard_divider_vert.png",
+		nil,
+		nil,
+		jogglerImgpath .. "Text_Entry/Keyboard_Touch/keyboard_divider_vert.png",
 	})
 
 	local keyTopRight = _loadTile(self, {
-		imgpath .. "Text_Entry/Keyboard_Touch/keyboard_bkgrd.png",
+		jogglerImgpath .. "Text_Entry/Keyboard_Touch/keyboard_bkgrd.png",
 		nil,
-		imgpath .. "Text_Entry/Keyboard_Touch/keyboard_bkgrd_t_wvert.png",
-		imgpath .. "Text_Entry/Keyboard_Touch/keyboard_bkgrd_tr.png",
-		imgpath .. "Text_Entry/Keyboard_Touch/keyboard_bkgrd_r.png",
+		jogglerImgpath .. "Text_Entry/Keyboard_Touch/keyboard_bkgrd_t_wvert.png",
+		jogglerImgpath .. "Text_Entry/Keyboard_Touch/keyboard_bkgrd_tr.png",
+		jogglerImgpath .. "Text_Entry/Keyboard_Touch/keyboard_bkgrd_r.png",
 		nil,
 		nil,
 		nil,
-		imgpath .. "Text_Entry/Keyboard_Touch/keyboard_divider_vert.png",
+		jogglerImgpath .. "Text_Entry/Keyboard_Touch/keyboard_divider_vert.png",
 	})
 
 	local keyTopRightPressed = _loadTile(self, {
-		imgpath .. "Buttons/keybrd_n_button_press.png",
+		jogglerImgpath .. "Buttons/keybrd_n_button_press.png",
 		nil,
-		imgpath .. "Buttons/keybrd_n_button_press_t.png",
-		imgpath .. "Buttons/keybrd_ne_button_press_tr.png",
-		imgpath .. "Buttons/keybrd_ne_button_press_r.png",
+		jogglerImgpath .. "Buttons/keybrd_n_button_press_t.png",
+		jogglerImgpath .. "Buttons/keybrd_ne_button_press_tr.png",
+		jogglerImgpath .. "Buttons/keybrd_ne_button_press_r.png",
 		nil,
 		nil,
 		nil,
-		imgpath .. "Text_Entry/Keyboard_Touch/keyboard_divider_vert.png",
+		jogglerImgpath .. "Text_Entry/Keyboard_Touch/keyboard_divider_vert.png",
 	})
 
 	local keyLeft = _loadTile(self, {
-		imgpath .. "Text_Entry/Keyboard_Touch/keyboard_bkgrd.png",
-		imgpath .. "Text_Entry/Keyboard_Touch/keyboardLeftEdge.png",
-		imgpath .. "Text_Entry/Keyboard_Touch/keyboard_divider_hort.png",
+		jogglerImgpath .. "Text_Entry/Keyboard_Touch/keyboard_bkgrd.png",
+		jogglerImgpath .. "Text_Entry/Keyboard_Touch/keyboardLeftEdge.png",
+		jogglerImgpath .. "Text_Entry/Keyboard_Touch/keyboard_divider_hort.png",
 		nil,
 		nil,
 		nil,
 		nil,
 		nil,
-		imgpath .. "Text_Entry/Keyboard_Touch/keyboard_bkgrd_l.png",
+		jogglerImgpath .. "Text_Entry/Keyboard_Touch/keyboard_bkgrd_l.png",
 	})
 
 	local keyLeftPressed = _loadTile(self, {
-		imgpath .. "Buttons/keyboard_button_press.png",
+		jogglerImgpath .. "Buttons/keyboard_button_press.png",
 		nil,
 		nil,
 		nil,
@@ -424,63 +429,63 @@ function skin(self, s)
 		nil,
 		nil,
 		nil,
-		imgpath .. "Buttons/keyboard_button_press.png",
+		jogglerImgpath .. "Buttons/keyboard_button_press.png",
 	})
 
 	local keyMiddle = _loadTile(self, {
-		imgpath .. "Text_Entry/Keyboard_Touch/keyboard_bkgrd.png",
+		jogglerImgpath .. "Text_Entry/Keyboard_Touch/keyboard_bkgrd.png",
 		nil,
-		imgpath .. "Text_Entry/Keyboard_Touch/keyboard_divider_hort.png",
-		nil,
-		nil,
+		jogglerImgpath .. "Text_Entry/Keyboard_Touch/keyboard_divider_hort.png",
 		nil,
 		nil,
 		nil,
-		imgpath .. "Text_Entry/Keyboard_Touch/keyboard_divider_vert.png",
+		nil,
+		nil,
+		jogglerImgpath .. "Text_Entry/Keyboard_Touch/keyboard_divider_vert.png",
 	})
 
 	local keyMiddlePressed = _loadTile(self, {
-		imgpath .. "Buttons/keyboard_button_press.png",
+		jogglerImgpath .. "Buttons/keyboard_button_press.png",
 		nil,
-		imgpath .. "Text_Entry/Keyboard_Touch/keyboard_divider_hort.png",
-		nil,
-		nil,
+		jogglerImgpath .. "Text_Entry/Keyboard_Touch/keyboard_divider_hort.png",
 		nil,
 		nil,
 		nil,
-		imgpath .. "Text_Entry/Keyboard_Touch/keyboard_divider_vert.png",
+		nil,
+		nil,
+		jogglerImgpath .. "Text_Entry/Keyboard_Touch/keyboard_divider_vert.png",
 	})
 
 	local sliderButtonPressed = _loadTile(self, {
-		imgpath .. "Buttons/keyboard_button_press.png",
+		jogglerImgpath .. "Buttons/keyboard_button_press.png",
 		nil,
 		nil,
-		imgpath .. "Text_Entry/Keyboard_Touch/keyboard_divider_hort.png",
+		jogglerImgpath .. "Text_Entry/Keyboard_Touch/keyboard_divider_hort.png",
 		nil,
 		nil,
 		nil,
 		nil,
-		imgpath .. "Text_Entry/Keyboard_Touch/keyboard_divider_vert.png",
+		jogglerImgpath .. "Text_Entry/Keyboard_Touch/keyboard_divider_vert.png",
 	})
 
 	local keyRight = _loadTile(self, {
-		imgpath .. "Text_Entry/Keyboard_Touch/keyboard_bkgrd.png",
+		jogglerImgpath .. "Text_Entry/Keyboard_Touch/keyboard_bkgrd.png",
 		nil,
-		imgpath .. "Text_Entry/Keyboard_Touch/keyboard_divider_hort.png",
-		imgpath .. "Text_Entry/Keyboard_Touch/keyboardRightEdge.png",
-		imgpath .. "Text_Entry/Keyboard_Touch/keyboard_bkgrd_r.png",
+		jogglerImgpath .. "Text_Entry/Keyboard_Touch/keyboard_divider_hort.png",
+		jogglerImgpath .. "Text_Entry/Keyboard_Touch/keyboardRightEdge.png",
+		jogglerImgpath .. "Text_Entry/Keyboard_Touch/keyboard_bkgrd_r.png",
 		nil,
 		nil,
 		nil,
-		imgpath .. "Text_Entry/Keyboard_Touch/keyboard_divider_vert.png",
+		jogglerImgpath .. "Text_Entry/Keyboard_Touch/keyboard_divider_vert.png",
 	})
 
 	local keyRightPressed = _loadTile(self, {
-		imgpath .. "Buttons/keyboard_button_press.png",
+		jogglerImgpath .. "Buttons/keyboard_button_press.png",
 		nil,
 		nil,
 		nil,
-		imgpath .. "Buttons/keyboard_button_press.png",
+		jogglerImgpath .. "Buttons/keyboard_button_press.png",
 		nil,
 		nil,
 		nil,
@@ -488,174 +493,174 @@ function skin(self, s)
 	})
 
 	local keyBottomLeft = _loadTile(self, {
-		imgpath .. "Text_Entry/Keyboard_Touch/keyboard_bkgrd.png",
-		imgpath .. "Text_Entry/Keyboard_Touch/keyboardLeftEdge.png",
-		imgpath .. "Text_Entry/Keyboard_Touch/keyboard_divider_hort.png",
+		jogglerImgpath .. "Text_Entry/Keyboard_Touch/keyboard_bkgrd.png",
+		jogglerImgpath .. "Text_Entry/Keyboard_Touch/keyboardLeftEdge.png",
+		jogglerImgpath .. "Text_Entry/Keyboard_Touch/keyboard_divider_hort.png",
 		nil,
 		nil,
 		nil,
-		imgpath .. "Text_Entry/Keyboard_Touch/keyboard_bkgrd_b.png",
-		imgpath .. "Text_Entry/Keyboard_Touch/keyboard_bkgrd_bl.png",
-		imgpath .. "Text_Entry/Keyboard_Touch/keyboard_bkgrd_l.png",
+		jogglerImgpath .. "Text_Entry/Keyboard_Touch/keyboard_bkgrd_b.png",
+		jogglerImgpath .. "Text_Entry/Keyboard_Touch/keyboard_bkgrd_bl.png",
+		jogglerImgpath .. "Text_Entry/Keyboard_Touch/keyboard_bkgrd_l.png",
 	})
 
 	local keyBottomLeftPressed = _loadTile(self, {
-		imgpath .. "Buttons/keybrd_s_button_press.png",
-		imgpath .. "Text_Entry/Keyboard_Touch/keyboardLeftEdge.png",
-		imgpath .. "Text_Entry/Keyboard_Touch/keyboard_divider_hort.png",
+		jogglerImgpath .. "Buttons/keybrd_s_button_press.png",
+		jogglerImgpath .. "Text_Entry/Keyboard_Touch/keyboardLeftEdge.png",
+		jogglerImgpath .. "Text_Entry/Keyboard_Touch/keyboard_divider_hort.png",
 		nil,
 		nil,
 		nil,
-		imgpath .. "Buttons/keybrd_s_button_press_b.png",
-		imgpath .. "Buttons/keybrd_sw_button_press_bl.png",
-		imgpath .. "Buttons/keybrd_sw_button_press_l.png",
+		jogglerImgpath .. "Buttons/keybrd_s_button_press_b.png",
+		jogglerImgpath .. "Buttons/keybrd_sw_button_press_bl.png",
+		jogglerImgpath .. "Buttons/keybrd_sw_button_press_l.png",
 	})
 
 	local keyBottom = _loadTile(self, {
-		imgpath .. "Text_Entry/Keyboard_Touch/keyboard_bkgrd.png",
+		jogglerImgpath .. "Text_Entry/Keyboard_Touch/keyboard_bkgrd.png",
 		nil,
-		imgpath .. "Text_Entry/Keyboard_Touch/keyboard_divider_hort.png",
+		jogglerImgpath .. "Text_Entry/Keyboard_Touch/keyboard_divider_hort.png",
 		nil,
 		nil,
 		nil,
-		imgpath .. "Text_Entry/Keyboard_Touch/keyboard_bkgrd_b_wvert.png",
+		jogglerImgpath .. "Text_Entry/Keyboard_Touch/keyboard_bkgrd_b_wvert.png",
 		nil,
-		imgpath .. "Text_Entry/Keyboard_Touch/keyboard_divider_vert.png",
+		jogglerImgpath .. "Text_Entry/Keyboard_Touch/keyboard_divider_vert.png",
 	})
 
 	local keyBottomPressed = _loadTile(self, {
-		imgpath .. "Buttons/keybrd_s_button_press.png",
+		jogglerImgpath .. "Buttons/keybrd_s_button_press.png",
 		nil,
-		imgpath .. "Text_Entry/Keyboard_Touch/keyboard_divider_hort.png",
+		jogglerImgpath .. "Text_Entry/Keyboard_Touch/keyboard_divider_hort.png",
 		nil,
 		nil,
 		nil,
-		imgpath .. "Buttons/keybrd_s_button_press_b.png",
+		jogglerImgpath .. "Buttons/keybrd_s_button_press_b.png",
 		nil,
-		imgpath .. "Text_Entry/Keyboard_Touch/keyboard_divider_vert.png",
+		jogglerImgpath .. "Text_Entry/Keyboard_Touch/keyboard_divider_vert.png",
 	})
 
 	local keyBottomRight = _loadTile(self, {
-		imgpath .. "Text_Entry/Keyboard_Touch/keyboard_bkgrd.png",
+		jogglerImgpath .. "Text_Entry/Keyboard_Touch/keyboard_bkgrd.png",
 		nil,
-		imgpath .. "Text_Entry/Keyboard_Touch/keyboard_divider_hort.png",
-		imgpath .. "Text_Entry/Keyboard_Touch/keyboardRightEdge.png",
-		imgpath .. "Text_Entry/Keyboard_Touch/keyboard_bkgrd_r.png",
-		imgpath .. "Text_Entry/Keyboard_Touch/keyboard_bkgrd_br.png",
-		imgpath .. "Text_Entry/Keyboard_Touch/keyboard_bkgrd_b_wvert.png",
+		jogglerImgpath .. "Text_Entry/Keyboard_Touch/keyboard_divider_hort.png",
+		jogglerImgpath .. "Text_Entry/Keyboard_Touch/keyboardRightEdge.png",
+		jogglerImgpath .. "Text_Entry/Keyboard_Touch/keyboard_bkgrd_r.png",
+		jogglerImgpath .. "Text_Entry/Keyboard_Touch/keyboard_bkgrd_br.png",
+		jogglerImgpath .. "Text_Entry/Keyboard_Touch/keyboard_bkgrd_b_wvert.png",
 		nil,
-		imgpath .. "Text_Entry/Keyboard_Touch/keyboard_divider_vert.png",
+		jogglerImgpath .. "Text_Entry/Keyboard_Touch/keyboard_divider_vert.png",
 	})
 
 	local keyBottomRightPressed = _loadTile(self, {
-		imgpath .. "Buttons/keybrd_s_button_press.png",
+		jogglerImgpath .. "Buttons/keybrd_s_button_press.png",
 		nil,
-		imgpath .. "Text_Entry/Keyboard_Touch/keyboard_divider_hort.png",
-		imgpath .. "Text_Entry/Keyboard_Touch/keyboardRightEdge.png",
-		imgpath .. "Buttons/keybrd_se_button_press_r.png",
-		imgpath .. "Buttons/keybrd_se_button_press_br.png",
-		imgpath .. "Buttons/keybrd_s_button_press_b.png",
+		jogglerImgpath .. "Text_Entry/Keyboard_Touch/keyboard_divider_hort.png",
+		jogglerImgpath .. "Text_Entry/Keyboard_Touch/keyboardRightEdge.png",
+		jogglerImgpath .. "Buttons/keybrd_se_button_press_r.png",
+		jogglerImgpath .. "Buttons/keybrd_se_button_press_br.png",
+		jogglerImgpath .. "Buttons/keybrd_s_button_press_b.png",
 		nil,
-		imgpath .. "Text_Entry/Keyboard_Touch/keyboard_divider_vert.png",
+		jogglerImgpath .. "Text_Entry/Keyboard_Touch/keyboard_divider_vert.png",
 	})
 
 	local titleBox                =
 		_loadTile(self, {
-				 imgpath .. "Titlebar/titlebar.png",
+				 jogglerImgpath .. "Titlebar/titlebar.png",
 				 nil,
 				 nil,
 				 nil,
 				 nil,
 				 nil,
-				 imgpath .. "Titlebar/titlebar_shadow.png",
+				 jogglerImgpath .. "Titlebar/titlebar_shadow.png",
 				 nil,
 				 nil,
 		})
 
 	local textinputBackground     = 
 		_loadTile(self, {
-				 imgpath .. "Text_Entry/Keyboard_Touch/titlebar_box.png",
-				 imgpath .. "Text_Entry/Keyboard_Touch/text_entry_titlebar_box_tl.png",
-				 imgpath .. "Text_Entry/Keyboard_Touch/text_entry_titlebar_box_t.png",
-				 imgpath .. "Text_Entry/Keyboard_Touch/text_entry_titlebar_box_tr.png",
-				 imgpath .. "Text_Entry/Keyboard_Touch/text_entry_titlebar_box_r.png",
-				 imgpath .. "Text_Entry/Keyboard_Touch/text_entry_titlebar_box_br.png",
-				 imgpath .. "Text_Entry/Keyboard_Touch/text_entry_titlebar_box_b.png",
-				 imgpath .. "Text_Entry/Keyboard_Touch/text_entry_titlebar_box_bl.png",
-				 imgpath .. "Text_Entry/Keyboard_Touch/text_entry_titlebar_box_l.png",
+				 jogglerImgpath .. "Text_Entry/Keyboard_Touch/titlebar_box.png",
+				 jogglerImgpath .. "Text_Entry/Keyboard_Touch/text_entry_titlebar_box_tl.png",
+				 jogglerImgpath .. "Text_Entry/Keyboard_Touch/text_entry_titlebar_box_t.png",
+				 jogglerImgpath .. "Text_Entry/Keyboard_Touch/text_entry_titlebar_box_tr.png",
+				 jogglerImgpath .. "Text_Entry/Keyboard_Touch/text_entry_titlebar_box_r.png",
+				 jogglerImgpath .. "Text_Entry/Keyboard_Touch/text_entry_titlebar_box_br.png",
+				 jogglerImgpath .. "Text_Entry/Keyboard_Touch/text_entry_titlebar_box_b.png",
+				 jogglerImgpath .. "Text_Entry/Keyboard_Touch/text_entry_titlebar_box_bl.png",
+				 jogglerImgpath .. "Text_Entry/Keyboard_Touch/text_entry_titlebar_box_l.png",
 				})
 
 	local pressedTitlebarButtonBox =
 		_loadTile(self, {
-					imgpath .. "Buttons/button_titlebar_press.png",
-					imgpath .. "Buttons/button_titlebar_tl_press.png",
-					imgpath .. "Buttons/button_titlebar_t_press.png",
-					imgpath .. "Buttons/button_titlebar_tr_press.png",
-					imgpath .. "Buttons/button_titlebar_r_press.png",
-					imgpath .. "Buttons/button_titlebar_br_press.png",
-					imgpath .. "Buttons/button_titlebar_b_press.png",
-					imgpath .. "Buttons/button_titlebar_bl_press.png",
-					imgpath .. "Buttons/button_titlebar_l_press.png",
+					jogglerImgpath .. "Buttons/button_titlebar_press.png",
+					jogglerImgpath .. "Buttons/button_titlebar_tl_press.png",
+					jogglerImgpath .. "Buttons/button_titlebar_t_press.png",
+					jogglerImgpath .. "Buttons/button_titlebar_tr_press.png",
+					jogglerImgpath .. "Buttons/button_titlebar_r_press.png",
+					jogglerImgpath .. "Buttons/button_titlebar_br_press.png",
+					jogglerImgpath .. "Buttons/button_titlebar_b_press.png",
+					jogglerImgpath .. "Buttons/button_titlebar_bl_press.png",
+					jogglerImgpath .. "Buttons/button_titlebar_l_press.png",
 				})
 
 	local titlebarButtonBox =
 		_loadTile(self, {
-					imgpath .. "Buttons/button_titlebar.png",
-					imgpath .. "Buttons/button_titlebar_tl.png",
-					imgpath .. "Buttons/button_titlebar_t.png",
-					imgpath .. "Buttons/button_titlebar_tr.png",
-					imgpath .. "Buttons/button_titlebar_r.png",
-					imgpath .. "Buttons/button_titlebar_br.png",
-					imgpath .. "Buttons/button_titlebar_b.png",
-					imgpath .. "Buttons/button_titlebar_bl.png",
-					imgpath .. "Buttons/button_titlebar_l.png",
+					jogglerImgpath .. "Buttons/button_titlebar.png",
+					jogglerImgpath .. "Buttons/button_titlebar_tl.png",
+					jogglerImgpath .. "Buttons/button_titlebar_t.png",
+					jogglerImgpath .. "Buttons/button_titlebar_tr.png",
+					jogglerImgpath .. "Buttons/button_titlebar_r.png",
+					jogglerImgpath .. "Buttons/button_titlebar_br.png",
+					jogglerImgpath .. "Buttons/button_titlebar_b.png",
+					jogglerImgpath .. "Buttons/button_titlebar_bl.png",
+					jogglerImgpath .. "Buttons/button_titlebar_l.png",
 				})
 
 	local popupBox = 
 		_loadTile(self, {
-				       imgpath .. "Popup_Menu/popup_box.png",
-				       imgpath .. "Popup_Menu/popup_box_tl.png",
-				       imgpath .. "Popup_Menu/popup_box_t.png",
-				       imgpath .. "Popup_Menu/popup_box_tr.png",
-				       imgpath .. "Popup_Menu/popup_box_r.png",
-				       imgpath .. "Popup_Menu/popup_box_br.png",
-				       imgpath .. "Popup_Menu/popup_box_b.png",
-				       imgpath .. "Popup_Menu/popup_box_bl.png",
-				       imgpath .. "Popup_Menu/popup_box_l.png",
+				       jogglerImgpath .. "Popup_Menu/popup_box.png",
+				       jogglerImgpath .. "Popup_Menu/popup_box_tl.png",
+				       jogglerImgpath .. "Popup_Menu/popup_box_t.png",
+				       jogglerImgpath .. "Popup_Menu/popup_box_tr.png",
+				       jogglerImgpath .. "Popup_Menu/popup_box_r.png",
+				       jogglerImgpath .. "Popup_Menu/popup_box_br.png",
+				       jogglerImgpath .. "Popup_Menu/popup_box_b.png",
+				       jogglerImgpath .. "Popup_Menu/popup_box_bl.png",
+				       jogglerImgpath .. "Popup_Menu/popup_box_l.png",
 			       })
 
 	local contextMenuBox = 
 		_loadTile(self, {
-				       imgpath .. "Popup_Menu/cm_popup_box.png",
-				       imgpath .. "Popup_Menu/cm_popup_box_tl.png",
-				       imgpath .. "Popup_Menu/cm_popup_box_t.png",
-				       imgpath .. "Popup_Menu/cm_popup_box_tr.png",
-				       imgpath .. "Popup_Menu/cm_popup_box_r.png",
-				       imgpath .. "Popup_Menu/cm_popup_box_br.png",
-				       imgpath .. "Popup_Menu/cm_popup_box_b.png",
-				       imgpath .. "Popup_Menu/cm_popup_box_bl.png",
-				       imgpath .. "Popup_Menu/cm_popup_box_l.png",
+				       jogglerImgpath .. "Popup_Menu/cm_popup_box.png",
+				       jogglerImgpath .. "Popup_Menu/cm_popup_box_tl.png",
+				       jogglerImgpath .. "Popup_Menu/cm_popup_box_t.png",
+				       jogglerImgpath .. "Popup_Menu/cm_popup_box_tr.png",
+				       jogglerImgpath .. "Popup_Menu/cm_popup_box_r.png",
+				       jogglerImgpath .. "Popup_Menu/cm_popup_box_br.png",
+				       jogglerImgpath .. "Popup_Menu/cm_popup_box_b.png",
+				       jogglerImgpath .. "Popup_Menu/cm_popup_box_bl.png",
+				       jogglerImgpath .. "Popup_Menu/cm_popup_box_l.png",
 			       })
 
 
 
 	local scrollBackground = 
 		_loadVTile(self, {
-					imgpath .. "Scroll_Bar/scrollbar_bkgrd_t.png",
-					imgpath .. "Scroll_Bar/scrollbar_bkgrd.png",
-					imgpath .. "Scroll_Bar/scrollbar_bkgrd_b.png",
+					jogglerImgpath .. "Scroll_Bar/scrollbar_bkgrd_t.png",
+					jogglerImgpath .. "Scroll_Bar/scrollbar_bkgrd.png",
+					jogglerImgpath .. "Scroll_Bar/scrollbar_bkgrd_b.png",
 			       })
 
 	local scrollBar = 
 		_loadVTile(self, {
-					imgpath .. "Scroll_Bar/scrollbar_body_t.png",
-					imgpath .. "Scroll_Bar/scrollbar_body.png",
-					imgpath .. "Scroll_Bar/scrollbar_body_b.png",
+					jogglerImgpath .. "Scroll_Bar/scrollbar_body_t.png",
+					jogglerImgpath .. "Scroll_Bar/scrollbar_body.png",
+					jogglerImgpath .. "Scroll_Bar/scrollbar_body_b.png",
 			       })
 
 	local popupBackground = blackBackground
 
-	local textinputCursor = _loadImageTile(self, imgpath .. "Text_Entry/Keyboard_Touch/tch_cursor.png")
+	local textinputCursor = _loadImageTile(self, jogglerImgpath .. "Text_Entry/Keyboard_Touch/tch_cursor.png")
 
 	local THUMB_SIZE_G = self:param().THUMB_SIZE
 	local THUMB_SIZE_L = self:param().THUMB_SIZE_LINEAR
@@ -713,14 +718,14 @@ function skin(self, s)
 	local ITEMS_PER_ROW = 2.5
 
 	local smallSpinny = {
-		img = _loadImage(self, "Alerts/wifi_connecting_sm.png"),
+		img = _loadJogglerImage(self, "Alerts/wifi_connecting_sm.png"),
 		frameRate = 8,
 		frameWidth = 26,
 		padding = 0,
 		h = WH_FILL,
 	}
 	local largeSpinny = {
-		img = _loadImage(self, "Alerts/wifi_connecting.png"),
+		img = _loadJogglerImage(self, "Alerts/wifi_connecting.png"),
 		position = LAYOUT_CENTER,
 		w = WH_FILL,
 		align = "center",
@@ -736,13 +741,13 @@ function skin(self, s)
 	}
 
 	local playArrow = { 
-		img = _loadImage(self, "Icons/selection_play_3line_on.png"),
+		img = _loadJogglerImage(self, "Icons/selection_play_3line_on.png"),
 	}
 	local addArrow  = { 
-		img = _loadImage(self, "Icons/selection_add_3line_on.png"),
+		img = _loadJogglerImage(self, "Icons/selection_add_3line_on.png"),
 	}
 	local favItem  = { 
-		img = _loadImage(self, "Icons/icon_toolbar_fav.png"),
+		img = _loadJogglerImage(self, "Icons/icon_toolbar_fav.png"),
 	}
 
 
@@ -750,56 +755,56 @@ function skin(self, s)
 
 --------- CONSTANTS ---------
 
-	local _progressBackground = _loadImageTile(self, imgpath .. "Alerts/alert_progress_bar_bkgrd.png")
+	local _progressBackground = _loadImageTile(self, jogglerImgpath .. "Alerts/alert_progress_bar_bkgrd.png")
 
 	local _progressBar = _loadHTile(self, {
 		nil,
-		imgpath .. "Alerts/alert_progress_bar_body.png",
+		jogglerImgpath .. "Alerts/alert_progress_bar_body.png",
 	})
 
 	local _songProgressBackground = _loadHTile(self, {
-		imgpath .. "Song_Progress_Bar/SP_Bar_Touch/tch_progressbar_bkgrd_l.png",
-		imgpath .. "Song_Progress_Bar/SP_Bar_Touch/tch_progressbar_bkgrd.png",
-		imgpath .. "Song_Progress_Bar/SP_Bar_Touch/tch_progressbar_bkgrd_r.png",
+		jogglerImgpath .. "Song_Progress_Bar/SP_Bar_Touch/tch_progressbar_bkgrd_l.png",
+		jogglerImgpath .. "Song_Progress_Bar/SP_Bar_Touch/tch_progressbar_bkgrd.png",
+		jogglerImgpath .. "Song_Progress_Bar/SP_Bar_Touch/tch_progressbar_bkgrd_r.png",
 	})
 
 	local _songProgressBar = _loadHTile(self, {
 			nil,
 			nil,
-			imgpath .. "Song_Progress_Bar/SP_Bar_Touch/tch_progressbar_slider.png"
+			jogglerImgpath .. "Song_Progress_Bar/SP_Bar_Touch/tch_progressbar_slider.png"
 	})
 
 	local _songProgressBarDisabled = _loadHTile(self, {
 			nil,
 			nil,
-			imgpath .. "Song_Progress_Bar/SP_Bar_Remote/rem_progressbar_slider.png"
+			jogglerImgpath .. "Song_Progress_Bar/SP_Bar_Remote/rem_progressbar_slider.png"
 	})
 
 	local _vizProgressBar = _loadHTile(self, {
-			imgpath .. "UNOFFICIAL/viz_progress_fill_l.png",
-			imgpath .. "UNOFFICIAL/viz_progress_fill.png",
-			imgpath .. "UNOFFICIAL/viz_progress_fill_r.png",
+		jogglerImgpath .. "UNOFFICIAL/viz_progress_fill_l.png",
+		jogglerImgpath .. "UNOFFICIAL/viz_progress_fill.png",
+		jogglerImgpath .. "UNOFFICIAL/viz_progress_fill_r.png",
 	})
-	local _vizProgressBarPill = _loadImageTile(self, imgpath .. "UNOFFICIAL/viz_progress_slider.png")
+	local _vizProgressBarPill = _loadImageTile(self, jogglerImgpath .. "UNOFFICIAL/viz_progress_slider.png")
 
 	local _volumeSliderBackground = _loadHTile(self, {
-		imgpath .. "Touch_Toolbar/tch_volumebar_bkgrd_l.png",
-		imgpath .. "Touch_Toolbar/tch_volumebar_bkgrd.png",
-		imgpath .. "Touch_Toolbar/tch_volumebar_bkgrd_r.png",
+		jogglerImgpath .. "Touch_Toolbar/tch_volumebar_bkgrd_l.png",
+		jogglerImgpath .. "Touch_Toolbar/tch_volumebar_bkgrd.png",
+		jogglerImgpath .. "Touch_Toolbar/tch_volumebar_bkgrd_r.png",
 	})
 
 	local _volumeSliderBar = _loadHTile(self, {
-               imgpath .. "UNOFFICIAL/tch_volumebar_fill_l.png",
-               imgpath .. "UNOFFICIAL/tch_volumebar_fill.png",
-               imgpath .. "UNOFFICIAL/tch_volumebar_fill_r.png",
+		jogglerImgpath .. "UNOFFICIAL/tch_volumebar_fill_l.png",
+		jogglerImgpath .. "UNOFFICIAL/tch_volumebar_fill.png",
+		jogglerImgpath .. "UNOFFICIAL/tch_volumebar_fill_r.png",
 	})
 	
-	local _volumeSliderPill = _loadImageTile(self, imgpath .. "Touch_Toolbar/tch_volume_slider.png")
+	local _volumeSliderPill = _loadImageTile(self, jogglerImgpath .. "Touch_Toolbar/tch_volume_slider.png")
 
 	local _popupSliderBar = _loadHTile(self, {
-		imgpath .. "Touch_Toolbar/tch_volumebar_fill_l.png",
-		imgpath .. "Touch_Toolbar/tch_volumebar_fill.png",
-		imgpath .. "Touch_Toolbar/tch_volumebar_fill_r.png",
+		jogglerImgpath .. "Touch_Toolbar/tch_volumebar_fill_l.png",
+		jogglerImgpath .. "Touch_Toolbar/tch_volumebar_fill.png",
+		jogglerImgpath .. "Touch_Toolbar/tch_volumebar_fill_r.png",
         })
 
 --------- DEFAULT WIDGET STYLES ---------
@@ -905,7 +910,7 @@ function skin(self, s)
 		},
 		arrow = {
 	      		align = ITEM_ICON_ALIGN,
-	      		img = _loadImage(self, "Icons/selection_right_5line.png"),
+	      		img = _loadJogglerImage(self, "Icons/selection_right_5line.png"),
 			padding = { 0, 0, 0, 0 },
 		},
 		bgImg = fiveItemBox,
@@ -943,8 +948,8 @@ function skin(self, s)
 	s.checkbox.align = 'center'
 	s.checkbox.padding = CHECKBOX_RADIO_PADDING
 	s.checkbox.h = WH_FILL
-        s.checkbox.img_on = _loadImage(self, "Icons/checkbox_on.png")
-        s.checkbox.img_off = _loadImage(self, "Icons/checkbox_off.png")
+        s.checkbox.img_on = _loadJogglerImage(self, "Icons/checkbox_on.png")
+        s.checkbox.img_off = _loadJogglerImage(self, "Icons/checkbox_off.png")
 
 
         -- Radio button
@@ -952,8 +957,8 @@ function skin(self, s)
 	s.radio.align = 'center'
 	s.radio.padding = CHECKBOX_RADIO_PADDING
 	s.radio.h = WH_FILL
-        s.radio.img_on = _loadImage(self, "Icons/radiobutton_on.png")
-        s.radio.img_off = _loadImage(self, "Icons/radiobutton_off.png")
+        s.radio.img_on = _loadJogglerImage(self, "Icons/radiobutton_on.png")
+        s.radio.img_off = _loadJogglerImage(self, "Icons/radiobutton_off.png")
 
 	s.item_choice = _uses(s.item, {
 		order  = { 'icon', 'text', 'check' },
@@ -971,7 +976,7 @@ function skin(self, s)
 		check = {
 			align = ITEM_ICON_ALIGN,
 			padding = CHECK_PADDING,
-			img = _loadImage(self, "Icons/icon_check_5line.png")
+			img = _loadJogglerImage(self, "Icons/icon_check_5line.png")
 	      	}
 	})
 
@@ -1224,25 +1229,25 @@ function skin(self, s)
 	s.keyboard.spacer_bottomRight = _uses(s.keyboard.key_bottomRight)
 
 	s.keyboard.shiftOff = _uses(s.keyboard.key_left, {
-		img = _loadImage(self, "Icons/icon_shift_off.png"),
+		img = _loadJogglerImage(self, "Icons/icon_shift_off.png"),
 		padding = { 1, 0, 0, 0 },
 	})
 	s.keyboard.shiftOn = _uses(s.keyboard.key_left, {
-		img = _loadImage(self, "Icons/icon_shift_on.png"),
+		img = _loadJogglerImage(self, "Icons/icon_shift_on.png"),
 		padding = { 1, 0, 0, 0 },
 	})
 
 	s.keyboard.arrow_left_middle = _uses(s.keyboard.key_middle, {
-		img = _loadImage(self, "Icons/icon_arrow_left.png")
+		img = _loadJogglerImage(self, "Icons/icon_arrow_left.png")
 	})
 	s.keyboard.arrow_right_right = _uses(s.keyboard.key_right, {
-		img = _loadImage(self, "Icons/icon_arrow_right.png")
+		img = _loadJogglerImage(self, "Icons/icon_arrow_right.png")
 	})
 	s.keyboard.arrow_left_bottom = _uses(s.keyboard.key_bottom, {
-		img = _loadImage(self, "Icons/icon_arrow_left.png")
+		img = _loadJogglerImage(self, "Icons/icon_arrow_left.png")
 	})
 	s.keyboard.arrow_right_bottom = _uses(s.keyboard.key_bottom, {
-		img = _loadImage(self, "Icons/icon_arrow_right.png")
+		img = _loadJogglerImage(self, "Icons/icon_arrow_right.png")
 	})
 
 
@@ -1267,7 +1272,7 @@ function skin(self, s)
                 icon = _uses(s.keyboard.key_bottomRight, {
 			bgImg = keyBottomRight,
 			hidden = 0,
-                        img = _loadImage(self, "Alerts/wifi_connecting_sm.png"),
+                        img = _loadJogglerImage(self, "Alerts/wifi_connecting_sm.png"),
 			frameRate = 8,
 			frameWidth = 26,
 			w = WH_FILL, 
@@ -1375,7 +1380,7 @@ function skin(self, s)
 		w = WH_FILL,
 		h = screenHeight - TITLE_HEIGHT,
 		position = LAYOUT_NONE,
-		img = _loadImage(self, "Multi_Character_Entry/tch_multi_char_bkgrd_3c.png"),
+		img = _loadJogglerImage(self, "Multi_Character_Entry/tch_multi_char_bkgrd_3c.png"),
 		x = 0,
 		y = TITLE_HEIGHT,
 	}
@@ -1384,21 +1389,21 @@ function skin(self, s)
 		w = WH_FILL,
 		h = screenHeight - TITLE_HEIGHT,
 		position = LAYOUT_NONE,
-		img = _loadImage(self, "Multi_Character_Entry/tch_multi_char_bkgrd_2c.png"),
+		img = _loadJogglerImage(self, "Multi_Character_Entry/tch_multi_char_bkgrd_2c.png"),
 		x = 0,
 		y = TITLE_HEIGHT,
 	}
 
 	s.time_input_menu_box_12h = {
 		position = LAYOUT_NONE,
-		img = _loadImage(self, "Multi_Character_Entry/menu_box_fixed.png"),
+		img = _loadJogglerImage(self, "Multi_Character_Entry/menu_box_fixed.png"),
 		w = 370,
 		h = 80,
 		x = 216,
 		y = 228,
 	}
 	s.time_input_menu_box_24h = _uses(s.time_input_menu_box_12h, {
-		-- img = _loadImage(self, "UNOFFICIAL/menu_box_fixed_2c.png"),
+		-- img = _loadJogglerImage(self, "UNOFFICIAL/menu_box_fixed_2c.png"),
 		w = 242,
 		x = 278,
 	
@@ -1791,14 +1796,14 @@ function skin(self, s)
 		check = {
 			align = ITEM_ICON_ALIGN,
 			padding = CHECK_PADDING,
-			--img = _loadImage(self, "Icons/icon_check_5line.png")
+			--img = _loadJogglerImage(self, "Icons/icon_check_5line.png")
 		},
 	})
 	s.icon_listG.menu.item_play = _uses(s.icon_listG.menu.item, { 
 		arrow = { img = false },
 	})
 	s.icon_listG.menu.albumcurrent = _uses(s.icon_listG.menu.item_play, {
-		arrow = { img = false }, --_loadImage(self, "Icons/icon_nplay_3line_off.png"),
+		arrow = { img = false }, --_loadJogglerImage(self, "Icons/icon_nplay_3line_off.png"),
 		--},
 		--text = { padding = 0, },
 		-- Bug 11482c#13, don't know why the bgImg has to be redefined again here, but this fixes the issue
@@ -1820,7 +1825,7 @@ function skin(self, s)
 		}),
 		albumcurrent = _uses(s.icon_listG.menu.albumcurrent, {
 			--arrow = { 
-			--	img = _loadImage(self, "Icons/icon_nplay_3line_sel.png"),
+			--	img = _loadJogglerImage(self, "Icons/icon_nplay_3line_sel.png"),
 			--},
 			bgImg = gridItemSelectionBox,
 		}),
@@ -1920,7 +1925,7 @@ function skin(self, s)
 		check = {
 			align = ITEM_ICON_ALIGN,
 			padding = CHECK_PADDING,
-			img = _loadImage(self, "Icons/icon_check_5line.png")
+			img = _loadJogglerImage(self, "Icons/icon_check_5line.png")
 		},
 	})
 	s.icon_listL.menu.item_play = _uses(s.icon_listL.menu.item, { 
@@ -1928,7 +1933,7 @@ function skin(self, s)
 	})
 	s.icon_listL.menu.albumcurrent = _uses(s.icon_listL.menu.item_play, {
 		arrow = { 
-			img = _loadImage(self, "Icons/icon_nplay_3line_off.png"),
+			img = _loadJogglerImage(self, "Icons/icon_nplay_3line_off.png"),
 		},
 		text = { padding = 0, },
 		-- Bug 11482c#13, don't know why the bgImg has to be redefined again here, but this fixes the issue
@@ -1950,7 +1955,7 @@ function skin(self, s)
 		}),
                 albumcurrent       = _uses(s.icon_listL.menu.albumcurrent, {
 			arrow = { 
-				img = _loadImage(self, "Icons/icon_nplay_3line_sel.png"),
+				img = _loadJogglerImage(self, "Icons/icon_nplay_3line_sel.png"),
 			},
 			bgImg = fiveItemSelectionBox,
 		}),
@@ -2101,7 +2106,7 @@ function skin(self, s)
 			icon = { 
 				align = 'top-left', 
 				border = { 12, 12, 0, 0 },
-				img = _loadImage(self, "UNOFFICIAL/menu_album_noartwork_64.png"),
+				img = _loadJogglerImage(self, "UNOFFICIAL/menu_album_noartwork_64.png"),
 				h = WH_FILL,
 				w = 64,
 			}
@@ -2183,10 +2188,10 @@ function skin(self, s)
 		img = false,
 	})
 	s.badge_favorite = _uses(s._badge, {
-		img = _loadImage(self, "Icons/icon_badge_fav.png")
+		img = _loadJogglerImage(self, "Icons/icon_badge_fav.png")
 	})
 	s.badge_add = _uses(s._badge, {
-		img = _loadImage(self, "Icons/icon_badge_add.png")
+		img = _loadJogglerImage(self, "Icons/icon_badge_add.png")
 	})
 
 	s.context_menu = {
@@ -2579,12 +2584,12 @@ function skin(self, s)
 	s.button_playlist.padding = { 2, 0, 0, 2 }
 
 	s.button_volume_min = {
-		img = _loadImage(self, "Icons/icon_toolbar_vol_down.png"),
+		img = _loadJogglerImage(self, "Icons/icon_toolbar_vol_down.png"),
 		border = { 5, 0, 5, 0 },
 	}
 
 	s.button_volume_max = {
-		img = _loadImage(self, "Icons/icon_toolbar_vol_up.png"),
+		img = _loadJogglerImage(self, "Icons/icon_toolbar_vol_up.png"),
 		border = { 5, 0, 5, 0 },
 	}
 
@@ -2594,7 +2599,7 @@ function skin(self, s)
 		h = 66,
 		padding = { 14, 0, 0, 0 },
 		border = { 0, 2, 9, 5}, 
-		img = _loadImage(self, "Icons/icon_delete_tch_text_entry.png"),
+		img = _loadJogglerImage(self, "Icons/icon_delete_tch_text_entry.png"),
 		bgImg = deleteKeyBackground,
 	}
 	s.pressed.button_keyboard_back = _uses(s.button_keyboard_back, {
@@ -2665,19 +2670,19 @@ function skin(self, s)
 	s.icon_no_artwork_playlist = _uses(s.icon_no_artwork_playlist)
 
 	s.icon_connecting = _uses(_icon, {
-		img = _loadImage(self, "Alerts/wifi_connecting.png"),
+		img = _loadJogglerImage(self, "Alerts/wifi_connecting.png"),
 		frameRate = 8,
 		frameWidth = 120,
                 padding = { 0, 90, 0, 10 },
 	})
 
 	s.icon_connected = _uses(_icon, {
-		img = _loadImage(self, "Alerts/connecting_success_icon.png"),
+		img = _loadJogglerImage(self, "Alerts/connecting_success_icon.png"),
                 padding = { 0, 2, 0, 10 },
 	})
 
 	s.icon_photo_loading = _uses(_icon, {
-		img = _loadImage(self, "Icons/image_viewer_loading.png"),
+		img = _loadJogglerImage(self, "Icons/image_viewer_loading.png"),
 	})
 
 	s.icon_software_update = _uses(_icon, {
@@ -2689,29 +2694,29 @@ function skin(self, s)
 	})
 
 	s.icon_popup_pause = _uses(_popupicon, {
-		img = _loadImage(self, "Icons/icon_popup_box_pause.png"),
+		img = _loadJogglerImage(self, "Icons/icon_popup_box_pause.png"),
 	})
 
 	s.icon_popup_play = _uses(_popupicon, {
-		img = _loadImage(self, "Icons/icon_popup_box_play.png"),
+		img = _loadJogglerImage(self, "Icons/icon_popup_box_play.png"),
 	})
 
 	s.icon_popup_fwd = _uses(_popupicon, {
-		img = _loadImage(self, "Icons/icon_popup_box_fwd.png"),
+		img = _loadJogglerImage(self, "Icons/icon_popup_box_fwd.png"),
 	})
 	s.icon_popup_rew = _uses(_popupicon, {
-		img = _loadImage(self, "Icons/icon_popup_box_rew.png"),
+		img = _loadJogglerImage(self, "Icons/icon_popup_box_rew.png"),
 	})
 
 	s.icon_popup_stop = _uses(_popupicon, {
-		img = _loadImage(self, "Icons/icon_popup_box_stop.png"),
+		img = _loadJogglerImage(self, "Icons/icon_popup_box_stop.png"),
 	})
 	s.icon_popup_lineIn = _uses(_popupicon, {
 		img = _loadImage(self, "IconsResized/icon_linein_134.png"),
 	})
 
 	s.icon_popup_volume = {
-		img = _loadImage(self, "Icons/icon_popup_box_volume_bar.png"),
+		img = _loadJogglerImage(self, "Icons/icon_popup_box_volume_bar.png"),
 		w = WH_FILL,
 		h = 90,
 		align = 'center',
@@ -2719,53 +2724,53 @@ function skin(self, s)
 	}
 
 	s.icon_popup_mute = _uses(s.icon_popup_volume, {
-		img = _loadImage(self, "Icons/icon_popup_box_volume_mute.png"),
+		img = _loadJogglerImage(self, "Icons/icon_popup_box_volume_mute.png"),
 	})
 
 	s.icon_popup_shuffle0 = _uses(_popupicon, {
-                img = _loadImage(self, "Icons/icon_popup_box_shuffle_off.png"),
+                img = _loadJogglerImage(self, "Icons/icon_popup_box_shuffle_off.png"),
         })
 
         s.icon_popup_shuffle1 = _uses(_popupicon, {
-                img = _loadImage(self, "Icons/icon_popup_box_shuffle.png"),
+                img = _loadJogglerImage(self, "Icons/icon_popup_box_shuffle.png"),
         })
 
         s.icon_popup_shuffle2 = _uses(_popupicon, {
-                img = _loadImage(self, "Icons/icon_popup_box_shuffle_album.png"),
+                img = _loadJogglerImage(self, "Icons/icon_popup_box_shuffle_album.png"),
         })
 
 	s.icon_popup_repeat0 = _uses(_popupicon, {
-                img = _loadImage(self, "Icons/icon_popup_box_repeat_off.png"),
+                img = _loadJogglerImage(self, "Icons/icon_popup_box_repeat_off.png"),
         })
 
         s.icon_popup_repeat1 = _uses(_popupicon, {
-                img = _loadImage(self, "Icons/icon_popup_box_repeat_song.png"),
+                img = _loadJogglerImage(self, "Icons/icon_popup_box_repeat_song.png"),
         })
 
         s.icon_popup_repeat2 = _uses(_popupicon, {
-                img = _loadImage(self, "Icons/icon_popup_box_repeat.png"),
+                img = _loadJogglerImage(self, "Icons/icon_popup_box_repeat.png"),
         })
 
 	s.icon_popup_sleep_15 = {
-		img = _loadImage(self, "Icons/icon_popup_box_sleep_15.png"),
+		img = _loadJogglerImage(self, "Icons/icon_popup_box_sleep_15.png"),
 		h = WH_FILL,
 		w = WH_FILL,
 		padding = { 24, 24, 0, 0 },
 	}
 	s.icon_popup_sleep_30 = _uses(s.icon_popup_sleep_15, {
-		img = _loadImage(self, "Icons/icon_popup_box_sleep_30.png"),
+		img = _loadJogglerImage(self, "Icons/icon_popup_box_sleep_30.png"),
 	})
 	s.icon_popup_sleep_45 = _uses(s.icon_popup_sleep_15, {
-		img = _loadImage(self, "Icons/icon_popup_box_sleep_45.png"),
+		img = _loadJogglerImage(self, "Icons/icon_popup_box_sleep_45.png"),
 	})
 	s.icon_popup_sleep_60 = _uses(s.icon_popup_sleep_15, {
-		img = _loadImage(self, "Icons/icon_popup_box_sleep_60.png"),
+		img = _loadJogglerImage(self, "Icons/icon_popup_box_sleep_60.png"),
 	})
 	s.icon_popup_sleep_90 = _uses(s.icon_popup_sleep_15, {
-		img = _loadImage(self, "Icons/icon_popup_box_sleep_90.png"),
+		img = _loadJogglerImage(self, "Icons/icon_popup_box_sleep_90.png"),
 	})
 	s.icon_popup_sleep_cancel = _uses(s.icon_popup_sleep_15, {
-		img = _loadImage(self, "Icons/icon_popup_box_sleep_off.png"),
+		img = _loadJogglerImage(self, "Icons/icon_popup_box_sleep_off.png"),
 		padding = { 24, 34, 0, 0 },
 	})
 
@@ -2775,11 +2780,11 @@ function skin(self, s)
 
 	s.icon_locked = _uses(_icon, {
 -- FIXME no asset for this (needed?)
---		img = _loadImage(self, "Alerts/popup_locked_icon.png"),
+--		img = _loadJogglerImage(self, "Alerts/popup_locked_icon.png"),
 	})
 
 	s.icon_alarm = {
-		img = _loadImage(self, "Icons/icon_alarm.png"),
+		img = _loadJogglerImage(self, "Icons/icon_alarm.png"),
 	}
 
         s.icon_art = _uses(_icon, {
@@ -2968,19 +2973,19 @@ function skin(self, s)
 	}
 
 	s.wirelessLevel1 = _uses(_indicator, {
-		img = _loadImage(self, "Icons/icon_wireless_1.png")
+		img = _loadJogglerImage(self, "Icons/icon_wireless_1.png")
 	})
 
 	s.wirelessLevel2 = _uses(_indicator, {
-		img = _loadImage(self, "Icons/icon_wireless_2.png")
+		img = _loadJogglerImage(self, "Icons/icon_wireless_2.png")
 	})
 
 	s.wirelessLevel3 = _uses(_indicator, {
-		img = _loadImage(self, "Icons/icon_wireless_3.png")
+		img = _loadJogglerImage(self, "Icons/icon_wireless_3.png")
 	})
 
 	s.wirelessLevel4 = _uses(_indicator, {
-		img = _loadImage(self, "Icons/icon_wireless_4.png")
+		img = _loadJogglerImage(self, "Icons/icon_wireless_4.png")
 	})
 
 
@@ -3145,78 +3150,78 @@ function skin(self, s)
 			div7 = _uses(_transportControlBorder),
 
 			rew   = _uses(_transportControlButton, {
-				img = _loadImage(self, "Icons/icon_toolbar_rew.png"),
+				img = _loadJogglerImage(self, "Icons/icon_toolbar_rew.png"),
 			}),
 			play  = _uses(_transportControlButton, {
-				img = _loadImage(self, "Icons/icon_toolbar_play.png"),
+				img = _loadJogglerImage(self, "Icons/icon_toolbar_play.png"),
 			}),
 			pause = _uses(_transportControlButton, {
-				img = _loadImage(self, "Icons/icon_toolbar_pause.png"),
+				img = _loadJogglerImage(self, "Icons/icon_toolbar_pause.png"),
 			}),
 			fwd   = _uses(_transportControlButton, {
-				img = _loadImage(self, "Icons/icon_toolbar_ffwd.png"),
+				img = _loadJogglerImage(self, "Icons/icon_toolbar_ffwd.png"),
 			}),
 			shuffleMode   = _uses(_transportControlButton, {
-				img = _loadImage(self, "Icons/icon_toolbar_shuffle_off.png"),
+				img = _loadJogglerImage(self, "Icons/icon_toolbar_shuffle_off.png"),
 			}),
 			shuffleOff   = _uses(_transportControlButton, {
-				img = _loadImage(self, "Icons/icon_toolbar_shuffle_off.png"),
+				img = _loadJogglerImage(self, "Icons/icon_toolbar_shuffle_off.png"),
 			}),
 			shuffleSong  = _uses(_transportControlButton, {
-				img = _loadImage(self, "Icons/icon_toolbar_shuffle_on.png"),
+				img = _loadJogglerImage(self, "Icons/icon_toolbar_shuffle_on.png"),
 			}),
 			shuffleAlbum = _uses(_transportControlButton, {
-				img = _loadImage(self, "Icons/icon_toolbar_shuffle_album_on.png"),
+				img = _loadJogglerImage(self, "Icons/icon_toolbar_shuffle_album_on.png"),
 			}),
 			repeatMode   = _uses(_transportControlButton, {
-				img = _loadImage(self, "Icons/icon_toolbar_repeat_off.png"),
+				img = _loadJogglerImage(self, "Icons/icon_toolbar_repeat_off.png"),
 			}),
 			repeatOff   = _uses(_transportControlButton, {
-				img = _loadImage(self, "Icons/icon_toolbar_repeat_off.png"),
+				img = _loadJogglerImage(self, "Icons/icon_toolbar_repeat_off.png"),
 			}),
 			repeatPlaylist = _uses(_transportControlButton, {
-				img = _loadImage(self, "Icons/icon_toolbar_repeat_on.png"),
+				img = _loadJogglerImage(self, "Icons/icon_toolbar_repeat_on.png"),
 			}),
 			repeatSong = _uses(_transportControlButton, {
-				img = _loadImage(self, "Icons/icon_toolbar_repeat_song_on.png"),
+				img = _loadJogglerImage(self, "Icons/icon_toolbar_repeat_song_on.png"),
 			}),
 			volDown   = _uses(_transportControlButton, {
 				w = 34,
-				img = _loadImage(self, "Icons/icon_toolbar_vol_down.png"),
+				img = _loadJogglerImage(self, "Icons/icon_toolbar_vol_down.png"),
 			}),
 			volUp   = _uses(_transportControlButton, {
 				w = 34,
-				img = _loadImage(self, "Icons/icon_toolbar_vol_up.png"),
+				img = _loadJogglerImage(self, "Icons/icon_toolbar_vol_up.png"),
 			}),
 			thumbsUp   = _uses(_transportControlButton, {
-				img = _loadImage(self, "Icons/icon_toolbar_thumbup.png"),
+				img = _loadJogglerImage(self, "Icons/icon_toolbar_thumbup.png"),
 			}),
 			thumbsDown   = _uses(_transportControlButton, {
-				img = _loadImage(self, "Icons/icon_toolbar_thumbdown.png"),
+				img = _loadJogglerImage(self, "Icons/icon_toolbar_thumbdown.png"),
 			}),
 			thumbsUpDisabled   = _uses(_transportControlButton, {
-				img = _loadImage(self, "Icons/icon_toolbar_thumbup_dis.png"),
+				img = _loadJogglerImage(self, "Icons/icon_toolbar_thumbup_dis.png"),
 			}),
 			thumbsDownDisabled   = _uses(_transportControlButton, {
-				img = _loadImage(self, "Icons/icon_toolbar_thumbdown_dis.png"),
+				img = _loadJogglerImage(self, "Icons/icon_toolbar_thumbdown_dis.png"),
 			}),
 			love   = _uses(_transportControlButton, {
-				img = _loadImage(self, "Icons/icon_toolbar_love_on.png"),
+				img = _loadJogglerImage(self, "Icons/icon_toolbar_love_on.png"),
 			}),
 			hate   = _uses(_transportControlButton, {
-				img = _loadImage(self, "Icons/icon_toolbar_love_off.png"),
+				img = _loadJogglerImage(self, "Icons/icon_toolbar_love_off.png"),
 			}),
 			fwdDisabled   = _uses(_transportControlButton, {
-				img = _loadImage(self, "Icons/icon_toolbar_ffwd_dis.png"),
+				img = _loadJogglerImage(self, "Icons/icon_toolbar_ffwd_dis.png"),
 			}),
 			rewDisabled   = _uses(_transportControlButton, {
-				img = _loadImage(self, "Icons/icon_toolbar_rew_dis.png"),
+				img = _loadJogglerImage(self, "Icons/icon_toolbar_rew_dis.png"),
 			}),
 			shuffleDisabled   = _uses(_transportControlButton, {
-				img = _loadImage(self, "Icons/icon_toolbar_shuffle_dis.png"),
+				img = _loadJogglerImage(self, "Icons/icon_toolbar_shuffle_dis.png"),
 			}),
 			repeatDisabled   = _uses(_transportControlButton, {
-				img = _loadImage(self, "Icons/icon_toolbar_repeat_dis.png"),
+				img = _loadJogglerImage(self, "Icons/icon_toolbar_repeat_dis.png"),
 			}),
 		},
 	
@@ -3629,7 +3634,7 @@ function skin(self, s)
 				h = 413 - (TITLE_HEIGHT + 38 + 38),
 				border = { 0, 0, 0, 0 },
 				padding = { 0, 0, 0, 0 },
-				bgImg = _loadImage(self, "UNOFFICIAL/VUMeter/vu_analog_25seq_w.png"),
+				bgImg = _loadJogglerImage(self, "UNOFFICIAL/VUMeter/vu_analog_25seq_w.png"),
 			}
 		},
 	})
@@ -3655,12 +3660,12 @@ function skin(self, s)
 		down   = _uses(_transportControlButton, {
 			w = 56,
 			h = 56,
-			img = _loadImage(self, "Icons/icon_toolbar_brightness_down.png"),
+			img = _loadJogglerImage(self, "Icons/icon_toolbar_brightness_down.png"),
 		}),
 		up   = _uses(_transportControlButton, {
 			w = 56,
 			h = 56,
-			img = _loadImage(self, "Icons/icon_toolbar_brightness_up.png"),
+			img = _loadJogglerImage(self, "Icons/icon_toolbar_brightness_up.png"),
 		}),
 	}
 	s.brightness_group.pressed = {
@@ -3682,10 +3687,10 @@ function skin(self, s)
 	
 	s.settings_slider_group = _uses(s.brightness_group, {
 		down = {
-			img = _loadImage(self, "Icons/icon_toolbar_minus.png"),
+			img = _loadJogglerImage(self, "Icons/icon_toolbar_minus.png"),
 		},
 		up = {
-			img = _loadImage(self, "Icons/icon_toolbar_plus.png"),
+			img = _loadJogglerImage(self, "Icons/icon_toolbar_plus.png"),
 		},
 	})
 
@@ -3694,30 +3699,30 @@ function skin(self, s)
 	s.settings_slider_group.pressed = {
 		down = _uses(s.settings_slider_group.down, { 
 			bgImg = sliderButtonPressed,
-			img = _loadImage(self, "Icons/icon_toolbar_minus_dis.png"),
+			img = _loadJogglerImage(self, "Icons/icon_toolbar_minus_dis.png"),
 		}),
 		up = _uses(s.settings_slider_group.up, { 
 			bgImg = sliderButtonPressed,
-			img = _loadImage(self, "Icons/icon_toolbar_plus_dis.png"),
+			img = _loadJogglerImage(self, "Icons/icon_toolbar_plus_dis.png"),
 		}),
 	}
 
 	s.settings_volume_group = _uses(s.brightness_group, {
 		down = {
-			img = _loadImage(self, "Icons/icon_toolbar_vol_down.png"),
+			img = _loadJogglerImage(self, "Icons/icon_toolbar_vol_down.png"),
 		},
 		up = {
-			img = _loadImage(self, "Icons/icon_toolbar_vol_up.png"),
+			img = _loadJogglerImage(self, "Icons/icon_toolbar_vol_up.png"),
 		},
 	})
 	s.settings_volume_group.pressed = {
 		down = _uses(s.settings_volume_group.down, { 
 			bgImg = sliderButtonPressed,
-			img = _loadImage(self, "Icons/icon_toolbar_vol_down_dis.png"),
+			img = _loadJogglerImage(self, "Icons/icon_toolbar_vol_down_dis.png"),
 		}),
 		up = _uses(s.settings_volume_group.up, { 
 			bgImg = sliderButtonPressed,
-			img = _loadImage(self, "Icons/icon_toolbar_vol_up_dis.png"),
+			img = _loadJogglerImage(self, "Icons/icon_toolbar_vol_up_dis.png"),
 		}),
 	}
 
