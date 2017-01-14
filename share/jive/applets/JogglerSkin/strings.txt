@@ -112,7 +112,19 @@ MORE_HELP
 	SV	Mer
 
 ART_AND_TEXT
+	CS	Obal alba a text
+	DA	Albumcover og tekst
+	DE	Plattenhülle und Text
 	EN	Artwork and Text
+	ES	Carátula de álbum y texto
+	FI	Kansikuva ja teksti
+	FR	Pochette et texte
+	IT	Copertine e testo
+	NL	Hoesafbeelding en tekst
+	NO	Albumomslag og tekst
+	PL	Pliki graficzne i tekst
+	RU	Обложка и текст
+	SV	Albumomslag och text
 
 TEXT_ONLY
 	CS	Pouze text
@@ -130,7 +142,19 @@ TEXT_ONLY
 	SV	Endast text
 
 ART_ONLY
+	CS	Pouze obal alba
+	DA	Kun albumcover
+	DE	Nur Plattenhülle
 	EN	Artwork only
+	ES	Sólo carátula
+	FI	Vain kansikuva
+	FR	Pochette uniquement
+	IT	Solo copertine
+	NL	Alleen hoesafbeelding
+	NO	Bare albumomslag
+	PL	Tylko pliki graficzne
+	RU	Только обложка
+	SV	Endast albumomslag
 
 SPECTRUM_ANALYZER
 	CS	Spektrální analyzátor
