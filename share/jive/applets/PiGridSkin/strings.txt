@@ -1,0 +1,157 @@
+#
+# The two letter codes are defined by ISO 639-1
+# http://en.wikipedia.org/wiki/List_of_ISO_639_codes
+
+PIGRID_SKIN
+	EN	Grid Skin (800x480)
+
+ENTER_SMALL
+	CS	hotovo
+	DA	udført
+	DE	Fertig
+	EN	done
+	ES	listo
+	FI	valmis
+	FR	terminé
+	IT	fine
+	NL	gereed
+	NO	ferdig
+	PL	gotowe
+	RU	готово
+	SV	klart
+
+ENTER
+	CS	Hotovo
+	DA	OK
+	DE	Fertig
+	EN	Done
+	ES	Listo
+	FI	Valmis
+	FR	Terminé
+	IT	Fatto
+	NL	Klaar
+	NO	Fullført
+	PL	Gotowe
+	RU	Готово
+	SV	Klar
+
+SPACEBAR_SMALL
+	CS	mezera
+	DA	mellemrum
+	DE	Leertaste
+	EN	space
+	ES	espacio
+	FI	välinäppäin
+	FR	espace
+	IT	spazio
+	NL	spatie
+	NO	mellomrom
+	PL	spacja
+	RU	пробел
+	SV	mellanslag
+
+HELP
+	CS	Nápověda
+	DA	Hjælp
+	DE	Hilfe
+	EN	Help
+	ES	Ayuda
+	FI	Ohje
+	FR	Aide
+	IT	Guida
+	NL	Help
+	NO	Hjelp
+	PL	Pomoc
+	RU	Справка
+	SV	Hjälp
+
+MORE_HELP
+	CS	Další
+	DA	Mere
+	DE	Mehr
+	EN	More
+	ES	Más
+	FI	Lisää
+	FR	Plus
+	IT	Altro
+	NL	Meer
+	NO	Mer
+	PL	Więcej
+	RU	Дополнительно
+	SV	Mer
+
+ART_AND_TEXT
+	CS	Obal alba a text
+	DA	Albumcover og tekst
+	DE	Plattenhülle und Text
+	EN	Artwork and Text
+	ES	Carátula de álbum y texto
+	FI	Kansikuva ja teksti
+	FR	Pochette et texte
+	IT	Copertine e testo
+	NL	Hoesafbeelding en tekst
+	NO	Albumomslag og tekst
+	PL	Pliki graficzne i tekst
+	RU	Обложка и текст
+	SV	Albumomslag och text
+
+TEXT_ONLY
+	CS	Pouze text
+	DA	Kun tekst
+	DE	Nur Text
+	EN	Text only
+	ES	Sólo texto
+	FI	Vain teksti
+	FR	Texte uniquement
+	IT	Solo testo
+	NL	Alleen tekst
+	NO	Bare tekst
+	PL	Tylko tekst
+	RU	Только текст
+	SV	Endast text
+
+ART_ONLY
+	CS	Pouze obal alba
+	DA	Kun albumcover
+	DE	Nur Plattenhülle
+	EN	Artwork only
+	ES	Sólo carátula
+	FI	Vain kansikuva
+	FR	Pochette uniquement
+	IT	Solo copertine
+	NL	Alleen hoesafbeelding
+	NO	Bare albumomslag
+	PL	Tylko pliki graficzne
+	RU	Только обложка
+	SV	Endast albumomslag
+
+SPECTRUM_ANALYZER
+	CS	Spektrální analyzátor
+	DA	Spektrumanalyse
+	DE	Oszillograph
+	EN	Spectrum Analyzer
+	ES	Analizador de espectro
+	FI	Asteikon analysointi
+	FR	Analyseur de spectre
+	IT	Analizzatore di spettro
+	NL	Spectrumanalyser
+	NO	Spektralanalyse
+	PL	Analizator widma
+	RU	Анализатор спектра
+	SV	Spektrumanalys
+
+ANALOG_VU_METER
+	CS	Analogový měřič hlasitosti
+	DA	Analogt VU-meter
+	DE	Analoger VU-Meter
+	EN	Analog VU Meter
+	ES	Medidor VU analógico
+	FI	Analoginen VU-mittari
+	FR	VUmètre analogique
+	IT	Indicatore VU analogico
+	NL	Analoge VU-meter
+	NO	Analog VU-måler
+	PL	Analogowy wskaźnik wysterowania
+	RU	Аналоговый волюметр
+	SV	Analog VU-mätare
+

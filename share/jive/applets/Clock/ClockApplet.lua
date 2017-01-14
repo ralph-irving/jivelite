@@ -391,7 +391,7 @@ function WordClock:__init(applet)
     obj.textdate = Label('textdate')
     obj.skinParams = WordClock:getSkinParams(skinName)
 
-    if skinName == "JogglerSkin" or skinName == "WQVGAsmallSkin" or skinName == "WQVGAlargeSkin" then
+    if skinName == "JogglerSkin" or skinName == "WQVGAsmallSkin" or skinName == "WQVGAlargeSkin" or skinName == "PiGridSkin" then
         obj.pointer_textIt         = Surface:loadImage(obj.skinParams.textIt)  
         obj.pointer_textIs         = Surface:loadImage(obj.skinParams.textIs)  
         obj.pointer_textHas        = Surface:loadImage(obj.skinParams.textHas)  
@@ -453,7 +453,7 @@ function WordClock:_reDraw(screen)
     log:debug("WordClock:_reDraw")
     log:debug("WordClock:_reDraw self.skinName = " .. self.skinName)
 
-    if self.skinName == "JogglerSkin" then
+    if self.skinName == "JogglerSkin" or self.skinName == "PiGridSkin" then
         local timenow = os.date("*t",os.time())
 
         local flags = WordClock:getwordflags(timenow)
@@ -1157,7 +1157,7 @@ function DotMatrix:getDotMatrixClockSkin(skinName)
 
         }
 
-    elseif skinName == 'JogglerSkin' then
+    elseif skinName == 'JogglerSkin' or skinName == 'PiGridSkin' then
 
         local dotMatrixBackground = Tile:loadImage(self.imgpath .. "Clocks/Dot_Matrix/wallpaper_clock_dotmatrix.png")
 
@@ -1624,7 +1624,7 @@ function WordClock:getWordClockSkin(skinName)
 
     local wordClockBackground = Tile:loadImage(self.imgpath .. "Clocks/WordClock/wallpaper_clock_word.png")
         
-    if skinName == "JogglerSkin" then
+    if skinName == "JogglerSkin" or skinName == "PiGridSkin" then
         s.Clock = {
             bgImg = wordClockBackground,
             textdate = {
@@ -1692,7 +1692,7 @@ function WordClock:getSkinParams(skinName)
     
     log:debug("Image path - " .. self.imgpath)
     
-    if skinName == "JogglerSkin" then
+    if skinName == "JogglerSkin" or skinName == "PiGridSkin" then
         return {
             textIt        = self.imgpath .. "Clocks/WordClock/" .. 'text-it.png',
             textIs        = self.imgpath .. "Clocks/WordClock/" .. 'text-is.png',
@@ -2224,7 +2224,7 @@ function Digital:getDigitalClockSkin(skinName)
             m1Shadow = { hidden = 1 },
             m2Shadow = { hidden = 1 },
         })
-    elseif skinName == 'JogglerSkin' then
+    elseif skinName == 'JogglerSkin' or skinName == "PiGridSkin" then
 
         local digitalClockBackground = Tile:loadImage(self.imgpath .. "Clocks/Digital/wallpaper_clock_digital.png")
         local digitalClockDigit = {
@@ -2848,7 +2848,7 @@ function Analog:getAnalogClockSkin(skinName)
     elseif skinName == 'WQVGAsmallSkin' then
         analogClockBackground = Tile:loadImage(self.imgpath .. "Clocks/Analog/wallpaper_clock_analog.png")
 
-    elseif skinName == 'JogglerSkin' then
+    elseif skinName == 'JogglerSkin' or skinName == "PiGridSkin" then
         analogClockBackground = Tile:loadImage(self.imgpath .. "Clocks/Analog/wallpaper_clock_analog.png")
 
     elseif skinName == 'QVGAportraitSkin' then
@@ -2889,7 +2889,8 @@ function Analog:getSkinParams(skin)
             alarmX     = 200,
             alarmY     = 15,
         }
-    elseif skin == 'JogglerSkin' then
+    elseif skin == 'JogglerSkin' or skin == "PiGridSkin" then
+    log:warn('yo!');
             return {
             minuteHand = 'applets/JogglerSkin/images/Clocks/Analog/clock_analog_min_hand.png',
             hourHand   = 'applets/JogglerSkin/images/Clocks/Analog/clock_analog_hr_hand.png',
