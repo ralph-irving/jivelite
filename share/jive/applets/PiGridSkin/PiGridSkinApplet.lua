@@ -10,7 +10,7 @@ This applet implements an 800x480 resolution skin with a grid layout.
 
 Redesigned from Joggler by 3guk, Tarkan Akdam and Justblair.
 
-Version 0.10 (11th January 2017)
+Version 1.0 (17th January 2017)
 Michael Herger
 
 
@@ -107,7 +107,7 @@ function param(self)
 			-- every skin needs to start off with a nowplaying style
 			{
 				style = 'nowplaying', 
-				artworkSize = '270x270',
+				artworkSize = '300x300',
 				text = self:string("ART_AND_TEXT"),
 			},
 			{
@@ -118,18 +118,18 @@ function param(self)
 			},
 			{
 				style = 'nowplaying_text_only',
-				artworkSize = '270x270',
+				artworkSize = '300x300',
 				text = self:string("TEXT_ONLY"),
 			},
 			{
 				style = 'nowplaying_spectrum_text',
-				artworkSize = '270x270',
+				artworkSize = '300x300',
 				localPlayerOnly = 1,
 				text = self:string("SPECTRUM_ANALYZER"),
 			},
 			{
 				style = 'nowplaying_vuanalog_text',
-				artworkSize = '270x270',
+				artworkSize = '300x300',
 				localPlayerOnly = 1,
 				text = self:string("ANALOG_VU_METER"),
 			},
@@ -3005,9 +3005,9 @@ function skin(self, s)
 	-- BEGIN NowPlaying skin code
 
 	local NP_ARTISTALBUM_FONT_SIZE = 28
-	local NP_TRACK_FONT_SIZE = 30
+	local NP_TRACK_FONT_SIZE = 36
 
-	local controlHeight = 76
+	local controlHeight = 72
 	local controlWidth = 90
 	local volumeBarWidth = 240 -- screenWidth - (transport controls + volume controls + dividers + border around volume bar)
 	local buttonPadding = 0
@@ -3036,7 +3036,7 @@ function skin(self, s)
 		align = "left",
 		lineHeight = NP_TRACK_FONT_SIZE,
 		fg = TEXT_COLOR,
-		x = 318,
+		x = 325,
 	}
 
 	s.nowplaying = _uses(s.window, {
@@ -3063,8 +3063,8 @@ function skin(self, s)
 			position   = _tracklayout.position,
 			border     = _tracklayout.border,
 			x          = _tracklayout.x,
-			y          = TITLE_HEIGHT + 32 + 65,
-			h          = 32,
+			y          = TITLE_HEIGHT + 65,
+			h          = NP_TRACK_FONT_SIZE,
 			nptrack =  {
 				w          = screenWidth - _tracklayout.x - 10,
 				h          = WH_FILL,
@@ -3097,7 +3097,7 @@ function skin(self, s)
 			position   = _tracklayout.position,
 			border     = _tracklayout.border,
 			x          = _tracklayout.x,
-			y          = TITLE_HEIGHT + 32 + 32 + 32 + 70,
+			y          = TITLE_HEIGHT + 32 + 32 + 32 + 70 + 10,
 			h          = 32,
 			npalbum = {
 				w          = screenWidth - _tracklayout.x - 10,
@@ -3115,15 +3115,15 @@ function skin(self, s)
 	
 		-- cover art
 		npartwork = {
-			w = 270,
+			w = 300,
 			position = LAYOUT_NONE,
-			x = 20,
-			y = TITLE_HEIGHT + 33,
+			x = 10,
+			y = TITLE_HEIGHT + 18,
 			align = "center",
-			h = 270,
+			h = 300,
 
 			artwork = {
-				w = 270,
+				w = 300,
 				align = "center",
 				padding = 0,
 				img = false,
@@ -3228,8 +3228,8 @@ function skin(self, s)
 		-- Progress bar
 		npprogress = {
 			position = LAYOUT_NONE,
-			x = 322,
-			y = TITLE_HEIGHT + 29 + 26 + 32 + 32 + 23 + 80,
+			x = 327,
+			y = TITLE_HEIGHT + 29 + 26 + 32 + 32 + 23 + 80 + 40,
 			padding = { 0, 11, 0, 0 },
 			order = { "elapsed", "slider", "remain" },
 			elapsed = {
@@ -3279,8 +3279,8 @@ function skin(self, s)
 		npprogressNB = {
 			order = { "elapsed" },
 			position = LAYOUT_NONE,
-			x = 322,
-			y = TITLE_HEIGHT + 29 + 26 + 32 + 32 + 23 + 84,
+			x = 327,
+			y = TITLE_HEIGHT + 29 + 26 + 32 + 32 + 23 + 84 + 40,
 			elapsed = {
 				w = WH_FILL,
 				align = "left",
