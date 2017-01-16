@@ -940,12 +940,13 @@ local function _eventHandler(self, event)
 				local flickSpeed, flickDirection = self.flick:getFlickSpeed(self.itemHeight, event:getTicks())
 
 				if flickSpeed then
-					if self.itemsPerLine and self.itemsPerLine > 1 then
-						-- FIXME: Flick doesn't work right with grid view (jumpy)
-						log:info("Not invoking flick in grid view mode.")
-					else
+					-- XXX - though flicking is a bit jumpy, it's still better than not to have it
+--					if self.itemsPerLine and self.itemsPerLine > 1 then
+--						-- FIXME: Flick doesn't work right with grid view (jumpy)
+--						log:info("Not invoking flick in grid view mode.")
+--					else
 						self.flick:flick(flickSpeed, flickDirection)
-					end
+--					end
 				elseif self.snapToItemEnabled and (self.pixelOffsetY and self.pixelOffsetY ~= 0) then
 					self:snapToNearest()					
 				end

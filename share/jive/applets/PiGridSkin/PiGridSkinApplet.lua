@@ -715,7 +715,7 @@ function skin(self, s)
 	local MENU_ITEM_ICON_PADDING_G = { 0, 0, 0, 0 }
 
 	local ITEMS_PER_LINE = 5
-	local ITEMS_PER_ROW = 2.5
+	local LINES_OF_ITEMS = 2.3
 
 	local smallSpinny = {
 		img = _loadJogglerImage(self, "Alerts/wifi_connecting_sm.png"),
@@ -1684,7 +1684,7 @@ function skin(self, s)
 
 	s.home_menu = _uses(s.text_list, {
 		menu = {
-			itemHeight = grid_height / ITEMS_PER_ROW,
+			itemHeight = grid_height / LINES_OF_ITEMS,
 			itemsPerLine = ITEMS_PER_LINE,
 			item = _uses(s.itemG, {
 				icon = {
@@ -1773,7 +1773,7 @@ function skin(self, s)
 	s.icon_listG = _uses(s.window, {
 		menu = {
 			itemsPerLine = ITEMS_PER_LINE,
-			itemHeight = grid_height / ITEMS_PER_ROW,
+			itemHeight = grid_height / LINES_OF_ITEMS,
 			item = _uses(s.itemG, {
 				text = {
 					font = _font(ALBUMMENU_SMALL_FONT_SIZE_G),
