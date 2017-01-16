@@ -101,6 +101,7 @@ function param(self)
 		-- 2 is for a two line track, artist+album (e.g., SBradio, SBcontroller)
 		NOWPLAYING_TRACKINFO_LINES = 3,
 		POPUP_THUMB_SIZE = 120,
+		piCorePlayerStyle = 'hm_settings_pcp',
 		nowPlayingScreenStyles = { 
 			-- every skin needs to start off with a nowplaying style
 			{
@@ -2617,6 +2618,9 @@ function skin(self, s)
 	})
 	s.hm_advancedSettings = _uses(_buttonicon, {
 		img = _loadImage(self, "IconsResized/icon_settings_adv" .. skinSuffix),
+	})
+	s.hm_settings_pcp = _uses(_buttonicon, {
+		img = _loadImage(self, "IconsResized/icon_settings_pcp" .. skinSuffix),
 	})
 	s.hm_radio = _uses(_buttonicon, {
 		img = _loadImage(self, "IconsResized/icon_tunein" .. skinSuffix),
