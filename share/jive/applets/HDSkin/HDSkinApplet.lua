@@ -102,6 +102,7 @@ function param(self)
 				text = self:string("SPECTRUM_ANALYZER"),
 			},
 		},
+		disableTimeInput = true,
 	}
 end
 
