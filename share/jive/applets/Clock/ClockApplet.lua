@@ -2890,7 +2890,6 @@ function Analog:getSkinParams(skin)
             alarmY     = 15,
         }
     elseif skin == 'JogglerSkin' or skin == "PiGridSkin" then
-    log:warn('yo!');
             return {
             minuteHand = 'applets/JogglerSkin/images/Clocks/Analog/clock_analog_min_hand.png',
             hourHand   = 'applets/JogglerSkin/images/Clocks/Analog/clock_analog_hr_hand.png',
