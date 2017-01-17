@@ -56,7 +56,13 @@ local FONT_NAME = "FreeSans"
 local BOLD_PREFIX = "Bold"
 
 local function _imgpath(self)
-    return "applets/" .. self.skinName .. "/images/"
+	local skinName = self.skinName
+	
+	if skinName == 'PiGridSkin' then
+		skinName = 'JogglerSkin'
+	end
+	
+    return "applets/" .. skinName .. "/images/"
 end
 
 function _loadImage(self, file)
