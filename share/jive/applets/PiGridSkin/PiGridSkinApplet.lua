@@ -690,7 +690,7 @@ function skin(self, s)
 	local ALBUMMENU_FONT_SIZE = 20
 	local ALBUMMENU_SMALL_FONT_SIZE = 16
 	local TEXTMENU_FONT_SIZE = 25
-	local POPUP_TEXT_SIZE_1 = 34
+	local POPUP_TEXT_SIZE_1 = 26
 	local POPUP_TEXT_SIZE_2 = 26
 	local TRACK_FONT_SIZE = 18
 	local TEXTAREA_FONT_SIZE = 18
@@ -2083,16 +2083,16 @@ function skin(self, s)
 		align = 'left',
 		w = WH_FILL,
 		h = WH_FILL,
-		font = _boldfont(21),
+		font = _font(POPUP_TEXT_SIZE_1),
 		fg = TEXT_COLOR,
 		sh = TEXT_SH_COLOR,
         }
 
 	-- toast_popup popup with art and text
 	s.toast_popup = {
-		x = 5,
+		x = 100,
 		y = screenHeight/2/2,
-		w = screenWidth - 10,
+		w = screenWidth - 200,
 		h = screenHeight/2,
 		bgImg = popupBox,
 		group = {
@@ -2151,11 +2151,11 @@ function skin(self, s)
 
 	-- new style that incorporates text, icon, more text, and maybe a badge
 	s.toast_popup_mixed = {
-		x = 19,
-		y = 16,
+		x = 100,
+		y = (screenHeight - 250) / 2,
 		position = LAYOUT_NONE,
-		w = screenWidth - 38,
-		h = 214,
+		w = screenWidth - 200,
+		h = 250,
 		bgImg = popupBox,
 		text = {
 			position = LAYOUT_NORTH,
@@ -2163,17 +2163,19 @@ function skin(self, s)
 			align = 'top',
 			w = WH_FILL,
 			h = WH_FILL,
-			font = _boldfont(18),
+			font = _font(POPUP_TEXT_SIZE_1),
+			lineHeight = POPUP_TEXT_SIZE_1 + 5,
 			fg = TEXT_COLOR,
 			sh = TEXT_SH_COLOR,
 		},
 		subtext = {
 			position = LAYOUT_NORTH,
-			padding = { 8, 178, 8, 0 },
+			padding = { 8, 203, 8, 0 },
 			align = 'top',
 			w = WH_FILL,
 			h = WH_FILL,
-			font = _boldfont(18),
+			font = _font(POPUP_TEXT_SIZE_2),
+			lineHeight = POPUP_TEXT_SIZE_2 + 5,
 			fg = TEXT_COLOR,
 			sh = TEXT_SH_COLOR,
 		},
@@ -2183,9 +2185,9 @@ function skin(self, s)
 		position = LAYOUT_NONE,
 		zOrder = 99,
 		-- middle of the screen plus half of the icon width minus half of the badge width. gotta love LAYOUT_NONE
-		x = screenWidth/2 + 21,
+		x = (screenWidth-200)/2 + self:param().POPUP_THUMB_SIZE/2 - 17,
 		w = 34,
-		y = 34,
+		y = 48,
 	}
 	s.badge_none = _uses(s._badge, {
 		img = false,
