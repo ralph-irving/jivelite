@@ -1760,6 +1760,8 @@ function skin(self, s)
 		}),
 	}
 
+	s.home_menu.menu.locked = s.home_menu.menu.selected
+
 	s.home_menu.menu.item.icon_no_artwork = {
 		img = _loadImage(self, "IconsResized/icon_loading" .. skinSuffix ),
 		h   = THUMB_SIZE,
