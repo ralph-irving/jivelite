@@ -1563,9 +1563,6 @@ function skin(self, s)
 		padding = { 4, 15, 4, 15 },
 	})
 
-	-- choose player window is exactly the same as text_list on all windows except WQVGAlarge
-	s.choose_player = s.text_list
-
 	s.multiline_text_list = _uses(s.text_list)
 
 	s.multiline_text_list.menu = _uses(s.menu, {
@@ -1910,6 +1907,7 @@ function skin(self, s)
 							font = _font(ALBUMMENU_SMALL_FONT_SIZE),
 						},
 					},
+					padding = { 8, 0, 0, 0 },
 					fg = TEXT_COLOR,
 					sh = TEXT_SH_COLOR,
 				},
@@ -2018,6 +2016,16 @@ function skin(self, s)
 			arrow = smallSpinny
 		}),
 	}
+
+	-- choose player window is exactly the same as text_list on all windows except WQVGAlarge
+	s.choose_player = _uses(s.icon_listL)
+	
+--[[ Grid view isn't great for players, as quite often the player names would be cut off before the crucial part, eg. "Squeezebox Tou..."
+	s.choose_player = _uses(s.icon_listG)
+	s.choose_player.menu.item_checked = _uses(s.icon_listG.menu.item_checked_no_arrow)
+	s.choose_player.menu.selected.item_checked = _uses(s.icon_listG.menu.selected.item_checked_no_arrow)
+	s.choose_player.menu.pressed.item_checked = _uses(s.icon_listG.menu.pressed.item_checked_no_arrow)
+--]]
 
 	s.icon_list = _uses(s.icon_listG)
 
