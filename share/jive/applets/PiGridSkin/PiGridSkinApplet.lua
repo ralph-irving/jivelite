@@ -1936,7 +1936,6 @@ function skin(self, s)
 		arrow = { 
 			img = _loadJogglerImage(self, "Icons/icon_nplay_3line_off.png"),
 		},
-		text = { padding = 0, },
 		-- Bug 11482c#13, don't know why the bgImg has to be redefined again here, but this fixes the issue
 		bgImg = fiveItemBox,
 	})
@@ -2679,8 +2678,6 @@ function skin(self, s)
 		padding = MENU_ITEM_ICON_PADDING,
 		align = 'center',
 	}
-
-	s.icon_no_artwork_playlist = _uses(s.icon_no_artwork_playlist)
 
 	s.icon_connecting = _uses(_icon, {
 		img = _loadJogglerImage(self, "Alerts/wifi_connecting.png"),
