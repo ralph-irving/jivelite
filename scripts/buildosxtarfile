@@ -1,31 +1,34 @@
 #!/bin/bash
-make -f Makefile.x86_64 clean
-
-SVNVERSION=`svnversion`
-
-make -f Makefile.x86_64
 
 if [ ! -d pkg ]; then
 	echo "Need to create pkg folder first!"
 	exit 1
 fi
 
+make -f Makefile.x86_64 clean
+
+GITVERSION=`git rev-parse --short HEAD`
+
+export CFLAGS="-DOPTJIVELITE"
+make -f Makefile.x86_64
+
 cd pkg
 
-if [ -d local ]; then
-	sudo rm -rf local
+if [ -d opt ]; then
+	sudo rm -rf opt
 fi
 
-mkdir -p local/{bin,lib,share}
-cp -p ../bin/jivelite local/bin
+mkdir -p opt/jivelite/{bin,lib,share}
+cp -p ../bin/jivelite opt/jivelite/bin
 
-cp -pr ../lib/lua local/lib
-cp -pr ../share/lua local/share
-cp -pr ../share/jive local/share
+cp -pr ../lib/lua opt/jivelite/lib
+cp -pr ../share/lua opt/jivelite/share
+cp -pr ../share/jive opt/jivelite/share
 
-rm local/share/jive/applets/JogglerSkin/images/UNOFFICIAL/VUMeter/vu_analog_25seq_[ac-vx-z].png
-rm local/share/jive/applets/WQVGAsmallSkin/images/UNOFFICIAL/VUMeter/vu_analog_25seq_[ac-vx-z].png
+rm opt/jivelite/share/jive/applets/JogglerSkin/images/UNOFFICIAL/VUMeter/vu_analog_25seq_[ac-vx-z].png
+rm opt/jivelite/share/jive/applets/WQVGAsmallSkin/images/UNOFFICIAL/VUMeter/vu_analog_25seq_[ac-vx-z].png
 
-sudo chown -Rh root:wheel local
+sudo chown -Rh root:wheel opt/jivelite
 
-tar -czf ~/jivelite-0.1-`date +%Y%m%d`svn${SVNVERSION}-osx-x86_64.tar.gz local
+cd opt
+tar -czf ~/jivelite-0.1-`date +%Y%m%d`git${GITVERSION}-osx-x86_64.tar.gz jivelite
