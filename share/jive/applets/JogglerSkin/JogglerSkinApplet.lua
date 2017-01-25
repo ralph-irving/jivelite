@@ -3509,6 +3509,29 @@ function skin(self, s)
                 sh = TEXT_SH_COLOR,
         }
 
+
+	-- inheritable properties for child skins
+	s.CONSTANTS = {
+		skinSuffix = skinSuffix,
+		fiveItemBox = fiveItemBox,
+		fiveItemSelectionBox = fiveItemSelectionBox,
+		fiveItemPressedBox = fiveItemPressedBox,
+		threeItemSelectionBox = threeItemSelectionBox,
+		threeItemPressedBox = threeItemPressedBox,
+		smallSpinny = smallSpinny,
+		largeSpinny = largeSpinny,
+		addArrow = addArrow,
+		
+		CHECK_PADDING = CHECK_PADDING,
+		MENU_ITEM_ICON_PADDING = MENU_ITEM_ICON_PADDING,
+		TEXT_COLOR = TEXT_COLOR,
+		TEXT_SH_COLOR = TEXT_SH_COLOR,
+		TITLE_HEIGHT = TITLE_HEIGHT,
+		ALBUMMENU_FONT_SIZE = ALBUMMENU_FONT_SIZE,
+		ITEM_ICON_ALIGN = ITEM_ICON_ALIGN,
+		FIVE_ITEM_HEIGHT = FIVE_ITEM_HEIGHT,
+	}
+
 	return s
 
 end
