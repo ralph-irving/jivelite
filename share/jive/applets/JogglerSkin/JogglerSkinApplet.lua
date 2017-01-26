@@ -92,7 +92,7 @@ end
 
 
 function param(self)
-        return {
+	return {
 		THUMB_SIZE = 40,
 		THUMB_SIZE_MENU = 40,
 		NOWPLAYING_MENU = false,
@@ -110,8 +110,15 @@ function param(self)
 				text = self:string("ART_AND_TEXT"),
 			},
 			{
+				style = 'nowplaying_large_art',
+				artworkSize = '480x480',
+				suppressArtworkPress = true,
+				titleXofYonly = true,
+				text = self:string("LARGE_ART_AND_TEXT"),
+			},
+			{
 				style = 'nowplaying_art_only',
-				artworkSize = '450x450',
+				artworkSize = '480x480',
 				suppressTitlebar = 1,
 				text = self:string("ART_ONLY"),
 			},
@@ -133,7 +140,7 @@ function param(self)
 				text = self:string("ANALOG_VU_METER"),
 			},
 		},
-        }
+	}
 end
 
 local function _loadImage(self, file)
@@ -3128,6 +3135,86 @@ function skin(self, s)
 		shuffleDisabled = _uses(s.nowplaying.npcontrols.shuffleDisabled),
 		repeatDisabled = _uses(s.nowplaying.npcontrols.repeatDisabled),
 	}
+
+	s.nowplaying_large_art = _uses(s.nowplaying, {
+		bgImg = blackBackground,
+		title = {
+			bgImg = false,
+			text = {
+				border = { 408, 0, 0, 0 },
+				padding = { 10, 12, 10, 15 },
+				font = _boldfont(24),
+			}
+		},
+		nptitle = {
+			x = 495,
+			nptrack = {
+				w = screenWidth - 495 - 10,
+				font = _boldfont(NP_ARTISTALBUM_FONT_SIZE * 0.9), 
+			},
+		},
+		npartistgroup = {
+			x = 495,
+			npartist = {
+				font = _font(NP_ARTISTALBUM_FONT_SIZE * 0.9),
+				w = screenWidth - 495 - 10,
+			} 
+		},
+		npalbumgroup = {
+			x = 495,
+			npalbum = {
+				font = _font(NP_ARTISTALBUM_FONT_SIZE * 0.9),
+				w = screenWidth - 495 - 10,
+			} 
+		},
+		npcontrols = {
+			order = { 'play', 'div1', 'fwd', 'div2', 'volDown', 'div3', 'volUp' },
+			x = 480,
+		},
+		npprogress = {
+			x = 495,
+			elapsed = {
+				w = 60,
+			},
+			remain = {
+				w = 60,
+			},
+			npprogressB = {
+				w = 160,
+			},
+		},
+		npprogressNB = {
+			x = 495,
+		},
+		npartwork = {
+			w = 480,
+			x = 0,
+			y = 0,
+			align = "center",
+			h = WH_FILL,
+			artwork = {
+				w = WH_FILL,
+				align = "left",
+				padding = 0,
+				img = false,
+			},
+		},
+
+		npvisu = { hidden = 1 },
+	})	
+
+	s.nowplaying_large_art.pressed = s.nowplaying_large_art
+	s.nowplaying_large_art.nptitle.pressed = _uses(s.nowplaying_large_art.nptitle)
+	s.nowplaying_large_art.npalbumgroup.pressed = _uses(s.nowplaying_large_art.npalbumgroup)
+	s.nowplaying_large_art.npartistgroup.pressed = _uses(s.nowplaying_large_art.npartistgroup)
+	s.nowplaying_large_art.npartwork.pressed = s.nowplaying_large_art.npartwork
+	s.nowplaying_large_art.title.pressed = _uses(s.nowplaying_large_art.title, {
+		text = {
+			fg = { 0xB3, 0xB3, 0xB3 },
+			sh = { },
+			bgImg = pressedTitlebarButtonBox,
+		}
+	})
 	
 	s.nowplaying_art_only = _uses(s.nowplaying, {
 
@@ -3140,14 +3227,14 @@ function skin(self, s)
 		npartistgroup    = { hidden = 1 },
 		npalbumgroup     = { hidden = 1 },
 		npartwork = {
-			w = 450,
+			w = 480,
 			position = LAYOUT_NONE,
 			x = 172,
-			y = 15,
+			y = 0,
 			align = "center",
-			h = 450,
+			h = 480,
 			artwork = {
-				w = 450,
+				w = 480,
 				align = "center",
 				padding = 0,
 				img = false,

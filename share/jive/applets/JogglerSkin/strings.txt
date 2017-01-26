@@ -111,6 +111,11 @@ MORE_HELP
 	RU	Дополнительно
 	SV	Mer
 
+LARGE_ART_AND_TEXT
+	DE	Grosse Plattenhülle und Text
+	EN	Large Artwork and Text
+	FR	Grande Pochette et texte
+	
 ART_AND_TEXT
 	CS	Obal alba a text
 	DA	Albumcover og tekst

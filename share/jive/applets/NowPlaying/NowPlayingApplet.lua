@@ -672,9 +672,14 @@ function _titleText(self, token)
 	local y = self.player and self.player:getPlaylistSize()
 	if token == 'play' and y > 1 then
 		local x = self.player:getPlaylistCurrentIndex()
-		if x >= 1 and y > 1 then
+		if x >= 1 and y > 1 and not self:getSelectedStyleParam('suppressXofY') then
 			local xofy = tostring(self:string('SCREENSAVER_NOWPLAYING_OF', x, y))
-			title = tostring(self:string(modeTokens[token])) ..  ' • ' .. xofy
+			
+			if self:getSelectedStyleParam('titleXofYonly') then
+				title = xofy
+			else
+				title = tostring(self:string(modeTokens[token])) ..  ' • ' .. xofy
+			end
 		else
 			title = tostring(self:string(modeTokens[token]))
 		end
@@ -1509,15 +1514,24 @@ function _createUI(self)
 
 	self.artwork = Icon("artwork")
 
-	self.artworkGroup = Button(
-		Group('npartwork', {
-			artwork = self.artwork,
-		}),
-		function()
-			Framework:pushAction("go_now_playing")
-			return EVENT_CONSUME
-		end
-	)
+	local npartwork = Group('npartwork', {
+		artwork = self.artwork,
+	})
+
+	-- Sometimes we want to have controls overlap the artwork. Unfortunately it seems
+	-- the touch event handler isn't respecting zOrder, always preferring the artwork.
+	-- Allow a NP screensver to disable the touch behaviour on the artwork.
+	if self:getSelectedStyleParam('suppressArtworkPress') then
+		self.artworkGroup = npartwork
+	else
+		self.artworkGroup = Button(
+			npartwork,
+			function()
+				Framework:pushAction("go_now_playing")
+				return EVENT_CONSUME
+			end
+		)
+	end
 
 	-- Visualizer: Spectrum Visualizer - only load if needed
 	if self.windowStyle == "nowplaying_spectrum_text" then
