@@ -1146,8 +1146,23 @@ function fetchArtwork(self, iconId, icon, size, imgFormat)
 		end
 	else
 		if string.find(iconId, "^http") then
-			-- fetch image direct (previously used SN image resizer, rely on improved resizing in jivelite)
-			url = iconId
+			-- Bug 13937, if URL references a private IP address, don't use imageproxy
+			-- Tests for a numeric IP first to avoid extra string.find calls
+			if string.find(iconId, "^http://%d") and (
+				string.find(iconId, "^http://192%.168") or
+				string.find(iconId, "^http://172%.16%.") or
+				string.find(iconId, "^http://10%.")
+			) then
+				url = iconId
+				
+			-- if we're dealing with a recent LMS, we can have it do the heavy lifting
+			elseif self:isMoreRecent(self:getVersion(), '7.8.0') then
+				url = '/imageproxy/' .. string.urlEncode(iconId) .. '/image' .. resizeFrag
+				
+			else
+				-- fetch image direct (previously used SN image resizer, rely on improved resizing in jivelite)
+				url = iconId
+			end
 		else
 			url = string.gsub(iconId, "(.+)(%.%a+)", "%1" .. resizeFrag .. "%2")
 
@@ -1254,8 +1269,10 @@ function isMoreRecent(self, new, old)
 	local oldVer = string.split("%.", old)
 
 	for i,v in ipairs(newVer) do
-		if oldVer[i] and v > oldVer[i] then
+		if oldVer[i] and tonumber(v) > tonumber(oldVer[i]) then
 			return true
+		elseif oldVer[i] and tonumber(v) < tonumber(oldVer[i]) then
+			return false
 		end
 	end
 
