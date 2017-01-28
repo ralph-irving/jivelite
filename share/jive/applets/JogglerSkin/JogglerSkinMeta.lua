@@ -33,10 +33,34 @@ function jiveVersion(self)
 end
 
 function defaultSettings(self)
-	return {}
+	return { 
+		rew = false, 
+		play = true, 
+		fwd = true,
+		repeatMode = false,
+		shuffleMode = false,
+		volDown = true,
+		volSlider = false,
+		volUp = true
+	}
 end
 
 function registerApplet(self)
+
+	self:registerService('getNowPlayingScreenButtons')
+	self:registerService('setNowPlayingScreenButtons')
+
+	jiveMain:addItem(
+		self:menuItem(
+			'npButtonSelector', 
+			'screenSettingsNowPlaying', 
+			'NOW_PLAYING_BUTTONS', 
+			function(applet, ...) 
+				applet:npButtonSelectorShow(...) 
+			end
+		)
+	)
+
 	jiveMain:registerSkin(self:string("JOGGLER_SKIN"), "JogglerSkin", "skin")
 end
 

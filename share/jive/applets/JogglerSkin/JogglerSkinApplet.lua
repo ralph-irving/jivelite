@@ -29,9 +29,11 @@ SqueezeboxSkin overrides the following methods:
 local ipairs, pairs, setmetatable, type, tostring = ipairs, pairs, setmetatable, type, tostring
 
 local oo                     = require("loop.simple")
+local string                 = require("jive.utils.string")
 
 local Applet                 = require("jive.Applet")
 local Audio                  = require("jive.ui.Audio")
+local Checkbox               = require("jive.ui.Checkbox")
 local Font                   = require("jive.ui.Font")
 local Framework              = require("jive.ui.Framework")
 local Icon                   = require("jive.ui.Icon")
@@ -80,6 +82,7 @@ local fontpath = "fonts/"
 local FONT_NAME = "FreeSans"
 local BOLD_PREFIX = "Bold"
 
+local tbButtons = { 'rew', 'play', 'fwd', 'repeatMode', 'shuffleMode', 'volDown', 'volSlider', 'volUp' }
 
 function init(self)
 	self.images = {}
@@ -3135,6 +3138,22 @@ function skin(self, s)
 		repeatDisabled = _uses(s.nowplaying.npcontrols.repeatDisabled),
 	}
 
+
+	local settings = appletManager:callService("getNowPlayingScreenButtons")
+	local buttonOrder = {}
+	local i = 1
+	for k,v in ipairs(tbButtons) do
+		if settings[v] then
+			table.insert(buttonOrder, v)
+			
+			i = i + 1
+			-- We can't accomodate more than four items
+			if i > 4 then break end
+			
+			table.insert(buttonOrder, 'div' .. tostring(i))
+		end
+	end
+
 	s.nowplaying_large_art = _uses(s.nowplaying, {
 		bgImg = blackBackground,
 		title = {
@@ -3170,7 +3189,7 @@ function skin(self, s)
 			} 
 		},
 		npcontrols = {
-			order = { 'play', 'div1', 'fwd', 'div2', 'volDown', 'div3', 'volUp' },
+			order = buttonOrder,
 			x = 480,
 		},
 		npprogress = {
@@ -3623,6 +3642,39 @@ function skin(self, s)
 
 	return s
 
+end
+
+
+function npButtonSelectorShow(self)
+	local window = Window("text_list", self:string('NOW_PLAYING_BUTTONS') )
+	local menu = SimpleMenu("menu")
+	local settings = self:getSettings()
+
+	for i, v in ipairs(tbButtons) do
+		menu:addItem( {
+			text = self:string("NOW_PLAYING_BUTTON_" .. string.upper(v)),
+			style = 'item_choice',
+			check = Checkbox("checkbox", 
+				function(object, isSelected)
+					appletManager:callService("setNowPlayingScreenButtons", v, isSelected)
+					jiveMain:reloadSkin()
+				end,
+			settings[v]),
+		} )
+	end
+
+	window:addWidget(menu)
+	window:show()
+end
+
+function setNowPlayingScreenButtons(self, button, isSelected)
+	local settings = self:getSettings()
+	settings[button] = isSelected
+	self:storeSettings()
+end
+
+function getNowPlayingScreenButtons(self)
+	return self:getSettings()
 end
 
 
