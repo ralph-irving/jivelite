@@ -3144,6 +3144,9 @@ function skin(self, s)
 				border = { 408, 0, 0, 0 },
 				padding = { 10, 12, 10, 15 },
 				font = _boldfont(24),
+			},
+			button_back = {
+				bgImg = false
 			}
 		},
 		nptitle = {
