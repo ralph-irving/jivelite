@@ -1514,24 +1514,15 @@ function _createUI(self)
 
 	self.artwork = Icon("artwork")
 
-	local npartwork = Group('npartwork', {
-		artwork = self.artwork,
-	})
-
-	-- Sometimes we want to have controls overlap the artwork. Unfortunately it seems
-	-- the touch event handler isn't respecting zOrder, always preferring the artwork.
-	-- Allow a NP screensver to disable the touch behaviour on the artwork.
-	if self:getSelectedStyleParam('suppressArtworkPress') then
-		self.artworkGroup = npartwork
-	else
-		self.artworkGroup = Button(
-			npartwork,
-			function()
-				Framework:pushAction("go_now_playing")
-				return EVENT_CONSUME
-			end
-		)
-	end
+	self.artworkGroup = Button(
+		Group('npartwork', {
+			artwork = self.artwork,
+		}),
+		function()
+			Framework:pushAction("go_now_playing")
+			return EVENT_CONSUME
+		end
+	)
 
 	-- Visualizer: Spectrum Visualizer - only load if needed
 	if self.windowStyle == "nowplaying_spectrum_text" then

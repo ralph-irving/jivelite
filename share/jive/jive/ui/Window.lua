@@ -1866,6 +1866,8 @@ function _event(self, event)
 		r = self:_eventHandler(event)
 	else
 		--handle mouse locally, no need for C optimization on mouse platforms
+		local topWidget
+				
 		r = self:iterate(
 			function(widget)
 				if self._mouseEventFocusWidget == widget or (not self._mouseEventFocusWidget and widget:mouseInside(event)) then
@@ -1873,7 +1875,8 @@ function _event(self, event)
 					if rClosure ~= EVENT_UNUSED then
 						--Consumer of MOUSE_DOWN that is in mouse bounds will be given mouse event focus
 						if event:getType() == EVENT_MOUSE_DOWN then
-							self:setMouseEventFocusWidget(widget)
+							-- iteration is in ascending zOrder - we only need the top most (last) item
+							topWidget = widget
 						end
 						return rClosure
 					end
@@ -1882,6 +1885,10 @@ function _event(self, event)
 			end
 		)
 
+		if (topWidget) then
+			self:setMouseEventFocusWidget(topWidget)
+		end
+		
 		if event:getType() == EVENT_MOUSE_UP then
 			self:setMouseEventFocusWidget(nil)
 		end

@@ -112,7 +112,6 @@ function param(self)
 			{
 				style = 'nowplaying_large_art',
 				artworkSize = '480x480',
-				suppressArtworkPress = true,
 				titleXofYonly = true,
 				text = self:string("LARGE_ART_AND_TEXT"),
 			},
