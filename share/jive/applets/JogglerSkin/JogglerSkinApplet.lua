@@ -3236,6 +3236,9 @@ function skin(self, s)
 			bgImg = pressedTitlebarButtonBox,
 		}
 	})
+	s.nowplaying_large_art.npprogress.npprogressB_disabled = _uses(s.nowplaying_large_art.npprogress.npprogressB, {
+		img = _songProgressBarDisabled,
+	})
 	
 	s.nowplaying_art_only = _uses(s.nowplaying, {
 
