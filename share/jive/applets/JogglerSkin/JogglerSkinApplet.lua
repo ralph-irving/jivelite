@@ -91,6 +91,8 @@ function init(self)
 	self.hTiles = {}
 	self.vTiles = {}
 	self.tiles = {}
+
+	jiveMain:addItem(self:buttonSettingsMenuItem())
 end
 
 
@@ -3680,6 +3682,24 @@ function getNowPlayingScreenButtons(self)
 	return self:getSettings()
 end
 
+function buttonSettingsMenuItem(self)
+	return {
+		id = "npButtonSelector",
+		iconStyle = "hm_advancedSettings",
+		node = "screenSettingsNowPlaying",
+		text = self:string("NOW_PLAYING_BUTTONS"),
+		sound = "WINDOWSHOW",
+		callback = function(event, menuItem)
+			return self:npButtonSelectorShow() 
+		end
+	}
+end
+
+
+function free(self)
+	jiveMain:removeItemById("npButtonSelector")
+	return true
+end
 
 --[[
 

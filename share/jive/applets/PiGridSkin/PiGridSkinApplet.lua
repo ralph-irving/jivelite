@@ -58,16 +58,6 @@ local FONT_NAME = "FreeSans"
 local BOLD_PREFIX = "Bold"
 
 
-function init(self)
-	self.images = {}
-
-	self.imageTiles = {}
-	self.hTiles = {}
-	self.vTiles = {}
-	self.tiles = {}
-end
-
-
 function param(self)
 	local params = JogglerSkinApplet.param(self)
 	
@@ -626,13 +616,17 @@ end
 
 function free(self)
 	local desktop = not System:isHardware()
+
+	jiveMain:removeItemById("npButtonSelector")
+
 	if desktop then
 		log:warn("reload parent")
 
 		package.loaded["applets.JogglerSkin.JogglerSkinApplet"] = nil
 		JogglerSkinApplet = require("applets.JogglerSkin.JogglerSkinApplet")
 	end
-        return true
+ 	
+ 	return true
 end
 
 
