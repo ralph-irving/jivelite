@@ -1,0 +1,20 @@
+#
+# The two letter codes are defined by ISO 639-1
+# http://en.wikipedia.org/wiki/List_of_ISO_639_codes
+#
+
+SCREENSHOT_TAKEN
+	CS	Snímek uložen do to\n%s
+	DA	Billedet af skærmen er gemt i\n%s
+	DE	Screenshot gespeichert in\n%s
+	EN	Screenshot saved to\n%s
+	ES	Volcado de pantalla guardado en\n%s
+	FI	Kuvakaappaus tallennettu kansioon\n%s
+	FR	Capture enregistrée dans\n%s
+	IT	Schermata salvata in\n%s
+	NL	Screenshot opgeslagen in\n%s
+	NO	Skjermbilde lagret i\n%s
+	PL	Zrzut ekranu został zapisany w\n%s
+	RU	Снимок экрана сохранен в\n%s
+	SV	Skärmbilden har sparats till\n%s
+
