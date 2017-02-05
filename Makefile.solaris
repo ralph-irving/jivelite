@@ -1,7 +1,7 @@
 # Jivelite makefile
 
 # set PREFIX for location of luajit include and libs
-PREFIX ?= /home/paddockd/source/jivelite
+PREFIX ?= $HOME/source/jivelite
 
 all: srcs libs
 

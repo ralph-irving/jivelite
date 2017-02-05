@@ -13,7 +13,7 @@
 ##### Build defaults #####
 LUA_VERSION =       5.1
 TARGET =            cjson.so
-PREFIX =            /home/paddockd/source/jivelite
+PREFIX =            ${HOME}/source/jivelite
 #CFLAGS =            -g -Wall -pedantic -fno-inline
 CFLAGS =            -s -O3 -Wall -pedantic -DNDEBUG
 CJSON_CFLAGS =      -fpic

@@ -1,6 +1,6 @@
 # Jivelite makefile
 
-PREFIX ?= /Users/paddockd/source/jivelite
+PREFIX ?= ${HOME}/source/jivelite
 
 all: srcs libs
 

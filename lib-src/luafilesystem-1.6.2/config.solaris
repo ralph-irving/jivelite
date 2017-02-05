@@ -1,7 +1,7 @@
 # Installation directories
 
 # Default installation prefix
-PREFIX=/home/paddockd/source/jivelite
+PREFIX=${HOME}/source/jivelite
 
 # System's libraries directory (where binary libraries are installed)
 LUA_LIBDIR= $(PREFIX)/lib/lua/5.1

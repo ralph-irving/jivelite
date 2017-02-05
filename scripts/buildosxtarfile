@@ -31,4 +31,4 @@ rm opt/jivelite/share/jive/applets/WQVGAsmallSkin/images/UNOFFICIAL/VUMeter/vu_a
 sudo chown -Rh root:wheel opt/jivelite
 
 cd opt
-tar -czf ~/jivelite-0.1-`date +%Y%m%d`git${GITVERSION}-osx-x86_64.tar.gz jivelite
+tar -czf ${HOME}/source/jivelite/jivelite-0.1-`date +%Y%m%d`git${GITVERSION}-osx-x86_64.tar.gz jivelite
