@@ -3193,6 +3193,19 @@ function skin(self, s)
 		npcontrols = {
 			order = buttonOrder,
 			x = 480,
+
+			div1 = _uses(_transportControlBorder, {
+				w = 6,
+				padding = { 2, 0, 2, 0 }
+			}),
+			div2 = _uses(_transportControlBorder, {
+				w = 6,
+				padding = { 2, 0, 2, 0 }
+			}),
+			div3 = _uses(_transportControlBorder, {
+				w = 6,
+				padding = { 2, 0, 2, 0 }
+			}),
 		},
 		npprogress = {
 			x = 495,
