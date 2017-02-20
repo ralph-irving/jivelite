@@ -164,8 +164,8 @@ function skin(self, s)
 	local ALBUMMENU_SMALL_FONT_SIZE_G = 16
 	local MENU_ITEM_ICON_PADDING_G = { 0, 0, 0, 0 }
 
-	local ITEMS_PER_LINE = 5
-	local LINES_OF_ITEMS = 2.3
+	local ITEMS_PER_LINE = screenWidth / 160
+	local LINES_OF_ITEMS = screenHeight / 208
 
 	local smallSpinny = c.smallSpinny
 

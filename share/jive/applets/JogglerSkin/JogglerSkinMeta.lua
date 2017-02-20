@@ -34,7 +34,7 @@ end
 
 function defaultSettings(self)
 	return { 
-		rew = false, 
+		rew = true, 
 		play = true, 
 		fwd = true,
 		repeatMode = false,

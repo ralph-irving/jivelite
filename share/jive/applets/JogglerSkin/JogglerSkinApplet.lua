@@ -3144,13 +3144,18 @@ function skin(self, s)
 	local settings = appletManager:callService("getNowPlayingScreenButtons")
 	local buttonOrder = {}
 	local i = 1
+	local smallTbButtons
 	for k,v in ipairs(tbButtons) do
 		if settings[v] then
 			table.insert(buttonOrder, v)
 			
 			i = i + 1
-			-- We can't accomodate more than four items
-			if i > 4 then break end
+			
+			-- We can't comfortably accomodate more than five items
+			if (i > 5) or (i > 2 and v == 'volSlider') then
+				smallTbButtons = true
+				break
+			end
 			
 			table.insert(buttonOrder, 'div' .. tostring(i))
 		end
@@ -3193,19 +3198,6 @@ function skin(self, s)
 		npcontrols = {
 			order = buttonOrder,
 			x = 480,
-
-			div1 = _uses(_transportControlBorder, {
-				w = 6,
-				padding = { 2, 0, 2, 0 }
-			}),
-			div2 = _uses(_transportControlBorder, {
-				w = 6,
-				padding = { 2, 0, 2, 0 }
-			}),
-			div3 = _uses(_transportControlBorder, {
-				w = 6,
-				padding = { 2, 0, 2, 0 }
-			}),
 		},
 		npprogress = {
 			x = 495,
@@ -3230,6 +3222,7 @@ function skin(self, s)
 			h = WH_FILL,
 			artwork = {
 				w = WH_FILL,
+				h = WH_FILL,
 				align = "left",
 				padding = 0,
 				img = false,
@@ -3237,7 +3230,27 @@ function skin(self, s)
 		},
 
 		npvisu = { hidden = 1 },
-	})	
+	})
+
+	-- if we have more than four buttons, then make them smaller
+	if (smallTbButtons) then
+		local smallControlWidth = controlWidth - 14
+		s.nowplaying_large_art.npcontrols.rew.w = smallControlWidth
+		s.nowplaying_large_art.npcontrols.play.w = smallControlWidth
+		s.nowplaying_large_art.npcontrols.pause.w = smallControlWidth
+		s.nowplaying_large_art.npcontrols.fwd.w = smallControlWidth
+		s.nowplaying_large_art.npcontrols.volDown.w = smallControlWidth
+		s.nowplaying_large_art.npcontrols.volUp.w = smallControlWidth
+	else
+		s.nowplaying_large_art.npcontrols.div1 = _uses(_transportControlBorder, {
+			w = 6,
+			padding = { 2, 0, 2, 0 }
+		})
+
+		s.nowplaying_large_art.npcontrols.div2 = _uses(s.nowplaying_large_art.npcontrols.div1)
+		s.nowplaying_large_art.npcontrols.div3 = _uses(s.nowplaying_large_art.npcontrols.div1)
+		s.nowplaying_large_art.npcontrols.div4 = _uses(s.nowplaying_large_art.npcontrols.div1)
+	end
 
 	s.nowplaying_large_art.pressed = s.nowplaying_large_art
 	s.nowplaying_large_art.nptitle.pressed = _uses(s.nowplaying_large_art.nptitle)
