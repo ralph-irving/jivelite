@@ -132,9 +132,9 @@ end
 
 -- skin
 -- The meta arranges for this to be called to skin the interface.
-function skin(self, s)
+function skin(self, s, reload, useDefaultSize, w, h)
 	-- almost all styles come directly from QVGAbaseSkinApplet
-	JogglerSkinApplet.skin(self, s)
+	JogglerSkinApplet.skin(self, s, reload, useDefaultSize, w, h)
 
 	local screenWidth, screenHeight = Framework:getScreenSize()
 
@@ -163,9 +163,9 @@ function skin(self, s)
 	local ALBUMMENU_FONT_SIZE_G = 18
 	local ALBUMMENU_SMALL_FONT_SIZE_G = 16
 	local MENU_ITEM_ICON_PADDING_G = { 0, 0, 0, 0 }
+	local GRID_ITEM_HEIGHT = 174		-- defined by the artwork assets used to "select" the items (grid_list/*)
 
 	local ITEMS_PER_LINE = screenWidth / 160
-	local LINES_OF_ITEMS = screenHeight / 208
 
 	local smallSpinny = c.smallSpinny
 
@@ -173,11 +173,7 @@ function skin(self, s)
 --------- DEFAULT WIDGET STYLES ---------
 	--
 	-- These are the default styles for the widgets 
-
-	local menu_height = math.floor((screenHeight - c.TITLE_HEIGHT) / c.FIVE_ITEM_HEIGHT) * c.FIVE_ITEM_HEIGHT
-	local grid_height = math.floor((screenHeight - c.TITLE_HEIGHT - 16) / 3) * 3
-
-	s.menu.h = menu_height
+	s.menu.h = math.floor((screenHeight - c.TITLE_HEIGHT) / c.FIVE_ITEM_HEIGHT) * c.FIVE_ITEM_HEIGHT
 
 	s.itemG = {
 		order = { "icon", "text" },
@@ -206,7 +202,7 @@ function skin(self, s)
 
 	s.home_menu = _uses(s.text_list, {
 		menu = {
-			itemHeight = grid_height / LINES_OF_ITEMS,
+			itemHeight = GRID_ITEM_HEIGHT,
 			itemsPerLine = ITEMS_PER_LINE,
 			item = _uses(s.itemG, {
 				icon = {
@@ -298,7 +294,7 @@ function skin(self, s)
 	s.icon_listG = _uses(s.window, {
 		menu = {
 			itemsPerLine = ITEMS_PER_LINE,
-			itemHeight = grid_height / LINES_OF_ITEMS,
+			itemHeight = GRID_ITEM_HEIGHT,
 			item = _uses(s.itemG, {
 				text = {
 					font = _font(ALBUMMENU_SMALL_FONT_SIZE_G),
@@ -612,6 +608,32 @@ function skin(self, s)
 
 	return s
 
+end
+
+function skin1024x600(self, s, reload, useDefaultSize)
+	skin(self, s, reload, useDefaultSize, 1024, 600)
+	return s
+end
+
+function skin1280x800(self, s, reload, useDefaultSize, w, h)
+	skin(self, s, reload, useDefaultSize, w or 1280, h or 800)
+	
+	local c = s.CONSTANTS
+
+	s.nowplaying.nptitle.nptrack.font = _boldfont(c.NP_ARTISTALBUM_FONT_SIZE * 1.2) 
+	s.nowplaying.npartistgroup.npartist.font = _font(c.NP_ARTISTALBUM_FONT_SIZE * 1.2) 
+	s.nowplaying.npalbumgroup.npalbum.font = _font(c.NP_ARTISTALBUM_FONT_SIZE * 1.2) 
+
+	s.nowplaying_large_art.nptitle.nptrack.font = _boldfont(c.NP_ARTISTALBUM_FONT_SIZE * 1.2) 
+	s.nowplaying_large_art.npartistgroup.npartist.font = _font(c.NP_ARTISTALBUM_FONT_SIZE * 1.2) 
+	s.nowplaying_large_art.npalbumgroup.npalbum.font = _font(c.NP_ARTISTALBUM_FONT_SIZE * 1.2) 
+
+	return s
+end
+
+function skin1366x768(self, s, reload, useDefaultSize)
+	skin(self, s, reload, useDefaultSize, 1366, 768)
+	return s
 end
 
 function free(self)

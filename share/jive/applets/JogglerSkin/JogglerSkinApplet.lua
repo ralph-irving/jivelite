@@ -30,6 +30,7 @@ local ipairs, pairs, setmetatable, type, tostring = ipairs, pairs, setmetatable,
 
 local oo                     = require("loop.simple")
 local string                 = require("jive.utils.string")
+local math                   = math
 
 local Applet                 = require("jive.Applet")
 local Audio                  = require("jive.ui.Audio")
@@ -97,6 +98,10 @@ end
 
 
 function param(self)
+	local screenWidth, screenHeight = Framework:getScreenSize()
+	local maxArtwork = tostring(screenHeight) .. 'x' .. tostring(screenHeight)
+	local midArtwork = tostring(screenHeight - 180) .. 'x' .. tostring(screenHeight - 180)
+	
 	return {
 		THUMB_SIZE = 40,
 		THUMB_SIZE_MENU = 40,
@@ -111,35 +116,35 @@ function param(self)
 			-- every skin needs to start off with a nowplaying style
 			{
 				style = 'nowplaying', 
-				artworkSize = '300x300',
+				artworkSize = midArtwork,
 				text = self:string("ART_AND_TEXT"),
 			},
 			{
 				style = 'nowplaying_large_art',
-				artworkSize = '480x480',
+				artworkSize = maxArtwork,
 				titleXofYonly = true,
 				text = self:string("LARGE_ART_AND_TEXT"),
 			},
 			{
 				style = 'nowplaying_art_only',
-				artworkSize = '480x480',
+				artworkSize = maxArtwork,
 				suppressTitlebar = 1,
 				text = self:string("ART_ONLY"),
 			},
 			{
 				style = 'nowplaying_text_only',
-				artworkSize = '300x300',
+				artworkSize = midArtwork,
 				text = self:string("TEXT_ONLY"),
 			},
 			{
 				style = 'nowplaying_spectrum_text',
-				artworkSize = '300x300',
+				artworkSize = midArtwork,
 				localPlayerOnly = 1,
 				text = self:string("SPECTRUM_ANALYZER"),
 			},
 			{
 				style = 'nowplaying_vuanalog_text',
-				artworkSize = '300x300',
+				artworkSize = midArtwork,
 				localPlayerOnly = 1,
 				text = self:string("ANALOG_VU_METER"),
 			},
@@ -261,8 +266,11 @@ end
 
 -- skin
 -- The meta arranges for this to be called to skin the interface.
-function skin(self, s)
-	Framework:setVideoMode(800, 480, 0, false)
+function skin(self, s, reload, useDefaultSize, w, h)
+	if (not w) then w = 800 end
+	if (not h) then h = 480 end
+	
+	Framework:setVideoMode(w, h, 0, false)
 
 	local screenWidth, screenHeight = Framework:getScreenSize()
 
@@ -1983,6 +1991,8 @@ function skin(self, s)
 		img = _loadImage(self, "Icons/icon_badge_add.png")
 	})
 
+	local CM_MENU_ITEM_COUNT = math.floor(((screenHeight - 32 - 52 - 20) / CM_MENU_HEIGHT))
+
 	s.context_menu = {
 		x = 8,
 		y = 16,
@@ -2035,11 +2045,11 @@ function skin(self, s)
 		},
 
 		menu = {
-			h = CM_MENU_HEIGHT * 8,
+			h = CM_MENU_HEIGHT * CM_MENU_ITEM_COUNT,
 			border = { 7, 0, 7, 0 },
 			padding = { 0, 0, 0, 100 },
 			scrollbar = { 
-				h = CM_MENU_HEIGHT * 8,
+				h = CM_MENU_HEIGHT * CM_MENU_ITEM_COUNT,
 			},
 			item = {
 				h = CM_MENU_HEIGHT,
@@ -2817,8 +2827,10 @@ function skin(self, s)
 		align = "left",
 		lineHeight = NP_TRACK_FONT_SIZE,
 		fg = TEXT_COLOR,
-		x = 325,
+		x = screenHeight - 160 + 5,
 	}
+	
+	local maxArtwork = screenHeight - 180
 
 	s.nowplaying = _uses(s.window, {
 		--title bar
@@ -2896,15 +2908,15 @@ function skin(self, s)
 	
 		-- cover art
 		npartwork = {
-			w = 300,
+			w = maxArtwork,
 			position = LAYOUT_NONE,
 			x = 10,
 			y = TITLE_HEIGHT + 18,
 			align = "center",
-			h = 300,
+			h = maxArtwork,
 
 			artwork = {
-				w = 300,
+				w = maxArtwork,
 				align = "center",
 				padding = 0,
 				img = false,
@@ -3007,8 +3019,8 @@ function skin(self, s)
 		-- Progress bar
 		npprogress = {
 			position = LAYOUT_NONE,
-			x = 327,
-			y = TITLE_HEIGHT + 29 + 26 + 32 + 32 + 23 + 80 + 40,
+			x = _tracklayout.x + 2,
+			y = screenHeight - 160,
 			padding = { 0, 11, 0, 0 },
 			order = { "elapsed", "slider", "remain" },
 			elapsed = {
@@ -3044,7 +3056,7 @@ function skin(self, s)
 				sh = { 0x37, 0x37, 0x37 },
 			},
 			npprogressB = {
-				w = 290,
+				w = screenWidth - _tracklayout.x - 2*80 - 25,
 				h = 50,
 				padding = { 0, 0, 0, 0 },
 			        position = LAYOUT_SOUTH,
@@ -3058,7 +3070,7 @@ function skin(self, s)
 		npprogressNB = {
 			order = { "elapsed" },
 			position = LAYOUT_NONE,
-			x = 327,
+			x = _tracklayout.x + 2,
 			y = TITLE_HEIGHT + 29 + 26 + 32 + 32 + 23 + 84 + 40,
 			elapsed = {
 				w = WH_FILL,
@@ -3143,8 +3155,9 @@ function skin(self, s)
 
 	local settings = appletManager:callService("getNowPlayingScreenButtons")
 	local buttonOrder = {}
-	local i = 1
 	local smallTbButtons
+
+	local i = 1
 	for k,v in ipairs(tbButtons) do
 		if settings[v] then
 			table.insert(buttonOrder, v)
@@ -3152,21 +3165,23 @@ function skin(self, s)
 			i = i + 1
 			
 			-- We can't comfortably accomodate more than five items
-			if (i > 5) or (i > 2 and v == 'volSlider') then
+			if screenWidth <= 800 and (i > 5) or (i > 2 and v == 'volSlider') then
 				smallTbButtons = true
-				break
+				if screenWidth <= 800 then break end
 			end
 			
 			table.insert(buttonOrder, 'div' .. tostring(i))
 		end
 	end
+	
+	local npX = screenHeight + 15
 
 	s.nowplaying_large_art = _uses(s.nowplaying, {
 		bgImg = blackBackground,
 		title = {
 			bgImg = false,
 			text = {
-				border = { 408, 0, 0, 0 },
+				border = { screenHeight - 72, 0, 0, 0 },
 				padding = { 10, 12, 10, 15 },
 				font = _boldfont(24),
 			},
@@ -3175,32 +3190,32 @@ function skin(self, s)
 			}
 		},
 		nptitle = {
-			x = 495,
+			x = npX,
 			nptrack = {
-				w = screenWidth - 495 - 10,
+				w = screenWidth - npX - 10,
 				font = _boldfont(NP_ARTISTALBUM_FONT_SIZE * 0.9), 
 			},
 		},
 		npartistgroup = {
-			x = 495,
+			x = npX,
 			npartist = {
 				font = _font(NP_ARTISTALBUM_FONT_SIZE * 0.9),
-				w = screenWidth - 495 - 10,
+				w = screenWidth - npX - 10,
 			} 
 		},
 		npalbumgroup = {
-			x = 495,
+			x = npX,
 			npalbum = {
 				font = _font(NP_ARTISTALBUM_FONT_SIZE * 0.9),
-				w = screenWidth - 495 - 10,
+				w = screenWidth - npX - 10,
 			} 
 		},
 		npcontrols = {
 			order = buttonOrder,
-			x = 480,
+			x = screenHeight,
 		},
 		npprogress = {
-			x = 495,
+			x = npX,
 			elapsed = {
 				w = 60,
 			},
@@ -3208,14 +3223,14 @@ function skin(self, s)
 				w = 60,
 			},
 			npprogressB = {
-				w = 160,
+				w = screenWidth - npX - 2*60 - 15,
 			},
 		},
 		npprogressNB = {
-			x = 495,
+			x = npX,
 		},
 		npartwork = {
-			w = 480,
+			w = screenHeight,
 			x = 0,
 			y = 0,
 			align = "center",
@@ -3239,8 +3254,31 @@ function skin(self, s)
 		s.nowplaying_large_art.npcontrols.play.w = smallControlWidth
 		s.nowplaying_large_art.npcontrols.pause.w = smallControlWidth
 		s.nowplaying_large_art.npcontrols.fwd.w = smallControlWidth
+		s.nowplaying_large_art.npcontrols.fwd.w = smallControlWidth
+		
+		s.nowplaying_large_art.npcontrols.repeatMode.w = smallControlWidth
+		s.nowplaying_large_art.npcontrols.repeatOff.w = smallControlWidth
+		s.nowplaying_large_art.npcontrols.repeatSong.w = smallControlWidth
+		s.nowplaying_large_art.npcontrols.repeatPlaylist.w = smallControlWidth
+
+		s.nowplaying_large_art.npcontrols.shuffleMode.w = smallControlWidth
+		s.nowplaying_large_art.npcontrols.shuffleOff.w = smallControlWidth
+		s.nowplaying_large_art.npcontrols.shuffleSong.w = smallControlWidth
+		s.nowplaying_large_art.npcontrols.shuffleAlbum.w = smallControlWidth
+		
 		s.nowplaying_large_art.npcontrols.volDown.w = smallControlWidth
 		s.nowplaying_large_art.npcontrols.volUp.w = smallControlWidth
+
+		s.nowplaying_large_art.npcontrols.thumbsUp = smallControlWidth
+		s.nowplaying_large_art.npcontrols.thumbsDown = smallControlWidth
+		s.nowplaying_large_art.npcontrols.thumbsUpDisabled = smallControlWidth
+		s.nowplaying_large_art.npcontrols.thumbsDownDisabled = smallControlWidth
+		s.nowplaying_large_art.npcontrols.love = smallControlWidth
+		s.nowplaying_large_art.npcontrols.hate = smallControlWidth
+		s.nowplaying_large_art.npcontrols.fwdDisabled = smallControlWidth
+		s.nowplaying_large_art.npcontrols.rewDisabled = smallControlWidth
+		s.nowplaying_large_art.npcontrols.shuffleDisabled = smallControlWidth
+		s.nowplaying_large_art.npcontrols.repeatDisabled = smallControlWidth
 	else
 		s.nowplaying_large_art.npcontrols.div1 = _uses(_transportControlBorder, {
 			w = 6,
@@ -3279,14 +3317,14 @@ function skin(self, s)
 		npartistgroup    = { hidden = 1 },
 		npalbumgroup     = { hidden = 1 },
 		npartwork = {
-			w = 480,
+			w = screenHeight,
 			position = LAYOUT_NONE,
-			x = 172,
+			x = (screenWidth - screenHeight) / 2,
 			y = 0,
 			align = "center",
-			h = 480,
+			h = screenHeight,
 			artwork = {
-				w = 480,
+				w = screenHeight,
 				align = "center",
 				padding = 0,
 				img = false,
@@ -3327,7 +3365,7 @@ function skin(self, s)
 		npprogress = {
 			position = LAYOUT_NONE,
 			x = 50,
-			y = 300,
+			y = screenHeight - 160,
 			padding = { 0, 10, 0, 0 },
 			elapsed = {
 				w = 80,
@@ -3362,7 +3400,7 @@ function skin(self, s)
 				sh = { 0x37, 0x37, 0x37 },
 			},
 			npprogressB = {
-				w = 540,
+				w = screenWidth - 2*50 - 2*80,
 				h = 50,
 				padding = { 0, 0, 0, 0 },
 		                position = LAYOUT_SOUTH,
@@ -3669,6 +3707,7 @@ function skin(self, s)
 		ALBUMMENU_FONT_SIZE = ALBUMMENU_FONT_SIZE,
 		ITEM_ICON_ALIGN = ITEM_ICON_ALIGN,
 		FIVE_ITEM_HEIGHT = FIVE_ITEM_HEIGHT,
+		NP_ARTISTALBUM_FONT_SIZE = NP_ARTISTALBUM_FONT_SIZE,
 	}
 
 	return s

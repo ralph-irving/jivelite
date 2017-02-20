@@ -37,7 +37,10 @@ function defaultSettings(self)
 end
 
 function registerApplet(self)
-	jiveMain:registerSkin(self:string("PIGRID_SKIN"), "PiGridSkin", "skin")
+	jiveMain:registerSkin(self:string("PIGRID_SKIN"), "PiGridSkin", "skin", "PiGridSkin_800x480")
+	jiveMain:registerSkin(self:string("PIGRID_SKIN_1024_600"), "PiGridSkin", "skin1024x600", "PiGridSkin_1024x600")
+	jiveMain:registerSkin(self:string("PIGRID_SKIN_1280_800"), "PiGridSkin", "skin1280x800", "PiGridSkin_1280x800")
+	jiveMain:registerSkin(self:string("PIGRID_SKIN_1366_768"), "PiGridSkin", "skin1366x768", "PiGridSkin_1366x768")
 end
 
 
