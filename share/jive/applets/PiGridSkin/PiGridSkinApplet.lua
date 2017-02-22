@@ -610,31 +610,6 @@ function skin(self, s, reload, useDefaultSize, w, h)
 
 end
 
-function skin1024x600(self, s, reload, useDefaultSize)
-	skin(self, s, reload, useDefaultSize, 1024, 600)
-	return s
-end
-
-function skin1280x800(self, s, reload, useDefaultSize, w, h)
-	skin(self, s, reload, useDefaultSize, w or 1280, h or 800)
-	
-	local c = s.CONSTANTS
-
-	s.nowplaying.nptitle.nptrack.font = _boldfont(c.NP_ARTISTALBUM_FONT_SIZE * 1.2) 
-	s.nowplaying.npartistgroup.npartist.font = _font(c.NP_ARTISTALBUM_FONT_SIZE * 1.2) 
-	s.nowplaying.npalbumgroup.npalbum.font = _font(c.NP_ARTISTALBUM_FONT_SIZE * 1.2) 
-
-	s.nowplaying_large_art.nptitle.nptrack.font = _boldfont(c.NP_ARTISTALBUM_FONT_SIZE * 1.2) 
-	s.nowplaying_large_art.npartistgroup.npartist.font = _font(c.NP_ARTISTALBUM_FONT_SIZE * 1.2) 
-	s.nowplaying_large_art.npalbumgroup.npalbum.font = _font(c.NP_ARTISTALBUM_FONT_SIZE * 1.2) 
-
-	return s
-end
-
-function skin1366x768(self, s, reload, useDefaultSize)
-	skin(self, s, reload, useDefaultSize, 1366, 768)
-	return s
-end
 
 function free(self)
 	local desktop = not System:isHardware()
