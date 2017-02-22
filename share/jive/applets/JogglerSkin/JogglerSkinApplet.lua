@@ -3764,6 +3764,11 @@ end
 
 function skin1024x600(self, s, reload, useDefaultSize)
 	self:skin(s, reload, useDefaultSize, 1024, 600)
+
+	-- put a space between volume controls and other buttons	
+	s.nowplaying.npcontrols.div5.w = 230
+	s.nowplaying.npcontrols.div5.img = false
+	
 	return s
 end
 
@@ -3780,11 +3785,20 @@ function skin1280x800(self, s, reload, useDefaultSize, w, h)
 	s.nowplaying_large_art.npartistgroup.npartist.font = _font(c.NP_ARTISTALBUM_FONT_SIZE * 1.2) 
 	s.nowplaying_large_art.npalbumgroup.npalbum.font = _font(c.NP_ARTISTALBUM_FONT_SIZE * 1.2) 
 
+	-- put a space between volume controls and other buttons	
+	s.nowplaying.npcontrols.div5.w = 490
+	s.nowplaying.npcontrols.div5.img = false
+
 	return s
 end
 
 function skin1366x768(self, s, reload, useDefaultSize)
 	self:skin(s, reload, useDefaultSize, 1366, 768)
+
+	-- put a space between volume controls and other buttons	
+	s.nowplaying.npcontrols.div5.w = 568
+	s.nowplaying.npcontrols.div5.img = false
+
 	return s
 end
 
