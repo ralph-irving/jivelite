@@ -3250,35 +3250,36 @@ function skin(self, s, reload, useDefaultSize, w, h)
 	-- if we have more than four buttons, then make them smaller
 	if (smallTbButtons) then
 		local smallControlWidth = controlWidth - 14
-		s.nowplaying_large_art.npcontrols.rew.w = smallControlWidth
-		s.nowplaying_large_art.npcontrols.play.w = smallControlWidth
-		s.nowplaying_large_art.npcontrols.pause.w = smallControlWidth
-		s.nowplaying_large_art.npcontrols.fwd.w = smallControlWidth
-		s.nowplaying_large_art.npcontrols.fwd.w = smallControlWidth
+		s.nowplaying_large_art.npcontrols.rew = _uses(s.nowplaying.npcontrols.rew, { w = smallControlWidth })
+		s.nowplaying_large_art.npcontrols.play = _uses(s.nowplaying.npcontrols.play, { w = smallControlWidth })
+		s.nowplaying_large_art.npcontrols.pause = _uses(s.nowplaying.npcontrols.pause, { w = smallControlWidth })
+		s.nowplaying_large_art.npcontrols.fwd = _uses(s.nowplaying.npcontrols.fwd, { w = smallControlWidth })
 		
-		s.nowplaying_large_art.npcontrols.repeatMode.w = smallControlWidth
-		s.nowplaying_large_art.npcontrols.repeatOff.w = smallControlWidth
-		s.nowplaying_large_art.npcontrols.repeatSong.w = smallControlWidth
-		s.nowplaying_large_art.npcontrols.repeatPlaylist.w = smallControlWidth
+		s.nowplaying_large_art.npcontrols.repeatMode = _uses(s.nowplaying.npcontrols.repeatMode, { w = smallControlWidth })
+		s.nowplaying_large_art.npcontrols.repeatOff = _uses(s.nowplaying.npcontrols.repeatOff, { w = smallControlWidth })
+		s.nowplaying_large_art.npcontrols.repeatSong = _uses(s.nowplaying.npcontrols.repeatSong, { w = smallControlWidth })
+		s.nowplaying_large_art.npcontrols.repeatPlaylist = _uses(s.nowplaying.npcontrols.repeatPlaylist, { w = smallControlWidth })
 
-		s.nowplaying_large_art.npcontrols.shuffleMode.w = smallControlWidth
-		s.nowplaying_large_art.npcontrols.shuffleOff.w = smallControlWidth
-		s.nowplaying_large_art.npcontrols.shuffleSong.w = smallControlWidth
-		s.nowplaying_large_art.npcontrols.shuffleAlbum.w = smallControlWidth
+		s.nowplaying_large_art.npcontrols.shuffleMode = _uses(s.nowplaying.npcontrols.shuffleMode, { w = smallControlWidth })
+		s.nowplaying_large_art.npcontrols.shuffleOff = _uses(s.nowplaying.npcontrols.shuffleOff, { w = smallControlWidth })
+		s.nowplaying_large_art.npcontrols.shuffleSong = _uses(s.nowplaying.npcontrols.shuffleSong, { w = smallControlWidth })
+		s.nowplaying_large_art.npcontrols.shuffleAlbum = _uses(s.nowplaying.npcontrols.shuffleAlbum, { w = smallControlWidth })
 		
-		s.nowplaying_large_art.npcontrols.volDown.w = smallControlWidth
-		s.nowplaying_large_art.npcontrols.volUp.w = smallControlWidth
+		s.nowplaying_large_art.npcontrols.volDown = _uses(s.nowplaying.npcontrols.volDown, { w = smallControlWidth })
+		s.nowplaying_large_art.npcontrols.volUp = _uses(s.nowplaying.npcontrols.volUp, { w = smallControlWidth })
 
-		s.nowplaying_large_art.npcontrols.thumbsUp = smallControlWidth
-		s.nowplaying_large_art.npcontrols.thumbsDown = smallControlWidth
-		s.nowplaying_large_art.npcontrols.thumbsUpDisabled = smallControlWidth
-		s.nowplaying_large_art.npcontrols.thumbsDownDisabled = smallControlWidth
-		s.nowplaying_large_art.npcontrols.love = smallControlWidth
-		s.nowplaying_large_art.npcontrols.hate = smallControlWidth
-		s.nowplaying_large_art.npcontrols.fwdDisabled = smallControlWidth
-		s.nowplaying_large_art.npcontrols.rewDisabled = smallControlWidth
-		s.nowplaying_large_art.npcontrols.shuffleDisabled = smallControlWidth
-		s.nowplaying_large_art.npcontrols.repeatDisabled = smallControlWidth
+		s.nowplaying_large_art.npcontrols.thumbsUp = _uses(s.nowplaying.npcontrols.thumbsUp, { w = smallControlWidth })
+		s.nowplaying_large_art.npcontrols.thumbsDown = _uses(s.nowplaying.npcontrols.thumbsDown, { w = smallControlWidth })
+		s.nowplaying_large_art.npcontrols.thumbsUpDisabled = _uses(s.nowplaying.npcontrols.thumbsUpDisabled, { w = smallControlWidth })
+		s.nowplaying_large_art.npcontrols.thumbsDownDisabled = _uses(s.nowplaying.npcontrols.thumbsDownDisabled, { w = smallControlWidth })
+
+		s.nowplaying_large_art.npcontrols.love = _uses(s.nowplaying.npcontrols.love, { w = smallControlWidth })
+		s.nowplaying_large_art.npcontrols.hate = _uses(s.nowplaying.npcontrols.hate, { w = smallControlWidth })
+
+		s.nowplaying_large_art.npcontrols.fwdDisabled = _uses(s.nowplaying.npcontrols.fwdDisabled, { w = smallControlWidth })
+		s.nowplaying_large_art.npcontrols.rewDisabled = _uses(s.nowplaying.npcontrols.rewDisabled, { w = smallControlWidth })
+		s.nowplaying_large_art.npcontrols.shuffleDisabled = _uses(s.nowplaying.npcontrols.shuffleDisabled, { w = smallControlWidth })
+		s.nowplaying_large_art.npcontrols.repeatDisabled = _uses(s.nowplaying.npcontrols.repeatDisabled, { w = smallControlWidth })
 	else
 		s.nowplaying_large_art.npcontrols.div1 = _uses(_transportControlBorder, {
 			w = 6,
