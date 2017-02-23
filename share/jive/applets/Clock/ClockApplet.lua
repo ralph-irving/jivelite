@@ -55,11 +55,28 @@ local fontpath = "fonts/"
 local FONT_NAME = "FreeSans"
 local BOLD_PREFIX = "Bold"
 
+local function _isJogglerSkin(skinName)
+	if string.match(skinName, 'PiGridSkin') or string.match(skinName, 'JogglerSkin') then
+		return true
+	end
+end
+
+local function _isWQVGASkin(skinName)
+    if skinName == 'WQVGAsmallSkin' or skinName == 'WQVGAlargeSkin' then
+    	return true
+    end
+end
+
+
 local function _imgpath(self)
 	local skinName = self.skinName
 	
-	if skinName == 'PiGridSkin' then
+	if _isJogglerSkin(skinName) then
 		skinName = 'JogglerSkin'
+		
+	elseif _isWQVGASkin(skinName) then
+		skinName = "WQVGAsmallSkin"
+	
 	end
 	
     return "applets/" .. skinName .. "/images/"
@@ -397,7 +414,7 @@ function WordClock:__init(applet)
     obj.textdate = Label('textdate')
     obj.skinParams = WordClock:getSkinParams(skinName)
 
-    if skinName == "JogglerSkin" or skinName == "WQVGAsmallSkin" or skinName == "WQVGAlargeSkin" or skinName == "PiGridSkin" then
+    if _isJogglerSkin(skinName) or skinName == "WQVGAsmallSkin" or skinName == "WQVGAlargeSkin" then
         obj.pointer_textIt         = Surface:loadImage(obj.skinParams.textIt)  
         obj.pointer_textIs         = Surface:loadImage(obj.skinParams.textIs)  
         obj.pointer_textHas        = Surface:loadImage(obj.skinParams.textHas)  
@@ -459,7 +476,7 @@ function WordClock:_reDraw(screen)
     log:debug("WordClock:_reDraw")
     log:debug("WordClock:_reDraw self.skinName = " .. self.skinName)
 
-    if self.skinName == "JogglerSkin" or self.skinName == "PiGridSkin" then
+    if _isJogglerSkin(self.skinName) then
         local timenow = os.date("*t",os.time())
 
         local flags = WordClock:getwordflags(timenow)
@@ -514,46 +531,46 @@ function WordClock:_reDraw(screen)
 
         local all = false  -- Just for debugging screen position
 
-		local WQVGA_Joggler_skinRatio = 480 / 800
+		local WQVGA_skinRatio = self.screen_height / self.screen_width
     -- Row 1
-        self.pointer_textIt:blit(screen, 20 * WQVGA_Joggler_skinRatio, 50 * WQVGA_Joggler_skinRatio)
-        if all or flags.is         then self.pointer_textIs:blit(screen, 86 * WQVGA_Joggler_skinRatio, 50 * WQVGA_Joggler_skinRatio) end
-        if all or flags.has        then self.pointer_textHas:blit(screen, 156 * WQVGA_Joggler_skinRatio, 50 * WQVGA_Joggler_skinRatio) end
-        if all or flags.nearly     then self.pointer_textNearly:blit(screen, 280 * WQVGA_Joggler_skinRatio, 50 * WQVGA_Joggler_skinRatio) end
-        if all or flags.justgone   then self.pointer_textJustgone:blit(screen, 496 * WQVGA_Joggler_skinRatio, 50 * WQVGA_Joggler_skinRatio) end
+        self.pointer_textIt:blit(screen, 20 * WQVGA_skinRatio, 50 * WQVGA_skinRatio)
+        if all or flags.is         then self.pointer_textIs:blit(screen, 86 * WQVGA_skinRatio, 50 * WQVGA_skinRatio) end
+        if all or flags.has        then self.pointer_textHas:blit(screen, 156 * WQVGA_skinRatio, 50 * WQVGA_skinRatio) end
+        if all or flags.nearly     then self.pointer_textNearly:blit(screen, 280 * WQVGA_skinRatio, 50 * WQVGA_skinRatio) end
+        if all or flags.justgone   then self.pointer_textJustgone:blit(screen, 496 * WQVGA_skinRatio, 50 * WQVGA_skinRatio) end
 
     -- Row 2
-        if all or flags.half       then self.pointer_textHalf:blit(screen, 20 * WQVGA_Joggler_skinRatio, 108 * WQVGA_Joggler_skinRatio) end
-        if all or flags.ten        then self.pointer_textTen:blit(screen, 163 * WQVGA_Joggler_skinRatio, 108 * WQVGA_Joggler_skinRatio) end
-        if all or flags.aquarter   then self.pointer_textAquarter:blit(screen, 274 * WQVGA_Joggler_skinRatio, 108 * WQVGA_Joggler_skinRatio) end
-        if all or flags.twenty     then self.pointer_textTwenty:blit(screen, 579 * WQVGA_Joggler_skinRatio, 108 * WQVGA_Joggler_skinRatio) end
+        if all or flags.half       then self.pointer_textHalf:blit(screen, 20 * WQVGA_skinRatio, 108 * WQVGA_skinRatio) end
+        if all or flags.ten        then self.pointer_textTen:blit(screen, 163 * WQVGA_skinRatio, 108 * WQVGA_skinRatio) end
+        if all or flags.aquarter   then self.pointer_textAquarter:blit(screen, 274 * WQVGA_skinRatio, 108 * WQVGA_skinRatio) end
+        if all or flags.twenty     then self.pointer_textTwenty:blit(screen, 579 * WQVGA_skinRatio, 108 * WQVGA_skinRatio) end
 
     -- Row 3
-        if all or flags.five       then self.pointer_textFive:blit(screen, 20 * WQVGA_Joggler_skinRatio, 165 * WQVGA_Joggler_skinRatio) end
-        if all or flags.minutes    then self.pointer_textMinutes:blit(screen, 169 * WQVGA_Joggler_skinRatio, 165 * WQVGA_Joggler_skinRatio) end
-        if all or flags.to         then self.pointer_textTo:blit(screen, 425 * WQVGA_Joggler_skinRatio, 165 * WQVGA_Joggler_skinRatio) end
-        if all or flags.past       then self.pointer_textPast:blit(screen, 537 * WQVGA_Joggler_skinRatio, 165 * WQVGA_Joggler_skinRatio) end
-        if all or flags.hsix       then self.pointer_textHourSix:blit(screen, 707 * WQVGA_Joggler_skinRatio, 165 * WQVGA_Joggler_skinRatio) end
+        if all or flags.five       then self.pointer_textFive:blit(screen, 20 * WQVGA_skinRatio, 165 * WQVGA_skinRatio) end
+        if all or flags.minutes    then self.pointer_textMinutes:blit(screen, 169 * WQVGA_skinRatio, 165 * WQVGA_skinRatio) end
+        if all or flags.to         then self.pointer_textTo:blit(screen, 425 * WQVGA_skinRatio, 165 * WQVGA_skinRatio) end
+        if all or flags.past       then self.pointer_textPast:blit(screen, 537 * WQVGA_skinRatio, 165 * WQVGA_skinRatio) end
+        if all or flags.hsix       then self.pointer_textHourSix:blit(screen, 707 * WQVGA_skinRatio, 165 * WQVGA_skinRatio) end
 
     -- Row 4
-        if all or flags.hseven     then self.pointer_textHourSeven:blit(screen, 20 * WQVGA_Joggler_skinRatio, 222 * WQVGA_Joggler_skinRatio) end
-        if all or flags.hone       then self.pointer_textHourOne:blit(screen, 222 * WQVGA_Joggler_skinRatio, 222 * WQVGA_Joggler_skinRatio) end
-        if all or flags.htwo       then self.pointer_textHourTwo:blit(screen, 363 * WQVGA_Joggler_skinRatio, 222 * WQVGA_Joggler_skinRatio) end
-        if all or flags.hten       then self.pointer_textHourTen:blit(screen, 513 * WQVGA_Joggler_skinRatio, 222 * WQVGA_Joggler_skinRatio) end
-        if all or flags.hfour      then self.pointer_textHourFour:blit(screen, 650 * WQVGA_Joggler_skinRatio, 222 * WQVGA_Joggler_skinRatio) end
+        if all or flags.hseven     then self.pointer_textHourSeven:blit(screen, 20 * WQVGA_skinRatio, 222 * WQVGA_skinRatio) end
+        if all or flags.hone       then self.pointer_textHourOne:blit(screen, 222 * WQVGA_skinRatio, 222 * WQVGA_skinRatio) end
+        if all or flags.htwo       then self.pointer_textHourTwo:blit(screen, 363 * WQVGA_skinRatio, 222 * WQVGA_skinRatio) end
+        if all or flags.hten       then self.pointer_textHourTen:blit(screen, 513 * WQVGA_skinRatio, 222 * WQVGA_skinRatio) end
+        if all or flags.hfour      then self.pointer_textHourFour:blit(screen, 650 * WQVGA_skinRatio, 222 * WQVGA_skinRatio) end
 
     -- Row 5
-        if all or flags.hfive      then self.pointer_textHourFive:blit(screen, 20 * WQVGA_Joggler_skinRatio, 280 * WQVGA_Joggler_skinRatio) end
-        if all or flags.hnine      then self.pointer_textHourNine:blit(screen, 193 * WQVGA_Joggler_skinRatio, 280 * WQVGA_Joggler_skinRatio) end
-        if all or flags.htwelve    then self.pointer_textHourTwelve:blit(screen, 371 * WQVGA_Joggler_skinRatio, 280 * WQVGA_Joggler_skinRatio) end
-        if all or flags.height     then self.pointer_textHourEight:blit(screen, 639 * WQVGA_Joggler_skinRatio, 280 * WQVGA_Joggler_skinRatio) end
+        if all or flags.hfive      then self.pointer_textHourFive:blit(screen, 20 * WQVGA_skinRatio, 280 * WQVGA_skinRatio) end
+        if all or flags.hnine      then self.pointer_textHourNine:blit(screen, 193 * WQVGA_skinRatio, 280 * WQVGA_skinRatio) end
+        if all or flags.htwelve    then self.pointer_textHourTwelve:blit(screen, 371 * WQVGA_skinRatio, 280 * WQVGA_skinRatio) end
+        if all or flags.height     then self.pointer_textHourEight:blit(screen, 639 * WQVGA_skinRatio, 280 * WQVGA_skinRatio) end
 
     -- Row 6
-        if all or flags.heleven    then self.pointer_textHourEleven:blit(screen, 20 * WQVGA_Joggler_skinRatio, 338 * WQVGA_Joggler_skinRatio) end
-        if all or flags.hthree     then self.pointer_textHourThree:blit(screen, 222 * WQVGA_Joggler_skinRatio, 338 * WQVGA_Joggler_skinRatio) end
-        if all or flags.oclock     then self.pointer_textOClock:blit(screen, 398 * WQVGA_Joggler_skinRatio, 338 * WQVGA_Joggler_skinRatio) end
-        if all or flags.am         then self.pointer_textAM:blit(screen, 627 * WQVGA_Joggler_skinRatio, 338 * WQVGA_Joggler_skinRatio) end
-        if all or flags.pm         then self.pointer_textPM:blit(screen, 716 * WQVGA_Joggler_skinRatio, 338 * WQVGA_Joggler_skinRatio) end
+        if all or flags.heleven    then self.pointer_textHourEleven:blit(screen, 20 * WQVGA_skinRatio, 338 * WQVGA_skinRatio) end
+        if all or flags.hthree     then self.pointer_textHourThree:blit(screen, 222 * WQVGA_skinRatio, 338 * WQVGA_skinRatio) end
+        if all or flags.oclock     then self.pointer_textOClock:blit(screen, 398 * WQVGA_skinRatio, 338 * WQVGA_skinRatio) end
+        if all or flags.am         then self.pointer_textAM:blit(screen, 627 * WQVGA_skinRatio, 338 * WQVGA_skinRatio) end
+        if all or flags.pm         then self.pointer_textPM:blit(screen, 716 * WQVGA_skinRatio, 338 * WQVGA_skinRatio) end
 
         self.textdate:setValue("ON " .. string.upper(WordClock:getDateAsWords(tonumber(os.date("%d")))))
     elseif self.skinName == "QVGAlandscapeSkin" or self.skinName == "QVGAportraitSkin" then
@@ -645,7 +662,7 @@ function Analog:_reDraw(screen)
     -- Hour Pointer
     local angle = (360 / 12) * (h + (m/60))
 
-    local tmp = self.pointer_hour:rotozoom(-angle, 1, 5)
+    local tmp = self.pointer_hour:rotozoom(-angle, self.skinParams.ratio, 5)
     local facew, faceh = tmp:getSize()
     x = math.floor((self.screen_width/2) - (facew/2))
     y = math.floor((self.screen_height/2) - (faceh/2))
@@ -655,7 +672,7 @@ function Analog:_reDraw(screen)
     -- Minute Pointer
     local angle = (360 / 60) * m 
 
-    local tmp = self.pointer_minute:rotozoom(-angle, 1, 5)
+    local tmp = self.pointer_minute:rotozoom(-angle, self.skinParams.ratio, 5)
     local facew, faceh = tmp:getSize()
     x = math.floor((self.screen_width/2) - (facew/2))
     y = math.floor((self.screen_height/2) - (faceh/2))
@@ -1163,7 +1180,7 @@ function DotMatrix:getDotMatrixClockSkin(skinName)
 
         }
 
-    elseif skinName == 'JogglerSkin' or skinName == 'PiGridSkin' then
+    elseif _isJogglerSkin(skinName) then
 
         local dotMatrixBackground = Tile:loadImage(self.imgpath .. "Clocks/Dot_Matrix/wallpaper_clock_dotmatrix.png")
 
@@ -1630,7 +1647,7 @@ function WordClock:getWordClockSkin(skinName)
 
     local wordClockBackground = Tile:loadImage(self.imgpath .. "Clocks/WordClock/wallpaper_clock_word.png")
         
-    if skinName == "JogglerSkin" or skinName == "PiGridSkin" then
+    if _isJogglerSkin(skinName) then
         s.Clock = {
             bgImg = wordClockBackground,
             textdate = {
@@ -1698,7 +1715,7 @@ function WordClock:getSkinParams(skinName)
     
     log:debug("Image path - " .. self.imgpath)
     
-    if skinName == "JogglerSkin" or skinName == "PiGridSkin" then
+    if _isJogglerSkin(skinName) then
         return {
             textIt        = self.imgpath .. "Clocks/WordClock/" .. 'text-it.png',
             textIs        = self.imgpath .. "Clocks/WordClock/" .. 'text-is.png',
@@ -2230,7 +2247,7 @@ function Digital:getDigitalClockSkin(skinName)
             m1Shadow = { hidden = 1 },
             m2Shadow = { hidden = 1 },
         })
-    elseif skinName == 'JogglerSkin' or skinName == "PiGridSkin" then
+    elseif _isJogglerSkin(skinName) then
 
         local digitalClockBackground = Tile:loadImage(self.imgpath .. "Clocks/Digital/wallpaper_clock_digital.png")
         local digitalClockDigit = {
@@ -2838,72 +2855,75 @@ end
 
 -- ANALOG CLOCK
 function Analog:getAnalogClockSkin(skinName)
-    if skinName == 'WQVGAlargeSkin' then
-        skinName = 'WQVGAsmallSkin'
-    end
     self.skinName = skinName
     self.imgpath = _imgpath(self)
-
-    local s = {}
 
     local analogClockBackground
     
     if skinName == 'QVGAlandscapeSkin' then
         analogClockBackground = Tile:loadImage(self.imgpath .. "Clocks/Analog/bb_wallpaper_clock_analog.png")
 
-    elseif skinName == 'WQVGAsmallSkin' then
+    elseif _isWQVGASkin(skinName) then
         analogClockBackground = Tile:loadImage(self.imgpath .. "Clocks/Analog/wallpaper_clock_analog.png")
 
-    elseif skinName == 'JogglerSkin' or skinName == "PiGridSkin" then
-        analogClockBackground = Tile:loadImage(self.imgpath .. "Clocks/Analog/wallpaper_clock_analog.png")
+    elseif _isJogglerSkin(skinName) then
+        local screen_width, screen_height = Framework:getScreenSize()
+        local ratio = math.max(screen_width/800, screen_height/480)
+        analogClockBackground = Surface:loadImage(self.imgpath .. "Clocks/Analog/wallpaper_clock_analog.png")
+        analogClockBackground = analogClockBackground:zoom(ratio, ratio, true)
+        
+        -- if the ratio of the resized background is different, we need to shift it accordingly
+        if ratio ~= (800/480) then
+	        local w, h = analogClockBackground:getSize()
+	        
+	        if w > screen_width then
+		        local tmp = Surface:newRGB(screen_width, screen_height)
+		        analogClockBackground:blit(tmp, (screen_width - w)/2, 0)
+		        analogClockBackground:release()
+		        analogClockBackground = tmp
+		    elseif h > screen_height then
+		        local tmp = Surface:newRGB(screen_width, screen_height)
+		        analogClockBackground:blit(tmp, 0, (screen_height - h)/2)
+		        analogClockBackground:release()
+		        analogClockBackground = tmp
+		    end
+        end
 
     elseif skinName == 'QVGAportraitSkin' then
         analogClockBackground = Tile:loadImage(self.imgpath .. "Clocks/Analog/jive_wallpaper_clock_analog.png")
 
     end
 
-    s.Clock = {
-        bgImg = analogClockBackground,
+    return {
+    	Clock = {
+	        bgImg = analogClockBackground,
+	    } 
     }
-
-    return s
 
 end
 
 function Analog:getSkinParams(skin)
-    if skin == 'WQVGAsmallSkin' or skin == 'WQVGAlargeSkin' then
-            return {
-            minuteHand = 'applets/WQVGAsmallSkin/images/Clocks/Analog/clock_analog_min_hand.png',
-            hourHand   = 'applets/WQVGAsmallSkin/images/Clocks/Analog/clock_analog_hr_hand.png',
-            alarmIcon  = 'applets/WQVGAsmallSkin/images/Clocks/Analog/icon_alarm_analog.png',
-            alarmX     = 435,
-            alarmY     = 18,
-        }
-    elseif skin == 'QVGAlandscapeSkin' then
-            return {
-            minuteHand = 'applets/QVGAlandscapeSkin/images/Clocks/Analog/clock_analog_min_hand.png',
-            hourHand   = 'applets/QVGAlandscapeSkin/images/Clocks/Analog/clock_analog_hr_hand.png',
-            alarmIcon  = 'applets/QVGAlandscapeSkin/images/Clocks/Analog/icon_alarm_analog.png',
-            alarmX     = 280,
-            alarmY     = 15,
-        }
-    elseif skin == 'QVGAportraitSkin' then
-            return {
-            minuteHand = 'applets/QVGAportraitSkin/images/Clocks/Analog/clock_analog_min_hand.png',
-            hourHand   = 'applets/QVGAportraitSkin/images/Clocks/Analog/clock_analog_hr_hand.png',
-            alarmIcon  = 'applets/QVGAportraitSkin/images/Clocks/Analog/icon_alarm_analog.png',
-            alarmX     = 200,
-            alarmY     = 15,
-        }
-    elseif skin == 'JogglerSkin' or skin == "PiGridSkin" then
-            return {
-            minuteHand = 'applets/JogglerSkin/images/Clocks/Analog/clock_analog_min_hand.png',
-            hourHand   = 'applets/JogglerSkin/images/Clocks/Analog/clock_analog_hr_hand.png',
-            alarmIcon  = 'applets/JogglerSkin/images/Clocks/Analog/icon_alarm_analog.png',
-            alarmX     = jogglerSkinAlarmX,
-            alarmY     = jogglerSkinAlarmY,
-        }
+    local screen_width, screen_height = Framework:getScreenSize()
+
+    local params = {
+        minuteHand = self.imgpath .. 'Clocks/Analog/clock_analog_min_hand.png',
+        hourHand   = self.imgpath .. 'Clocks/Analog/clock_analog_hr_hand.png',
+        alarmIcon  = self.imgpath .. 'Clocks/Analog/icon_alarm_analog.png',
+        alarmX     = screen_width - 40,
+        alarmY     = 15,
+        ratio      = 1,
+    }
+    
+    if _isWQVGASkin(skin) then
+        params.alarmY = 18
+        
+    elseif _isJogglerSkin(skin) then
+        params.alarmX = jogglerSkinAlarmX
+        params.alarmY = jogglerSkinAlarmY
+        params.ratio  = math.max(screen_width/800, screen_height/480)
     end
+    
+    return params
 end
 
 
