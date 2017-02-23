@@ -506,44 +506,44 @@ function WordClock:_reDraw(screen)
         local x = self.skin.Clock.offsetX
       
     -- Row 1
-        self.pointer_textIt:zoom(z, z, true):blit(screen, x + 20*r, 50*r)
-        if all or flags.is         then self.pointer_textIs:zoom(z, z, true):blit(screen, x + 86*r, 50*r) end
-        if all or flags.has        then self.pointer_textHas:zoom(z, z, true):blit(screen, x + 156*r, 50*r) end
-        if all or flags.nearly     then self.pointer_textNearly:zoom(z, z, true):blit(screen, x + 280*r, 50*r) end
-        if all or flags.justgone   then self.pointer_textJustgone:zoom(z, z, true):blit(screen, x + 496*r, 50*r) end
+        self.pointer_textIt:zoom(z, z, 1):blit(screen, x + 20*r, 50*r)
+        if all or flags.is         then self.pointer_textIs:zoom(z, z, 1):blit(screen, x + 86*r, 50*r) end
+        if all or flags.has        then self.pointer_textHas:zoom(z, z, 1):blit(screen, x + 156*r, 50*r) end
+        if all or flags.nearly     then self.pointer_textNearly:zoom(z, z, 1):blit(screen, x + 280*r, 50*r) end
+        if all or flags.justgone   then self.pointer_textJustgone:zoom(z, z, 1):blit(screen, x + 496*r, 50*r) end
 
     -- Row 2
-        if all or flags.half       then self.pointer_textHalf:zoom(z, z, true):blit(screen, x + 20*r, 108*r) end
-        if all or flags.ten        then self.pointer_textTen:zoom(z, z, true):blit(screen, x + 163*r, 108*r) end
-        if all or flags.aquarter   then self.pointer_textAquarter:zoom(z, z, true):blit(screen, x + 274*r, 108*r) end
-        if all or flags.twenty     then self.pointer_textTwenty:zoom(z, z, true):blit(screen, x + 579*r, 108*r) end
+        if all or flags.half       then self.pointer_textHalf:zoom(z, z, 1):blit(screen, x + 20*r, 108*r) end
+        if all or flags.ten        then self.pointer_textTen:zoom(z, z, 1):blit(screen, x + 163*r, 108*r) end
+        if all or flags.aquarter   then self.pointer_textAquarter:zoom(z, z, 1):blit(screen, x + 274*r, 108*r) end
+        if all or flags.twenty     then self.pointer_textTwenty:zoom(z, z, 1):blit(screen, x + 579*r, 108*r) end
 
     -- Row 3
-        if all or flags.five       then self.pointer_textFive:zoom(z, z, true):blit(screen, x + 20*r, 165*r) end
-        if all or flags.minutes    then self.pointer_textMinutes:zoom(z, z, true):blit(screen, x + 169*r, 165*r) end
-        if all or flags.to         then self.pointer_textTo:zoom(z, z, true):blit(screen, x + 425*r, 165*r) end
-        if all or flags.past       then self.pointer_textPast:zoom(z, z, true):blit(screen, x + 537*r, 165*r) end
-        if all or flags.hsix       then self.pointer_textHourSix:zoom(z, z, true):blit(screen, x + 707*r, 165*r) end
+        if all or flags.five       then self.pointer_textFive:zoom(z, z, 1):blit(screen, x + 20*r, 165*r) end
+        if all or flags.minutes    then self.pointer_textMinutes:zoom(z, z, 1):blit(screen, x + 169*r, 165*r) end
+        if all or flags.to         then self.pointer_textTo:zoom(z, z, 1):blit(screen, x + 425*r, 165*r) end
+        if all or flags.past       then self.pointer_textPast:zoom(z, z, 1):blit(screen, x + 537*r, 165*r) end
+        if all or flags.hsix       then self.pointer_textHourSix:zoom(z, z, 1):blit(screen, x + 707*r, 165*r) end
 
     -- Row 4
-        if all or flags.hseven     then self.pointer_textHourSeven:zoom(z, z, true):blit(screen, x + 20*r, 222*r) end
-        if all or flags.hone       then self.pointer_textHourOne:zoom(z, z, true):blit(screen, x + 222*r, 222*r) end
-        if all or flags.htwo       then self.pointer_textHourTwo:zoom(z, z, true):blit(screen, x + 363*r, 222*r) end
-        if all or flags.hten       then self.pointer_textHourTen:zoom(z, z, true):blit(screen, x + 513*r, 222*r) end
-        if all or flags.hfour      then self.pointer_textHourFour:zoom(z, z, true):blit(screen, x + 650*r, 222*r) end
+        if all or flags.hseven     then self.pointer_textHourSeven:zoom(z, z, 1):blit(screen, x + 20*r, 222*r) end
+        if all or flags.hone       then self.pointer_textHourOne:zoom(z, z, 1):blit(screen, x + 222*r, 222*r) end
+        if all or flags.htwo       then self.pointer_textHourTwo:zoom(z, z, 1):blit(screen, x + 363*r, 222*r) end
+        if all or flags.hten       then self.pointer_textHourTen:zoom(z, z, 1):blit(screen, x + 513*r, 222*r) end
+        if all or flags.hfour      then self.pointer_textHourFour:zoom(z, z, 1):blit(screen, x + 650*r, 222*r) end
 
     -- Row 5
-        if all or flags.hfive      then self.pointer_textHourFive:zoom(z, z, true):blit(screen, x + 20*r, 280*r) end
-        if all or flags.hnine      then self.pointer_textHourNine:zoom(z, z, true):blit(screen, x + 193*r, 280*r) end
-        if all or flags.htwelve    then self.pointer_textHourTwelve:zoom(z, z, true):blit(screen, x + 371*r, 280*r) end
-        if all or flags.height     then self.pointer_textHourEight:zoom(z, z, true):blit(screen, x + 639*r, 280*r) end
+        if all or flags.hfive      then self.pointer_textHourFive:zoom(z, z, 1):blit(screen, x + 20*r, 280*r) end
+        if all or flags.hnine      then self.pointer_textHourNine:zoom(z, z, 1):blit(screen, x + 193*r, 280*r) end
+        if all or flags.htwelve    then self.pointer_textHourTwelve:zoom(z, z, 1):blit(screen, x + 371*r, 280*r) end
+        if all or flags.height     then self.pointer_textHourEight:zoom(z, z, 1):blit(screen, x + 639*r, 280*r) end
 
     -- Row 6
-        if all or flags.heleven    then self.pointer_textHourEleven:zoom(z, z, true):blit(screen, x + 20*r, 338*r) end
-        if all or flags.hthree     then self.pointer_textHourThree:zoom(z, z, true):blit(screen, x + 222*r, 338*r) end
-        if all or flags.oclock     then self.pointer_textOClock:zoom(z, z, true):blit(screen, x + 398*r, 338*r) end
-        if all or flags.am         then self.pointer_textAM:zoom(z, z, true):blit(screen, x + 627*r, 338*r) end
-        if all or flags.pm         then self.pointer_textPM:zoom(z, z, true):blit(screen, x + 716*r, 338*r) end
+        if all or flags.heleven    then self.pointer_textHourEleven:zoom(z, z, 1):blit(screen, x + 20*r, 338*r) end
+        if all or flags.hthree     then self.pointer_textHourThree:zoom(z, z, 1):blit(screen, x + 222*r, 338*r) end
+        if all or flags.oclock     then self.pointer_textOClock:zoom(z, z, 1):blit(screen, x + 398*r, 338*r) end
+        if all or flags.am         then self.pointer_textAM:zoom(z, z, 1):blit(screen, x + 627*r, 338*r) end
+        if all or flags.pm         then self.pointer_textPM:zoom(z, z, 1):blit(screen, x + 716*r, 338*r) end
 
         self.textdate:setValue("ON " .. string.upper(WordClock:getDateAsWords(tonumber(os.date("%d")))))
 
@@ -1637,7 +1637,7 @@ function WordClock:getWordClockSkin(skinName)
         }
 
         wordClockBackground = Surface:loadImage(self.imgpath .. "Clocks/WordClock/wallpaper_clock_word.png")
-        wordClockBackground = wordClockBackground:zoom(ratio, ratio, true)
+        wordClockBackground = wordClockBackground:zoom(ratio, ratio, 1)
 
         -- if the ratio of the resized background is different, we need to shift it accordingly
         if ratio ~= (800/480) then
@@ -2232,7 +2232,7 @@ function Digital:getDigitalClockSkin(skinName)
         
         local digitalDots = _loadImage(self, "Clocks/Digital/clock_dots_digital.png")
         if scale ~= 1 then
-	        digitalDots = digitalDots:zoom(scale, scale, true)
+	        digitalDots = digitalDots:zoom(scale, scale, 1)
 	    end
 	    
 	    -- unfortunately I didn't find any reliable algorithm to calculate this value
@@ -2831,7 +2831,7 @@ function Analog:getAnalogClockSkin(skinName)
         local ratio = math.max(screen_width/800, screen_height/480)
 
         analogClockBackground = Surface:loadImage(self.imgpath .. "Clocks/Analog/wallpaper_clock_analog.png")
-        analogClockBackground = analogClockBackground:zoom(ratio, ratio, true)
+        analogClockBackground = analogClockBackground:zoom(ratio, ratio, 1)
         
         -- if the ratio of the resized background is different, we need to shift it accordingly
         if ratio ~= (800/480) then
