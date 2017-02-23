@@ -476,103 +476,68 @@ function WordClock:_reDraw(screen)
     log:debug("WordClock:_reDraw")
     log:debug("WordClock:_reDraw self.skinName = " .. self.skinName)
 
-    if _isJogglerSkin(self.skinName) then
+    if _isJogglerSkin(self.skinName) or _isWQVGASkin(self.skinName) then
         local timenow = os.date("*t",os.time())
 
         local flags = WordClock:getwordflags(timenow)
 
         local all = false  -- Just for debugging screen position
+        
+        -- ratio by which we have to multiply coordinates relative to the Joggler skin
+        local r = self.skin.Clock.ratio
+        
+        -- zoom factor by which we have to resize the artwork
+        local z = r
+        
+        -- resizing is not necessary for the WQVGA skins - we have native sizes
+        if _isWQVGASkin(self.skinName) then
+        	z = 1
+        end
+
+        local x = self.skin.Clock.offsetX
       
     -- Row 1
-        self.pointer_textIt:blit(screen, 20, 50)
-        if all or flags.is         then self.pointer_textIs:blit(screen, 86, 50) end
-        if all or flags.has        then self.pointer_textHas:blit(screen, 156, 50) end
-        if all or flags.nearly     then self.pointer_textNearly:blit(screen, 280, 50) end
-        if all or flags.justgone   then self.pointer_textJustgone:blit(screen, 496, 50) end
+        self.pointer_textIt:zoom(z, z, true):blit(screen, x + 20*r, 50*r)
+        if all or flags.is         then self.pointer_textIs:zoom(z, z, true):blit(screen, x + 86*r, 50*r) end
+        if all or flags.has        then self.pointer_textHas:zoom(z, z, true):blit(screen, x + 156*r, 50*r) end
+        if all or flags.nearly     then self.pointer_textNearly:zoom(z, z, true):blit(screen, x + 280*r, 50*r) end
+        if all or flags.justgone   then self.pointer_textJustgone:zoom(z, z, true):blit(screen, x + 496*r, 50*r) end
 
     -- Row 2
-        if all or flags.half       then self.pointer_textHalf:blit(screen, 20, 108) end
-        if all or flags.ten        then self.pointer_textTen:blit(screen, 163, 108) end
-        if all or flags.aquarter   then self.pointer_textAquarter:blit(screen, 274, 108) end
-        if all or flags.twenty     then self.pointer_textTwenty:blit(screen, 579, 108) end
+        if all or flags.half       then self.pointer_textHalf:zoom(z, z, true):blit(screen, x + 20*r, 108*r) end
+        if all or flags.ten        then self.pointer_textTen:zoom(z, z, true):blit(screen, x + 163*r, 108*r) end
+        if all or flags.aquarter   then self.pointer_textAquarter:zoom(z, z, true):blit(screen, x + 274*r, 108*r) end
+        if all or flags.twenty     then self.pointer_textTwenty:zoom(z, z, true):blit(screen, x + 579*r, 108*r) end
 
     -- Row 3
-        if all or flags.five       then self.pointer_textFive:blit(screen, 20, 165) end
-        if all or flags.minutes    then self.pointer_textMinutes:blit(screen, 169, 165) end
-        if all or flags.to         then self.pointer_textTo:blit(screen, 425, 165) end
-        if all or flags.past       then self.pointer_textPast:blit(screen, 537, 165) end
-        if all or flags.hsix       then self.pointer_textHourSix:blit(screen, 707, 165) end
+        if all or flags.five       then self.pointer_textFive:zoom(z, z, true):blit(screen, x + 20*r, 165*r) end
+        if all or flags.minutes    then self.pointer_textMinutes:zoom(z, z, true):blit(screen, x + 169*r, 165*r) end
+        if all or flags.to         then self.pointer_textTo:zoom(z, z, true):blit(screen, x + 425*r, 165*r) end
+        if all or flags.past       then self.pointer_textPast:zoom(z, z, true):blit(screen, x + 537*r, 165*r) end
+        if all or flags.hsix       then self.pointer_textHourSix:zoom(z, z, true):blit(screen, x + 707*r, 165*r) end
 
     -- Row 4
-        if all or flags.hseven     then self.pointer_textHourSeven:blit(screen, 20, 222) end
-        if all or flags.hone       then self.pointer_textHourOne:blit(screen, 222, 222) end
-        if all or flags.htwo       then self.pointer_textHourTwo:blit(screen, 363, 222) end
-        if all or flags.hten       then self.pointer_textHourTen:blit(screen, 513, 222) end
-        if all or flags.hfour      then self.pointer_textHourFour:blit(screen, 650, 222) end
+        if all or flags.hseven     then self.pointer_textHourSeven:zoom(z, z, true):blit(screen, x + 20*r, 222*r) end
+        if all or flags.hone       then self.pointer_textHourOne:zoom(z, z, true):blit(screen, x + 222*r, 222*r) end
+        if all or flags.htwo       then self.pointer_textHourTwo:zoom(z, z, true):blit(screen, x + 363*r, 222*r) end
+        if all or flags.hten       then self.pointer_textHourTen:zoom(z, z, true):blit(screen, x + 513*r, 222*r) end
+        if all or flags.hfour      then self.pointer_textHourFour:zoom(z, z, true):blit(screen, x + 650*r, 222*r) end
 
     -- Row 5
-        if all or flags.hfive      then self.pointer_textHourFive:blit(screen, 20, 280) end
-        if all or flags.hnine      then self.pointer_textHourNine:blit(screen, 193, 280) end
-        if all or flags.htwelve    then self.pointer_textHourTwelve:blit(screen, 371, 280) end
-        if all or flags.height     then self.pointer_textHourEight:blit(screen, 639, 280) end
+        if all or flags.hfive      then self.pointer_textHourFive:zoom(z, z, true):blit(screen, x + 20*r, 280*r) end
+        if all or flags.hnine      then self.pointer_textHourNine:zoom(z, z, true):blit(screen, x + 193*r, 280*r) end
+        if all or flags.htwelve    then self.pointer_textHourTwelve:zoom(z, z, true):blit(screen, x + 371*r, 280*r) end
+        if all or flags.height     then self.pointer_textHourEight:zoom(z, z, true):blit(screen, x + 639*r, 280*r) end
 
     -- Row 6
-        if all or flags.heleven    then self.pointer_textHourEleven:blit(screen, 20, 338) end
-        if all or flags.hthree     then self.pointer_textHourThree:blit(screen, 222, 338) end
-        if all or flags.oclock     then self.pointer_textOClock:blit(screen, 398, 338) end
-        if all or flags.am         then self.pointer_textAM:blit(screen, 627, 338) end
-        if all or flags.pm         then self.pointer_textPM:blit(screen, 716, 338) end
+        if all or flags.heleven    then self.pointer_textHourEleven:zoom(z, z, true):blit(screen, x + 20*r, 338*r) end
+        if all or flags.hthree     then self.pointer_textHourThree:zoom(z, z, true):blit(screen, x + 222*r, 338*r) end
+        if all or flags.oclock     then self.pointer_textOClock:zoom(z, z, true):blit(screen, x + 398*r, 338*r) end
+        if all or flags.am         then self.pointer_textAM:zoom(z, z, true):blit(screen, x + 627*r, 338*r) end
+        if all or flags.pm         then self.pointer_textPM:zoom(z, z, true):blit(screen, x + 716*r, 338*r) end
 
         self.textdate:setValue("ON " .. string.upper(WordClock:getDateAsWords(tonumber(os.date("%d")))))
-    elseif self.skinName == "WQVGAsmallSkin" or self.skinName == "WQVGAlargeSkin" then
-        local timenow = os.date("*t",os.time())
 
-        local flags = WordClock:getwordflags(timenow)
-
-        local all = false  -- Just for debugging screen position
-
-		local WQVGA_skinRatio = self.screen_height / self.screen_width
-    -- Row 1
-        self.pointer_textIt:blit(screen, 20 * WQVGA_skinRatio, 50 * WQVGA_skinRatio)
-        if all or flags.is         then self.pointer_textIs:blit(screen, 86 * WQVGA_skinRatio, 50 * WQVGA_skinRatio) end
-        if all or flags.has        then self.pointer_textHas:blit(screen, 156 * WQVGA_skinRatio, 50 * WQVGA_skinRatio) end
-        if all or flags.nearly     then self.pointer_textNearly:blit(screen, 280 * WQVGA_skinRatio, 50 * WQVGA_skinRatio) end
-        if all or flags.justgone   then self.pointer_textJustgone:blit(screen, 496 * WQVGA_skinRatio, 50 * WQVGA_skinRatio) end
-
-    -- Row 2
-        if all or flags.half       then self.pointer_textHalf:blit(screen, 20 * WQVGA_skinRatio, 108 * WQVGA_skinRatio) end
-        if all or flags.ten        then self.pointer_textTen:blit(screen, 163 * WQVGA_skinRatio, 108 * WQVGA_skinRatio) end
-        if all or flags.aquarter   then self.pointer_textAquarter:blit(screen, 274 * WQVGA_skinRatio, 108 * WQVGA_skinRatio) end
-        if all or flags.twenty     then self.pointer_textTwenty:blit(screen, 579 * WQVGA_skinRatio, 108 * WQVGA_skinRatio) end
-
-    -- Row 3
-        if all or flags.five       then self.pointer_textFive:blit(screen, 20 * WQVGA_skinRatio, 165 * WQVGA_skinRatio) end
-        if all or flags.minutes    then self.pointer_textMinutes:blit(screen, 169 * WQVGA_skinRatio, 165 * WQVGA_skinRatio) end
-        if all or flags.to         then self.pointer_textTo:blit(screen, 425 * WQVGA_skinRatio, 165 * WQVGA_skinRatio) end
-        if all or flags.past       then self.pointer_textPast:blit(screen, 537 * WQVGA_skinRatio, 165 * WQVGA_skinRatio) end
-        if all or flags.hsix       then self.pointer_textHourSix:blit(screen, 707 * WQVGA_skinRatio, 165 * WQVGA_skinRatio) end
-
-    -- Row 4
-        if all or flags.hseven     then self.pointer_textHourSeven:blit(screen, 20 * WQVGA_skinRatio, 222 * WQVGA_skinRatio) end
-        if all or flags.hone       then self.pointer_textHourOne:blit(screen, 222 * WQVGA_skinRatio, 222 * WQVGA_skinRatio) end
-        if all or flags.htwo       then self.pointer_textHourTwo:blit(screen, 363 * WQVGA_skinRatio, 222 * WQVGA_skinRatio) end
-        if all or flags.hten       then self.pointer_textHourTen:blit(screen, 513 * WQVGA_skinRatio, 222 * WQVGA_skinRatio) end
-        if all or flags.hfour      then self.pointer_textHourFour:blit(screen, 650 * WQVGA_skinRatio, 222 * WQVGA_skinRatio) end
-
-    -- Row 5
-        if all or flags.hfive      then self.pointer_textHourFive:blit(screen, 20 * WQVGA_skinRatio, 280 * WQVGA_skinRatio) end
-        if all or flags.hnine      then self.pointer_textHourNine:blit(screen, 193 * WQVGA_skinRatio, 280 * WQVGA_skinRatio) end
-        if all or flags.htwelve    then self.pointer_textHourTwelve:blit(screen, 371 * WQVGA_skinRatio, 280 * WQVGA_skinRatio) end
-        if all or flags.height     then self.pointer_textHourEight:blit(screen, 639 * WQVGA_skinRatio, 280 * WQVGA_skinRatio) end
-
-    -- Row 6
-        if all or flags.heleven    then self.pointer_textHourEleven:blit(screen, 20 * WQVGA_skinRatio, 338 * WQVGA_skinRatio) end
-        if all or flags.hthree     then self.pointer_textHourThree:blit(screen, 222 * WQVGA_skinRatio, 338 * WQVGA_skinRatio) end
-        if all or flags.oclock     then self.pointer_textOClock:blit(screen, 398 * WQVGA_skinRatio, 338 * WQVGA_skinRatio) end
-        if all or flags.am         then self.pointer_textAM:blit(screen, 627 * WQVGA_skinRatio, 338 * WQVGA_skinRatio) end
-        if all or flags.pm         then self.pointer_textPM:blit(screen, 716 * WQVGA_skinRatio, 338 * WQVGA_skinRatio) end
-
-        self.textdate:setValue("ON " .. string.upper(WordClock:getDateAsWords(tonumber(os.date("%d")))))
     elseif self.skinName == "QVGAlandscapeSkin" or self.skinName == "QVGAportraitSkin" then
         local x, y
 
@@ -1636,9 +1601,6 @@ end
 function WordClock:getWordClockSkin(skinName)
     log:debug("WordClock:getWordClockSkin - " .. skinName)
 
-    if skinName == 'WQVGAlargeSkin' then
-        skinName = 'WQVGAsmallSkin'
-    end
     self.skinName = skinName
     self.imgpath = _imgpath(self)
     
@@ -1648,19 +1610,47 @@ function WordClock:getWordClockSkin(skinName)
     local wordClockBackground = Tile:loadImage(self.imgpath .. "Clocks/WordClock/wallpaper_clock_word.png")
         
     if _isJogglerSkin(skinName) then
+        local screen_width, screen_height = Framework:getScreenSize()
+        local ratio = math.min(screen_width/800, screen_height/480)
+
         s.Clock = {
-            bgImg = wordClockBackground,
             textdate = {
                 position = LAYOUT_NONE,
                 x = 0,
-                y = 420,
-                w = 800,
+                y = 420 * ratio,
+                w = screen_width,
                 font = _font(26),
                 align = 'bottom',
                 fg = { 0xff, 0xff, 0xff },
             },
+            ratio = ratio,
+            offsetX = 0
         }
-    elseif skinName == "WQVGAsmallSkin" then
+
+        wordClockBackground = Surface:loadImage(self.imgpath .. "Clocks/WordClock/wallpaper_clock_word.png")
+        wordClockBackground = wordClockBackground:zoom(ratio, ratio, true)
+
+        -- if the ratio of the resized background is different, we need to shift it accordingly
+        if ratio ~= (800/480) then
+	        local w, h = wordClockBackground:getSize()
+	        
+	        if w < screen_width then
+	        	s.Clock.offsetX = (screen_width - w)/2
+		        local tmp = Surface:newRGB(screen_width, screen_height)
+		        wordClockBackground:blit(tmp, s.Clock.offsetX, 0)
+		        wordClockBackground:release()
+		        wordClockBackground = tmp
+		    elseif h > screen_height then
+		        local tmp = Surface:newRGB(screen_width, screen_height)
+		        wordClockBackground:blit(tmp, 0, (screen_height - h)/2)
+		        wordClockBackground:release()
+		        wordClockBackground = tmp
+		    end
+        end
+                
+        s.Clock.bgImg = wordClockBackground
+        
+    elseif _isWQVGASkin(skinName) then
         s.Clock = {
             bgImg = wordClockBackground,
             textdate = {
@@ -1672,6 +1662,8 @@ function WordClock:getWordClockSkin(skinName)
                 align = 'bottom',
                 fg = { 0xff, 0xff, 0xff },
             },
+            offsetX = 0,
+            ratio = 480/800
         }
     elseif skinName == "QVGAlandscapeSkin" then
         s.Clock = {
@@ -1707,16 +1699,13 @@ end
 function WordClock:getSkinParams(skinName)
     log:debug("WordClock:getSkinParams - " .. skinName)
 
-    if skinName == 'WQVGAlargeSkin' then
-        skinName = 'WQVGAsmallSkin'
-    end
     self.skinName = skinName
     self.imgpath = _imgpath(self)
     
     log:debug("Image path - " .. self.imgpath)
     
-    if _isJogglerSkin(skinName) then
-        return {
+    if _isJogglerSkin(skinName) or _isWQVGASkin(skinName) then
+        local params = {
             textIt        = self.imgpath .. "Clocks/WordClock/" .. 'text-it.png',
             textIs        = self.imgpath .. "Clocks/WordClock/" .. 'text-is.png',
             textHas       = self.imgpath .. "Clocks/WordClock/" .. 'text-has.png',
@@ -1754,45 +1743,13 @@ function WordClock:getSkinParams(skinName)
             alarmX     = jogglerSkinAlarmX,
             alarmY     = jogglerSkinAlarmY,
         }
-    elseif skinName == "WQVGAsmallSkin" then
-        return {
-            textIt        = self.imgpath .. "Clocks/WordClock/" .. 'text-it.png',
-            textIs        = self.imgpath .. "Clocks/WordClock/" .. 'text-is.png',
-            textHas       = self.imgpath .. "Clocks/WordClock/" .. 'text-has.png',
-            textNearly    = self.imgpath .. "Clocks/WordClock/" .. 'text-nearly.png',
-            textJustgone  = self.imgpath .. "Clocks/WordClock/" .. 'text-justgone.png',
-
-            textHalf      = self.imgpath .. "Clocks/WordClock/" .. 'text-half.png',
-            textTen       = self.imgpath .. "Clocks/WordClock/" .. 'text-ten.png',
-            textAQuarter  = self.imgpath .. "Clocks/WordClock/" .. 'text-aquarter.png',
-            textTwenty    = self.imgpath .. "Clocks/WordClock/" .. 'text-twenty.png',
-
-            textFive       = self.imgpath .. "Clocks/WordClock/" .. 'text-five.png',
-            textMinutes    = self.imgpath .. "Clocks/WordClock/" .. 'text-minutes.png',
-            textTo         = self.imgpath .. "Clocks/WordClock/" .. 'text-to.png',
-            textPast       = self.imgpath .. "Clocks/WordClock/" .. 'text-past.png',
-
-            textHourOne    = self.imgpath .. "Clocks/WordClock/" .. 'text-hour-one.png',
-            textHourTwo    = self.imgpath .. "Clocks/WordClock/" .. 'text-hour-two.png',
-            textHourThree  = self.imgpath .. "Clocks/WordClock/" .. 'text-hour-three.png',
-            textHourFour   = self.imgpath .. "Clocks/WordClock/" .. 'text-hour-four.png',
-            textHourFive   = self.imgpath .. "Clocks/WordClock/" .. 'text-hour-five.png',
-            textHourSix    = self.imgpath .. "Clocks/WordClock/" .. 'text-hour-six.png',
-            textHourSeven  = self.imgpath .. "Clocks/WordClock/" .. 'text-hour-seven.png',
-            textHourEight  = self.imgpath .. "Clocks/WordClock/" .. 'text-hour-eight.png',
-            textHourNine   = self.imgpath .. "Clocks/WordClock/" .. 'text-hour-nine.png',
-            textHourTen    = self.imgpath .. "Clocks/WordClock/" .. 'text-hour-ten.png',
-            textHourEleven = self.imgpath .. "Clocks/WordClock/" .. 'text-hour-eleven.png',
-            textHourTwelve = self.imgpath .. "Clocks/WordClock/" .. 'text-hour-twelve.png',
-
-            textOClock     = self.imgpath .. "Clocks/WordClock/" .. 'text-oclock.png',
-            textAM         = self.imgpath .. "Clocks/WordClock/" .. 'text-am.png',
-            textPM         = self.imgpath .. "Clocks/WordClock/" .. 'text-pm.png',
-
-            alarmIcon  = self.imgpath .. "Clocks/WordClock/" .. 'icon_alarm_word.png',
-            alarmX     = 445,
-            alarmY     = 2,
-        }
+        
+        if _isWQVGASkin(skinname) then
+            params.alarmX = 445
+            params.alarmY = 2
+        end
+        
+        return params
     elseif skinName == "QVGAlandscapeSkin" then
         return {
             minuteHand = self.imgpath .. "Clocks/WordClock/" .. 'clock_word_min_hand.png',
