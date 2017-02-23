@@ -2027,15 +2027,12 @@ end
 
 -- DIGITAL CLOCK SKIN
 function Digital:getDigitalClockSkin(skinName)
-    if skinName == 'WQVGAlargeSkin' then
-        skinName = 'WQVGAsmallSkin'
-    end
     self.skinName = skinName
     self.imgpath = _imgpath(self)
 
     local s = {}
 
-    if skinName == 'WQVGAsmallSkin' then
+    if _isWQVGASkin(skinName) then
 
         local digitalClockBackground = Tile:loadImage(self.imgpath .. "Clocks/Digital/wallpaper_clock_digital.png")
         local digitalClockDigit = {
@@ -2250,38 +2247,45 @@ function Digital:getDigitalClockSkin(skinName)
     elseif _isJogglerSkin(skinName) then
 
         local digitalClockBackground = Tile:loadImage(self.imgpath .. "Clocks/Digital/wallpaper_clock_digital.png")
-        local digitalClockDigit = {
-            font = _font(143),
-            align = 'center',
-            fg = { 0xcc, 0xcc, 0xcc },
-            w = 76,
-        }
-        local shadow = {
-            w = 76,
-        }
+
+        local screen_width, screen_height = Framework:getScreenSize()
+        local scale = screen_height / 480
+        local digitWidth = 120 * scale
 
         local jogglerSkinXOffset = 20
         local jogglerSkinYOffset = 104
 
         local x = {}
-        x.h1 = 208 + jogglerSkinXOffset
-        x.h2 = x.h1 + 75
-        x.dots = x.h2 + 75
-        x.m1 = x.dots + 39
-        x.m2 = x.m1 + 86 
-        -- x.alarm = x.m2 + 80
+        x.dots = screen_width/2 - 20
+        x.h2   = x.dots - digitWidth - 20
+        x.h1   = x.h2 - digitWidth
+        x.m1   = x.dots + 40
+        x.m2   = x.m1 + digitWidth
+        x.ampm = x.m2 + digitWidth
         x.alarm = jogglerSkinAlarmX
-        -- x.ampm = x.alarm
-        x.ampm = x.m2 + 80
+        
+        local digitalDots = _loadImage(self, "Clocks/Digital/clock_dots_digital.png")
+        if scale ~= 1 then
+	        digitalDots = digitalDots:zoom(scale, scale, true)
+	    end
+	    
+	    -- unfortunately I didn't find any reliable algorithm to calculate this value
+	    local ampmY = 277
+	    if screen_height == 600 then
+	    	ampmY = 310
+	    elseif screen_height > 600 and screen_height <= 800 then
+	    	ampmY = 360
+	    end
 
         local _clockDigit = {
             position = LAYOUT_NONE,
-            font = _font(143),
-            align = 'center',
+            font = _font(220 * scale),
+            lineHeight = 220 * scale,
             fg = { 0xcc, 0xcc, 0xcc },
-            y = 54 + jogglerSkinYOffset,
+            y = 40 + jogglerSkinYOffset,
             zOrder = 10,
         }
+        
         local _digitShadow = _uses(_clockDigit, {
             y = 54 + 100 + jogglerSkinYOffset,
             zOrder = 1,
@@ -2317,10 +2321,9 @@ function Digital:getDigitalClockSkin(skinName)
         }
 
         s.icon_digitalDots = {
-            img = _loadImage(self, "Clocks/Digital/clock_dots_digital.png"),
+            img = digitalDots,
             align = 'center',
-            w = 40,
-            border = { 14, 0, 12, 0 },
+            h = 160 * scale,
         }
 
         s.icon_digitalClockBlank = {
@@ -2344,8 +2347,6 @@ function Digital:getDigitalClockSkin(skinName)
             }),
             dots = _uses(_clockDigit, {
                 x = x.dots,
-                y = 83 + jogglerSkinYOffset,
-                w = 40,
             }),
             m1 = _uses(_clockDigit, {
                 x = x.m1,
@@ -2360,14 +2361,6 @@ function Digital:getDigitalClockSkin(skinName)
                 x = x.m2,
             }),
 
-            ampm = {
-                position = LAYOUT_NONE,
-                x = x.ampm,
-                y = 112 + jogglerSkinYOffset,
-                font = _font(11),
-                align = 'bottom',
-                fg = { 0xcc, 0xcc, 0xcc },
-            },
             alarm = {
                 position = LAYOUT_NONE,
                 x = x.alarm,
@@ -2376,10 +2369,9 @@ function Digital:getDigitalClockSkin(skinName)
             },
             ampm = {
                 position = LAYOUT_NONE,
-                x = 564 + jogglerSkinXOffset,
-                y = 144 + jogglerSkinYOffset,
-                font = _font(20),
-                align = 'bottom',
+                x = x.ampm,
+                y = ampmY,
+                font = _boldfont(40*scale),
                 fg = { 0xcc, 0xcc, 0xcc },
             },
             horizDivider2 = { hidden = 1 },
@@ -2392,7 +2384,9 @@ function Digital:getDigitalClockSkin(skinName)
             date = {
                 position = LAYOUT_SOUTH,
                 order = { 'dayofweek', 'vdivider1', 'dayofmonth', 'vdivider2', 'month' },
-                w = WH_FILL,
+                w = 800,
+                x = screen_width/2 - 400,
+                align = 'center',
                 h = 70,
                 padding = { 0, 0, 0, 6 },
                 dayofweek = {
@@ -2869,6 +2863,7 @@ function Analog:getAnalogClockSkin(skinName)
     elseif _isJogglerSkin(skinName) then
         local screen_width, screen_height = Framework:getScreenSize()
         local ratio = math.max(screen_width/800, screen_height/480)
+
         analogClockBackground = Surface:loadImage(self.imgpath .. "Clocks/Analog/wallpaper_clock_analog.png")
         analogClockBackground = analogClockBackground:zoom(ratio, ratio, true)
         
