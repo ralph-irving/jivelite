@@ -67,6 +67,12 @@ local function _isWQVGASkin(skinName)
     end
 end
 
+local function _isHDSkin(skinName)
+    if string.match(skinName, "HDSkin") or string.match(skinName, "HDGridSkin") then
+    	return true
+    end
+end
+
 
 local function _imgpath(self)
 	local skinName = self.skinName
@@ -76,6 +82,9 @@ local function _imgpath(self)
 		
 	elseif _isWQVGASkin(skinName) then
 		skinName = "WQVGAsmallSkin"
+	
+	elseif _isHDSkin(skinName) then
+		skinName = "HDSkin"
 	
 	end
 	
@@ -1145,7 +1154,7 @@ function DotMatrix:getDotMatrixClockSkin(skinName)
 
         }
 
-    elseif _isJogglerSkin(skinName) then
+    elseif _isJogglerSkin(skinName) or _isHDSkin(skinName) then
 
         local dotMatrixBackground = Tile:loadImage(self.imgpath .. "Clocks/Dot_Matrix/wallpaper_clock_dotmatrix.png")
 
@@ -2201,7 +2210,7 @@ function Digital:getDigitalClockSkin(skinName)
             m1Shadow = { hidden = 1 },
             m2Shadow = { hidden = 1 },
         })
-    elseif _isJogglerSkin(skinName) then
+    elseif _isJogglerSkin(skinName) or _isHDSkin(skinName) then
 
         local digitalClockBackground = Tile:loadImage(self.imgpath .. "Clocks/Digital/wallpaper_clock_digital.png")
 
@@ -2341,8 +2350,8 @@ function Digital:getDigitalClockSkin(skinName)
             date = {
                 position = LAYOUT_SOUTH,
                 order = { 'dayofweek', 'vdivider1', 'dayofmonth', 'vdivider2', 'month' },
-                w = 800,
-                x = screen_width/2 - 400,
+                w = math.min(screen_width, 800),
+                x = screen_width/2 - math.min(screen_width, 800)/2,
                 align = 'center',
                 h = 70,
                 padding = { 0, 0, 0, 6 },
@@ -2817,7 +2826,7 @@ function Analog:getAnalogClockSkin(skinName)
     elseif _isWQVGASkin(skinName) then
         analogClockBackground = Tile:loadImage(self.imgpath .. "Clocks/Analog/wallpaper_clock_analog.png")
 
-    elseif _isJogglerSkin(skinName) then
+    elseif _isJogglerSkin(skinName) or _isHDSkin(skinName) then
         local screen_width, screen_height = Framework:getScreenSize()
         local ratio = math.max(screen_width/800, screen_height/480)
 
@@ -2869,10 +2878,14 @@ function Analog:getSkinParams(skin)
     if _isWQVGASkin(skin) then
         params.alarmY = 18
         
-    elseif _isJogglerSkin(skin) then
+    elseif _isJogglerSkin(skin) or _isHDSkin(skin) then
         params.alarmX = jogglerSkinAlarmX
         params.alarmY = jogglerSkinAlarmY
         params.ratio  = math.max(screen_width/800, screen_height/480)
+        
+        if _isHDSkin(skin) then
+        	params.ratio = params.ratio * 1.5
+        end
     end
     
     return params
