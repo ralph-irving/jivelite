@@ -536,15 +536,15 @@ local function _eventHandler(self, event)
 				--when paging up, top item becomes the bottom item
 				if self.selected and self.selected > 1  then
 					self:setSelectedIndex(self.topItem, true )
-					self:scrollBy(-1 * self.numWidgets + 2 , true, false, false)
+					self:scrollBy(-1 * (self.numWidgets - 2), true, false, false)
 				end
 				return EVENT_CONSUME
 
 			elseif action == "page_down" then
-				--when paging down, bottom item becomes the bottom item
+				--when paging down, bottom item becomes the top item
 				if not self.selected or self.selected < self.listSize then
-					self:setSelectedIndex(self.topItem, true )
-					self:scrollBy(self.numWidgets + 2, true, false, false)
+					self:setSelectedIndex(self.topItem + self.numWidgets - 1, true )
+					self:scrollBy(self.numWidgets - 2, true, false, false)
 				end
 				return EVENT_CONSUME
 
