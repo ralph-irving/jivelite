@@ -3291,7 +3291,37 @@ function skin(self, s, reload, useDefaultSize, w, h)
 		s.nowplaying_large_art.npcontrols.div4 = _uses(s.nowplaying_large_art.npcontrols.div1)
 	end
 
-	s.nowplaying_large_art.pressed = s.nowplaying_large_art
+	s.nowplaying_large_art.npcontrols.pressed.rew = _uses(s.nowplaying_large_art.npcontrols.rew, { bgImg = keyMiddlePressed })
+	s.nowplaying_large_art.npcontrols.pressed.play = _uses(s.nowplaying_large_art.npcontrols.play, { bgImg = keyMiddlePressed })
+	s.nowplaying_large_art.npcontrols.pressed.pause = _uses(s.nowplaying_large_art.npcontrols.pause, { bgImg = keyMiddlePressed })
+	s.nowplaying_large_art.npcontrols.pressed.fwd = _uses(s.nowplaying_large_art.npcontrols.fwd, { bgImg = keyMiddlePressed })
+	
+	s.nowplaying_large_art.npcontrols.pressed.repeatMode = _uses(s.nowplaying_large_art.npcontrols.repeatMode, { bgImg = keyMiddlePressed })
+	s.nowplaying_large_art.npcontrols.pressed.repeatOff = _uses(s.nowplaying_large_art.npcontrols.repeatOff, { bgImg = keyMiddlePressed })
+	s.nowplaying_large_art.npcontrols.pressed.repeatSong = _uses(s.nowplaying_large_art.npcontrols.repeatSong, { bgImg = keyMiddlePressed })
+	s.nowplaying_large_art.npcontrols.pressed.repeatPlaylist = _uses(s.nowplaying_large_art.npcontrols.repeatPlaylist, { bgImg = keyMiddlePressed })
+
+	s.nowplaying_large_art.npcontrols.pressed.shuffleMode = _uses(s.nowplaying_large_art.npcontrols.shuffleMode, { bgImg = keyMiddlePressed })
+	s.nowplaying_large_art.npcontrols.pressed.shuffleOff = _uses(s.nowplaying_large_art.npcontrols.shuffleOff, { bgImg = keyMiddlePressed })
+	s.nowplaying_large_art.npcontrols.pressed.shuffleSong = _uses(s.nowplaying_large_art.npcontrols.shuffleSong, { bgImg = keyMiddlePressed })
+	s.nowplaying_large_art.npcontrols.pressed.shuffleAlbum = _uses(s.nowplaying_large_art.npcontrols.shuffleAlbum, { bgImg = keyMiddlePressed })
+	
+	s.nowplaying_large_art.npcontrols.pressed.volDown = _uses(s.nowplaying_large_art.npcontrols.volDown, { bgImg = keyMiddlePressed })
+	s.nowplaying_large_art.npcontrols.pressed.volUp = _uses(s.nowplaying_large_art.npcontrols.volUp, { bgImg = keyMiddlePressed })
+
+	s.nowplaying_large_art.npcontrols.pressed.thumbsUp = _uses(s.nowplaying_large_art.npcontrols.thumbsUp, { bgImg = keyMiddlePressed })
+	s.nowplaying_large_art.npcontrols.pressed.thumbsDown = _uses(s.nowplaying_large_art.npcontrols.thumbsDown, { bgImg = keyMiddlePressed })
+	s.nowplaying_large_art.npcontrols.pressed.thumbsUpDisabled = _uses(s.nowplaying_large_art.npcontrols.thumbsUpDisabled, { bgImg = keyMiddlePressed })
+	s.nowplaying_large_art.npcontrols.pressed.thumbsDownDisabled = _uses(s.nowplaying_large_art.npcontrols.thumbsDownDisabled, { bgImg = keyMiddlePressed })
+
+	s.nowplaying_large_art.npcontrols.pressed.love = _uses(s.nowplaying_large_art.npcontrols.love, { bgImg = keyMiddlePressed })
+	s.nowplaying_large_art.npcontrols.pressed.hate = _uses(s.nowplaying_large_art.npcontrols.hate, { bgImg = keyMiddlePressed })
+
+	s.nowplaying_large_art.npcontrols.pressed.fwdDisabled = _uses(s.nowplaying_large_art.npcontrols.fwdDisabled, { bgImg = keyMiddlePressed })
+	s.nowplaying_large_art.npcontrols.pressed.rewDisabled = _uses(s.nowplaying_large_art.npcontrols.rewDisabled, { bgImg = keyMiddlePressed })
+	s.nowplaying_large_art.npcontrols.pressed.shuffleDisabled = _uses(s.nowplaying_large_art.npcontrols.shuffleDisabled, { bgImg = keyMiddlePressed })
+	s.nowplaying_large_art.npcontrols.pressed.repeatDisabled = _uses(s.nowplaying_large_art.npcontrols.repeatDisabled, { bgImg = keyMiddlePressed })
+
 	s.nowplaying_large_art.nptitle.pressed = _uses(s.nowplaying_large_art.nptitle)
 	s.nowplaying_large_art.npalbumgroup.pressed = _uses(s.nowplaying_large_art.npalbumgroup)
 	s.nowplaying_large_art.npartistgroup.pressed = _uses(s.nowplaying_large_art.npartistgroup)
