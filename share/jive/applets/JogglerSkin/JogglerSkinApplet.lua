@@ -3165,7 +3165,7 @@ function skin(self, s, reload, useDefaultSize, w, h)
 			i = i + 1
 			
 			-- We can't comfortably accomodate more than five items
-			if screenWidth <= 800 and (i > 5) or (i > 2 and v == 'volSlider') then
+			if (screenWidth <= 800 and i > 5) or (i > 2 and v == 'volSlider') then
 				smallTbButtons = true
 				if screenWidth <= 800 then break end
 			end
@@ -3289,6 +3289,8 @@ function skin(self, s, reload, useDefaultSize, w, h)
 		s.nowplaying_large_art.npcontrols.div2 = _uses(s.nowplaying_large_art.npcontrols.div1)
 		s.nowplaying_large_art.npcontrols.div3 = _uses(s.nowplaying_large_art.npcontrols.div1)
 		s.nowplaying_large_art.npcontrols.div4 = _uses(s.nowplaying_large_art.npcontrols.div1)
+		s.nowplaying_large_art.npcontrols.div5 = _uses(s.nowplaying_large_art.npcontrols.div1)
+		s.nowplaying_large_art.npcontrols.div6 = _uses(s.nowplaying_large_art.npcontrols.div1)
 	end
 
 	s.nowplaying_large_art.npcontrols.pressed.rew = _uses(s.nowplaying_large_art.npcontrols.rew, { bgImg = keyMiddlePressed })
@@ -3325,7 +3327,7 @@ function skin(self, s, reload, useDefaultSize, w, h)
 	s.nowplaying_large_art.nptitle.pressed = _uses(s.nowplaying_large_art.nptitle)
 	s.nowplaying_large_art.npalbumgroup.pressed = _uses(s.nowplaying_large_art.npalbumgroup)
 	s.nowplaying_large_art.npartistgroup.pressed = _uses(s.nowplaying_large_art.npartistgroup)
-	s.nowplaying_large_art.npartwork.pressed = s.nowplaying_large_art.npartwork
+	s.nowplaying_large_art.npartwork.pressed = _uses(s.nowplaying_large_art.npartwork)
 	s.nowplaying_large_art.title.pressed = _uses(s.nowplaying_large_art.title, {
 		text = {
 			fg = { 0xB3, 0xB3, 0xB3 },
