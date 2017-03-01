@@ -3247,6 +3247,8 @@ function skin(self, s, reload, useDefaultSize, w, h)
 		npvisu = { hidden = 1 },
 	})
 
+	s.nowplaying_large_art.pressed = s.nowplaying_large_art
+
 	-- if we have more than four buttons, then make them smaller
 	if (smallTbButtons) then
 		local smallControlWidth = controlWidth - 14
@@ -3327,7 +3329,6 @@ function skin(self, s, reload, useDefaultSize, w, h)
 	s.nowplaying_large_art.nptitle.pressed = _uses(s.nowplaying_large_art.nptitle)
 	s.nowplaying_large_art.npalbumgroup.pressed = _uses(s.nowplaying_large_art.npalbumgroup)
 	s.nowplaying_large_art.npartistgroup.pressed = _uses(s.nowplaying_large_art.npartistgroup)
-	s.nowplaying_large_art.npartwork.pressed = _uses(s.nowplaying_large_art.npartwork)
 	s.nowplaying_large_art.title.pressed = _uses(s.nowplaying_large_art.title, {
 		text = {
 			fg = { 0xB3, 0xB3, 0xB3 },
