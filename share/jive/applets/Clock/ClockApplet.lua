@@ -2304,30 +2304,22 @@ function Digital:getDigitalClockSkin(skinName)
             h1 = _uses(_clockDigit, {
                 x = x.h1,
             }),
-            h1Shadow = _uses(_digitShadow, {
-                x = x.h1,
-            }),
+            h1Shadow = _uses(_digitShadow),
             h2 = _uses(_clockDigit, {
                 x = x.h2,
             }),
-            h2Shadow = _uses(_digitShadow, {
-                x = x.h2,
-            }),
+            h2Shadow = _uses(_digitShadow),
             dots = _uses(_clockDigit, {
                 x = x.dots,
             }),
             m1 = _uses(_clockDigit, {
                 x = x.m1,
             }),
-            m1Shadow = _uses(_digitShadow, {
-                x = x.m1,
-            }),
+            m1Shadow = _uses(_digitShadow),
             m2 = _uses(_clockDigit, {
                 x = x.m2,
             }),
-            m2Shadow = _uses(_digitShadow, {
-                x = x.m2,
-            }),
+            m2Shadow = _uses(_digitShadow),
 
             alarm = {
                 position = LAYOUT_NONE,
@@ -2404,28 +2396,16 @@ function Digital:getDigitalClockSkin(skinName)
         s.ClockBlack = _uses(s.Clock, {
             bgImg = blackMask,
             horizDivider = { hidden = 1 },
-            horizDivider2 = { hidden = 1 },
-            today = { hidden = 1 },
             date = {
                 order = { 'dayofweek', 'dayofmonth', 'month', 'year' },
             },
-            h1Shadow = { hidden = 1 },
-            h2Shadow = { hidden = 1 },
-            m1Shadow = { hidden = 1 },
-            m2Shadow = { hidden = 1 },
         })
         s.ClockTransparent = _uses(s.Clock, {
             bgImg = false,
             horizDivider = { hidden = 1 },
-            horizDivider2 = { hidden = 1 },
-            today = { hidden = 1 },
             date = {
                 order = { 'dayofweek', 'dayofmonth', 'month', 'year' },
             },
-            h1Shadow = { hidden = 1 },
-            h2Shadow = { hidden = 1 },
-            m1Shadow = { hidden = 1 },
-            m2Shadow = { hidden = 1 },
         })
     elseif skinName == 'QVGAlandscapeSkin'  then
 
