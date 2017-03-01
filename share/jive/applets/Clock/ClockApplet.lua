@@ -2212,14 +2212,16 @@ function Digital:getDigitalClockSkin(skinName)
         })
     elseif _isJogglerSkin(skinName) or _isHDSkin(skinName) then
 
-        local digitalClockBackground = Tile:loadImage(self.imgpath .. "Clocks/Digital/wallpaper_clock_digital.png")
-
         local screen_width, screen_height = Framework:getScreenSize()
         local scale = screen_height / 480
+        local scale_x = screen_width / 800
         local digitWidth = 120 * scale
 
         local jogglerSkinXOffset = 20
         local jogglerSkinYOffset = 104
+
+        local digitalClockBackground = _loadImage(self, "Clocks/Digital/wallpaper_clock_digital.png")
+        digitalClockBackground = digitalClockBackground:zoom(scale_x, scale, 1)
 
         local x = {}
         x.dots = screen_width/2 - 20
@@ -2252,16 +2254,13 @@ function Digital:getDigitalClockSkin(skinName)
             zOrder = 10,
         }
         
+        -- hide the drop shadows, as they're really hard to scale and position right in all possible resolutions
         local _digitShadow = _uses(_clockDigit, {
-            y = 54 + 100 + jogglerSkinYOffset,
-            zOrder = 1,
+ 			hidden = 1
         })
     
         s.icon_digitalClockDropShadow = {
-            img = _loadImage(self, "Clocks/Digital/drop_shadow_digital.png"),
-            align = 'center',
-            padding = { 4, 0, 0, 0 },
-            w = 76,
+        	hidden = 1
         }
 
         s.icon_digitalClockNoShadow = _uses(s.icon_digitalClockDropShadow, {
@@ -2275,9 +2274,12 @@ function Digital:getDigitalClockSkin(skinName)
             img = false
         }
 
+		local digitalClockHDivider = _loadImage(self, "Clocks/Digital/divider_hort_digital.png")
+		digitalClockHDivider = digitalClockHDivider:zoom(scale_x, 1, 1)
+		
         s.icon_digitalClockHDivider = {
             w = WH_FILL,
-            img = _loadImage(self, "Clocks/Digital/divider_hort_digital.png"),
+            img = digitalClockHDivider,
         }
 
         s.icon_digitalClockVDivider = {
@@ -2345,7 +2347,7 @@ function Digital:getDigitalClockSkin(skinName)
             horizDivider = {
                 position = LAYOUT_NONE,
                 x = 0,
-                y = 194 + 207,
+                y = screen_height - 80,
             },
             date = {
                 position = LAYOUT_SOUTH,
