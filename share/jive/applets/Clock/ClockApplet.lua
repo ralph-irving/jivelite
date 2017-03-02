@@ -423,7 +423,7 @@ function WordClock:__init(applet)
     obj.textdate = Label('textdate')
     obj.skinParams = WordClock:getSkinParams(skinName)
 
-    if _isJogglerSkin(skinName) or skinName == "WQVGAsmallSkin" or skinName == "WQVGAlargeSkin" then
+    if _isJogglerSkin(skinName) or _isWQVGASkin(skinName) or _isHDSkin(skinName) then
         obj.pointer_textIt         = Surface:loadImage(obj.skinParams.textIt)  
         obj.pointer_textIs         = Surface:loadImage(obj.skinParams.textIs)  
         obj.pointer_textHas        = Surface:loadImage(obj.skinParams.textHas)  
@@ -485,7 +485,7 @@ function WordClock:_reDraw(screen)
     log:debug("WordClock:_reDraw")
     log:debug("WordClock:_reDraw self.skinName = " .. self.skinName)
 
-    if _isJogglerSkin(self.skinName) or _isWQVGASkin(self.skinName) then
+    if _isJogglerSkin(self.skinName) or _isWQVGASkin(self.skinName) or _isHDSkin(self.skinName) then
         local timenow = os.date("*t",os.time())
 
         local flags = WordClock:getwordflags(timenow)
@@ -504,46 +504,47 @@ function WordClock:_reDraw(screen)
         end
 
         local x = self.skin.Clock.offsetX
+        local y = self.skin.Clock.offsetY
       
     -- Row 1
-        self.pointer_textIt:zoom(z, z, 1):blit(screen, x + 20*r, 50*r)
-        if all or flags.is         then self.pointer_textIs:zoom(z, z, 1):blit(screen, x + 86*r, 50*r) end
-        if all or flags.has        then self.pointer_textHas:zoom(z, z, 1):blit(screen, x + 156*r, 50*r) end
-        if all or flags.nearly     then self.pointer_textNearly:zoom(z, z, 1):blit(screen, x + 280*r, 50*r) end
-        if all or flags.justgone   then self.pointer_textJustgone:zoom(z, z, 1):blit(screen, x + 496*r, 50*r) end
+        self.pointer_textIt:zoom(z, z, 1):blit(screen, x + 20*r, y + 50*r)
+        if all or flags.is         then self.pointer_textIs:zoom(z, z, 1):blit(screen, x + 86*r, y + 50*r) end
+        if all or flags.has        then self.pointer_textHas:zoom(z, z, 1):blit(screen, x + 156*r, y + 50*r) end
+        if all or flags.nearly     then self.pointer_textNearly:zoom(z, z, 1):blit(screen, x + 280*r, y + 50*r) end
+        if all or flags.justgone   then self.pointer_textJustgone:zoom(z, z, 1):blit(screen, x + 496*r, y + 50*r) end
 
     -- Row 2
-        if all or flags.half       then self.pointer_textHalf:zoom(z, z, 1):blit(screen, x + 20*r, 108*r) end
-        if all or flags.ten        then self.pointer_textTen:zoom(z, z, 1):blit(screen, x + 163*r, 108*r) end
-        if all or flags.aquarter   then self.pointer_textAquarter:zoom(z, z, 1):blit(screen, x + 274*r, 108*r) end
-        if all or flags.twenty     then self.pointer_textTwenty:zoom(z, z, 1):blit(screen, x + 579*r, 108*r) end
+        if all or flags.half       then self.pointer_textHalf:zoom(z, z, 1):blit(screen, x + 20*r, y + 108*r) end
+        if all or flags.ten        then self.pointer_textTen:zoom(z, z, 1):blit(screen, x + 163*r, y + 108*r) end
+        if all or flags.aquarter   then self.pointer_textAquarter:zoom(z, z, 1):blit(screen, x + 274*r, y + 108*r) end
+        if all or flags.twenty     then self.pointer_textTwenty:zoom(z, z, 1):blit(screen, x + 579*r, y + 108*r) end
 
     -- Row 3
-        if all or flags.five       then self.pointer_textFive:zoom(z, z, 1):blit(screen, x + 20*r, 165*r) end
-        if all or flags.minutes    then self.pointer_textMinutes:zoom(z, z, 1):blit(screen, x + 169*r, 165*r) end
-        if all or flags.to         then self.pointer_textTo:zoom(z, z, 1):blit(screen, x + 425*r, 165*r) end
-        if all or flags.past       then self.pointer_textPast:zoom(z, z, 1):blit(screen, x + 537*r, 165*r) end
-        if all or flags.hsix       then self.pointer_textHourSix:zoom(z, z, 1):blit(screen, x + 707*r, 165*r) end
+        if all or flags.five       then self.pointer_textFive:zoom(z, z, 1):blit(screen, x + 20*r, y + 165*r) end
+        if all or flags.minutes    then self.pointer_textMinutes:zoom(z, z, 1):blit(screen, x + 169*r, y + 165*r) end
+        if all or flags.to         then self.pointer_textTo:zoom(z, z, 1):blit(screen, x + 425*r, y + 165*r) end
+        if all or flags.past       then self.pointer_textPast:zoom(z, z, 1):blit(screen, x + 537*r, y + 165*r) end
+        if all or flags.hsix       then self.pointer_textHourSix:zoom(z, z, 1):blit(screen, x + 707*r, y + 165*r) end
 
     -- Row 4
-        if all or flags.hseven     then self.pointer_textHourSeven:zoom(z, z, 1):blit(screen, x + 20*r, 222*r) end
-        if all or flags.hone       then self.pointer_textHourOne:zoom(z, z, 1):blit(screen, x + 222*r, 222*r) end
-        if all or flags.htwo       then self.pointer_textHourTwo:zoom(z, z, 1):blit(screen, x + 363*r, 222*r) end
-        if all or flags.hten       then self.pointer_textHourTen:zoom(z, z, 1):blit(screen, x + 513*r, 222*r) end
-        if all or flags.hfour      then self.pointer_textHourFour:zoom(z, z, 1):blit(screen, x + 650*r, 222*r) end
+        if all or flags.hseven     then self.pointer_textHourSeven:zoom(z, z, 1):blit(screen, x + 20*r, y + 222*r) end
+        if all or flags.hone       then self.pointer_textHourOne:zoom(z, z, 1):blit(screen, x + 222*r, y + 222*r) end
+        if all or flags.htwo       then self.pointer_textHourTwo:zoom(z, z, 1):blit(screen, x + 363*r, y + 222*r) end
+        if all or flags.hten       then self.pointer_textHourTen:zoom(z, z, 1):blit(screen, x + 513*r, y + 222*r) end
+        if all or flags.hfour      then self.pointer_textHourFour:zoom(z, z, 1):blit(screen, x + 650*r, y + 222*r) end
 
     -- Row 5
-        if all or flags.hfive      then self.pointer_textHourFive:zoom(z, z, 1):blit(screen, x + 20*r, 280*r) end
-        if all or flags.hnine      then self.pointer_textHourNine:zoom(z, z, 1):blit(screen, x + 193*r, 280*r) end
-        if all or flags.htwelve    then self.pointer_textHourTwelve:zoom(z, z, 1):blit(screen, x + 371*r, 280*r) end
-        if all or flags.height     then self.pointer_textHourEight:zoom(z, z, 1):blit(screen, x + 639*r, 280*r) end
+        if all or flags.hfive      then self.pointer_textHourFive:zoom(z, z, 1):blit(screen, x + 20*r, y + 280*r) end
+        if all or flags.hnine      then self.pointer_textHourNine:zoom(z, z, 1):blit(screen, x + 193*r, y + 280*r) end
+        if all or flags.htwelve    then self.pointer_textHourTwelve:zoom(z, z, 1):blit(screen, x + 371*r, y + 280*r) end
+        if all or flags.height     then self.pointer_textHourEight:zoom(z, z, 1):blit(screen, x + 639*r, y + 280*r) end
 
     -- Row 6
-        if all or flags.heleven    then self.pointer_textHourEleven:zoom(z, z, 1):blit(screen, x + 20*r, 338*r) end
-        if all or flags.hthree     then self.pointer_textHourThree:zoom(z, z, 1):blit(screen, x + 222*r, 338*r) end
-        if all or flags.oclock     then self.pointer_textOClock:zoom(z, z, 1):blit(screen, x + 398*r, 338*r) end
-        if all or flags.am         then self.pointer_textAM:zoom(z, z, 1):blit(screen, x + 627*r, 338*r) end
-        if all or flags.pm         then self.pointer_textPM:zoom(z, z, 1):blit(screen, x + 716*r, 338*r) end
+        if all or flags.heleven    then self.pointer_textHourEleven:zoom(z, z, 1):blit(screen, x + 20*r, y + 338*r) end
+        if all or flags.hthree     then self.pointer_textHourThree:zoom(z, z, 1):blit(screen, x + 222*r, y + 338*r) end
+        if all or flags.oclock     then self.pointer_textOClock:zoom(z, z, 1):blit(screen, x + 398*r, y + 338*r) end
+        if all or flags.am         then self.pointer_textAM:zoom(z, z, 1):blit(screen, x + 627*r, y + 338*r) end
+        if all or flags.pm         then self.pointer_textPM:zoom(z, z, 1):blit(screen, x + 716*r, y + 338*r) end
 
         self.textdate:setValue("ON " .. string.upper(WordClock:getDateAsWords(tonumber(os.date("%d")))))
 
@@ -1615,10 +1616,13 @@ function WordClock:getWordClockSkin(skinName)
     
     log:debug("Image path - " .. self.imgpath)
     local s = {}
-
-    local wordClockBackground = Tile:loadImage(self.imgpath .. "Clocks/WordClock/wallpaper_clock_word.png")
         
-    if _isJogglerSkin(skinName) then
+    -- HDSkin is using the Joggler's artwork. Quite a mess...
+    local imgpath = string.gsub(self.imgpath, 'HDSkin', 'JogglerSkin')
+
+    local wordClockBackground = Tile:loadImage(imgpath .. "Clocks/WordClock/wallpaper_clock_word.png")
+        
+    if _isJogglerSkin(skinName) or _isHDSkin(skinName) then
         local screen_width, screen_height = Framework:getScreenSize()
         local ratio = math.min(screen_width/800, screen_height/480)
 
@@ -1628,15 +1632,16 @@ function WordClock:getWordClockSkin(skinName)
                 x = 0,
                 y = 420 * ratio,
                 w = screen_width,
-                font = _font(26),
+                font = _font(26 * screen_height/480),
                 align = 'bottom',
                 fg = { 0xff, 0xff, 0xff },
             },
             ratio = ratio,
-            offsetX = 0
+            offsetX = 0,
+            offsetY = 0
         }
 
-        wordClockBackground = Surface:loadImage(self.imgpath .. "Clocks/WordClock/wallpaper_clock_word.png")
+        wordClockBackground = Surface:loadImage(imgpath .. "Clocks/WordClock/wallpaper_clock_word.png")
         wordClockBackground = wordClockBackground:zoom(ratio, ratio, 1)
 
         -- if the ratio of the resized background is different, we need to shift it accordingly
@@ -1652,6 +1657,13 @@ function WordClock:getWordClockSkin(skinName)
 		    elseif h > screen_height then
 		        local tmp = Surface:newRGB(screen_width, screen_height)
 		        wordClockBackground:blit(tmp, 0, (screen_height - h)/2)
+		        wordClockBackground:release()
+		        wordClockBackground = tmp
+		    elseif h < screen_height then
+	        	s.Clock.offsetY = (screen_height - h)/2
+		        s.Clock.textdate.y = s.Clock.textdate.y + s.Clock.offsetY
+		        local tmp = Surface:newRGB(screen_width, screen_height)
+		        wordClockBackground:blit(tmp, 0, s.Clock.offsetY)
 		        wordClockBackground:release()
 		        wordClockBackground = tmp
 		    end
@@ -1713,42 +1725,45 @@ function WordClock:getSkinParams(skinName)
     
     log:debug("Image path - " .. self.imgpath)
     
-    if _isJogglerSkin(skinName) or _isWQVGASkin(skinName) then
+    if _isJogglerSkin(skinName) or _isWQVGASkin(skinName) or _isHDSkin(skinName) then
+        -- HDSkin is using the Joggler's artwork. Quite a mess...
+        local imgpath = string.gsub(self.imgpath, 'HDSkin', 'JogglerSkin') .. "Clocks/WordClock/"
+
         local params = {
-            textIt        = self.imgpath .. "Clocks/WordClock/" .. 'text-it.png',
-            textIs        = self.imgpath .. "Clocks/WordClock/" .. 'text-is.png',
-            textHas       = self.imgpath .. "Clocks/WordClock/" .. 'text-has.png',
-            textNearly    = self.imgpath .. "Clocks/WordClock/" .. 'text-nearly.png',
-            textJustgone  = self.imgpath .. "Clocks/WordClock/" .. 'text-justgone.png',
+            textIt        = imgpath .. 'text-it.png',
+            textIs        = imgpath .. 'text-is.png',
+            textHas       = imgpath .. 'text-has.png',
+            textNearly    = imgpath .. 'text-nearly.png',
+            textJustgone  = imgpath .. 'text-justgone.png',
 
-            textHalf      = self.imgpath .. "Clocks/WordClock/" .. 'text-half.png',
-            textTen       = self.imgpath .. "Clocks/WordClock/" .. 'text-ten.png',
-            textAQuarter  = self.imgpath .. "Clocks/WordClock/" .. 'text-aquarter.png',
-            textTwenty    = self.imgpath .. "Clocks/WordClock/" .. 'text-twenty.png',
+            textHalf      = imgpath .. 'text-half.png',
+            textTen       = imgpath .. 'text-ten.png',
+            textAQuarter  = imgpath .. 'text-aquarter.png',
+            textTwenty    = imgpath .. 'text-twenty.png',
 
-            textFive       = self.imgpath .. "Clocks/WordClock/" .. 'text-five.png',
-            textMinutes    = self.imgpath .. "Clocks/WordClock/" .. 'text-minutes.png',
-            textTo         = self.imgpath .. "Clocks/WordClock/" .. 'text-to.png',
-            textPast       = self.imgpath .. "Clocks/WordClock/" .. 'text-past.png',
+            textFive       = imgpath .. 'text-five.png',
+            textMinutes    = imgpath .. 'text-minutes.png',
+            textTo         = imgpath .. 'text-to.png',
+            textPast       = imgpath .. 'text-past.png',
 
-            textHourOne    = self.imgpath .. "Clocks/WordClock/" .. 'text-hour-one.png',
-            textHourTwo    = self.imgpath .. "Clocks/WordClock/" .. 'text-hour-two.png',
-            textHourThree  = self.imgpath .. "Clocks/WordClock/" .. 'text-hour-three.png',
-            textHourFour   = self.imgpath .. "Clocks/WordClock/" .. 'text-hour-four.png',
-            textHourFive   = self.imgpath .. "Clocks/WordClock/" .. 'text-hour-five.png',
-            textHourSix    = self.imgpath .. "Clocks/WordClock/" .. 'text-hour-six.png',
-            textHourSeven  = self.imgpath .. "Clocks/WordClock/" .. 'text-hour-seven.png',
-            textHourEight  = self.imgpath .. "Clocks/WordClock/" .. 'text-hour-eight.png',
-            textHourNine   = self.imgpath .. "Clocks/WordClock/" .. 'text-hour-nine.png',
-            textHourTen    = self.imgpath .. "Clocks/WordClock/" .. 'text-hour-ten.png',
-            textHourEleven = self.imgpath .. "Clocks/WordClock/" .. 'text-hour-eleven.png',
-            textHourTwelve = self.imgpath .. "Clocks/WordClock/" .. 'text-hour-twelve.png',
+            textHourOne    = imgpath .. 'text-hour-one.png',
+            textHourTwo    = imgpath .. 'text-hour-two.png',
+            textHourThree  = imgpath .. 'text-hour-three.png',
+            textHourFour   = imgpath .. 'text-hour-four.png',
+            textHourFive   = imgpath .. 'text-hour-five.png',
+            textHourSix    = imgpath .. 'text-hour-six.png',
+            textHourSeven  = imgpath .. 'text-hour-seven.png',
+            textHourEight  = imgpath .. 'text-hour-eight.png',
+            textHourNine   = imgpath .. 'text-hour-nine.png',
+            textHourTen    = imgpath .. 'text-hour-ten.png',
+            textHourEleven = imgpath .. 'text-hour-eleven.png',
+            textHourTwelve = imgpath .. 'text-hour-twelve.png',
 
-            textOClock     = self.imgpath .. "Clocks/WordClock/" .. 'text-oclock.png',
-            textAM         = self.imgpath .. "Clocks/WordClock/" .. 'text-am.png',
-            textPM         = self.imgpath .. "Clocks/WordClock/" .. 'text-pm.png',
+            textOClock     = imgpath .. 'text-oclock.png',
+            textAM         = imgpath .. 'text-am.png',
+            textPM         = imgpath .. 'text-pm.png',
 
-            alarmIcon  = self.imgpath .. "Clocks/WordClock/" .. 'icon_alarm_word.png',
+            alarmIcon  = imgpath .. 'icon_alarm_word.png',
             alarmX     = jogglerSkinAlarmX,
             alarmY     = jogglerSkinAlarmY,
         }
