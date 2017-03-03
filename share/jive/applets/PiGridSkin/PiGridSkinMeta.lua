@@ -46,8 +46,8 @@ function registerApplet(self)
 	jiveMain:registerSkin(self:string("PIGRID_SKIN_1366_768"), "PiGridSkin", "skin1366x768", "PiGridSkin_1366x768")
 	
 	-- allow user to define a custom screen size
-	local screen_width = tonumber(os.getenv('JL_SCREEN_WIDTH'))
-	local screen_height = tonumber(os.getenv('JL_SCREEN_HEIGHT'))
+	local screen_width = tonumber(os.getenv('JL_SCREEN_WIDTH') or 0)
+	local screen_height = tonumber(os.getenv('JL_SCREEN_HEIGHT') or 0)
 	
 	-- this skin only really works in landscape mode with a decent ratio of > 1.3
 	if screen_width and screen_height and screen_width > 300 and screen_height > 200 
