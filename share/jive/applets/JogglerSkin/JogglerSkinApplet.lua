@@ -26,11 +26,12 @@ SqueezeboxSkin overrides the following methods:
 
 
 -- stuff we use
-local ipairs, pairs, setmetatable, type, tostring = ipairs, pairs, setmetatable, type, tostring
+local ipairs, pairs, setmetatable, type, tostring, tonumber = ipairs, pairs, setmetatable, type, tostring, tonumber
 
 local oo                     = require("loop.simple")
 local string                 = require("jive.utils.string")
 local math                   = math
+local os                     = require("os")
 
 local Applet                 = require("jive.Applet")
 local Audio                  = require("jive.ui.Audio")
@@ -3831,6 +3832,15 @@ function skin1366x768(self, s, reload, useDefaultSize)
 	-- put a space between volume controls and other buttons	
 	s.nowplaying.npcontrols.div5.w = 568
 	s.nowplaying.npcontrols.div5.img = false
+
+	return s
+end
+
+function skinCustom(self, s, reload, useDefaultSize)
+	local screen_width = tonumber(os.getenv('JL_SCREEN_WIDTH'))
+	local screen_height = tonumber(os.getenv('JL_SCREEN_HEIGHT'))
+
+	self:skin(s, reload, useDefaultSize, screen_width, screen_height)
 
 	return s
 end

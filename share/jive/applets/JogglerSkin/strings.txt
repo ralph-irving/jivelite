@@ -13,6 +13,9 @@ JOGGLER_SKIN_1280_800
 
 JOGGLER_SKIN_1366_768
 	EN	Touch Skin (1366x768)
+	
+JOGGLER_SKIN_CUSTOM
+	EN	Touch Skin
 
 NOW_PLAYING_BUTTONS
 	DE	Schaltflächen für die "Grosse Plattenhülle und Text" Ansicht
