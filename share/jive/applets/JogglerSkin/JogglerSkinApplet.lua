@@ -3838,6 +3838,34 @@ function skinCustom(self, s, reload, useDefaultSize)
 	local screen_height = tonumber(os.getenv('JL_SCREEN_HEIGHT'))
 
 	self:skin(s, reload, useDefaultSize, screen_width, screen_height)
+	
+	-- now let's tweak a few elements for some well known resolutions
+	-- put a space between volume controls and other buttons etc.	
+	local c = s.CONSTANTS
+	
+	local _largerFont = function()
+		-- we can afford slightly larger fonts in the Now Playing screen
+		s.nowplaying.nptitle.nptrack.font = _boldfont(c.NP_ARTISTALBUM_FONT_SIZE * 1.2) 
+		s.nowplaying.npartistgroup.npartist.font = _font(c.NP_ARTISTALBUM_FONT_SIZE * 1.2) 
+		s.nowplaying.npalbumgroup.npalbum.font = _font(c.NP_ARTISTALBUM_FONT_SIZE * 1.2) 
+	
+		s.nowplaying_large_art.nptitle.nptrack.font = _boldfont(c.NP_ARTISTALBUM_FONT_SIZE * 1.2) 
+		s.nowplaying_large_art.npartistgroup.npartist.font = _font(c.NP_ARTISTALBUM_FONT_SIZE * 1.2) 
+		s.nowplaying_large_art.npalbumgroup.npalbum.font = _font(c.NP_ARTISTALBUM_FONT_SIZE * 1.2) 
+	end
+
+	if screen_width == 1024 and screen_height == 600 then
+		s.nowplaying.npcontrols.div5.w = 230
+		s.nowplaying.npcontrols.div5.img = false
+	elseif screen_width == 1280 and screen_height == 800 then
+		s.nowplaying.npcontrols.div5.w = 490
+		s.nowplaying.npcontrols.div5.img = false
+		_largerFont()
+	elseif screen_width == 1366 and screen_height == 768 then
+		s.nowplaying.npcontrols.div5.w = 568
+		s.nowplaying.npcontrols.div5.img = false
+		_largerFont()
+	end
 
 	return s
 end
