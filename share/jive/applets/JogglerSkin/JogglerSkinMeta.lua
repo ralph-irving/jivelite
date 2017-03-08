@@ -63,10 +63,9 @@ function registerApplet(self)
 	local screen_height = tonumber(os.getenv('JL_SCREEN_HEIGHT') or 0)
 	
 	-- this skin only really works in landscape mode with a decent ratio of > 1.3
-	if screen_width and screen_height and screen_width > 300 and screen_height > 200 
-			and screen_width/screen_height >= 1.2 then
+	if screen_width > 300 and screen_height > 200 and screen_width/screen_height >= 1.2 then
 		jiveMain:registerSkin(tostring(self:string("JOGGLER_SKIN_CUSTOM")) .. " (" .. tostring(screen_width) .. "x" .. tostring(screen_height) .. ")", "JogglerSkin", "skinCustom", "JogglerSkin_Custom")
-	else
+	elseif screen_width > 0 or screen_height > 0 then
 		log:warn("Custom screen size ratio (width/height) must be >= 1.2, is " .. tostring(screen_width/screen_height))
 	end
 end
