@@ -1927,8 +1927,8 @@ function skin(self, s, reload, useDefaultSize, w, h)
 	s.toast_popup_icon = _uses(s.toast_popup, {
 		w = 190,
 		h = 178,
-		x = 145,
-		y = 72,
+		x = (screenWidth - 190) / 2,
+		y = (screenHeight - 170) / 2,
 		position = LAYOUT_NONE,
 		group = {
 			order = { 'icon' },
@@ -2442,11 +2442,11 @@ function skin(self, s, reload, useDefaultSize, w, h)
 	}
 
 	local _popupicon = {
-                padding = 0,
-                border = { 22, 22, 0, 0 },
-                h = WH_FILL,
-                w = 146,
-        }
+		padding = 0,
+		border = { 22, 18, 0, 0 },
+		h = WH_FILL,
+		w = 166,
+	}
 
 	-- icon for albums with no artwork
 	s.icon_no_artwork = {
