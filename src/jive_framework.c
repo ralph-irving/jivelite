@@ -91,6 +91,7 @@ static struct jive_keymap keymap[] = {
 	//{ SDLK_RIGHT,		0, JIVE_KEY_GO },
 	//{ SDLK_LEFT,		0, JIVE_KEY_BACK },
 	{ SDLK_KP_PLUS,		0, JIVE_KEY_ADD },
+	{ SDLK_MENU,		0, JIVE_KEY_ADD },
 	{ SDLK_PAGEUP,		0, JIVE_KEY_PAGE_UP },
 	{ SDLK_PAGEDOWN,	0, JIVE_KEY_PAGE_DOWN },
 	{ SDLK_PRINT,		0, JIVE_KEY_PRINT },
