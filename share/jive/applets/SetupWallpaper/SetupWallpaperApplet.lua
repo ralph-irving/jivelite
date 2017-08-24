@@ -243,6 +243,8 @@ function _readFile(self, img, screenWidth, screenHeight)
 			pattern = 'JIVE_'
 		elseif screenWidth == 480 and screenHeight == 272 then
 			pattern = 'FAB4_'
+		elseif screenWidth == 480 and screenHeight == 320 then
+			pattern = 'WAV_'
 		elseif screenWidth == 800 and screenHeight == 480 then
 			pattern = 'PCP_'
 		else
