@@ -9,7 +9,9 @@ make -f Makefile.x86_64 clean
 
 GITVERSION=`git rev-parse --short HEAD`
 
-export CFLAGS="-DOPTJIVELITE"
+export CFLAGS="-DOPTJIVELITE -arch x86_64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk -mmacosx-version-min=10.7"
+export LDFLAGS="-arch x86_64 -Wl,-syslibroot,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk -mmacosx-version-min=10.7 -L/usr/lib"
+
 make -f Makefile.x86_64
 
 cd pkg
