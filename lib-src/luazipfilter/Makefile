@@ -1,4 +1,4 @@
-CFLAGS  += -fPIC
+CFLAGS  += -O2 -I$(PREFIX)/include/luajit-2.0 -fPIC
 LDFLAGS = $(MYLDFLAGS) -lz
 
 SOURCES = luazipfilter.c
