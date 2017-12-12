@@ -161,11 +161,14 @@ static void read_pushstring(lua_State *L, socket_t fd) {
 	}
 	else {
 		buf = malloc(len);
+		if ( buf == NULL )
+			lua_pushnil(L);
+		else {
+			recv(fd, buf, len, 0);
+			lua_pushlstring(L, buf, len);
 
-		recv(fd, buf, len, 0);
-		lua_pushlstring(L, buf, len);
-
-		free(buf);
+			free(buf);
+		}
 	}
 }
 
