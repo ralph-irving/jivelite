@@ -304,6 +304,9 @@ static int jiveL_dns_open(lua_State *L) {
 	}
 
 	u->t = SDL_CreateThread(dns_resolver_thread, (void *)(long)(u->fd[1]));
+	if (u->t == NULL) {
+		return luaL_error(L, "create dns_resolver_thread failed");
+	}
 
 	luaL_getmetatable(L, "jive.dns");
 	lua_setmetatable(L, -2);
