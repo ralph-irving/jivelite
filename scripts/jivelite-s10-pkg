@@ -1,8 +1,8 @@
 #!/bin/ksh
 #
 PKGNAME=SUNWjivelite
-SVNVER=`cd $HOME/source/jivelite; (svnversion | gsed -e 's/[MS]//g')`
-VERSION=0.1.0.${SVNVER}
+GITVERSION=`cd $HOME/source/jivelite; git rev-list --count HEAD`
+VERSION=0.1.0.${GITVERSION}
 SAVEDIR=`pwd`
 HOSTNAME=`uname -n`
 startdir=$HOME/source/jivelite
@@ -18,7 +18,6 @@ cp -pr share pkg/jivelite
 tar -cf - lib | (cd $startdir/pkg/jivelite; tar -xf -)
 cd $startdir/pkg || return 1
 rm jivelite/lib/libSDLmain.a
-find jivelite -name '.svn' -exec rm -rf {} \;
 setrpath jivelite/lib/libexpat.so.1.5.2 "/opt/jivelite/lib"
 setrpath jivelite/lib/liblua.so "/opt/jivelite/lib"
 setrpath jivelite/lib/libfreetype.so.6.3.8 "/opt/jivelite/lib"
@@ -26,7 +25,7 @@ setrpath jivelite/lib/libpng.so.3.32.0 "/opt/jivelite/lib"
 setrpath jivelite/lib/libpng12.so.0.32.0 "/opt/jivelite/lib"
 setrpath jivelite/lib/libSDL_gfx.so.13.9.1 "/opt/jivelite/lib"
 setrpath jivelite/lib/libSDL_image-1.2.so.0.1.4 "/opt/jivelite/lib"
-setrpath jivelite/lib/libSDL_ttf-2.0.so.0.6.2 "/opt/jivelite/lib"
+setrpath jivelite/lib/libSDL_ttf-2.0.so.0.10.1 "/opt/jivelite/lib"
 setrpath jivelite/lib/libSDL-1.2.so.0.11.4 "/opt/jivelite/lib"
 setrpath jivelite/lib/libz.so.1.2.7 "/opt/jivelite/lib"
 setrpath jivelite/lib/lua/5.1/cjson.so "/opt/jivelite/lib"
