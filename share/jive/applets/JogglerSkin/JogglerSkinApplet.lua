@@ -5,7 +5,16 @@ applets.JogglerSkin.JogglerSkinApplet
 
 =head1 DESCRIPTION
 
-This applet implements a small print skin for 800x480 resolution
+
+This applet implements an 800x480 resolution skin.
+
+Redesigned from WQVGAsmallSkin by Andy Davison.
+
+Built upon the work of 3guk, Tarkan Akdam and Justblair.
+
+Version 1.10 (10th April 2012)
+birdslikewires.co.uk
+
 
 =head1 FUNCTIONS
 
@@ -17,12 +26,16 @@ SqueezeboxSkin overrides the following methods:
 
 
 -- stuff we use
-local ipairs, pairs, setmetatable, type, tostring = ipairs, pairs, setmetatable, type, tostring
+local ipairs, pairs, setmetatable, type, tostring, tonumber = ipairs, pairs, setmetatable, type, tostring, tonumber
 
 local oo                     = require("loop.simple")
+local string                 = require("jive.utils.string")
+local math                   = math
+local os                     = require("os")
 
 local Applet                 = require("jive.Applet")
 local Audio                  = require("jive.ui.Audio")
+local Checkbox               = require("jive.ui.Checkbox")
 local Font                   = require("jive.ui.Font")
 local Framework              = require("jive.ui.Framework")
 local Icon                   = require("jive.ui.Icon")
@@ -71,6 +84,7 @@ local fontpath = "fonts/"
 local FONT_NAME = "FreeSans"
 local BOLD_PREFIX = "Bold"
 
+local tbButtons = { 'rew', 'play', 'fwd', 'repeatMode', 'shuffleMode', 'volDown', 'volSlider', 'volUp' }
 
 function init(self)
 	self.images = {}
@@ -79,55 +93,64 @@ function init(self)
 	self.hTiles = {}
 	self.vTiles = {}
 	self.tiles = {}
+
+	jiveMain:addItem(self:buttonSettingsMenuItem())
 end
 
 
 function param(self)
-        return {
+	local screenWidth, screenHeight = Framework:getScreenSize()
+	local maxArtwork = tostring(screenHeight) .. 'x' .. tostring(screenHeight)
+	local midArtwork = tostring(screenHeight - 180) .. 'x' .. tostring(screenHeight - 180)
+	
+	return {
 		THUMB_SIZE = 40,
-		THUMB_SIZE_MENU = 40,	
-		NOWPLAYING_MENU = true, --changed by justblair
+		THUMB_SIZE_MENU = 40,
+		NOWPLAYING_MENU = false,
 		-- NOWPLAYING_TRACKINFO_LINES used in assisting scroll behavior animation on NP
 		-- 3 is for a three line track, artist, and album (e.g., SBtouch)
 		-- 2 is for a two line track, artist+album (e.g., SBradio, SBcontroller)
 		NOWPLAYING_TRACKINFO_LINES = 3,
-		POPUP_THUMB_SIZE = 100,
-		radialClock = {
-			hourTickPath     = 'applets/JogglerSkin/images/Clocks/Radial/radial_ticks_hr_on.png',
-			minuteTickPath   = 'applets/JogglerSkin/images/Clocks/Radial/radial_ticks_min_on.png',
-		},
+		POPUP_THUMB_SIZE = 120,
+		piCorePlayerStyle = 'hm_settings_pcp',
 		nowPlayingScreenStyles = { 
 			-- every skin needs to start off with a nowplaying style
 			{
 				style = 'nowplaying', 
-				artworkSize = '300x300',
+				artworkSize = midArtwork,
 				text = self:string("ART_AND_TEXT"),
 			},
 			{
+				style = 'nowplaying_large_art',
+				artworkSize = maxArtwork,
+				titleXofYonly = true,
+				text = self:string("LARGE_ART_AND_TEXT"),
+			},
+			{
 				style = 'nowplaying_art_only',
-				artworkSize = '470x262',
+				artworkSize = maxArtwork,
 				suppressTitlebar = 1,
 				text = self:string("ART_ONLY"),
 			},
 			{
 				style = 'nowplaying_text_only',
-				artworkSize = '300x300',
+				artworkSize = midArtwork,
 				text = self:string("TEXT_ONLY"),
 			},
 			{
 				style = 'nowplaying_spectrum_text',
-				artworkSize = '300x300',
+				artworkSize = midArtwork,
 				localPlayerOnly = 1,
 				text = self:string("SPECTRUM_ANALYZER"),
 			},
 			{
 				style = 'nowplaying_vuanalog_text',
-				artworkSize = '300x300',
+				artworkSize = midArtwork,
 				localPlayerOnly = 1,
 				text = self:string("ANALOG_VU_METER"),
 			},
 		},
-        }
+	}
 end
 
 local function _loadImage(self, file)
@@ -244,8 +267,11 @@ end
 
 -- skin
 -- The meta arranges for this to be called to skin the interface.
-function skin(self, s)
-	Framework:setVideoMode(800, 480, 0, false)
+function skin(self, s, reload, useDefaultSize, w, h)
+	if (not w) then w = 800 end
+	if (not h) then h = 480 end
+	
+	Framework:setVideoMode(w, h, 0, false)
 
 	local screenWidth, screenHeight = Framework:getScreenSize()
 
@@ -274,7 +300,7 @@ function skin(self, s)
         local helpTextBackground  = _loadImageTile(self, imgpath .. "Titlebar/tbar_dropdwn_bkrgd.png")
 
 
-	local nocturneWallpaper = _loadImageTile(self, "applets/SetupWallpaper/wallpaper/fab4_nocturne.png")
+	local blackBackground   = Tile:fillColor(0x000000ff)
 
 	--FIXME, _r asset here doesn't work...it's supposed to have a fadeout effect and it doesn't appear on screen
 	local fiveItemBox             = _loadHTile(self, {
@@ -634,7 +660,7 @@ function skin(self, s)
 					imgpath .. "Scroll_Bar/scrollbar_body_b.png",
 			       })
 
-	local popupBackground = Tile:fillColor(0x000000ff)
+	local popupBackground = blackBackground
 
 	local textinputCursor = _loadImageTile(self, imgpath .. "Text_Entry/Keyboard_Touch/tch_cursor.png")
 
@@ -660,10 +686,11 @@ function skin(self, s)
 
 	local TITLE_HEIGHT = 65
 	local TITLE_FONT_SIZE = 20
-	local ALBUMMENU_FONT_SIZE = 25
-	local ALBUMMENU_SMALL_FONT_SIZE = 18
+	local TITLEBAR_FONT_SIZE = 28
+	local ALBUMMENU_FONT_SIZE = 20
+	local ALBUMMENU_SMALL_FONT_SIZE = 16
 	local TEXTMENU_FONT_SIZE = 25
-	local POPUP_TEXT_SIZE_1 = 34
+	local POPUP_TEXT_SIZE_1 = 26
 	local POPUP_TEXT_SIZE_2 = 26
 	local TRACK_FONT_SIZE = 18
 	local TEXTAREA_FONT_SIZE = 18
@@ -671,9 +698,8 @@ function skin(self, s)
 
 	local CM_MENU_HEIGHT = 45
 
-	local TEXTINPUT_FONT_SIZE = 40 --justblair was 20
-	local TEXTINPUT_SELECTED_FONT_SIZE = 24
-	
+	local TEXTINPUT_FONT_SIZE = 60
+	local TEXTINPUT_SELECTED_FONT_SIZE = 68
 
 	local HELP_FONT_SIZE = 18
 	local UPDATE_SUBTEXT_SIZE = 20
@@ -711,7 +737,10 @@ function skin(self, s)
 		img = _loadImage(self, "Icons/selection_play_3line_on.png"),
 	}
 	local addArrow  = { 
-		img = _loadImage(self, "Icons/selection_add_3line_off.png"),
+		img = _loadImage(self, "Icons/selection_add_3line_on.png"),
+	}
+	local favItem  = { 
+		img = _loadImage(self, "Icons/icon_toolbar_fav.png"),
 	}
 
 
@@ -809,7 +838,7 @@ function skin(self, s)
 			w = WH_FILL,
 			padding = TITLE_PADDING,
 			align = "center",
-			font = _boldfont(TITLE_FONT_SIZE),
+			font = _boldfont(TITLEBAR_FONT_SIZE),
 			fg = TEXT_COLOR,
 		}
 	}
@@ -825,16 +854,16 @@ function skin(self, s)
 	})
 
 	s.text_block_black = {
-		bgImg = Tile:fillColor(0x000000ff),
+		bgImg = blackBackground,
 		position = LAYOUT_NORTH,
-		h = 100,
+		h = 300,
 		order = { 'text' },
 		text = {
 			w = WH_FILL,
-			h = 100,
+			h = 300,
                         padding = { 10, 160, 10, 0 },
                         align = "center",
-                        font = _font(100),
+                        font = _font(120),
                         fg = TEXT_COLOR,
                         sh = TEXT_SH_COLOR,
                 },
@@ -1038,7 +1067,8 @@ function skin(self, s)
 
 	s.help_text = {
 		w = screenWidth - 30,
-		padding = { 18, 18, 12, 0},
+		padding = { 12, 8, 12, 0 },
+		border = 0,
 		font = _font(HELP_FONT_SIZE),
 		lineHeight = 23,
 		fg = TEXT_COLOR,
@@ -1100,14 +1130,14 @@ function skin(self, s)
 
 	-- text input
 	s.textinput = {
-		h = 72, --Justblair Old Value 36
-		padding = { 12, 0, 12, 0 },
+		h = 72,
+		padding = { 24, 0, 24, 0 },
 		font = _boldfont(TEXTINPUT_FONT_SIZE),
-		cursorFont = _boldfont(TEXTINPUT_FONT_SIZE),
+		cursorFont = _boldfont(TEXTINPUT_SELECTED_FONT_SIZE),
 		wheelFont = _boldfont(TEXTINPUT_FONT_SIZE),
 		charHeight = TEXTINPUT_SELECTED_FONT_SIZE,
 		fg = TEXT_COLOR_BLACK,
-		charOffsetY = 8,
+		charOffsetY = 32,
 		wh = { 0x55, 0x55, 0x55 },
 		cursorImg = textinputCursor,
 	}
@@ -1312,8 +1342,8 @@ function skin(self, s)
 		spacer_bottomRight = _uses(s.keyboard.spacer_bottomRight),
 	}
 
-	local _timeFirstColumnX12h = 123
-	local _timeFirstColumnX24h = 164
+	local _timeFirstColumnX12h = 218
+	local _timeFirstColumnX24h = 280
 
 	s.time_input_background_12h = {
 		w = WH_FILL,
@@ -1336,25 +1366,25 @@ function skin(self, s)
 	s.time_input_menu_box_12h = {
 		position = LAYOUT_NONE,
 		img = _loadImage(self, "Multi_Character_Entry/menu_box_fixed.png"),
-		w = 220,
-		h = 40,
-		x = 130,
-		y = 140,
+		w = 370,
+		h = 80,
+		x = 216,
+		y = 228,
 	}
 	s.time_input_menu_box_24h = _uses(s.time_input_menu_box_12h, {
-		img = _loadImage(self, "UNOFFICIAL/menu_box_fixed_2c.png"),
-		w = 180,
-		x = 167,
+		-- img = _loadImage(self, "UNOFFICIAL/menu_box_fixed_2c.png"),
+		w = 242,
+		x = 278,
 	
 	})
 
 	-- time input window
 	s.input_time_12h = _uses(s.window)
 	s.input_time_12h.hour = _uses(s.menu, {
-		w = 75,
+		w = 100,
 		--h = screenHeight - TITLE_HEIGHT,
 		h = screenHeight,
-		itemHeight = 45,
+		itemHeight = 80,
 		position = LAYOUT_WEST,
 		padding = 0,
 		border = { _timeFirstColumnX12h, TITLE_HEIGHT, 0, 0 },
@@ -1363,7 +1393,7 @@ function skin(self, s)
 			order = { 'text' },
 			text = {
 				align = 'right',
-				font = _boldfont(30),
+				font = _boldfont(45),
 				padding = { 2, 4, 8, 0 },
 				fg = { 0xb3, 0xb3, 0xb3 },
 				sh = { },
@@ -1374,7 +1404,7 @@ function skin(self, s)
 				order = { 'text' },
 				bgImg = false,
 				text = {
-					font = _boldfont(30),
+					font = _boldfont(45),
 					fg = { 0xe6, 0xe6, 0xe6 },
 					sh = { },
 					align = 'right',
@@ -1387,7 +1417,7 @@ function skin(self, s)
 				order = { 'text' },
 				bgImg = false,
 				text = {
-					font = _boldfont(30),
+					font = _boldfont(45),
 					fg = { 0xe6, 0xe6, 0xe6 },
 					sh = { },
 					align = 'right',
@@ -1397,10 +1427,10 @@ function skin(self, s)
 		},
 	})
 	s.input_time_12h.minute = _uses(s.input_time_12h.hour, {
-		border = { _timeFirstColumnX12h + 75, TITLE_HEIGHT, 0, 0 },
+		border = { _timeFirstColumnX12h + 125, TITLE_HEIGHT, 0, 0 },
 	})
 	s.input_time_12h.ampm = _uses(s.input_time_12h.hour, {
-		border = { _timeFirstColumnX12h + 75 + 75, TITLE_HEIGHT, 0, 0 },
+		border = { _timeFirstColumnX12h + 125 + 120, TITLE_HEIGHT, 0, 0 },
 		item = {
 			text = {
 				padding = { 0, 2, 8, 0 },
@@ -1433,13 +1463,13 @@ function skin(self, s)
 			border = { _timeFirstColumnX24h, TITLE_HEIGHT, 0, 0 },
 		},
 		minute = {
-			border = { _timeFirstColumnX24h + 75, TITLE_HEIGHT, 0, 0 },
+			border = { _timeFirstColumnX24h + 124, TITLE_HEIGHT, 0, 0 },
 		},
 		hourUnselected = {
 			border = { _timeFirstColumnX24h, TITLE_HEIGHT, 0, 0 },
 		},
 		minuteUnselected = {
-			border = { _timeFirstColumnX24h + 75, TITLE_HEIGHT, 0, 0 },
+			border = { _timeFirstColumnX24h + 124, TITLE_HEIGHT, 0, 0 },
 		},
 	})
 
@@ -1468,6 +1498,11 @@ function skin(self, s)
 					order = { 'text', 'arrow', },
 				}
 			},
+			locked = {
+				item = {
+					order = { 'text', 'arrow', },
+				}
+			},
 		},
 	})
 
@@ -1475,7 +1510,7 @@ function skin(self, s)
 		text = {
 			line = {
 				{
-					font = _boldfont(30),
+					font = _boldfont(TITLEBAR_FONT_SIZE),
 					height = 32,
 				},
 				{
@@ -1532,7 +1567,7 @@ function skin(self, s)
 			w = WH_FILL,
 			h = (POPUP_TEXT_SIZE_1 + 8 ),
 			position = LAYOUT_NORTH,
-			border = { 0, 34, 0, 14 },
+			border = { 0, 50, 0, 0 },
 			padding = { 15, 0, 15, 0 },
 			align = "center",
 			font = _font(POPUP_TEXT_SIZE_1),
@@ -1544,9 +1579,8 @@ function skin(self, s)
 			w = WH_FILL,
 			h = 47,
 			position = LAYOUT_SOUTH,
-			border = 0,
+			border = { 0, 0, 0, 20 },
 			padding = { 15, 0, 15, 0 },
-			--padding = { 0, 0, 0, 26 },
 			align = "top",
 			font = _boldfont(POPUP_TEXT_SIZE_2),
 			fg = TEXT_COLOR,
@@ -1568,8 +1602,8 @@ function skin(self, s)
 	s.input = _uses(s.window)
 	s.input.title = _uses(s.title, {
 		-- remove 3px from the height and 3px from the bottom padding
-		h = 44,
-		padding = { 0, 5, 0, 2 },
+		-- h = 44,
+		-- padding = { 0, 5, 0, 2 },
 		bgImg = inputTitleBox,
 	})
 
@@ -1641,6 +1675,15 @@ function skin(self, s)
 		},
 	})
 
+	s.home_menu.menu.item.icon_no_artwork = {
+		img = _loadImage(self, "IconsResized/icon_loading" .. skinSuffix ),
+		h   = THUMB_SIZE,
+		padding = MENU_ITEM_ICON_PADDING,
+		align = 'center',
+	}
+	s.home_menu.menu.selected.item.icon_no_artwork = s.home_menu.menu.item.icon_no_artwork
+	s.home_menu.menu.locked.item.icon_no_artwork = s.home_menu.menu.item.icon_no_artwork
+
 	-- icon_list window
 	s.icon_list = _uses(s.window, {
 		menu = {
@@ -1655,7 +1698,7 @@ function skin(self, s)
 					line = {
 						{
 							font = _boldfont(ALBUMMENU_FONT_SIZE),
-							height = 25,
+							height = 22,
 						},
 						{
 							font = _font(ALBUMMENU_SMALL_FONT_SIZE),
@@ -1823,26 +1866,26 @@ function skin(self, s)
 		},
 	})
 
-	--playlist window
+	-- playlist same as icon list
 	s.play_list = _uses(s.icon_list)
 
 	-- toast_popup popup (is now text only)
 	s.toast_popup_textarea = {
-		padding = { 8, 8, 8, 8 } ,
+		padding = { 20, 20, 20, 20 } ,
 		align = 'left',
 		w = WH_FILL,
 		h = WH_FILL,
-		font = _boldfont(21),
+		font = _font(POPUP_TEXT_SIZE_1),
 		fg = TEXT_COLOR,
 		sh = TEXT_SH_COLOR,
         }
 
 	-- toast_popup popup with art and text
 	s.toast_popup = {
-		x = 5,
-		y = screenHeight/2 - 93/2,
-		w = screenWidth - 10,
-		h = 93,
+		x = 100,
+		y = screenHeight/2/2,
+		w = screenWidth - 200,
+		h = screenHeight/2,
 		bgImg = popupBox,
 		group = {
 			padding = 10,
@@ -1883,8 +1926,8 @@ function skin(self, s)
 	s.toast_popup_icon = _uses(s.toast_popup, {
 		w = 190,
 		h = 178,
-		x = 145,
-		y = 72,
+		x = (screenWidth - 190) / 2,
+		y = (screenHeight - 170) / 2,
 		position = LAYOUT_NONE,
 		group = {
 			order = { 'icon' },
@@ -1900,11 +1943,11 @@ function skin(self, s)
 
 	-- new style that incorporates text, icon, more text, and maybe a badge
 	s.toast_popup_mixed = {
-		x = 19,
-		y = 16,
+		x = 100,
+		y = (screenHeight - 250) / 2,
 		position = LAYOUT_NONE,
-		w = screenWidth - 38,
-		h = 214,
+		w = screenWidth - 200,
+		h = 250,
 		bgImg = popupBox,
 		text = {
 			position = LAYOUT_NORTH,
@@ -1912,17 +1955,19 @@ function skin(self, s)
 			align = 'top',
 			w = WH_FILL,
 			h = WH_FILL,
-			font = _boldfont(18),
+			font = _font(POPUP_TEXT_SIZE_1),
+			lineHeight = POPUP_TEXT_SIZE_1 + 5,
 			fg = TEXT_COLOR,
 			sh = TEXT_SH_COLOR,
 		},
 		subtext = {
 			position = LAYOUT_NORTH,
-			padding = { 8, 178, 8, 0 },
+			padding = { 8, 203, 8, 0 },
 			align = 'top',
 			w = WH_FILL,
 			h = WH_FILL,
-			font = _boldfont(18),
+			font = _font(POPUP_TEXT_SIZE_2),
+			lineHeight = POPUP_TEXT_SIZE_2 + 5,
 			fg = TEXT_COLOR,
 			sh = TEXT_SH_COLOR,
 		},
@@ -1932,9 +1977,9 @@ function skin(self, s)
 		position = LAYOUT_NONE,
 		zOrder = 99,
 		-- middle of the screen plus half of the icon width minus half of the badge width. gotta love LAYOUT_NONE
-		x = screenWidth/2 + 21,
+		x = (screenWidth-200)/2 + self:param().POPUP_THUMB_SIZE/2 - 17,
 		w = 34,
-		y = 34,
+		y = 48,
 	}
 	s.badge_none = _uses(s._badge, {
 		img = false,
@@ -1946,6 +1991,8 @@ function skin(self, s)
 		img = _loadImage(self, "Icons/icon_badge_add.png")
 	})
 
+	local CM_MENU_ITEM_COUNT = math.floor(((screenHeight - 32 - 52 - 20) / CM_MENU_HEIGHT))
+
 	s.context_menu = {
 		x = 8,
 		y = 16,
@@ -1955,23 +2002,23 @@ function skin(self, s)
 		layer = LAYER_TITLE,
 
 		multiline_text = {
-                        w = WH_FILL,
-                        h = 172,
-                        padding = { 18, 2, 14, 18 },
-                        border = { 0, 0, 6, 15 },
-                        lineHeight = 22,
-                        font = _font(18),
-                        fg = { 0xe6, 0xe6, 0xe6 },
-                        sh = { },
-                        align = "top-left",
-                        scrollbar = {
-                                h = 164,
-                                border = {0, 2, 2, 10},
-                        },
-                },
+            w = WH_FILL,
+            h = 172,
+            padding = { 18, 2, 14, 18 },
+            border = { 0, 0, 6, 15 },
+            lineHeight = 22,
+            font = _font(18),
+            fg = { 0xe6, 0xe6, 0xe6 },
+            sh = { },
+            align = "top-left",
+            scrollbar = {
+                h = 164,
+                border = {0, 2, 2, 10},
+            },
+        },
 
 		title = {
-		layer = LAYER_TITLE,
+			layer = LAYER_TITLE,
 			h = 52,
 			padding = {10,10,10,5},
 			bgImg = false,
@@ -1995,18 +2042,18 @@ function skin(self, s)
 				font = _boldfont(TITLE_FONT_SIZE),
 				fg = TEXT_COLOR,
 			},
-
 		},
+
 		menu = {
-			h = CM_MENU_HEIGHT * 8,
+			h = CM_MENU_HEIGHT * CM_MENU_ITEM_COUNT,
 			border = { 7, 0, 7, 0 },
 			padding = { 0, 0, 0, 100 },
 			scrollbar = { 
-				h = CM_MENU_HEIGHT * 8,
+				h = CM_MENU_HEIGHT * CM_MENU_ITEM_COUNT,
 			},
 			item = {
 				h = CM_MENU_HEIGHT,
-				order = { "icon", "text", "arrow" },
+				order = { "text", "arrow" },
 				padding = { ITEM_LEFT_PADDING, 0, 12, 0 },
 				text = {
 					padding = { 0, 4, 0, 0 },
@@ -2026,16 +2073,11 @@ function skin(self, s)
 					fg = TEXT_COLOR,
 					sh = TEXT_SH_COLOR,
 				},
-				icon = {
-					h = THUMB_SIZE,
-					padding = MENU_ITEM_ICON_PADDING,
-					align = 'center',
-				},
 				arrow = _uses(s.item.arrow),
 			},
 			selected = {
 				item = {
-					order = { "icon", "text", "arrow" },
+					order = { "text", "arrow" },
 					bgImg = fiveItemSelectionBox,
 					padding = { ITEM_LEFT_PADDING, 0, 12, 0 },
 					text = {
@@ -2056,11 +2098,6 @@ function skin(self, s)
 						fg = TEXT_COLOR,
 						sh = TEXT_SH_COLOR,
 					},
-					icon = {
-						h = THUMB_SIZE,
-						padding = MENU_ITEM_ICON_PADDING,
-						align = 'center',
-					},
 					arrow = _uses(s.item.arrow),
 				},
 			},
@@ -2069,9 +2106,44 @@ function skin(self, s)
 	}
 	
 	s.context_menu.menu.item_play = _uses(s.context_menu.menu.item, {
-		order = { 'text' },
+		arrow = {img = playArrow.img},
 	})
 	s.context_menu.menu.selected.item_play = _uses(s.context_menu.menu.selected.item, {
+		arrow = {img = playArrow.img},
+	})
+
+	s.context_menu.menu.item_insert = _uses(s.context_menu.menu.item, {
+		arrow = {img = addArrow.img},
+	})
+	s.context_menu.menu.selected.item_insert = _uses(s.context_menu.menu.selected.item, {
+		arrow = {img = addArrow.img},
+	})
+
+	s.context_menu.menu.item_add = _uses(s.context_menu.menu.item, {
+		arrow = {img = addArrow.img},
+	})
+	s.context_menu.menu.selected.item_add = _uses(s.context_menu.menu.selected.item, {
+		arrow = {img = addArrow.img},
+	})
+
+	s.context_menu.menu.item_playall = _uses(s.context_menu.menu.item, {
+		arrow = {img = playArrow.img},
+	})
+	s.context_menu.menu.selected.item_playall = _uses(s.context_menu.menu.selected.item, {
+		arrow = {img = playArrow.img},
+	})
+
+	s.context_menu.menu.item_fav = _uses(s.context_menu.menu.item, {
+		arrow = {img = favItem.img},
+	})
+	s.context_menu.menu.selected.item_fav = _uses(s.context_menu.menu.selected.item, {
+		arrow = {img = favItem.img},
+	})
+
+	s.context_menu.menu.item_no_arrow = _uses(s.context_menu.menu.item, {
+		order = { 'text' },
+	})
+	s.context_menu.menu.selected.item_no_arrow = _uses(s.context_menu.menu.selected.item, {
 		order = { 'text' },
 	})
 
@@ -2119,12 +2191,7 @@ function skin(self, s)
 		layer = LAYER_TITLE,
 
      		title = {
-			layer = LAYER_TITLE,
-			w = WH_FILL,
-			h = 52,
-			--padding = { 0, 10, 0, 0 },
-			padding = { 10, 10, 10, 5 },
-			bgImg = false,
+			hidden = 1,
 		},
 
 		menu = {
@@ -2374,11 +2441,11 @@ function skin(self, s)
 	}
 
 	local _popupicon = {
-                padding = 0,
-                border = { 22, 22, 0, 0 },
-                h = WH_FILL,
-                w = 146,
-        }
+		padding = 0,
+		border = { 22, 18, 0, 0 },
+		h = WH_FILL,
+		w = 166,
+	}
 
 	-- icon for albums with no artwork
 	s.icon_no_artwork = {
@@ -2394,7 +2461,7 @@ function skin(self, s)
 		img = _loadImage(self, "Alerts/wifi_connecting.png"),
 		frameRate = 8,
 		frameWidth = 120,
-                padding = { 0, 2, 0, 10 },
+                padding = { 0, 90, 0, 10 },
 	})
 
 	s.icon_connected = _uses(_icon, {
@@ -2575,11 +2642,14 @@ function skin(self, s)
 	s.hm_advancedSettings = _uses(_buttonicon, {
 		img = _loadImage(self, "IconsResized/icon_settings_adv" .. skinSuffix),
 	})
+	s.hm_settings_pcp = _uses(_buttonicon, {
+		img = _loadImage(self, "IconsResized/icon_settings_pcp" .. skinSuffix),
+	})
 	s.hm_radio = _uses(_buttonicon, {
-		img = _loadImage(self, "IconsResized/icon_internet_radio" .. skinSuffix),
+		img = _loadImage(self, "IconsResized/icon_tunein" .. skinSuffix),
 	})
 	s.hm_radios = _uses(_buttonicon, {
-		img = _loadImage(self, "IconsResized/icon_internet_radio" .. skinSuffix),
+		img = _loadImage(self, "IconsResized/icon_tunein" .. skinSuffix),
 	})
 	s.hm_myApps = _uses(_buttonicon, {
 		img = _loadImage(self, "IconsResized/icon_my_apps" .. skinSuffix),
@@ -2616,9 +2686,6 @@ function skin(self, s)
 	})
 	s.hm_playerpower = _uses(_buttonicon, {
 		img = _loadImage(self, "IconsResized/icon_power_off" .. skinSuffix),
-	})
-	s.hm_settingsScreen = _uses(_buttonicon, {
-		img = _loadImage(self, "IconsResized/icon_blank" .. skinSuffix),
 	})
 	s.hm_myMusicArtists = _uses(_buttonicon, {
 		img = _loadImage(self, "IconsResized/icon_ml_artist" .. skinSuffix),
@@ -2728,12 +2795,12 @@ function skin(self, s)
 
 	-- BEGIN NowPlaying skin code
 
-	local NP_ARTISTALBUM_FONT_SIZE = 30
-	local NP_TRACK_FONT_SIZE = 28
+	local NP_ARTISTALBUM_FONT_SIZE = 28
+	local NP_TRACK_FONT_SIZE = 36
 
-	local controlHeight = 76
-	local controlWidth = 83
-	local volumeBarWidth = 196 -- screenWidth - (transport controls + volume controls + dividers + border around volume bar)
+	local controlHeight = 72
+	local controlWidth = 76
+	local volumeBarWidth = 240 -- screenWidth - (transport controls + volume controls + dividers + border around volume bar)
 	local buttonPadding = 0
 
 	local _transportControlButton = {
@@ -2749,12 +2816,6 @@ function skin(self, s)
 		img = touchToolbarKeyDivider,		
 	})
 
-	local _transportVolumeBorder = _uses(_transportControlButton, {
-		w = 90,
-		padding = { 88, 0, 0, 0 },
-		img = touchToolbarKeyDivider,
-	}) 
-
 	s.toolbar_spacer = _uses(_transportControlButton, {
 		w = WH_FILL,
 	})
@@ -2766,15 +2827,17 @@ function skin(self, s)
 		align = "left",
 		lineHeight = NP_TRACK_FONT_SIZE,
 		fg = TEXT_COLOR,
-		x = 318,
+		x = screenHeight - 160 + 5,
 	}
+	
+	local maxArtwork = screenHeight - 180
 
 	s.nowplaying = _uses(s.window, {
 		--title bar
 		title = _uses(s.title, {
 			zOrder = 1,
 			text = {
-				font = _boldfont(TITLE_FONT_SIZE),
+				font = _boldfont(TITLEBAR_FONT_SIZE),
 				bgImg   = titlebarButtonBox,
 			},
 			rbutton  = {
@@ -2793,10 +2856,11 @@ function skin(self, s)
 			position   = _tracklayout.position,
 			border     = _tracklayout.border,
 			x          = _tracklayout.x,
-			y          = TITLE_HEIGHT + 32 + 30,
-			h          = 32,
+			y          = TITLE_HEIGHT + 65,
+			h          = NP_TRACK_FONT_SIZE,
 			nptrack =  {
-				w          = screenWidth - _tracklayout.x ,
+				w          = screenWidth - _tracklayout.x - 10,
+				h          = WH_FILL,
 				align      = _tracklayout.align,
 				lineHeight = _tracklayout.lineHeight,
 				fg         = _tracklayout.fg,
@@ -2809,7 +2873,7 @@ function skin(self, s)
 			position   = _tracklayout.position,
 			border     = _tracklayout.border,
 			x          = _tracklayout.x,
-			y          = TITLE_HEIGHT + 32 + 32 + 100 ,
+			y          = TITLE_HEIGHT + 32 + 32 + 70,
 			h          = 32,
 			npartist = {
 				padding    = { 0, 6, 0, 0 },
@@ -2826,7 +2890,7 @@ function skin(self, s)
 			position   = _tracklayout.position,
 			border     = _tracklayout.border,
 			x          = _tracklayout.x,
-			y          = TITLE_HEIGHT + 32 + 32 + 32 + 110,
+			y          = TITLE_HEIGHT + 32 + 32 + 32 + 70 + 10,
 			h          = 32,
 			npalbum = {
 				w          = screenWidth - _tracklayout.x - 10,
@@ -2844,15 +2908,15 @@ function skin(self, s)
 	
 		-- cover art
 		npartwork = {
-			w = 300,
+			w = maxArtwork,
 			position = LAYOUT_NONE,
-			x = 8,
-			y = TITLE_HEIGHT + 25,
+			x = 10,
+			y = TITLE_HEIGHT + 18,
 			align = "center",
-			h = 300,
+			h = maxArtwork,
 
 			artwork = {
-				w = 300,
+				w = maxArtwork,
 				align = "center",
 				padding = 0,
 				img = false,
@@ -2864,7 +2928,7 @@ function skin(self, s)
 		--transport controls
 		npcontrols = {
 			order = { 'rew', 'div1', 'play', 'div2', 'fwd', 'div3', 'repeatMode', 'div4', 'shuffleMode', 
-				 'div5', 'volDown', 'div6', 'volSlider', 'div7', 'volUp' },
+					'div5', 'volDown', 'div6', 'volSlider', 'div7', 'volUp' },
 			position = LAYOUT_SOUTH,
 			h = controlHeight,
 			w = WH_FILL,
@@ -2874,7 +2938,7 @@ function skin(self, s)
 			div2 = _uses(_transportControlBorder),
 			div3 = _uses(_transportControlBorder),
 			div4 = _uses(_transportControlBorder),
-			div5 = _uses(_transportVolumeBorder),
+			div5 = _uses(_transportControlBorder),
 			div6 = _uses(_transportControlBorder),
 			div7 = _uses(_transportControlBorder),
 
@@ -2915,11 +2979,9 @@ function skin(self, s)
 				img = _loadImage(self, "Icons/icon_toolbar_repeat_song_on.png"),
 			}),
 			volDown   = _uses(_transportControlButton, {
-				w = 34,
 				img = _loadImage(self, "Icons/icon_toolbar_vol_down.png"),
 			}),
 			volUp   = _uses(_transportControlButton, {
-				w = 34,
 				img = _loadImage(self, "Icons/icon_toolbar_vol_up.png"),
 			}),
 			thumbsUp   = _uses(_transportControlButton, {
@@ -2957,12 +3019,12 @@ function skin(self, s)
 		-- Progress bar
 		npprogress = {
 			position = LAYOUT_NONE,
-			x = 322,
-			y = TITLE_HEIGHT + 29 + 26 + 32 + 32 + 23 + 110,
-			padding = { 0, 10, 0, 0 },
+			x = _tracklayout.x + 2,
+			y = screenHeight - 160,
+			padding = { 0, 11, 0, 0 },
 			order = { "elapsed", "slider", "remain" },
 			elapsed = {
-				w = 55,
+				w = 80,
 				align = 'left',
 				padding = { 0, 0, 4, 20 },
 				font = _boldfont(18),
@@ -2970,7 +3032,7 @@ function skin(self, s)
 				sh = { 0x37, 0x37, 0x37 },
 			},
 			remain = {
-				w = 55,
+				w = 80,
 				align = 'right',
 				padding = { 4, 0, 0, 20 },
 				font = _boldfont(18),
@@ -2981,7 +3043,7 @@ function skin(self, s)
 				w = 70,
 				align = 'left',
 				padding = { 0, 0, 4, 20 },
-				font = _boldfont(18),
+				font = _boldfont(12),
 				fg = { 0xe7,0xe7, 0xe7 },
 				sh = { 0x37, 0x37, 0x37 },
 			},
@@ -2989,15 +3051,15 @@ function skin(self, s)
 				w = 70,
 				align = 'right',
 				padding = { 4, 0, 0, 20 },
-				font = _boldfont(18),
+				font = _boldfont(12),
 				fg = { 0xe7,0xe7, 0xe7 },
 				sh = { 0x37, 0x37, 0x37 },
 			},
 			npprogressB = {
-				w = 340,
+				w = screenWidth - _tracklayout.x - 2*80 - 25,
 				h = 50,
-				padding     = { 0, 0, 0, 0 },
-		                position = LAYOUT_SOUTH,
+				padding = { 0, 0, 0, 0 },
+			        position = LAYOUT_SOUTH,
 				horizontal = 1,
 				bgImg = _songProgressBackground,
 				img = _songProgressBar,
@@ -3008,8 +3070,8 @@ function skin(self, s)
 		npprogressNB = {
 			order = { "elapsed" },
 			position = LAYOUT_NONE,
-			x = 322,
-			y = TITLE_HEIGHT + 29 + 26 + 32 + 32 + 23 + 100,
+			x = _tracklayout.x + 2,
+			y = TITLE_HEIGHT + 29 + 26 + 32 + 32 + 23 + 84 + 40,
 			elapsed = {
 				w = WH_FILL,
 				align = "left",
@@ -3020,6 +3082,7 @@ function skin(self, s)
 		},
 
 	})
+	s.nowplaying.npprogressNB.elapsedSmall = s.nowplaying.npprogressNB.elapsed
 
 	-- sliders
 	s.nowplaying.npprogress.npprogressB_disabled = _uses(s.nowplaying.npprogress.npprogressB, {
@@ -3036,6 +3099,9 @@ function skin(self, s)
                 img = _volumeSliderBar,
                 pillImg = _volumeSliderPill,
 	}
+	s.npvolumeB_disabled = _uses(s.npvolumeB, {
+		pillImg = false,
+	})
 
 	-- pressed styles
 	s.nowplaying.title.pressed = _uses(s.nowplaying.title, {
@@ -3082,11 +3148,198 @@ function skin(self, s)
 		hate        = _uses(s.nowplaying.npcontrols.hate, { bgImg = keyMiddlePressed }),
 		fwdDisabled = _uses(s.nowplaying.npcontrols.fwdDisabled),
 		rewDisabled = _uses(s.nowplaying.npcontrols.rewDisabled),
+		shuffleDisabled = _uses(s.nowplaying.npcontrols.shuffleDisabled),
+		repeatDisabled = _uses(s.nowplaying.npcontrols.repeatDisabled),
 	}
+
+
+	local settings = appletManager:callService("getNowPlayingScreenButtons")
+	local buttonOrder = {}
+	local smallTbButtons
+
+	local i = 1
+	for k,v in ipairs(tbButtons) do
+		if settings[v] then
+			table.insert(buttonOrder, v)
+			
+			i = i + 1
+			
+			-- We can't comfortably accomodate more than five items
+			if (screenWidth <= 800 and i > 5) or (i > 2 and v == 'volSlider') then
+				smallTbButtons = true
+				if screenWidth <= 800 then break end
+			end
+			
+			table.insert(buttonOrder, 'div' .. tostring(i))
+		end
+	end
+	
+	local npX = screenHeight + 15
+
+	s.nowplaying_large_art = _uses(s.nowplaying, {
+		bgImg = blackBackground,
+		title = {
+			bgImg = false,
+			text = {
+				border = { screenHeight - 72, 0, 0, 0 },
+				padding = { 10, 12, 10, 15 },
+				font = _boldfont(24),
+			},
+			button_back = {
+				bgImg = false
+			}
+		},
+		nptitle = {
+			x = npX,
+			nptrack = {
+				w = screenWidth - npX - 10,
+				font = _boldfont(NP_ARTISTALBUM_FONT_SIZE * 0.9), 
+			},
+		},
+		npartistgroup = {
+			x = npX,
+			npartist = {
+				font = _font(NP_ARTISTALBUM_FONT_SIZE * 0.9),
+				w = screenWidth - npX - 10,
+			} 
+		},
+		npalbumgroup = {
+			x = npX,
+			npalbum = {
+				font = _font(NP_ARTISTALBUM_FONT_SIZE * 0.9),
+				w = screenWidth - npX - 10,
+			} 
+		},
+		npcontrols = {
+			order = buttonOrder,
+			x = screenHeight,
+		},
+		npprogress = {
+			x = npX,
+			elapsed = {
+				w = 60,
+			},
+			remain = {
+				w = 60,
+			},
+			npprogressB = {
+				w = screenWidth - npX - 2*60 - 15,
+			},
+		},
+		npprogressNB = {
+			x = npX,
+		},
+		npartwork = {
+			w = screenHeight,
+			x = 0,
+			y = 0,
+			align = "center",
+			h = WH_FILL,
+			artwork = {
+				w = WH_FILL,
+				h = WH_FILL,
+				align = "left",
+				padding = 0,
+				img = false,
+			},
+		},
+
+		npvisu = { hidden = 1 },
+	})
+
+	s.nowplaying_large_art.pressed = s.nowplaying_large_art
+
+	-- if we have more than four buttons, then make them smaller
+	if (smallTbButtons) then
+		local smallControlWidth = controlWidth - 14
+		s.nowplaying_large_art.npcontrols.rew = _uses(s.nowplaying.npcontrols.rew, { w = smallControlWidth })
+		s.nowplaying_large_art.npcontrols.play = _uses(s.nowplaying.npcontrols.play, { w = smallControlWidth })
+		s.nowplaying_large_art.npcontrols.pause = _uses(s.nowplaying.npcontrols.pause, { w = smallControlWidth })
+		s.nowplaying_large_art.npcontrols.fwd = _uses(s.nowplaying.npcontrols.fwd, { w = smallControlWidth })
+		
+		s.nowplaying_large_art.npcontrols.repeatMode = _uses(s.nowplaying.npcontrols.repeatMode, { w = smallControlWidth })
+		s.nowplaying_large_art.npcontrols.repeatOff = _uses(s.nowplaying.npcontrols.repeatOff, { w = smallControlWidth })
+		s.nowplaying_large_art.npcontrols.repeatSong = _uses(s.nowplaying.npcontrols.repeatSong, { w = smallControlWidth })
+		s.nowplaying_large_art.npcontrols.repeatPlaylist = _uses(s.nowplaying.npcontrols.repeatPlaylist, { w = smallControlWidth })
+
+		s.nowplaying_large_art.npcontrols.shuffleMode = _uses(s.nowplaying.npcontrols.shuffleMode, { w = smallControlWidth })
+		s.nowplaying_large_art.npcontrols.shuffleOff = _uses(s.nowplaying.npcontrols.shuffleOff, { w = smallControlWidth })
+		s.nowplaying_large_art.npcontrols.shuffleSong = _uses(s.nowplaying.npcontrols.shuffleSong, { w = smallControlWidth })
+		s.nowplaying_large_art.npcontrols.shuffleAlbum = _uses(s.nowplaying.npcontrols.shuffleAlbum, { w = smallControlWidth })
+		
+		s.nowplaying_large_art.npcontrols.volDown = _uses(s.nowplaying.npcontrols.volDown, { w = smallControlWidth })
+		s.nowplaying_large_art.npcontrols.volUp = _uses(s.nowplaying.npcontrols.volUp, { w = smallControlWidth })
+
+		s.nowplaying_large_art.npcontrols.thumbsUp = _uses(s.nowplaying.npcontrols.thumbsUp, { w = smallControlWidth })
+		s.nowplaying_large_art.npcontrols.thumbsDown = _uses(s.nowplaying.npcontrols.thumbsDown, { w = smallControlWidth })
+		s.nowplaying_large_art.npcontrols.thumbsUpDisabled = _uses(s.nowplaying.npcontrols.thumbsUpDisabled, { w = smallControlWidth })
+		s.nowplaying_large_art.npcontrols.thumbsDownDisabled = _uses(s.nowplaying.npcontrols.thumbsDownDisabled, { w = smallControlWidth })
+
+		s.nowplaying_large_art.npcontrols.love = _uses(s.nowplaying.npcontrols.love, { w = smallControlWidth })
+		s.nowplaying_large_art.npcontrols.hate = _uses(s.nowplaying.npcontrols.hate, { w = smallControlWidth })
+
+		s.nowplaying_large_art.npcontrols.fwdDisabled = _uses(s.nowplaying.npcontrols.fwdDisabled, { w = smallControlWidth })
+		s.nowplaying_large_art.npcontrols.rewDisabled = _uses(s.nowplaying.npcontrols.rewDisabled, { w = smallControlWidth })
+		s.nowplaying_large_art.npcontrols.shuffleDisabled = _uses(s.nowplaying.npcontrols.shuffleDisabled, { w = smallControlWidth })
+		s.nowplaying_large_art.npcontrols.repeatDisabled = _uses(s.nowplaying.npcontrols.repeatDisabled, { w = smallControlWidth })
+	else
+		s.nowplaying_large_art.npcontrols.div1 = _uses(_transportControlBorder, {
+			w = 6,
+			padding = { 2, 0, 2, 0 }
+		})
+
+		s.nowplaying_large_art.npcontrols.div2 = _uses(s.nowplaying_large_art.npcontrols.div1)
+		s.nowplaying_large_art.npcontrols.div3 = _uses(s.nowplaying_large_art.npcontrols.div1)
+		s.nowplaying_large_art.npcontrols.div4 = _uses(s.nowplaying_large_art.npcontrols.div1)
+		s.nowplaying_large_art.npcontrols.div5 = _uses(s.nowplaying_large_art.npcontrols.div1)
+		s.nowplaying_large_art.npcontrols.div6 = _uses(s.nowplaying_large_art.npcontrols.div1)
+	end
+
+	s.nowplaying_large_art.npcontrols.pressed = {
+		rew     = _uses(s.nowplaying_large_art.npcontrols.rew, { bgImg = keyMiddlePressed }),
+		play    = _uses(s.nowplaying_large_art.npcontrols.play, { bgImg = keyMiddlePressed }),
+		pause   = _uses(s.nowplaying_large_art.npcontrols.pause, { bgImg = keyMiddlePressed }),
+		fwd     = _uses(s.nowplaying_large_art.npcontrols.fwd, { bgImg = keyMiddlePressed }),
+		repeatPlaylist  = _uses(s.nowplaying_large_art.npcontrols.repeatPlaylist, { bgImg = keyMiddlePressed }),
+		repeatSong      = _uses(s.nowplaying_large_art.npcontrols.repeatSong, { bgImg = keyMiddlePressed }),
+		repeatOff       = _uses(s.nowplaying_large_art.npcontrols.repeatOff, { bgImg = keyMiddlePressed }),
+		repeatMode      = _uses(s.nowplaying_large_art.npcontrols.repeatMode, { bgImg = keyMiddlePressed }),
+		shuffleAlbum    = _uses(s.nowplaying_large_art.npcontrols.shuffleAlbum, { bgImg = keyMiddlePressed }),
+		shuffleSong     = _uses(s.nowplaying_large_art.npcontrols.shuffleSong, { bgImg = keyMiddlePressed }),
+		shuffleMode      = _uses(s.nowplaying_large_art.npcontrols.shuffleMode, { bgImg = keyMiddlePressed }),
+		shuffleOff      = _uses(s.nowplaying_large_art.npcontrols.shuffleOff, { bgImg = keyMiddlePressed }),
+		volDown = _uses(s.nowplaying_large_art.npcontrols.volDown, { bgImg = keyMiddlePressed }),
+		volUp   = _uses(s.nowplaying_large_art.npcontrols.volUp, { bgImg = keyMiddlePressed }),
+
+		thumbsUp    = _uses(s.nowplaying_large_art.npcontrols.thumbsUp, { bgImg = keyMiddlePressed }),
+		thumbsDown  = _uses(s.nowplaying_large_art.npcontrols.thumbsDown, { bgImg = keyMiddlePressed }),
+		thumbsUpDisabled    = s.nowplaying_large_art.npcontrols.thumbsUpDisabled,
+		thumbsDownDisabled  = s.nowplaying_large_art.npcontrols.thumbsDownDisabled,
+		love        = _uses(s.nowplaying_large_art.npcontrols.love, { bgImg = keyMiddlePressed }),
+		hate        = _uses(s.nowplaying_large_art.npcontrols.hate, { bgImg = keyMiddlePressed }),
+		fwdDisabled = _uses(s.nowplaying_large_art.npcontrols.fwdDisabled),
+		rewDisabled = _uses(s.nowplaying_large_art.npcontrols.rewDisabled),
+		shuffleDisabled = _uses(s.nowplaying_large_art.npcontrols.shuffleDisabled),
+		repeatDisabled = _uses(s.nowplaying_large_art.npcontrols.repeatDisabled),
+	}
+
+	s.nowplaying_large_art.nptitle.pressed = _uses(s.nowplaying_large_art.nptitle)
+	s.nowplaying_large_art.npalbumgroup.pressed = _uses(s.nowplaying_large_art.npalbumgroup)
+	s.nowplaying_large_art.npartistgroup.pressed = _uses(s.nowplaying_large_art.npartistgroup)
+	s.nowplaying_large_art.title.pressed = _uses(s.nowplaying_large_art.title, {
+		text = {
+			fg = { 0xB3, 0xB3, 0xB3 },
+			sh = { },
+			bgImg = pressedTitlebarButtonBox,
+		}
+	})
+	s.nowplaying_large_art.npprogress.npprogressB_disabled = _uses(s.nowplaying_large_art.npprogress.npprogressB, {
+		img = _songProgressBarDisabled,
+	})
 	
 	s.nowplaying_art_only = _uses(s.nowplaying, {
 
-		bgImg = nocturneWallpaper,
+		bgImg            = blackBackground,
 		title            = { hidden = 1 },
 		nptitle          = { hidden = 1 },
 		npcontrols       = { hidden = 1 },
@@ -3095,15 +3348,15 @@ function skin(self, s)
 		npartistgroup    = { hidden = 1 },
 		npalbumgroup     = { hidden = 1 },
 		npartwork = {
-			w = 600,
-			position = LAYOUT_CENTER,
+			w = screenHeight,
+			position = LAYOUT_NONE,
+			x = (screenWidth - screenHeight) / 2,
+			y = 0,
 			align = "center",
-			h = 500,
-			border = 0,
-			padding = 5,
+			h = screenHeight,
 			artwork = {
-				w = 600,
-				border = 0,
+				w = screenHeight,
+				align = "center",
 				padding = 0,
 				img = false,
 			},
@@ -3116,58 +3369,82 @@ function skin(self, s)
 
 	s.nowplaying_text_only = _uses(s.nowplaying, {
 		nptitle          = { 
-                        x          = 10,
+                        x          = 40,
+                        y          = TITLE_HEIGHT + 50,
                         nptrack =  {
-                                w          = screenWidth - 20,
+                                w          = screenWidth - 140,
                         },
 		},
 		npartistgroup    = { 
-                        x          = 10,
+                        x          = 40,
+                        y          = TITLE_HEIGHT + 50 + 65,
                         npartist =  {
-                                w          = screenWidth - 20,
+                                w          = screenWidth - 65,
                         },
 		},
 		npalbumgroup     = { 
-                        x          = 10,
+                        x          = 40,
+                        y          = TITLE_HEIGHT + 50 + 60 + 55,
                         npalbum =  {
-                                w          = screenWidth - 20,
+                                w          = screenWidth - 65,
                         },
 		},
 		npartwork = { hidden = 1 },
 
 		npvisu = { hidden = 1 },
-
+		
 		npprogress = {
-			x = 10,
-			y = 325,
-			w = screenWidth - 100,
+			position = LAYOUT_NONE,
+			x = 50,
+			y = screenHeight - 160,
+			padding = { 0, 10, 0, 0 },
 			elapsed = {
-				w = 50,
+				w = 80,
+				align = 'left',
+				padding = { 0, 0, 4, 20 },
+				font = _boldfont(18),
+				fg = { 0xe7,0xe7, 0xe7 },
+				sh = { 0x37, 0x37, 0x37 },
 			},
 			remain = {
-				w = 50,
+				w = 80,
+				align = 'right',
+				padding = { 4, 0, 0, 20 },
+				font = _boldfont(18),
+				fg = { 0xe7,0xe7, 0xe7 },
+				sh = { 0x37, 0x37, 0x37 },
 			},
 			elapsedSmall = {
-				w = 50,
+				w = 70,
+				align = 'left',
+				padding = { 0, 0, 4, 20 },
+				font = _boldfont(12),
+				fg = { 0xe7,0xe7, 0xe7 },
+				sh = { 0x37, 0x37, 0x37 },
 			},
 			remainSmall = {
-				w = 50,
+				w = 70,
+				align = 'right',
+				padding = { 4, 0, 0, 20 },
+				font = _boldfont(12),
+				fg = { 0xe7,0xe7, 0xe7 },
+				sh = { 0x37, 0x37, 0x37 },
 			},
 			npprogressB = {
-				w = WH_FILL,
-				h = 25,
-				padding     = { 0, 0, 0, 18 },
+				w = screenWidth - 2*50 - 2*80,
+				h = 50,
+				padding = { 0, 0, 0, 0 },
 		                position = LAYOUT_SOUTH,
 				horizontal = 1,
 				bgImg = _songProgressBackground,
 				img = _songProgressBar,
 			},
-
 		},
 		npprogressNB = {
-			x = 10,
-			y = 325,
-			padding = { 0, 0, 0, 5 },
+			x = 720,
+			y = TITLE_HEIGHT + 55,
+			padding = { 0, 0, 0, 0 },
+			position = LAYOUT_NONE,
 		},
 	})
 	s.nowplaying_text_only.npprogress.npprogressB_disabled = _uses(s.nowplaying_text_only.npprogress.npprogressB, {
@@ -3181,7 +3458,7 @@ function skin(self, s)
 	-- Visualizer: Container with titlebar, progressbar and controls.
 	--  The space between title and controls is used for the visualizer.
 	s.nowplaying_visualizer_common = _uses(s.nowplaying, {
-		bgImg = nocturneWallpaper,
+		bgImg = blackBackground,
 
 		npartistgroup = { hidden = 1 },
 		npalbumgroup = { hidden = 1 },
@@ -3196,18 +3473,18 @@ function skin(self, s)
 			},
 		}),
 
-		-- Drawn over regular test between buttons
+		-- Drawn over regular text between buttons
 		nptitle = { 
 			zOrder = 2,
 			position = LAYOUT_NONE,
 			x = 80,
 			y = 0,
-			w = screenWidth - 100,
 			h = TITLE_HEIGHT,
 			border = { 0, 0 ,0, 0 },
-			padding = { 20, 17, 5, 5 },
+			padding = { 20, 14, 5, 5 },
 			nptrack = {
 				align = "center",
+				w = screenWidth - 196,
 			},
 		},
 
@@ -3218,11 +3495,11 @@ function skin(self, s)
 			x = 0,
 			y = TITLE_HEIGHT,
 			w = screenWidth,
-			h = 38,
+			h = 60,
 			bgImg = titleBox,
 			align = "center",
 			fg = { 0xb3, 0xb3, 0xb3 },
-			padding = { 50, 0, 50, 5 },
+			padding = { 100, 0, 100, 5 },
 			font = _font(NP_ARTISTALBUM_FONT_SIZE),
 		},
 
@@ -3230,23 +3507,23 @@ function skin(self, s)
 			zOrder = 3,
 			position = LAYOUT_NONE,
 			x = 10,
-			y = TITLE_HEIGHT,
-			h = 38,
-			w = screenWidth - 20,
+			y = TITLE_HEIGHT + 20,
+			h = 60,
+			w = screenWidth - 30,
 			elapsed = {
-				w = 50,
+				w = 80,
 			},
 			remain = {
-				w = 50,
+				w = 80,
 			},
 			elapsedSmall = {
-				w = 50,
+				w = 80,
 			},
 			remainSmall = {
-				w = 50,
+				w = 80,
 			},
 			npprogressB = {
-				h = 38,
+				h = 29,
 				w = WH_FILL,
 				zOrder = 10,
 				padding = { 0, 19, 0, 15 },
@@ -3258,10 +3535,9 @@ function skin(self, s)
 		},
 
 		npprogressNB = {
-			x = screenWidth - 40,
-			y = TITLE_HEIGHT,
+			x = screenWidth - 80,
+			y = TITLE_HEIGHT + 22,
 			h = 38,
-			padding = { 0, 15, 0, 0 },
 		},
 	})
 	s.nowplaying_visualizer_common.npprogress.npprogressB_disabled = s.nowplaying_visualizer_common.npprogress.npprogressB
@@ -3271,10 +3547,10 @@ function skin(self, s)
 		npvisu = {
 			hidden = 0,
 			position = LAYOUT_NONE,
-			x = 40,
-			y = 175,
-			w = 690,
-			h = 400 - (2 * TITLE_HEIGHT + 4 + 45),
+			x = 0,
+			y = 2 * TITLE_HEIGHT + 4,
+			w = 800,
+			h = 446 - (2 * TITLE_HEIGHT + 4 + 45),
 			border = { 0, 0, 0, 0 },
 			padding = { 0, 0, 0, 0 },
 
@@ -3282,15 +3558,15 @@ function skin(self, s)
 				position = LAYOUT_NONE,
 				x = 0,
 				y = 2 * TITLE_HEIGHT + 4,
-				w = 690,
-				h = 400 - (2 * TITLE_HEIGHT + 4 + 45),
+				w = 800,
+				h = 446 - (2 * TITLE_HEIGHT + 4 + 45),
 				border = { 0, 0, 0, 0 },
 				padding = { 0, 0, 0, 0 },
 
 				bg = { 0x00, 0x00, 0x00, 0x00 },
 
 				barColor = { 0x14, 0xbc, 0xbc, 0xff },
-				capColor = { 0xb4, 0x56, 0xa1, 0xff },
+				capColor = { 0x74, 0x56, 0xa1, 0xff },
 
 				isMono = 0,				-- 0 / 1
 
@@ -3320,21 +3596,21 @@ function skin(self, s)
 			hidden = 0,
 			position = LAYOUT_NONE,
 			x = 0,
-			y = TITLE_HEIGHT + 38,
-			w = 672,
-			h = 272,
+			y = TITLE_HEIGHT + 63,
+			w = 800,
+			h = 413 - (TITLE_HEIGHT + 38 + 38),
 			border = { 0, 0, 0, 0 },
 			padding = { 0, 0, 0, 0 },
 
 			vumeter_analog = {
 				position = LAYOUT_NONE,
 				x = 0,
-				y = TITLE_HEIGHT + 38,
-				w = 672,
-				h = 272,
+				y = TITLE_HEIGHT + 63,
+				w = 800,
+				h = 413 - (TITLE_HEIGHT + 38 + 38),
 				border = { 0, 0, 0, 0 },
 				padding = { 0, 0, 0, 0 },
-				bgImg = _loadImage(self, "UNOFFICIAL/VUMeter/vu_analog_25seq_b.png"),
+				bgImg = _loadImage(self, "UNOFFICIAL/VUMeter/vu_analog_25seq_w.png"),
 			}
 		},
 	})
@@ -3442,8 +3718,161 @@ function skin(self, s)
         }
 
 
+	-- inheritable properties for child skins
+	s.CONSTANTS = {
+		skinSuffix = skinSuffix,
+		fiveItemBox = fiveItemBox,
+		fiveItemSelectionBox = fiveItemSelectionBox,
+		fiveItemPressedBox = fiveItemPressedBox,
+		threeItemSelectionBox = threeItemSelectionBox,
+		threeItemPressedBox = threeItemPressedBox,
+		smallSpinny = smallSpinny,
+		largeSpinny = largeSpinny,
+		addArrow = addArrow,
+		
+		CHECK_PADDING = CHECK_PADDING,
+		MENU_ITEM_ICON_PADDING = MENU_ITEM_ICON_PADDING,
+		TEXT_COLOR = TEXT_COLOR,
+		TEXT_SH_COLOR = TEXT_SH_COLOR,
+		TITLE_HEIGHT = TITLE_HEIGHT,
+		ALBUMMENU_FONT_SIZE = ALBUMMENU_FONT_SIZE,
+		ITEM_ICON_ALIGN = ITEM_ICON_ALIGN,
+		FIVE_ITEM_HEIGHT = FIVE_ITEM_HEIGHT,
+		NP_ARTISTALBUM_FONT_SIZE = NP_ARTISTALBUM_FONT_SIZE,
+	}
+
+	return s
+
 end
 
+
+function npButtonSelectorShow(self)
+	local window = Window("text_list", self:string('NOW_PLAYING_BUTTONS') )
+	local menu = SimpleMenu("menu")
+	local settings = self:getSettings()
+
+	for i, v in ipairs(tbButtons) do
+		menu:addItem( {
+			text = self:string("NOW_PLAYING_BUTTON_" .. string.upper(v)),
+			style = 'item_choice',
+			check = Checkbox("checkbox", 
+				function(object, isSelected)
+					appletManager:callService("setNowPlayingScreenButtons", v, isSelected)
+					jiveMain:reloadSkin()
+				end,
+			settings[v]),
+		} )
+	end
+
+	window:addWidget(menu)
+	window:show()
+end
+
+function setNowPlayingScreenButtons(self, button, isSelected)
+	local settings = self:getSettings()
+	settings[button] = isSelected
+	self:storeSettings()
+end
+
+function getNowPlayingScreenButtons(self)
+	return self:getSettings()
+end
+
+function buttonSettingsMenuItem(self)
+	return {
+		id = "npButtonSelector",
+		iconStyle = "hm_advancedSettings",
+		node = "screenSettingsNowPlaying",
+		text = self:string("NOW_PLAYING_BUTTONS"),
+		sound = "WINDOWSHOW",
+		callback = function(event, menuItem)
+			return self:npButtonSelectorShow() 
+		end
+	}
+end
+
+
+function skin1024x600(self, s, reload, useDefaultSize)
+	self:skin(s, reload, useDefaultSize, 1024, 600)
+
+	-- put a space between volume controls and other buttons	
+	s.nowplaying.npcontrols.div5.w = 230
+	s.nowplaying.npcontrols.div5.img = false
+	
+	return s
+end
+
+function skin1280x800(self, s, reload, useDefaultSize, w, h)
+	self:skin(s, reload, useDefaultSize, w or 1280, h or 800)
+	
+	local c = s.CONSTANTS
+
+	s.nowplaying.nptitle.nptrack.font = _boldfont(c.NP_ARTISTALBUM_FONT_SIZE * 1.2) 
+	s.nowplaying.npartistgroup.npartist.font = _font(c.NP_ARTISTALBUM_FONT_SIZE * 1.2) 
+	s.nowplaying.npalbumgroup.npalbum.font = _font(c.NP_ARTISTALBUM_FONT_SIZE * 1.2) 
+
+	s.nowplaying_large_art.nptitle.nptrack.font = _boldfont(c.NP_ARTISTALBUM_FONT_SIZE * 1.2) 
+	s.nowplaying_large_art.npartistgroup.npartist.font = _font(c.NP_ARTISTALBUM_FONT_SIZE * 1.2) 
+	s.nowplaying_large_art.npalbumgroup.npalbum.font = _font(c.NP_ARTISTALBUM_FONT_SIZE * 1.2) 
+
+	-- put a space between volume controls and other buttons	
+	s.nowplaying.npcontrols.div5.w = 490
+	s.nowplaying.npcontrols.div5.img = false
+
+	return s
+end
+
+function skin1366x768(self, s, reload, useDefaultSize)
+	self:skin(s, reload, useDefaultSize, 1366, 768)
+
+	-- put a space between volume controls and other buttons	
+	s.nowplaying.npcontrols.div5.w = 568
+	s.nowplaying.npcontrols.div5.img = false
+
+	return s
+end
+
+function skinCustom(self, s, reload, useDefaultSize)
+	local screen_width = tonumber(os.getenv('JL_SCREEN_WIDTH'))
+	local screen_height = tonumber(os.getenv('JL_SCREEN_HEIGHT'))
+
+	self:skin(s, reload, useDefaultSize, screen_width, screen_height)
+	
+	-- now let's tweak a few elements for some well known resolutions
+	-- put a space between volume controls and other buttons etc.	
+	local c = s.CONSTANTS
+	
+	local _largerFont = function()
+		-- we can afford slightly larger fonts in the Now Playing screen
+		s.nowplaying.nptitle.nptrack.font = _boldfont(c.NP_ARTISTALBUM_FONT_SIZE * 1.2) 
+		s.nowplaying.npartistgroup.npartist.font = _font(c.NP_ARTISTALBUM_FONT_SIZE * 1.2) 
+		s.nowplaying.npalbumgroup.npalbum.font = _font(c.NP_ARTISTALBUM_FONT_SIZE * 1.2) 
+	
+		s.nowplaying_large_art.nptitle.nptrack.font = _boldfont(c.NP_ARTISTALBUM_FONT_SIZE * 1.2) 
+		s.nowplaying_large_art.npartistgroup.npartist.font = _font(c.NP_ARTISTALBUM_FONT_SIZE * 1.2) 
+		s.nowplaying_large_art.npalbumgroup.npalbum.font = _font(c.NP_ARTISTALBUM_FONT_SIZE * 1.2) 
+	end
+
+	if screen_width == 1024 and screen_height == 600 then
+		s.nowplaying.npcontrols.div5.w = 230
+		s.nowplaying.npcontrols.div5.img = false
+	elseif screen_width == 1280 and screen_height == 800 then
+		s.nowplaying.npcontrols.div5.w = 490
+		s.nowplaying.npcontrols.div5.img = false
+		_largerFont()
+	elseif screen_width == 1366 and screen_height == 768 then
+		s.nowplaying.npcontrols.div5.w = 568
+		s.nowplaying.npcontrols.div5.img = false
+		_largerFont()
+	end
+
+	return s
+end
+
+function free(self)
+	jiveMain:removeItemById("npButtonSelector")
+	return true
+end
 
 --[[
 

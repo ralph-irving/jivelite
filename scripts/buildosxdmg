@@ -1,0 +1,107 @@
+#!/bin/bash
+
+if [ ! -d pkg ]; then
+	echo "Need to create pkg folder first!"
+	exit 1
+fi
+
+make -f Makefile.x86_64 clean
+
+GITVERSION=`git rev-parse --short HEAD`
+
+export CFLAGS="-arch x86_64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk -mmacosx-version-min=10.7"
+export LDFLAGS="-arch x86_64 -Wl,-syslibroot,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk -mmacosx-version-min=10.7 -L/usr/lib"
+
+make -f Makefile.x86_64
+
+cd pkg
+
+if [ -d opt ]; then
+	sudo rm -rf opt
+fi
+
+mkdir -p opt/jivelite/{bin,lib,share}
+cp -p ../bin/jivelite opt/jivelite/bin
+
+cp -pr ../lib/lua opt/jivelite/lib
+cp -pr ../share/lua opt/jivelite/share
+cp -pr ../share/jive opt/jivelite/share
+
+rm opt/jivelite/share/jive/applets/JogglerSkin/images/UNOFFICIAL/VUMeter/vu_analog_25seq_[ac-vx-z].png
+rm opt/jivelite/share/jive/applets/WQVGAsmallSkin/images/UNOFFICIAL/VUMeter/vu_analog_25seq_[ac-vx-z].png
+
+cd opt
+if [ -d ../../Jivelite.app ]; then
+	rm -rf ../../Jivelite.app
+fi
+mv jivelite ../../Jivelite.app
+cd ..
+rmdir opt
+cd ..
+
+BUNDLE_NAME=Jivelite.app
+APP_NAME=Jivelite
+BUNDLE_CONTENTS=$BUNDLE_NAME/Contents
+PLIST_FILE=$BUNDLE_CONTENTS/Info.plist
+VERSION_TEXT=0.1.0r`git rev-list --count HEAD`
+ICNS_NAME=icon.icns
+DMG_TEMP_DIR=temp-Jivelite_image
+DMG_IMAGE_DIR=Jivelite_image
+DMG_IMAGE_DIR_MOUNTPOINT=$DMG_IMAGE_DIR-$VERSION_TEXT
+DMG_TMP_IMAGE_FILENAME=$DMG_TEMP_DIR.dmg
+DMG_IMAGE_FILENAME=Jivelite-x86_64-$VERSION_TEXT.dmg
+JIVE_STATIC_PROGRAM=Jivelite
+
+# Make app
+
+mkdir -p ${BUNDLE_CONTENTS}/MacOS
+mv ${BUNDLE_NAME}/bin/jivelite ${BUNDLE_CONTENTS}/MacOS/${JIVE_STATIC_PROGRAM}
+rmdir ${BUNDLE_NAME}/bin
+mv ${BUNDLE_NAME}/lib ${BUNDLE_CONTENTS}/
+mv ${BUNDLE_NAME}/share ${BUNDLE_CONTENTS}/
+mkdir -p ${BUNDLE_CONTENTS}/Resources
+echo "APPLJIVE" > ${BUNDLE_CONTENTS}/PkgInfo
+cp src/rsc/${ICNS_NAME} ${BUNDLE_CONTENTS}/Resources
+echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" > ${PLIST_FILE}
+echo "<!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">" >> ${PLIST_FILE}
+echo "<plist version=\"1.0\">" >> ${PLIST_FILE}
+echo "<dict>" >> ${PLIST_FILE}
+echo "  <key>CFBundleDevelopmentRegion</key>" >> ${PLIST_FILE}
+echo "  <string>English</string>" >> ${PLIST_FILE}
+echo "  <key>CFBundleExecutable</key>" >> ${PLIST_FILE}
+echo "  <string>${JIVE_STATIC_PROGRAM}</string>" >> ${PLIST_FILE}
+echo "  <key>CFBundleDisplayName</key>" >> ${PLIST_FILE}
+echo "  <string>${APP_NAME}</string>" >> ${PLIST_FILE}
+echo "  <key>CFBundleIdentifier</key>" >> ${PLIST_FILE}
+echo "  <string>com.logitech.jivelite</string>" >> ${PLIST_FILE}
+echo "  <key>CFBundleIconFile</key>" >> ${PLIST_FILE}
+echo "  <string>${ICNS_NAME}</string>" >> ${PLIST_FILE}
+echo "  <key>CFBundleInfoDictionaryVersion</key>" >> ${PLIST_FILE}
+echo "  <string>6.0</string>" >> ${PLIST_FILE}
+echo "  <key>CFBundlePackageType</key>" >> ${PLIST_FILE}
+echo "  <string>APPL</string>" >> ${PLIST_FILE}
+echo "  <key>CFBundleSignature</key>" >> ${PLIST_FILE}
+echo "  <string>JIVE</string>" >> ${PLIST_FILE}
+echo "  <key>CFBundleShortVersionString</key>" >> ${PLIST_FILE}
+echo "  <string>${VERSION_TEXT}</string>" >> ${PLIST_FILE}
+echo "  <key>CFBundleVersion</key>" >> ${PLIST_FILE}
+echo "  <string>${VERSION_TEXT}</string>" >> ${PLIST_FILE}
+echo "  <key>CFBundleGetInfoString</key>" >> ${PLIST_FILE}
+echo "  <string>${APP_NAME} ${VERSION_TEXT}, Copyright `date '+%Y'` Ralph Irving</string>" >> ${PLIST_FILE}
+echo "</dict>" >> ${PLIST_FILE}
+echo "</plist>" >> ${PLIST_FILE}
+
+# Make dmg
+
+mkdir -p ${DMG_TEMP_DIR}
+hdiutil detach "/Volumes/${DMG_IMAGE_DIR_MOUNTPOINT}"
+umount -f /Volumes/${DMG_IMAGE_DIR}*
+hdiutil create -fs HFS+ -layout SPUD -volname "${DMG_IMAGE_DIR_MOUNTPOINT}" -size 100m "${DMG_TEMP_DIR}"
+hdiutil mount "${DMG_TMP_IMAGE_FILENAME}"
+/Developer/Tools/CpMac -r ${BUNDLE_NAME} /Volumes/${DMG_IMAGE_DIR_MOUNTPOINT}
+hdiutil detach "/Volumes/${DMG_IMAGE_DIR_MOUNTPOINT}"
+hdiutil convert -ov -format UDZO "${DMG_TMP_IMAGE_FILENAME}" -o "${DMG_IMAGE_FILENAME}"
+rm -rf ${DMG_IMAGE_DIR}
+rm -rf ${DMG_TEMP_DIR}
+rm ${DMG_TMP_IMAGE_FILENAME}
+

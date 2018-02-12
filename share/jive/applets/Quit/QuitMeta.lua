@@ -21,6 +21,8 @@ local oo            = require("loop.simple")
 
 local AppletMeta    = require("jive.AppletMeta")
 
+local Framework     = require("jive.ui.Framework")
+
 local appletManager = appletManager
 local jiveMain      = jiveMain
 
@@ -45,7 +47,7 @@ function configureApplet(self)
 	-- don't load on Squeeze Player control instance
 	local load = true
 	if string.match(arg[0], "jivelite%-sp") then
-		load = true
+		load = false
 	end
 	for _, a in ipairs(arg) do
 		if a == "--sp-applets" then
@@ -64,7 +66,10 @@ function configureApplet(self)
 				-- disconnect from Player/SqueezeCenter
 				appletManager:callService("disconnectPlayer")
 
-				return (bit.bor(EVENT_CONSUME, EVENT_QUIT))
+				Framework:quit()
+
+				-- return (bit.bor(EVENT_CONSUME, EVENT_QUIT))
+				return
 			end,
 			weight = 1010,
 		})

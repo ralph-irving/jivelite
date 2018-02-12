@@ -1,0 +1,110 @@
+#
+# The two letter codes are defined by ISO 639-1
+# http://en.wikipedia.org/wiki/List_of_ISO_639_codes
+
+WQVGA_LARGE_SKIN
+# SLT: WQVGA refers to the "wide quarter VGA" resolution of the display
+	CS	WQVGA skin velkého písma
+	DA	WQVGA-tema med store bogstaver
+	DE	WQVGA-Skin – Große Schrift
+	EN	WQVGA Large Print Skin
+	ES	Máscara con letra grande WQVGA
+	FI	Laaja WQVGA-tulostuspinta
+	FR	Habillage à grands caractères WQVGA
+	IT	Skin WQVGA a caratteri grandi
+	NL	WQVGA Large Print-skin
+	NO	WQVGA-skall med stor skrift
+	PL	Karnacja WQVGA (duży format)
+	RU	Крупная обложка, WQVGA
+	SV	WQVGA-skal med stor text
+
+WQVGA_LARGE_SKIN_FAB4
+	CS	Skin s velkým textem
+	DA	Tema med stor tekst
+	DE	Skin: große Schrift
+	EN	Large Text Skin
+	ES	Máscara con texto grande
+	FI	Suuren tekstin olemus
+	FR	Habillage à grands caractères
+	IT	Skin testo grande
+	NL	Skin Grote tekst
+	NO	Skall for stor tekst
+	PL	Karnacja Duży tekst
+	RU	Обложка с крупным текстом
+	SV	Skal med stor text
+
+ART_AND_TEXT
+	CS	Obal alba a text
+	DA	Albumcover og tekst
+	DE	Plattenhülle und Text
+	EN	Artwork and Text
+	ES	Carátula de álbum y texto
+	FI	Kansikuva ja teksti
+	FR	Pochette et texte
+	IT	Copertine e testo
+	NL	Hoesafbeelding en tekst
+	NO	Albumomslag og tekst
+	PL	Pliki graficzne i tekst
+	RU	Обложка и текст
+	SV	Albumomslag och text
+
+TEXT_ONLY
+	CS	Pouze text
+	DA	Kun tekst
+	DE	Nur Text
+	EN	Text only
+	ES	Sólo texto
+	FI	Vain teksti
+	FR	Texte uniquement
+	IT	Solo testo
+	NL	Alleen tekst
+	NO	Bare tekst
+	PL	Tylko tekst
+	RU	Только текст
+	SV	Endast text
+
+ART_ONLY
+	CS	Pouze obal alba
+	DA	Kun albumcover
+	DE	Nur Plattenhülle
+	EN	Artwork only
+	ES	Sólo carátula
+	FI	Vain kansikuva
+	FR	Pochette uniquement
+	IT	Solo copertine
+	NL	Alleen hoesafbeelding
+	NO	Bare albumomslag
+	PL	Tylko pliki graficzne
+	RU	Только обложка
+	SV	Endast albumomslag
+
+SPECTRUM_ANALYZER
+	CS	Spektrální analyzátor
+	DA	Spektrumanalyse
+	DE	Oszillograph
+	EN	Spectrum Analyzer
+	ES	Analizador de espectro
+	FI	Spektrianalysaattori
+	FR	Analyseur de spectre
+	IT	Analizzatore di spettro
+	NL	Spectrumanalyser
+	NO	Spektralanalyse
+	PL	Analizator widma
+	RU	Анализатор спектра
+	SV	Spektrumanalys
+
+ANALOG_VU_METER
+	CS	Analogový měřič hlasitosti
+	DA	Analogt VU-meter
+	DE	Analoger VU-Meter
+	EN	Analog VU Meter
+	ES	Medidor VU analógico
+	FI	Analoginen VU-mittari
+	FR	VUmètre analogique
+	IT	Indicatore VU analogico
+	NL	Analoge VU-meter
+	NO	Analog VU-måler
+	PL	Analogowy wskaźnik wysterowania
+	RU	Аналоговый волюметр
+	SV	Analog VU-mätare
+

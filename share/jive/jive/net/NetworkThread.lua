@@ -398,6 +398,9 @@ is called when the hardware address is known, or with an error.
 =cut
 --]]
 function arp(self, host, sink)
+
+    log:debug("NetworkThread:arp() enabled:", self:isArpEnabled())
+
     if not self:isArpEnabled() then
         return sink(nil, "Arp disabled")
     end
@@ -408,6 +411,8 @@ function arp(self, host, sink)
 	if string.match(os.getenv("OS") or "", "Windows") then
 			cmd = "arp -a " .. host
 	end
+
+	log:debug("NetworkThread:arp() cmd:", cmd)
 
 	local proc = Process(self, cmd)
 	proc:read(function(chunk, err)
@@ -436,6 +441,7 @@ function arp(self, host, sink)
 							end
 					end
 
+					log:debug("NetworkThread:arp() mac:", mac)
 					sink(mac)
 			end
 	end)

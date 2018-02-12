@@ -366,6 +366,8 @@ function setupShowSelectPlayer(self, setupNext, windowStyle)
 		_updateServerItem(self, server)
 	end
 
+--[[
+We cannot configure a Receiver from jivelite - mh
 	-- 08/29/09 - fm
 	-- Only allow Controller to setup not yet setup players (i.e. Receiver)
 	-- If other squeezeplay based devices need to be able to setup players
@@ -387,6 +389,7 @@ function setupShowSelectPlayer(self, setupNext, windowStyle)
 			weight = 10,
 		})
 	end
+--]]
 
 	window:addWidget(menu)
 

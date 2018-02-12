@@ -17,8 +17,11 @@
 
 
 /* target frame rate 14 fps (originally) - may be tuned per platform, should be /2 */
-/* updated to the max effective rate of scrolling on a fab4 */
-#define JIVE_FRAME_RATE 30
+/* max effective rate of scrolling on a fab4 is 22 */
+int jive_frame_rate(void);
+
+#define JIVE_FRAME_RATE jive_frame_rate()
+#define JIVE_FRAME_RATE_DEFAULT 30
 
 /* print profile information for blit's */
 #undef JIVE_PROFILE_BLIT
@@ -320,6 +323,7 @@ extern int (*jive_sdlfilter_pump)(const SDL_Event *event);
 void jive_send_key_event(JiveEventType keyType, JiveKey keyCode, Uint32 ticks);
 void jive_send_gesture_event(JiveGesture code);
 void jive_send_char_press_event(Uint16 unicode);
+void jive_send_quit(void);
 
 
 /* platform functions */

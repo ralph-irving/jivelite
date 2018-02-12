@@ -515,6 +515,7 @@ local function _menuSink(self, isCurrentServer, server)
 					homeMenuText = v.homeMenuText,
 					weight = v.weight,
 					window = v.window,
+					windowStyle = v.windowStyle,
 					sound = "WINDOWSHOW",
 					screensavers = v.screensavers
 			}
@@ -621,8 +622,8 @@ local function _menuSink(self, isCurrentServer, server)
 			elseif item.id == "music_services" or item.id == "_music_services" then
 				--ignore, handled with app store
 
-			elseif item.id == "settingsAlarm" then
-				--ignore as we can't render time input at present
+			elseif item.id == "settingsAlarm" and jiveMain:getSkinParamOrNil('disableTimeInput') then
+				-- ignore as we can't render time input at present
 				-- FIXME - remove when time input can be rendered in HD skins
 
 			elseif item.node == "music_services" or item.node == "_music_services" then

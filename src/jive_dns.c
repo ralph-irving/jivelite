@@ -161,11 +161,14 @@ static void read_pushstring(lua_State *L, socket_t fd) {
 	}
 	else {
 		buf = malloc(len);
+		if ( buf == NULL )
+			lua_pushnil(L);
+		else {
+			recv(fd, buf, len, 0);
+			lua_pushlstring(L, buf, len);
 
-		recv(fd, buf, len, 0);
-		lua_pushlstring(L, buf, len);
-
-		free(buf);
+			free(buf);
+		}
 	}
 }
 
@@ -206,6 +209,9 @@ static int dns_resolver_thread(void *p) {
 		}
 
 		buf = malloc(len + 1);
+		if ( buf == NULL )
+			return 0;
+
 		if (recv(fd, buf, len, 0) < 0) {
 			/* broken pipe */
 			free(buf);
@@ -298,6 +304,9 @@ static int jiveL_dns_open(lua_State *L) {
 	}
 
 	u->t = SDL_CreateThread(dns_resolver_thread, (void *)(long)(u->fd[1]));
+	if (u->t == NULL) {
+		return luaL_error(L, "create dns_resolver_thread failed");
+	}
 
 	luaL_getmetatable(L, "jive.dns");
 	lua_setmetatable(L, -2);

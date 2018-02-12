@@ -24,6 +24,17 @@ charActionMappings.press = {
 	["f"]  = "go_favorites",
 	["s"]  = "sleep",
 	["q"]  = "power",
+	["k"]  = "power_on",
+	["i"]  = "power_off",
+	["t"]  = "go_current_track_info",
+	["n"]  = "go_home_or_now_playing",
+	["m"]  = "create_mix",
+	["g"]  = "stop",
+	["d"]  = "add_end",
+	["y"]  = "play_next",
+	["e"]  = "scanner_rew",
+	["r"]  = "scanner_fwd",
+	["u"]  = "mute",
 
 -- original
 	["/"]   = "go_search",

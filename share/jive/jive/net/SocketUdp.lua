@@ -68,7 +68,14 @@ oo.class(_M, Socket)
 local _createUdpSocket = socket.protect(function(localport)
 	--log:debug("_createUdpSocket()")
 	
-	local sock = socket.try(socket.udp())
+	-- Make sure that we end up with an IPv4 UDP.
+	local sock
+	if socket.udp4~=nil then
+		sock = socket.try(socket.udp4())
+	else
+		sock = socket.try(socket.udp())
+	end
+
 	-- create a try function that closes 'c' on error
     local try = socket.newtry(function() sock:close() end)
     -- do everything reassured c will be closed

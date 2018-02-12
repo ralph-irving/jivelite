@@ -42,9 +42,10 @@ char *platform_get_mac_address() {
     struct ifreq *ifr, *ifend;
     struct ifreq ifreq;
     struct ifreq ifs[4];
-	u8_t mac[6];
+    char *utmac;
+    u8_t mac[6];
 
-	mac[0] = mac[1] = mac[2] = mac[3] = mac[4] = mac[5] = 0;
+    mac[0] = mac[1] = mac[2] = mac[3] = mac[4] = mac[5] = 0;
 
     int s = socket(AF_INET, SOCK_DGRAM, 0);
  
@@ -68,9 +69,18 @@ char *platform_get_mac_address() {
 		}
 	}
 
-	close(s);
+    close(s);
 
-	char *macaddr = malloc(18);
+    char *macaddr = malloc(18);
+
+    utmac = getenv("UTMAC");
+    if (utmac)
+    {
+        if ( strlen(utmac) == 17 )
+        {
+            sscanf(utmac,"%2hhx:%2hhx:%2hhx:%2hhx:%2hhx:%2hhx", &mac[0],&mac[1],&mac[2],&mac[3],&mac[4],&mac[5]);
+        }
+    }
 
     sprintf(macaddr, "%02x:%02x:%02x:%02x:%02x:%02x", mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
 
@@ -198,6 +208,8 @@ static void quit_hook(lua_State *L, lua_Debug *ar) {
 	log_sp = LOG_CATEGORY_GET("jivelite");
 
 	LOG_WARN(log_sp, "%s", lua_tostring(L, -1));
+
+	jive_send_quit();
 }
 
 
@@ -230,6 +242,20 @@ static void segv_handler(int signum) {
 }
 
 
+static void term_handler(int  signum) {
+	struct sigaction sa;
+
+	sa.sa_handler = SIG_DFL;
+	sigemptyset(&sa.sa_mask);
+	sa.sa_flags = 0;
+	sigaction(signum, &sa, NULL);
+
+	LOG_ERROR(log_sp, "SIGTERM jivelite %s", JIVE_VERSION);
+
+	// Try and exit gracefully...
+	jive_send_quit();
+}
+
 void platform_init(lua_State *L) {
 	struct sigaction sa;
 
@@ -245,6 +271,10 @@ void platform_init(lua_State *L) {
 
 	sa.sa_handler = segv_handler;
 	sigaction(SIGSEGV, &sa, NULL);
+
+	sa.sa_handler = term_handler;
+	sigaction(SIGTERM, &sa, NULL);
+
 }
 
 #endif

@@ -86,10 +86,6 @@ function param(self)
 		-- 2 is for a two line track, artist+album (e.g., SBradio, SBcontroller)
 		NOWPLAYING_TRACKINFO_LINES = 3,
 		POPUP_THUMB_SIZE = 100,
-		radialClock = {
-			hourTickPath     = 'applets/HDSkin/images/Clocks/Radial/radial_ticks_hr_on.png',
-			minuteTickPath   = 'applets/HDSkin/images/Clocks/Radial/radial_ticks_min_on.png',
-		},
 		nowPlayingScreenStyles = { 
 			-- every skin needs to start off with a nowplaying style
 			{
@@ -104,6 +100,7 @@ function param(self)
 				text = self:string("SPECTRUM_ANALYZER"),
 			},
 		},
+		disableTimeInput = true,
 	}
 end
 
@@ -1884,8 +1881,8 @@ function skin(self, s)
 	s.toast_popup_icon = _uses(s.toast_popup, {
 		w = 190,
 		h = 178,
-		x = 145,
-		y = 72,
+		x = (screenWidth - 190) / 2,
+		y = (screenHeight - 170) / 2,
 		position = LAYOUT_NONE,
 		group = {
 			order = { 'icon' },
@@ -2417,9 +2414,9 @@ function skin(self, s)
 
 	local _popupicon = {
 		padding = 0,
-		border = { 22, 22, 0, 0 },
+		border = { 22, 18, 0, 0 },
 		h = WH_FILL,
-		w = 146,
+		w = 166,
 	}
 
 	local no_artwork_iconG = _loadImage(self, "IconsResized/icon_album_noart" .. skinSuffix ):resize(THUMB_SIZE_G, THUMB_SIZE_G)

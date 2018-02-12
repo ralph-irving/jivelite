@@ -110,6 +110,7 @@ local function _getIcon(self, item, icon, remote)
 	end
 
 	if iconId then
+		log:debug(":_getIcon ",iconId,",", icon,",", ARTWORK_SIZE )
 		-- Fetch an image from SlimServer
 		server:fetchArtwork(iconId, icon, ARTWORK_SIZE) 
 	elseif item and item["params"] and item["params"]["track_id"] then
@@ -148,6 +149,12 @@ function getNPStyles(self)
 	else
 		local settings = self:getSettings()
 		local playerId = self.player:getId()
+		
+		-- restore selected style from settings
+		if not self.selectedStyle and settings.selectedStyle then
+			self.selectedStyle = settings.selectedStyle or 'nowplaying'
+		end
+		
 		for i, v in pairs(npSkinStyles) do
 			if settings and settings.views and settings.views[v.style] == false then
 				v.enabled = false
@@ -170,6 +177,23 @@ function getNPStyles(self)
 				end
 			end
 		end
+
+		-- verify whether the selected style is available at all
+		if self.selectedStyle then
+			local selectedStyleAvailable = false
+			
+			for i, v in pairs (auditedNPStyles) do
+				if (v.enabled and v.style == self.selectedStyle) then
+					selectedStyleAvailable = true
+					break
+				end
+			end 
+			
+			if not selectedStyleAvailable then
+				self.selectedStyle = false
+			end
+		end
+
 		-- corner case: auditedNPStyles is an empty set or nothing in it is enabled.
 		-- That may happen if the only configured styles are visualizers and this player is non local
 		-- or it may happen if the skin has changed and the list of styles is non-overlapping to the configured settings from the old skin
@@ -200,6 +224,8 @@ function getNPStyles(self)
 			self.selectedStyle = auditedNPStyles[1] and auditedNPStyles[1].style
 		end
 		
+		settings.selectedStyle = self.selectedStyle
+		self:storeSettings()
 	end
 
 	if self.window and self.window:getStyle() then
@@ -209,8 +235,9 @@ function getNPStyles(self)
 		end
 	end
 
-	-- for debug
-	--debug.dump(auditedNPStyles)
+	if log:isDebug() then
+		debug.dump(auditedNPStyles)
+	end
 
 	return auditedNPStyles
 end
@@ -569,7 +596,7 @@ function _nowPlayingTrackTransition(oldWindow, newWindow)
 	oldWindow:draw(srf, LAYER_ALL)
 
 	return function(widget, surface)
-		local x = (frames  - 1 ) * scale
+		local x = tonumber(math.floor(((frames  - 1 ) * scale) + .5))
 
 		newWindow:draw(surface, LAYER_ALL)
 		srf:blitAlpha(surface, 0, 0, x)
@@ -654,8 +681,15 @@ end
 
 
 function notify_skinSelected(self)
+	log:debug("notify_skinSelected")
 	-- update menu
 	notify_playerCurrent(self, self.player)
+	-- update NP style info.
+	self.nowPlayingScreenStyles = self:getNPStyles()
+	if self.window and self.player then
+		-- redisplay with no extra transition
+		self:replaceNPWindow(true)
+	end
 end
 
 
@@ -663,9 +697,14 @@ function _titleText(self, token)
 	local y = self.player and self.player:getPlaylistSize()
 	if token == 'play' and y > 1 then
 		local x = self.player:getPlaylistCurrentIndex()
-		if x >= 1 and y > 1 then
+		if x >= 1 and y > 1 and not self:getSelectedStyleParam('suppressXofY') then
 			local xofy = tostring(self:string('SCREENSAVER_NOWPLAYING_OF', x, y))
-			title = tostring(self:string(modeTokens[token])) ..  ' • ' .. xofy
+			
+			if self:getSelectedStyleParam('titleXofYonly') then
+				title = xofy
+			else
+				title = tostring(self:string(modeTokens[token])) ..  ' • ' .. xofy
+			end
 		else
 			title = tostring(self:string(modeTokens[token]))
 		end
@@ -1327,12 +1366,16 @@ function toggleNPScreenStyle(self)
 		-- no need to replace this window with the same style
 		log:debug('the style of self.window matches self.selectedStyle. No need to do anything')
 	else
+		local settings = self:getSettings()
+		settings.selectedStyle = self.selectedStyle
+		self:storeSettings()
+
 		self:replaceNPWindow()
 	end
 end
 
 
-function replaceNPWindow(self)
+function replaceNPWindow(self,noTrans)
 	log:debug("REPLACING NP WINDOW")
 	local oldWindow = self.window
 
@@ -1343,9 +1386,7 @@ function replaceNPWindow(self)
 		self:_updateShuffle(self.player:getPlayerStatus()['playlist shuffle'])
 	end
 	self:_refreshRightButton()
-	self.window:replace(oldWindow, Window.transitionFadeIn)
-
-
+	self.window:replace(oldWindow, noTrans and Window.transitionNone or Window.transitionFadeIn)
 end
 
 
@@ -1798,8 +1839,10 @@ function showNowPlaying(self, transition, direct)
 	self.nowPlayingScreenStyles = self:getNPStyles()
 
 	if not self.selectedStyle then
-		self.selectedStyle = 'nowplaying'
+		local settings = self:getSettings()
+		self.selectedStyle = settings.selectedStyle or 'nowplaying'
 	end
+	
 	local npWindow = self.window
 
 	local lineInActive = appletManager:callService("isLineInActive")
@@ -1962,5 +2005,4 @@ function free(self)
 
 	return true
 end
-
 

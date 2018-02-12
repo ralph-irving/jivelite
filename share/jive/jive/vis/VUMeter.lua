@@ -88,7 +88,7 @@ function draw(self, surface)
 
 	local sampleAcc = vis:vumeter()
 
-	local volume = self.player:getVolume()
+	-- local volume = self.player:getVolume()
 
 	_drawMeter(self, surface, sampleAcc, 1, self.x1, self.y, self.w, self.h)
 	_drawMeter(self, surface, sampleAcc, 2, self.x2, self.y, self.w, self.h)

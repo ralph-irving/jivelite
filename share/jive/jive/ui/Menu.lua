@@ -536,15 +536,15 @@ local function _eventHandler(self, event)
 				--when paging up, top item becomes the bottom item
 				if self.selected and self.selected > 1  then
 					self:setSelectedIndex(self.topItem, true )
-					self:scrollBy(-1 * self.numWidgets + 2 , true, false, false)
+					self:scrollBy(-1 * (self.numWidgets - 2), true, false, false)
 				end
 				return EVENT_CONSUME
 
 			elseif action == "page_down" then
-				--when paging down, bottom item becomes the bottom item
+				--when paging down, bottom item becomes the top item
 				if not self.selected or self.selected < self.listSize then
-					self:setSelectedIndex(self.topItem, true )
-					self:scrollBy(self.numWidgets + 2, true, false, false)
+					self:setSelectedIndex(self.topItem + self.numWidgets - 1, true )
+					self:scrollBy(self.numWidgets - 2, true, false, false)
 				end
 				return EVENT_CONSUME
 
@@ -940,12 +940,13 @@ local function _eventHandler(self, event)
 				local flickSpeed, flickDirection = self.flick:getFlickSpeed(self.itemHeight, event:getTicks())
 
 				if flickSpeed then
-					if self.itemsPerLine and self.itemsPerLine > 1 then
-						-- FIXME: Flick doesn't work right with grid view (jumpy)
-						log:info("Not invoking flick in grid view mode.")
-					else
+					-- XXX - though flicking is a bit jumpy, it's still better than not to have it
+--					if self.itemsPerLine and self.itemsPerLine > 1 then
+--						-- FIXME: Flick doesn't work right with grid view (jumpy)
+--						log:info("Not invoking flick in grid view mode.")
+--					else
 						self.flick:flick(flickSpeed, flickDirection)
-					end
+--					end
 				elseif self.snapToItemEnabled and (self.pixelOffsetY and self.pixelOffsetY ~= 0) then
 					self:snapToNearest()					
 				end

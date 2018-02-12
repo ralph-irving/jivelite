@@ -1,0 +1,50 @@
+#
+# The two letter codes are defined by ISO 639-1
+# http://en.wikipedia.org/wiki/List_of_ISO_639_codes
+
+QVGALANDSCAPE_SKIN
+# SLT: QVGA refers to the "quarter VGA" resolution of the display
+	CS	QVGA skin krajiny
+	DA	QVGA-tema, liggende
+	DE	QVGA-Querformat-Skin
+	EN	QVGA Landscape Skin
+	ES	Máscara horizontal QVGA
+	FI	QVGA-vaakaolemus
+	FR	Habillage paysage QVGA
+	IT	Skin QVGA orizzontale
+	NL	QVGA Landscape-skin
+	NO	QVGA liggende skall
+	PL	Karnacja pozioma QVGA
+	RU	Обложка: QVGA, альбомная ориентация
+	SV	QVGA-skal i liggande format
+
+SMALL_ART
+	CS	Malý obal alba
+	DA	Små albumcovere
+	DE	Kleine Plattenhüllen
+	EN	Small Artwork
+	ES	Carátula de álbum pequeña
+	FI	Pieni kansikuva
+	FR	Petites pochettes
+	IT	Copertina piccola
+	NL	Kleine hoesafbeeldingen
+	NO	Små albumomslag
+	PL	Mała okładka
+	RU	Маленькая обложка
+	SV	Små albumomslag
+
+LARGE_ART
+	CS	Velký obal alba
+	DA	Store albumcovere
+	DE	Große Plattenhüllen
+	EN	Large Artwork
+	ES	Carátula de álbum grande
+	FI	Suuri kuva
+	FR	Grandes pochettes
+	IT	Copertina grande
+	NL	Grote hoesafbeeldingen
+	NO	Stort albumomslag
+	PL	Duża okładka
+	RU	Большая обложка
+	SV	Stora albumomslag
+

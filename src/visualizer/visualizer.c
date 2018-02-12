@@ -18,7 +18,7 @@ static struct vis_t {
 	s16_t buffer[VIS_BUF_SIZE];
 } * vis_mmap = NULL;
 
-static running = false; // cached version of running so now playing status can be read without lock
+static bool running = false; // cached version of running so now playing status can be read without lock
 static int vis_fd = -1;
 static char *mac_address = NULL;
 
@@ -44,7 +44,7 @@ static void _reopen(void) {
 	vis_fd = shm_open(shm_path, O_RDWR, 0666);
 	if (vis_fd > 0) {
 		vis_mmap = mmap(NULL, sizeof(struct vis_t), PROT_READ | PROT_WRITE, MAP_SHARED, vis_fd, 0);
-		if (vis_mmap == -1) {
+		if (vis_mmap == MAP_FAILED) {
 			close(vis_fd);
 			vis_fd = -1;
 			vis_mmap = NULL;

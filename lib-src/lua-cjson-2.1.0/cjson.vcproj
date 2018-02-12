@@ -38,7 +38,7 @@
 			/>
 			<Tool
 				Name="VCMIDLTool"
-				AdditionalIncludeDirectories="C:\cygwin\home\duane.paddock\source\jivelite\include\luajit-2.0;"
+				AdditionalIncludeDirectories="C:\Users\paddockd\source\jivelite\include\luajit-2.0;"
 				MkTypLibCompatible="false"
 				TargetEnvironment="1"
 				GenerateStublessProxies="true"
@@ -53,7 +53,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				InlineFunctionExpansion="0"
-				AdditionalIncludeDirectories="C:\cygwin\home\duane.paddock\source\jivelite\include\luajit-2.0;"
+				AdditionalIncludeDirectories="C:\Users\paddockd\source\jivelite\include\luajit-2.0;"
 				PreprocessorDefinitions="WIN32;_WINDOWS;_DEBUG;USE_INTERNAL_FPCONV;USE_INTERNAL_ISINF;DISABLE_INVALID_NUMBERS;CMAKE_INTDIR=\&quot;Debug\&quot;;cjson_EXPORTS"
 				ExceptionHandling="0"
 				BasicRuntimeChecks="3"
@@ -70,7 +70,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				PreprocessorDefinitions="WIN32;_WINDOWS;_DEBUG;USE_INTERNAL_FPCONV;USE_INTERNAL_ISINF;DISABLE_INVALID_NUMBERS;CMAKE_INTDIR=\&quot;Debug\&quot;;cjson_EXPORTS"
-				AdditionalIncludeDirectories="C:\cygwin\home\duane.paddock\source\jivelite\include\luajit-2.0;"
+				AdditionalIncludeDirectories="C:\Users\paddockd\source\jivelite\include\luajit-2.0;"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -79,14 +79,14 @@
 				Name="VCLinkerTool"
 				LinkLibraryDependencies="false"
 				AdditionalOptions=" /machine:X86 /debug"
-				AdditionalDependencies="$(NOINHERIT) kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib C:\cygwin\home\duane.paddock\source\jivelite\lib\lua51.lib "
-				OutputFile="C:\cygwin\home\duane.paddock\source\jivelite\lib-src\lua-cjson-2.1.0\Debug\cjson.dll"
+				AdditionalDependencies="$(NOINHERIT) kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib C:\Users\paddockd\source\jivelite\lib\lua51.lib "
+				OutputFile="C:\Users\paddockd\source\jivelite\lib-src\lua-cjson-2.1.0\Debug\cjson.dll"
 				Version="0.0"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories=""
 				GenerateDebugInformation="true"
-				ProgramDatabaseFile="C:\cygwin\home\duane.paddock\source\jivelite\lib-src\lua-cjson-2.1.0\Debug\cjson.pdb"
-				ImportLibrary="C:\cygwin\home\duane.paddock\source\jivelite\lib-src\lua-cjson-2.1.0\Debug\cjson.lib"
+				ProgramDatabaseFile="C:\Users\paddockd\source\jivelite\lib-src\lua-cjson-2.1.0\Debug\cjson.pdb"
+				ImportLibrary="C:\Users\paddockd\source\jivelite\lib-src\lua-cjson-2.1.0\Debug\cjson.lib"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -134,7 +134,7 @@
 			/>
 			<Tool
 				Name="VCMIDLTool"
-				AdditionalIncludeDirectories="C:\cygwin\home\duane.paddock\source\jivelite\include\luajit-2.0;"
+				AdditionalIncludeDirectories="C:\Users\paddockd\source\jivelite\include\luajit-2.0;"
 				MkTypLibCompatible="false"
 				TargetEnvironment="1"
 				GenerateStublessProxies="true"
@@ -149,7 +149,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				InlineFunctionExpansion="2"
-				AdditionalIncludeDirectories="C:\cygwin\home\duane.paddock\source\jivelite\include\luajit-2.0;"
+				AdditionalIncludeDirectories="C:\Users\paddockd\source\jivelite\include\luajit-2.0;"
 				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;USE_INTERNAL_FPCONV;DISABLE_INVALID_NUMBERS;CMAKE_INTDIR=\&quot;Release\&quot;;cjson_EXPORTS"
 				ExceptionHandling="0"
 				RuntimeLibrary="2"
@@ -164,7 +164,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;USE_INTERNAL_FPCONV;USE_INTERNAL_ISINF;DISABLE_INVALID_NUMBERS;CMAKE_INTDIR=\&quot;Release\&quot;;cjson_EXPORTS"
-				AdditionalIncludeDirectories="C:\cygwin\home\duane.paddock\source\jivelite\include\luajit-2.0;"
+				AdditionalIncludeDirectories="C:\Users\paddockd\source\jivelite\include\luajit-2.0;"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -173,13 +173,13 @@
 				Name="VCLinkerTool"
 				LinkLibraryDependencies="false"
 				AdditionalOptions=" /machine:X86"
-				AdditionalDependencies="$(NOINHERIT) kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib C:\cygwin\home\duane.paddock\source\jivelite\lib\lua51.lib "
+				AdditionalDependencies="$(NOINHERIT) kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib C:\Users\paddockd\source\jivelite\lib\lua51.lib "
 				OutputFile="$(OutDir)\cjson.dll"
 				Version="0.0"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories=""
 				ModuleDefinitionFile="cjson.def"
-				ProgramDatabaseFile="C:\cygwin\home\duane.paddock\source\jivelite\lib-src\lua-cjson-2.1.0\Release\cjson.pdb"
+				ProgramDatabaseFile="C:\Users\paddockd\source\jivelite\lib-src\lua-cjson-2.1.0\Release\cjson.pdb"
 				ImportLibrary="$(OutDir)\cjson.lib"
 			/>
 			<Tool
@@ -227,7 +227,7 @@
 			/>
 			<Tool
 				Name="VCMIDLTool"
-				AdditionalIncludeDirectories="C:\cygwin\home\duane.paddock\source\jivelite\include\luajit-2.0;"
+				AdditionalIncludeDirectories="C:\Users\paddockd\source\jivelite\include\luajit-2.0;"
 				MkTypLibCompatible="false"
 				TargetEnvironment="1"
 				GenerateStublessProxies="true"
@@ -242,7 +242,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="1"
 				InlineFunctionExpansion="1"
-				AdditionalIncludeDirectories="C:\cygwin\home\duane.paddock\source\jivelite\include\luajit-2.0;"
+				AdditionalIncludeDirectories="C:\Users\paddockd\source\jivelite\include\luajit-2.0;"
 				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;USE_INTERNAL_FPCONV;USE_INTERNAL_ISINF;DISABLE_INVALID_NUMBERS;CMAKE_INTDIR=\&quot;MinSizeRel\&quot;;cjson_EXPORTS"
 				ExceptionHandling="0"
 				RuntimeLibrary="2"
@@ -257,7 +257,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;USE_INTERNAL_FPCONV;USE_INTERNAL_ISINF;DISABLE_INVALID_NUMBERS;CMAKE_INTDIR=\&quot;MinSizeRel\&quot;;cjson_EXPORTS"
-				AdditionalIncludeDirectories="C:\cygwin\home\duane.paddock\source\jivelite\include\luajit-2.0;"
+				AdditionalIncludeDirectories="C:\Users\paddockd\source\jivelite\include\luajit-2.0;"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -266,13 +266,13 @@
 				Name="VCLinkerTool"
 				LinkLibraryDependencies="false"
 				AdditionalOptions=" /machine:X86"
-				AdditionalDependencies="$(NOINHERIT) kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib C:\cygwin\home\duane.paddock\source\jivelite\lib\lua51.lib "
-				OutputFile="C:\cygwin\home\duane.paddock\source\jivelite\lib-src\lua-cjson-2.1.0\MinSizeRel\cjson.dll"
+				AdditionalDependencies="$(NOINHERIT) kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib C:\Users\paddockd\source\jivelite\lib\lua51.lib "
+				OutputFile="C:\Users\paddockd\source\jivelite\lib-src\lua-cjson-2.1.0\MinSizeRel\cjson.dll"
 				Version="0.0"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories=""
-				ProgramDatabaseFile="C:\cygwin\home\duane.paddock\source\jivelite\lib-src\lua-cjson-2.1.0\MinSizeRel\cjson.pdb"
-				ImportLibrary="C:\cygwin\home\duane.paddock\source\jivelite\lib-src\lua-cjson-2.1.0\MinSizeRel\cjson.lib"
+				ProgramDatabaseFile="C:\Users\paddockd\source\jivelite\lib-src\lua-cjson-2.1.0\MinSizeRel\cjson.pdb"
+				ImportLibrary="C:\Users\paddockd\source\jivelite\lib-src\lua-cjson-2.1.0\MinSizeRel\cjson.lib"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -319,7 +319,7 @@
 			/>
 			<Tool
 				Name="VCMIDLTool"
-				AdditionalIncludeDirectories="C:\cygwin\home\duane.paddock\source\jivelite\include\luajit-2.0;"
+				AdditionalIncludeDirectories="C:\Users\paddockd\source\jivelite\include\luajit-2.0;"
 				MkTypLibCompatible="false"
 				TargetEnvironment="1"
 				GenerateStublessProxies="true"
@@ -334,7 +334,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				AdditionalIncludeDirectories="C:\cygwin\home\duane.paddock\source\jivelite\include\luajit-2.0;"
+				AdditionalIncludeDirectories="C:\Users\paddockd\source\jivelite\include\luajit-2.0;"
 				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;USE_INTERNAL_FPCONV;USE_INTERNAL_ISINF;DISABLE_INVALID_NUMBERS;CMAKE_INTDIR=\&quot;RelWithDebInfo\&quot;;cjson_EXPORTS"
 				ExceptionHandling="0"
 				RuntimeLibrary="2"
@@ -350,7 +350,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;USE_INTERNAL_FPCONV;USE_INTERNAL_ISINF;DISABLE_INVALID_NUMBERS;CMAKE_INTDIR=\&quot;RelWithDebInfo\&quot;;cjson_EXPORTS"
-				AdditionalIncludeDirectories="C:\cygwin\home\duane.paddock\source\jivelite\include\luajit-2.0;"
+				AdditionalIncludeDirectories="C:\Users\paddockd\source\jivelite\include\luajit-2.0;"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -359,14 +359,14 @@
 				Name="VCLinkerTool"
 				LinkLibraryDependencies="false"
 				AdditionalOptions=" /machine:X86 /debug"
-				AdditionalDependencies="$(NOINHERIT) kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib C:\cygwin\home\duane.paddock\source\jivelite\lib\lua51.lib "
-				OutputFile="C:\cygwin\home\duane.paddock\source\jivelite\lib-src\lua-cjson-2.1.0\RelWithDebInfo\cjson.dll"
+				AdditionalDependencies="$(NOINHERIT) kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib C:\Users\paddockd\source\jivelite\lib\lua51.lib "
+				OutputFile="C:\Users\paddockd\source\jivelite\lib-src\lua-cjson-2.1.0\RelWithDebInfo\cjson.dll"
 				Version="0.0"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories=""
 				GenerateDebugInformation="true"
-				ProgramDatabaseFile="C:\cygwin\home\duane.paddock\source\jivelite\lib-src\lua-cjson-2.1.0\RelWithDebInfo\cjson.pdb"
-				ImportLibrary="C:\cygwin\home\duane.paddock\source\jivelite\lib-src\lua-cjson-2.1.0\RelWithDebInfo\cjson.lib"
+				ProgramDatabaseFile="C:\Users\paddockd\source\jivelite\lib-src\lua-cjson-2.1.0\RelWithDebInfo\cjson.pdb"
+				ImportLibrary="C:\Users\paddockd\source\jivelite\lib-src\lua-cjson-2.1.0\RelWithDebInfo\cjson.lib"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -398,19 +398,19 @@
 			Name="Source Files"
 			>
 			<File
-				RelativePath="C:\cygwin\home\duane.paddock\source\jivelite\lib-src\lua-cjson-2.1.0\dtoa.c"
+				RelativePath="C:\Users\paddockd\source\jivelite\lib-src\lua-cjson-2.1.0\dtoa.c"
 				>
 			</File>
 			<File
-				RelativePath="C:\cygwin\home\duane.paddock\source\jivelite\lib-src\lua-cjson-2.1.0\g_fmt.c"
+				RelativePath="C:\Users\paddockd\source\jivelite\lib-src\lua-cjson-2.1.0\g_fmt.c"
 				>
 			</File>
 			<File
-				RelativePath="C:\cygwin\home\duane.paddock\source\jivelite\lib-src\lua-cjson-2.1.0\lua_cjson.c"
+				RelativePath="C:\Users\paddockd\source\jivelite\lib-src\lua-cjson-2.1.0\lua_cjson.c"
 				>
 			</File>
 			<File
-				RelativePath="C:\cygwin\home\duane.paddock\source\jivelite\lib-src\lua-cjson-2.1.0\strbuf.c"
+				RelativePath="C:\Users\paddockd\source\jivelite\lib-src\lua-cjson-2.1.0\strbuf.c"
 				>
 			</File>
 		</Filter>

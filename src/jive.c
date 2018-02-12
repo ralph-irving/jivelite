@@ -38,8 +38,10 @@ extern int luaopen_visualizer(lua_State *L);
 ** Try relative path to binary first then fixed path to system install
 */
 #define LUA_DEFAULT_REL_PATH "../share/jive"
-#ifdef __sun
+#if defined(__sun) || defined(OPTJIVELITE)
 #define LUA_DEFAULT_FIX_PATH "/opt/jivelite/share/jive"
+#elif defined(__APPLE__)
+#define LUA_DEFAULT_FIX_PATH "/Applications/Jivelite.app/Contents/share/jive"
 #else
 #define LUA_DEFAULT_FIX_PATH "/usr/share/jive"
 #endif

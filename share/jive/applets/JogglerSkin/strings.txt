@@ -5,6 +5,22 @@
 JOGGLER_SKIN
 	EN	Joggler Skin
 
+JOGGLER_SKIN_1024_600
+	EN	Touch Skin (1024x600)
+
+JOGGLER_SKIN_1280_800
+	EN	Touch Skin (1280x800)
+
+JOGGLER_SKIN_1366_768
+	EN	Touch Skin (1366x768)
+	
+JOGGLER_SKIN_CUSTOM
+	EN	Touch Skin
+
+NOW_PLAYING_BUTTONS
+	DE	Schaltflächen für die "Grosse Plattenhülle und Text" Ansicht
+	EN	Buttons for "Large Artwork and Text" view
+
 WQVGA_SMALL_SKIN
 # SLT: WQVGA refers to the "wide quarter VGA" resolution of the display
 	CS	WQVGA skin malého písma
@@ -60,7 +76,7 @@ ENTER
 	FI	Valmis
 	FR	Terminé
 	IT	Fatto
-	NL	Gereed
+	NL	Klaar
 	NO	Fullført
 	PL	Gotowe
 	RU	Готово
@@ -111,8 +127,112 @@ MORE_HELP
 	RU	Дополнительно
 	SV	Mer
 
+NOW_PLAYING_BUTTON_REW
+	DE	Vorheriger Titel
+	EN	Previous Track
+
+NOW_PLAYING_BUTTON_PLAY
+	DE	Wiedergabe starten/pausieren
+	EN	Play/Pause
+
+NOW_PLAYING_BUTTON_FWD
+	DE	Nächster Titel
+	EN	Next Track
+
+NOW_PLAYING_BUTTON_REPEATMODE
+	CS	Opakovat
+	DA	Gentag
+	DE	Wiederholen
+	EN	Repeat
+	ES	Repetir
+	FI	Toista
+	FR	Répéter
+	IT	Ripetizione
+	NL	Herhalen
+	NO	Gjenta
+	PL	Powtórz
+	PT	Repetir
+	SV	Repetera
+
+NOW_PLAYING_BUTTON_SHUFFLEMODE
+	CS	Náhodně
+	DA	Bland
+	DE	Zufall
+	EN	Shuffle
+	ES	Orden aleatorio
+	FI	Sekoitus
+	FR	Mélanger
+	IT	Riproduzione casuale
+	NL	Willekeurig
+	NO	Tilfeldig rekkefølge
+	PL	Losowo
+	PT	Aleatório
+	SV	Blanda
+
+NOW_PLAYING_BUTTON_VOLDOWN
+	CS	Ztlumit
+	DA	Lavere
+	DE	Leiser
+	EN	Softer
+	ES	Más bajo
+	FI	Pehmeämpi
+	FR	Moins fort
+	IT	Abbassa il volume
+	NL	Zachter
+	NO	Lavere
+	PL	Ciszej
+	PT	Reduzir
+	SV	Lägre
+
+NOW_PLAYING_BUTTON_VOLSLIDER
+	CS	Hlasitost
+	DA	Lydstyrke
+	DE	Lautstärke
+	EN	Volume
+	ES	Volumen
+	FI	Äänenvoimakkuus
+	FR	Volume
+	IT	Volume
+	NL	Volume
+	NO	Volum
+	PL	Głośność
+	PT	Volume
+	SV	Volym
+
+NOW_PLAYING_BUTTON_VOLUP
+	CS	Zesílit
+	DA	Højere
+	DE	Lauter
+	EN	Louder
+	ES	Más alto
+	FI	Kovempaa
+	FR	Plus fort
+	IT	Alza il volume
+	NL	Harder
+	NO	Høyere
+	PL	Głośniej
+	PT	Aumentar
+	SV	Högre
+
+LARGE_ART_AND_TEXT
+	DE	Grosse Plattenhülle und Text
+	EN	Large Artwork and Text
+	FR	Grande Pochette et texte
+	
 ART_AND_TEXT
+	CS	Obal alba a text
+	DA	Albumcover og tekst
+	DE	Plattenhülle und Text
 	EN	Artwork and Text
+	ES	Carátula de álbum y texto
+	FI	Kansikuva ja teksti
+	FR	Pochette et texte
+	IT	Copertine e testo
+	NL	Hoesafbeelding en tekst
+	NO	Albumomslag og tekst
+	PL	Pliki graficzne i tekst
+	RU	Обложка и текст
+	SV	Albumomslag och text
 
 TEXT_ONLY
 	CS	Pouze text
@@ -130,7 +250,19 @@ TEXT_ONLY
 	SV	Endast text
 
 ART_ONLY
+	CS	Pouze obal alba
+	DA	Kun albumcover
+	DE	Nur Plattenhülle
 	EN	Artwork only
+	ES	Sólo carátula
+	FI	Vain kansikuva
+	FR	Pochette uniquement
+	IT	Solo copertine
+	NL	Alleen hoesafbeelding
+	NO	Bare albumomslag
+	PL	Tylko pliki graficzne
+	RU	Только обложка
+	SV	Endast albumomslag
 
 SPECTRUM_ANALYZER
 	CS	Spektrální analyzátor

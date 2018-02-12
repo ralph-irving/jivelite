@@ -57,6 +57,8 @@ local log                     = require("jive.utils.log").logger("jivelite.ui")
 local max                     = math.max
 local min                     = math.min
 
+local tonumber                = tonumber
+
 local EVENT_ALL               = jive.ui.EVENT_ALL
 local EVENT_ALL_INPUT         = jive.ui.EVENT_ALL_INPUT
 local ACTION                  = jive.ui.ACTION
@@ -1568,7 +1570,7 @@ function _transitionFadeIn(oldWindow, newWindow, duration)
 	local transitionDuration = duration
 	local remaining = transitionDuration
 	local screenWidth = Framework:getScreenSize()
-	local scale = (transitionDuration * transitionDuration * transitionDuration) / screenWidth
+	-- local scale = (transitionDuration * transitionDuration * transitionDuration) / screenWidth
 	local animationCount = 0
 
 	local scale = 255 / transitionDuration
@@ -1587,7 +1589,7 @@ function _transitionFadeIn(oldWindow, newWindow, duration)
 				--getting start time on first loop avoids initial delay that can occur
 				startT = Framework:getTicks()
 			end
-			local x = remaining * scale
+			local x = tonumber(math.floor((remaining * scale) + .5))
 
 			--support background surfaces, used for instance by ContextMenuWindow
 			if newWindow._bg then
@@ -1864,6 +1866,8 @@ function _event(self, event)
 		r = self:_eventHandler(event)
 	else
 		--handle mouse locally, no need for C optimization on mouse platforms
+		local topWidget
+				
 		r = self:iterate(
 			function(widget)
 				if self._mouseEventFocusWidget == widget or (not self._mouseEventFocusWidget and widget:mouseInside(event)) then
@@ -1871,7 +1875,8 @@ function _event(self, event)
 					if rClosure ~= EVENT_UNUSED then
 						--Consumer of MOUSE_DOWN that is in mouse bounds will be given mouse event focus
 						if event:getType() == EVENT_MOUSE_DOWN then
-							self:setMouseEventFocusWidget(widget)
+							-- iteration is in ascending zOrder - we only need the top most (last) item
+							topWidget = widget
 						end
 						return rClosure
 					end
@@ -1880,6 +1885,10 @@ function _event(self, event)
 			end
 		)
 
+		if (topWidget) then
+			self:setMouseEventFocusWidget(topWidget)
+		end
+		
 		if event:getType() == EVENT_MOUSE_UP then
 			self:setMouseEventFocusWidget(nil)
 		end

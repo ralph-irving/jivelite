@@ -123,7 +123,7 @@ struct log_category *log_category_get(const char *name) {
 
 	/* create category */
 	ptr = malloc(sizeof(struct log_category) + strlen(name) + 1);
-	ptr->priority = LOG_PRIORITY_INFO;
+	ptr->priority = LOG_PRIORITY_OFF;
 	strcpy(ptr->name, name);
 
 	ptr->next = category_head;

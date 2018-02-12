@@ -9,7 +9,9 @@
 
 #include <time.h>
 
+#ifndef __APPLE__
 #include <SDL_syswm.h>
+#endif
 
 int (*jive_sdlevent_pump)(lua_State *L);
 int (*jive_sdlfilter_pump)(const SDL_Event *event);
@@ -75,6 +77,7 @@ static Uint32 mouse_long_timeout = 0;
 static Uint32 mouse_timeout_arg;
 
 static Uint32 pointer_timeout = 0;
+static bool pointer_enable = true;
 
 static Uint16 mouse_origin_x, mouse_origin_y;
 
@@ -88,6 +91,7 @@ static struct jive_keymap keymap[] = {
 	//{ SDLK_RIGHT,		0, JIVE_KEY_GO },
 	//{ SDLK_LEFT,		0, JIVE_KEY_BACK },
 	{ SDLK_KP_PLUS,		0, JIVE_KEY_ADD },
+	{ SDLK_MENU,		0, JIVE_KEY_ADD },
 	{ SDLK_PAGEUP,		0, JIVE_KEY_PAGE_UP },
 	{ SDLK_PAGEDOWN,	0, JIVE_KEY_PAGE_DOWN },
 	{ SDLK_PRINT,		0, JIVE_KEY_PRINT },
@@ -162,6 +166,26 @@ static void process_timers(lua_State *L);
 static int filter_events(const SDL_Event *event);
 int jiveL_update_screen(lua_State *L);
 
+int jive_frame_rate(void) {
+	int	fr;
+	char	*framerate;
+
+	fr = JIVE_FRAME_RATE_DEFAULT;
+
+	framerate = SDL_getenv("JIVE_FRAMERATE");
+	if (framerate)
+	{
+		fr = atoi(framerate);
+
+		/* Ensure the framerate is reasonable */
+		if ( ( fr < 4 ) || ( fr > 60 ) )
+		{
+			fr = JIVE_FRAME_RATE_DEFAULT;
+		}
+	}
+
+	return fr;
+}
 
 int jive_traceback (lua_State *L) {
 	lua_getfield(L, LUA_GLOBALSINDEX, "debug");
@@ -180,6 +204,9 @@ int jive_traceback (lua_State *L) {
 	return 1;
 }
 
+void jive_quit(void) {
+	SDL_Quit();
+}
 
 static int jiveL_initSDL(lua_State *L) {
 	const SDL_VideoInfo *video_info;
@@ -194,10 +221,18 @@ static int jiveL_initSDL(lua_State *L) {
 	/* linux fbcon does not need a mouse */
 	SDL_putenv("SDL_NOMOUSE=1");
 
+	if(SDL_getenv("JIVE_NOCURSOR")) {
+		pointer_enable = false;
+	}
+
+	LOG_INFO(log_ui_draw, "initSDL");
+	if (atexit(jive_quit) != 0) {
+		LOG_ERROR(log_ui,"jive_quit atexit failed");
+	}
+
 	/* initialise SDL */
 	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
 		LOG_ERROR(log_ui_draw, "SDL_Init(V|T|A): %s\n", SDL_GetError());
-		SDL_Quit();
 		exit(-1);
 	}
 
@@ -208,6 +243,8 @@ static int jiveL_initSDL(lua_State *L) {
 		LOG_INFO(log_ui_draw, "Window manager %s available", video_info->wm_available?"is":"is not");
 	}
 
+	LOG_INFO(log_ui_draw, "Using %d frames per second\n", jive_frame_rate());
+
 	/* Register callback for additional events (used for multimedia keys)*/
 	SDL_EventState(SDL_SYSWMEVENT,SDL_ENABLE);
 	SDL_SetEventFilter(filter_events);
@@ -217,7 +254,7 @@ static int jiveL_initSDL(lua_State *L) {
 	/* open window */
 	SDL_WM_SetCaption("JiveLite", "JiveLite");
 	SDL_ShowCursor(SDL_DISABLE);
-	SDL_EnableKeyRepeat (100, 100);
+	SDL_EnableKeyRepeat (SDL_DEFAULT_REPEAT_DELAY, 100);
 	SDL_EnableUNICODE(1);
 
 	/* load the icon */
@@ -243,7 +280,7 @@ static int jiveL_initSDL(lua_State *L) {
 
 	srf = jive_surface_set_video_mode(screen_w, screen_h, screen_bpp, video_info->wm_available ? false : true);
 	if (!srf) {
-		SDL_Quit();
+		LOG_ERROR(log_ui_draw, "Video mode not supported: %dx%d\n", screen_w, screen_h);
 		exit(-1);
 	}
 
@@ -255,8 +292,6 @@ static int jiveL_initSDL(lua_State *L) {
 	lua_getfield(L, 1, "screen");
 	if (lua_isnil(L, -1)) {
 		LOG_ERROR(log_ui_draw, "no screen table");
-
-		SDL_Quit();
 		exit(-1);
 	}
 
@@ -327,8 +362,13 @@ void jive_send_char_press_event(Uint16 unicode) {
 	jive_queue_event(&event);
 }
 
+void jive_send_quit(void) {
+	SDL_Event event;
+	event.type = SDL_QUIT;
+	SDL_PushEvent(&event);
+}
 
-static int jiveL_quit(lua_State *L) {
+int jiveL_quit(lua_State *L) {
 
 	/* de-reference all windows */
 	jiveL_getframework(L);
@@ -338,9 +378,6 @@ static int jiveL_quit(lua_State *L) {
 
 	/* force lua GC */
 	lua_gc(L, LUA_GCCOLLECT, 0);
-
-	/* quit SDL */
-	SDL_Quit();
 
 	return 0;
 }
@@ -386,6 +423,7 @@ static int jiveL_process_events(lua_State *L) {
 
 	if (r & JIVE_EVENT_QUIT) {
 		lua_pushboolean(L, 0);
+		LOG_WARN(log_ui,"JIVE_EVENT_QUIT");
 		return 1;
 	}
 
@@ -854,9 +892,12 @@ int jiveL_set_video_mode(lua_State *L) {
 		return 0;
 	}
 
-
 	/* update video mode */
 	srf = jive_surface_set_video_mode(w, h, bpp, isfull);
+	if (!srf) {
+		LOG_ERROR(log_ui_draw, "Video mode not supported: %dx%d\n", w, h);
+		exit(-1);
+	}
 
 	/* store new screen surface */
 	lua_getfield(L, 1, "screen");
@@ -1019,8 +1060,8 @@ static int process_event(lua_State *L, SDL_Event *event) {
 	switch (event->type) {
 	case SDL_QUIT:
 		jiveL_quit(L);
-		exit(0);
-		break;
+		return JIVE_EVENT_QUIT;
+
 
 	case SDL_MOUSEBUTTONDOWN:
 		/* map the mouse scroll wheel to up/down */
@@ -1087,7 +1128,7 @@ static int process_event(lua_State *L, SDL_Event *event) {
 	case SDL_MOUSEMOTION:
 
 		/* show mouse cursor */
-		if (pointer_timeout == 0) {
+		if (pointer_enable && pointer_timeout == 0) {
 			SDL_ShowCursor(SDL_ENABLE);
 		}
 		pointer_timeout = now + POINTER_TIMEOUT;
