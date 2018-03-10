@@ -3024,7 +3024,7 @@ function skin(self, s, reload, useDefaultSize, w, h)
 			padding = { 0, 11, 0, 0 },
 			order = { "elapsed", "slider", "remain" },
 			elapsed = {
-				w = 80,
+				w = 60,
 				align = 'left',
 				padding = { 0, 0, 4, 20 },
 				font = _boldfont(18),
@@ -3032,7 +3032,7 @@ function skin(self, s, reload, useDefaultSize, w, h)
 				sh = { 0x37, 0x37, 0x37 },
 			},
 			remain = {
-				w = 80,
+				w = 60,
 				align = 'right',
 				padding = { 4, 0, 0, 20 },
 				font = _boldfont(18),
@@ -3040,18 +3040,18 @@ function skin(self, s, reload, useDefaultSize, w, h)
 				sh = { 0x37, 0x37, 0x37 },
 			},
 			elapsedSmall = {
-				w = 70,
+				w = 60,
 				align = 'left',
 				padding = { 0, 0, 4, 20 },
-				font = _boldfont(12),
+				font = _boldfont(14),
 				fg = { 0xe7,0xe7, 0xe7 },
 				sh = { 0x37, 0x37, 0x37 },
 			},
 			remainSmall = {
-				w = 70,
+				w = 60,
 				align = 'right',
 				padding = { 4, 0, 0, 20 },
-				font = _boldfont(12),
+				font = _boldfont(14),
 				fg = { 0xe7,0xe7, 0xe7 },
 				sh = { 0x37, 0x37, 0x37 },
 			},
@@ -3399,7 +3399,7 @@ function skin(self, s, reload, useDefaultSize, w, h)
 			y = screenHeight - 160,
 			padding = { 0, 10, 0, 0 },
 			elapsed = {
-				w = 80,
+				w = 60,
 				align = 'left',
 				padding = { 0, 0, 4, 20 },
 				font = _boldfont(18),
@@ -3407,7 +3407,7 @@ function skin(self, s, reload, useDefaultSize, w, h)
 				sh = { 0x37, 0x37, 0x37 },
 			},
 			remain = {
-				w = 80,
+				w = 60,
 				align = 'right',
 				padding = { 4, 0, 0, 20 },
 				font = _boldfont(18),
@@ -3415,18 +3415,18 @@ function skin(self, s, reload, useDefaultSize, w, h)
 				sh = { 0x37, 0x37, 0x37 },
 			},
 			elapsedSmall = {
-				w = 70,
+				w = 60,
 				align = 'left',
 				padding = { 0, 0, 4, 20 },
-				font = _boldfont(12),
+				font = _boldfont(14),
 				fg = { 0xe7,0xe7, 0xe7 },
 				sh = { 0x37, 0x37, 0x37 },
 			},
 			remainSmall = {
-				w = 70,
+				w = 60,
 				align = 'right',
 				padding = { 4, 0, 0, 20 },
-				font = _boldfont(12),
+				font = _boldfont(14),
 				fg = { 0xe7,0xe7, 0xe7 },
 				sh = { 0x37, 0x37, 0x37 },
 			},
@@ -3511,16 +3511,16 @@ function skin(self, s, reload, useDefaultSize, w, h)
 			h = 60,
 			w = screenWidth - 30,
 			elapsed = {
-				w = 80,
+				w = 60,
 			},
 			remain = {
-				w = 80,
+				w = 60,
 			},
 			elapsedSmall = {
-				w = 80,
+				w = 60,
 			},
 			remainSmall = {
-				w = 80,
+				w = 60,
 			},
 			npprogressB = {
 				h = 29,
