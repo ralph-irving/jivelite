@@ -1,19 +1,24 @@
 # Jivelite makefile
 
-PREFIX ?= /usr/local
+PREFIX ?= ${HOME}/source/jivelite
+ARCH = i386
+ARCHFLAGS=-arch $(ARCH)
+export CFLAGS=$(ARCHFLAGS) -I${PREFIX}/include -I${PREFIX}/include/SDL -isysroot /Developer/SDKs/MacOSX10.6.sdk/ -mmacosx-version-min=10.4
+export LDFLAGS=$(ARCHFLAGS) -Wl,-syslibroot,/Developer/SDKs/MacOSX10.6.sdk/ -mmacosx-version-min=10.4 -L${PREFIX}/lib -L/usr/lib
 
 all: srcs libs
 
 srcs:
+	tar -xzf scripts/buildosx-squeezeplay-i386-1076.tar.gz
+	tar -xzf scripts/buildosx-luajit-i386-2.0.5.tar.gz
 	cd src; PREFIX=$(PREFIX) make -f Makefile.osx
 
-libs: lib
+libs: lib/lua
 
-lib:
+lib/lua:
 	cd lib-src; PREFIX=$(PREFIX) make -f Makefile.osx
 
 clean:
-	rm -Rf lib
-	cd src; make -f Makefile.osx clean
-	cd lib-src; make -f Makefile.osx clean
-
+	rm -Rf lib include
+	cd src; PREFIX=$(PREFIX) make -f Makefile.osx clean
+	cd lib-src; PREFIX=$(PREFIX) make -f Makefile.osx clean
