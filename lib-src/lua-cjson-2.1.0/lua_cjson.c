@@ -61,6 +61,11 @@
 /* Workaround for Solaris platforms missing isinf() */
 #elif !defined(isinf) && (defined(USE_INTERNAL_ISINF) || defined(MISSING_ISINF))
 #define isinf(x) (!_isnan(x) && _isnan((x) - (x)))
+#elif defined (__SVR4) && defined (__sun)
+#ifndef isinf
+#include <ieeefp.h>
+#define isinf(x) (!finite((x)) && (x)==(x))
+#endif
 #endif
 
 #define DEFAULT_SPARSE_CONVERT 0
