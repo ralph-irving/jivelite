@@ -448,12 +448,16 @@ function _isPresetButtonPressEvent(self, event)
 
 	local keycode = event:getKeycode()
 
-	return  keycode == KEY_PRESET_1 or
+	return  keycode == KEY_PRESET_0 or
+		keycode == KEY_PRESET_1 or
 		keycode == KEY_PRESET_2 or
 		keycode == KEY_PRESET_3 or
 		keycode == KEY_PRESET_4 or
 		keycode == KEY_PRESET_5 or
-		keycode == KEY_PRESET_6
+		keycode == KEY_PRESET_6 or
+		keycode == KEY_PRESET_7 or
+		keycode == KEY_PRESET_8 or
+		keycode == KEY_PRESET_9
 end
 
 

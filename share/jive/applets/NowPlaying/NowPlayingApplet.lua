@@ -1634,7 +1634,7 @@ function _createUI(self)
 		return EVENT_CONSUME
 	end)
 
-	for i = 1,6 do
+	for i = 0,9 do
 		local actionString = 'set_preset_' .. tostring(i)
 		window:addActionListener(actionString, self, function()
 			appletManager:callService("setPresetCurrentTrack", i)

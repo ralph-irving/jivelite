@@ -84,9 +84,9 @@ static Uint16 mouse_origin_x, mouse_origin_y;
 static struct jive_keymap keymap[] = {
 	{ SDLK_LEFT,		0, JIVE_KEY_LEFT },
 	{ SDLK_RIGHT,		0, JIVE_KEY_RIGHT },
-	{ SDLK_UP,			0, JIVE_KEY_UP },
+	{ SDLK_UP,		0, JIVE_KEY_UP },
 	{ SDLK_DOWN,		0, JIVE_KEY_DOWN },
-	{ SDLK_END,			0, JIVE_KEY_BACK },
+	{ SDLK_END,		0, JIVE_KEY_BACK },
 	{ SDLK_HOME,		0, JIVE_KEY_HOME },
 	//{ SDLK_RIGHT,		0, JIVE_KEY_GO },
 	//{ SDLK_LEFT,		0, JIVE_KEY_BACK },
@@ -96,13 +96,17 @@ static struct jive_keymap keymap[] = {
 	{ SDLK_PAGEDOWN,	0, JIVE_KEY_PAGE_DOWN },
 	{ SDLK_PRINT,		0, JIVE_KEY_PRINT },
 	{ SDLK_SYSREQ,		0, JIVE_KEY_PRINT },
-	{ SDLK_F1,          0, JIVE_KEY_PRESET_1 },
-	{ SDLK_F2,          0, JIVE_KEY_PRESET_2 },
-	{ SDLK_F3,          0, JIVE_KEY_PRESET_3 },
-	{ SDLK_F4,          0, JIVE_KEY_PRESET_4 },
-	{ SDLK_F5,          0, JIVE_KEY_PRESET_5 },
-	{ SDLK_F6,          0, JIVE_KEY_PRESET_6 },
-	{ SDLK_POWER,       0, JIVE_KEY_POWER },
+	{ SDLK_F10,		0, JIVE_KEY_PRESET_0 },
+	{ SDLK_F1,		0, JIVE_KEY_PRESET_1 },
+	{ SDLK_F2,		0, JIVE_KEY_PRESET_2 },
+	{ SDLK_F3,		0, JIVE_KEY_PRESET_3 },
+	{ SDLK_F4,		0, JIVE_KEY_PRESET_4 },
+	{ SDLK_F5,		0, JIVE_KEY_PRESET_5 },
+	{ SDLK_F6,		0, JIVE_KEY_PRESET_6 },
+	{ SDLK_F7,		0, JIVE_KEY_PRESET_7 },
+	{ SDLK_F8,		0, JIVE_KEY_PRESET_8 },
+	{ SDLK_F9,		0, JIVE_KEY_PRESET_9 },
+	{ SDLK_POWER,		0, JIVE_KEY_POWER },
 
 #ifdef SDL_MEDIAKEYS_DEFINED
 	// include with patched SDL - optimised for windows MCE remotes
@@ -1846,12 +1850,16 @@ int luaopen_jive(lua_State *L) {
 	_set_const(L, -1, "KEY_MUTE",JIVE_KEY_MUTE);
 	_set_const(L, -1, "KEY_ALARM",JIVE_KEY_ALARM);
 	_set_const(L, -1, "KEY_POWER",JIVE_KEY_POWER);
+	_set_const(L, -1, "KEY_PRESET_0",JIVE_KEY_PRESET_0);
 	_set_const(L, -1, "KEY_PRESET_1",JIVE_KEY_PRESET_1);
 	_set_const(L, -1, "KEY_PRESET_2",JIVE_KEY_PRESET_2);
 	_set_const(L, -1, "KEY_PRESET_3",JIVE_KEY_PRESET_3);
 	_set_const(L, -1, "KEY_PRESET_4",JIVE_KEY_PRESET_4);
 	_set_const(L, -1, "KEY_PRESET_5",JIVE_KEY_PRESET_5);
 	_set_const(L, -1, "KEY_PRESET_6",JIVE_KEY_PRESET_6);
+	_set_const(L, -1, "KEY_PRESET_7",JIVE_KEY_PRESET_7);
+	_set_const(L, -1, "KEY_PRESET_8",JIVE_KEY_PRESET_8);
+	_set_const(L, -1, "KEY_PRESET_9",JIVE_KEY_PRESET_9);
 	_set_const(L, -1, "KEY_PAGE_UP",JIVE_KEY_PAGE_UP);
 	_set_const(L, -1, "KEY_PAGE_DOWN",JIVE_KEY_PAGE_DOWN);
 	_set_const(L, -1, "KEY_PRINT",JIVE_KEY_PRINT);
