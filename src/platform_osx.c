@@ -32,6 +32,20 @@ char *platform_get_mac_address() {
     struct ifaddrs* ifaphead;
     struct ifaddrs* ifap;
     char *macaddr = NULL;
+    char *utmac;
+
+    macaddr = malloc(18);
+
+    utmac = getenv("UTMAC");
+    if (utmac)
+    {
+        if ( strlen(utmac) == 17 )
+        {
+            strncpy ( macaddr, utmac, 17 );
+            macaddr[17] = '\0';
+            return macaddr;
+        }
+    }
 
     if ( getifaddrs( &ifaphead ) != 0 )
       return NULL;
@@ -45,7 +59,6 @@ char *platform_get_mac_address() {
             //take the first found address. 
             //todo: can we be smarter about which is the correct address
             unsigned char * ptr = (unsigned char *)LLADDR(sdl);
-	    macaddr = malloc(18);
             sprintf(macaddr, "%02x:%02x:%02x:%02x:%02x:%02x", *ptr,*(ptr+1), *(ptr+2),*(ptr+3), *(ptr+4), *(ptr+5));
             break;
         }
