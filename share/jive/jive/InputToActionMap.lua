@@ -35,6 +35,7 @@ charActionMappings.press = {
 	["e"]  = "scanner_rew",
 	["r"]  = "scanner_fwd",
 	["u"]  = "mute",
+	["o"]  = "quit",
 
 -- original
 	["/"]   = "go_search",
