@@ -19,5 +19,6 @@ struct SHA1Schedule
 extern void sha1_init (SHA1Schedule_ref) ;
 extern void sha1_update (SHA1Schedule_ref, char const *, unsigned int) ;
 extern void sha1_final (SHA1Schedule_ref, char * /* 20 chars */) ;
+void uint32_pack_big (char *, uint32);
 
 #endif
