@@ -217,6 +217,7 @@ static int jiveL_initSDL(lua_State *L) {
 	JiveSurface *srf, *splash, *icon;
 	JiveSurface **p;
 	Uint16 splash_w, splash_h;
+	char splash_file[32];
 
 	/* logging */
 	log_ui_draw = LOG_CATEGORY_GET("jivelite.ui.draw");
@@ -273,7 +274,18 @@ static int jiveL_initSDL(lua_State *L) {
 
 	screen_bpp = video_info->vfmt->BitsPerPixel;
 
-	splash = jive_surface_load_image("jive/splash.png");
+	splash = NULL;
+	if (!video_info->wm_available) {
+		snprintf( splash_file, sizeof (splash_file), "jive/splash_%dx%d.png", screen_w, screen_h );
+
+		LOG_INFO(log_ui_draw, "Attempting to load %s\n", splash_file);
+		splash = jive_surface_load_image(splash_file);
+	}
+
+	if (!splash) {
+		splash = jive_surface_load_image("jive/splash.png");
+	}
+	
 	if (splash) {
 		jive_surface_get_size(splash, &splash_w, &splash_h);
 		if (video_info->wm_available) {
