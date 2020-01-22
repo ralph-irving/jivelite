@@ -177,7 +177,7 @@ function settingsShow(self)
 	
 
 	local screen = screenWidth .. "x" .. screenHeight
-	if screen ~= "800x480" and screen ~= "480x272" and screen ~= "240x320" and screen ~= "320x240" then
+	if screen ~= "800x480" and screen ~= "480x272" and screen ~= "240x320" and screen ~= "320x240" and screen ~= "240x240" then
 		screen = nil
 	end
 
@@ -247,6 +247,8 @@ function _readFile(self, img, screenWidth, screenHeight)
 			pattern = 'WAV_'
 		elseif screenWidth == 800 and screenHeight == 480 then
 			pattern = 'PCP_'
+		elseif screenWidth == 240 and screenHeight == 240 then
+			pattern = 'PIR_'
 		else
 			pattern = 'HD_'
 		end
