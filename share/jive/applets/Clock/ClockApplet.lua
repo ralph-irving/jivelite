@@ -456,7 +456,7 @@ function WordClock:__init(applet)
         obj.pointer_textOClock     = Surface:loadImage(obj.skinParams.textOClock)  
         obj.pointer_textAM         = Surface:loadImage(obj.skinParams.textAM)  
         obj.pointer_textPM         = Surface:loadImage(obj.skinParams.textPM)  
-    elseif skinName == "QVGAlandscapeSkin" or skinName == "QVGAportraitSkin" then
+    elseif skinName == "QVGAlandscapeSkin" or skinName == "QVGAportraitSkin" or skinName == "QVGA240squareSkin" then
         obj.pointer_hour           = Surface:loadImage(obj.skinParams.hourHand)
         obj.pointer_minute         = Surface:loadImage(obj.skinParams.minuteHand)
     end
@@ -548,7 +548,7 @@ function WordClock:_reDraw(screen)
 
         self.textdate:setValue("ON " .. string.upper(WordClock:getDateAsWords(tonumber(os.date("%d")))))
 
-    elseif self.skinName == "QVGAlandscapeSkin" or self.skinName == "QVGAportraitSkin" then
+    elseif self.skinName == "QVGAlandscapeSkin" or self.skinName == "QVGAportraitSkin" or self.skinName == "QVGA240squareSkin" then
         local x, y
 
         -- Setup Time Objects
@@ -1542,7 +1542,7 @@ function DotMatrix:getDotMatrixClockSkin(skinName)
         }
     
         s.icon_alarm_on = {
-            img = _loadImage(self, "Clocks/DotMatrix/dot_matrix_alarm_on.png"),
+            img = _loadImage(self, "Clocks/Dot_Matrix/dotmatrix_alarm_on.png"),
         }
         s.icon_alarm_off = _uses(s.icon_alarm_on, {
             img = false,
@@ -1600,6 +1600,116 @@ function DotMatrix:getDotMatrixClockSkin(skinName)
             Y4 = { hidden = 1 },
         }
 
+-- dot matrix for 240x240
+    elseif skinName == 'QVGA240squareSkin' then
+        local dotMatrixBackground = Tile:loadImage(self.imgpath .. "Clocks/Dot_Matrix/jive_wallpaper_clock_dotmatrix.png")
+
+        local _dotMatrixDigit = function(self, digit)
+            local fileName = "Clocks/Dot_Matrix/dotmatrix_clock_" .. tostring(digit) .. ".png"
+            return {
+--                w = 61,
+--                h = 134,
+                w = 61,
+                h = 100,
+                img = _loadImage(self, fileName),
+                align = 'bottom',
+            }
+        end
+    
+        s.icon_dotMatrixDigit0 = _dotMatrixDigit(self, 0)
+        s.icon_dotMatrixDigit1 = _dotMatrixDigit(self, 1)
+        s.icon_dotMatrixDigit2 = _dotMatrixDigit(self, 2)
+        s.icon_dotMatrixDigit3 = _dotMatrixDigit(self, 3)
+        s.icon_dotMatrixDigit4 = _dotMatrixDigit(self, 4)
+        s.icon_dotMatrixDigit5 = _dotMatrixDigit(self, 5)
+        s.icon_dotMatrixDigit6 = _dotMatrixDigit(self, 6)
+        s.icon_dotMatrixDigit7 = _dotMatrixDigit(self, 7)
+        s.icon_dotMatrixDigit8 = _dotMatrixDigit(self, 8)
+        s.icon_dotMatrixDigit9 = _dotMatrixDigit(self, 9)
+        s.icon_dotMatrixDigitNone = _uses(s.icon_dotMatrixDigit9, {
+            img = false,
+        })
+    
+        s.icon_dotMatrixDate0 = { img = false }
+        s.icon_dotMatrixDate1 = { img = false }
+        s.icon_dotMatrixDate2 = { img = false }
+        s.icon_dotMatrixDate3 = { img = false }
+        s.icon_dotMatrixDate4 = { img = false }
+        s.icon_dotMatrixDate5 = { img = false }
+        s.icon_dotMatrixDate6 = { img = false }
+        s.icon_dotMatrixDate7 = { img = false }
+        s.icon_dotMatrixDate8 = { img = false }
+        s.icon_dotMatrixDate9 = { img = false }
+    
+        s.icon_dotMatrixDateDot = {
+            img = false,
+        }
+    
+        s.icon_dotMatrixDots = {
+            img = false,
+        }
+    
+        s.icon_alarm_on = {
+            img = _loadImage(self, "Clocks/Dot_Matrix/dotmatrix_alarm_on.png"),
+        }
+        s.icon_alarm_off = _uses(s.icon_alarm_on, {
+            img = false,
+        })
+    
+        s.icon_dotMatrixPowerOn = {
+            img = false,
+        }
+        s.icon_dotMatrixPowerButtonOff = _uses(s.icon_dotMatrixPowerOn, {
+            img = false,
+        })
+    
+        local _clockDigit = {
+            position = LAYOUT_NONE,
+--            w = 61,
+            w = 61,
+        }
+
+        local leftDigit = 59
+        local rightDigit = 132
+--        local topDigit = 22
+--        local bottomDigit = 160
+        local topDigit = 18
+        local bottomDigit = 126
+
+        s.Clock = {
+            w = 240,
+            h = 240,
+            bgImg = dotMatrixBackground,
+            h1 = _uses(_clockDigit, {
+                x = leftDigit,
+                y = topDigit,
+            }),
+            h2 = _uses(_clockDigit, {
+                x = rightDigit,
+                y = topDigit,
+            }),
+            m1 = _uses(_clockDigit, {
+                x = leftDigit,
+                y = bottomDigit,
+            }),
+            m2 = _uses(_clockDigit, {
+                x = rightDigit,
+                y = bottomDigit,
+            }),
+
+            dots = { hidden = 1 },
+            alarm = { hidden = 1 },
+            M1 = { hidden = 1 },
+            M2 = { hidden = 1 },
+            dot1 = { hidden = 1 },
+            D1 = { hidden = 1 },
+            D2 = { hidden = 1 },
+            dot2 = { hidden = 1 },
+            Y1 = { hidden = 1 },
+            Y2 = { hidden = 1 },
+            Y3 = { hidden = 1 },
+            Y4 = { hidden = 1 },
+        }
 
     end
 
@@ -1712,6 +1822,21 @@ function WordClock:getWordClockSkin(skinName)
                 fg = { 0xff, 0xff, 0xff },
             },
         }
+    elseif skinName == "QVGA240squareSkin" then
+        s.Clock = {
+            bgImg = wordClockBackground,
+            textdate = {
+                position = LAYOUT_NONE,
+                x = 0,
+--                y = 300,
+                y = 220,
+                w = 240,
+--                font = _font(8), --26 * (240/800)
+                font = _font(18),
+                align = 'bottom',
+                fg = { 0xff, 0xff, 0xff },
+            },
+        }
     end
     
     return s
@@ -1783,6 +1908,14 @@ function WordClock:getSkinParams(skinName)
             alarmY     = 15,
         }
     elseif skinName == "QVGAportraitSkin" then
+        return {
+            minuteHand = self.imgpath .. "Clocks/WordClock/" .. 'clock_word_min_hand.png',
+            hourHand   = self.imgpath .. "Clocks/WordClock/" .. 'clock_word_hr_hand.png',
+            alarmIcon  = self.imgpath .. "Clocks/WordClock/" .. 'icon_alarm_word.png',
+            alarmX     = 200,
+            alarmY     = 15,
+        }
+    elseif skinName == "QVGA240squareSkin" then
         return {
             minuteHand = self.imgpath .. "Clocks/WordClock/" .. 'clock_word_min_hand.png',
             hourHand   = self.imgpath .. "Clocks/WordClock/" .. 'clock_word_hr_hand.png',
@@ -2803,6 +2936,211 @@ function Digital:getDigitalClockSkin(skinName)
             m1Shadow = { hidden = 1 },
             m2Shadow = { hidden = 1 },
         })
+    elseif skinName == 'QVGA240squareSkin'  then
+        local digitalClockBackground = Tile:loadImage(self.imgpath .. "Clocks/Digital/pir_clock_digital.png")
+        local digitalClockDigit = {
+            font = _font(90),
+            fg = { 0xcc, 0xcc, 0xcc },
+            w = WH_FILL,
+        }
+        local shadow = {
+            w = 62,
+        }
+        local _clockDigit = {
+            position = LAYOUT_NONE,
+            font = _font(90),
+            align = 'right',
+            fg = { 0xcc, 0xcc, 0xcc },
+            w = 62,
+--            y = 123,
+            y = 83,
+            zOrder = 10,
+        }
+        local _digitShadow = _uses(_clockDigit, {
+--            y = 185,
+            y = 145,
+            padding = { 4, 0, 0, 0 },
+            zOrder = 1,
+        })
+    
+        local x = {}
+                x.h1 = 0
+                x.h2 = x.h1 + 49
+                x.dots = x.h2 + 62
+                x.m1 = x.dots + 4
+                x.m2 = x.m1 + 49
+                x.alarm = x.h1
+
+        s.icon_digitalClockDropShadow = {
+            img = _loadImage(self, "Clocks/Digital/drop_shadow_digital.png"),
+            align = 'center',
+            padding = { 4, 0, 0, 0 },
+        }
+
+        s.icon_alarm_on = {
+            img = _loadImage(self, "Clocks/Digital/icon_alarm_digital.png")
+        }
+        s.icon_alarm_off = _uses(s.icon_alarm_on, {
+            img = false
+        })
+        s.icon_digitalClockNoShadow = _uses(s.icon_digitalClockDropShadow, {
+            img = false
+        })
+
+        s.icon_digitalClockHDivider = {
+            w = WH_FILL,
+            img = _loadImage(self, "Clocks/Digital/divider_hort_digital.png"),
+        }
+
+        s.icon_digitalClockVDivider = {
+            w = 3,
+            img = _loadImage(self, "Clocks/Digital/divider_vert_digital.png"),
+            align = 'center',
+        }
+
+        s.icon_digitalDots = {
+            img = _loadImage(self, 'Clocks/Digital/clock_dots_digital.png'),
+            align = 'center',
+            w = 18,
+            padding = { 0, 0, 0, 0 },
+        }
+
+        s.icon_digitalClockBlank = {
+            img = false,
+        }
+
+        s.Clock = {
+            bgImg = digitalClockBackground,
+            h1 = _uses(_clockDigit, {
+                x = x.h1,
+            }),
+            h1Shadow = _uses(_digitShadow, {
+                x = x.h1,
+            }),
+            h2 = _uses(_clockDigit, {
+                x = x.h2,
+            }),
+            h2Shadow = _uses(_digitShadow, {
+                x = x.h2,
+            }),
+            dots = _uses(_clockDigit, {
+                x = x.dots,
+                w = 18,
+ --               y = 143,
+                y = 103,
+            }),
+            m1 = _uses(_clockDigit, {
+                x = x.m1,
+            }),
+            m1Shadow = _uses(_digitShadow, {
+                x = x.m1,
+            }),
+            m2 = _uses(_clockDigit, {
+                x = x.m2,
+            }),
+            m2Shadow = _uses(_digitShadow, {
+                x = x.m2,
+            }),
+
+            today = {
+                position = LAYOUT_NORTH,
+--                h = 83,
+                h = 65,
+                zOrder = 2,
+                w = WH_FILL,
+                align = 'center',
+                fg = { 0xcc, 0xcc, 0xcc },
+                font = _font(20),
+            },
+
+            ampm = {
+                position = LAYOUT_NONE,
+                x = 203,
+--                y = 208,
+                y = 160,
+                font = _font(14),
+                align = 'bottom',
+                fg = { 0xcc, 0xcc, 0xcc },
+            },
+            alarm = {
+                position = LAYOUT_NONE,
+                x = 12,
+--                y = 209,
+                y = 50,
+            },
+            horizDivider = {
+                position = LAYOUT_NONE,
+                x = 0,
+--                y = 320 - 84,
+                y = 173,
+            },
+
+	            horizDivider2 = {
+                position = LAYOUT_NONE,
+                x = 0,
+--                y = 84,
+                y = 67,
+            },
+
+--            horizDivider2 = { hidden = 1 },
+
+            date = {
+                position = LAYOUT_SOUTH,
+                order = { 'month', 'vdivider1', 'dayofmonth' },
+                w = WH_FILL,
+--                h = 83,
+                h = 65,
+                padding = { 0, 10, 0, 0 },
+                dayofweek = { hidden = 1 },
+                vdivider1 = {
+                    align = 'center',
+                    w = 2,
+                    h = WH_FILL,
+                },
+                month = {
+                    font = _font(20),
+                    w = WH_FILL,
+                    h = WH_FILL,
+                    align = 'center',
+                    fg = { 0xcc, 0xcc, 0xcc },
+                    padding = { 2, 0, 0, 15 },
+                },
+                dayofmonth = {
+                    font = _font(48),
+                    w = 86,
+                    h = WH_FILL,
+                    align = 'center',
+                    fg = { 0xcc, 0xcc, 0xcc },
+                    padding = { 0, 0, 0, 15 },
+                },
+            },
+        }
+    
+        local blackMask = Tile:fillColor(0x000000ff)
+        s.ClockBlack = _uses(s.Clock, {
+            bgImg = blackMask,
+            horizDivider = { hidden = 1 },
+            horizDivider2 = { hidden = 1 },
+            date = {
+                order = { 'month', 'dayofmonth' },
+            },
+            h1Shadow = { hidden = 1 },
+            h2Shadow = { hidden = 1 },
+            m1Shadow = { hidden = 1 },
+            m2Shadow = { hidden = 1 },
+        })
+        s.ClockTransparent = _uses(s.Clock, {
+            bgImg = false,
+            horizDivider = { hidden = 1 },
+            horizDivider2 = { hidden = 1 },
+            date = {
+                order = { 'month', 'dayofmonth' },
+            },
+            h1Shadow = { hidden = 1 },
+            h2Shadow = { hidden = 1 },
+            m1Shadow = { hidden = 1 },
+            m2Shadow = { hidden = 1 },
+        })
     
     end
 
@@ -2849,6 +3187,9 @@ function Analog:getAnalogClockSkin(skinName)
 
     elseif skinName == 'QVGAportraitSkin' then
         analogClockBackground = Tile:loadImage(self.imgpath .. "Clocks/Analog/jive_wallpaper_clock_analog.png")
+
+    elseif skinName == 'QVGA240squareSkin' then
+        analogClockBackground = Tile:loadImage(self.imgpath .. "Clocks/Analog/pir_wallpaper_clock_analog.png")
 
     end
 
