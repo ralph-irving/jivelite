@@ -17,16 +17,16 @@ QVGALANDSCAPE_SKIN
 	PL	Karnacja pozioma QVGA
 	RU	Обложка: QVGA, альбомная ориентация
 	SV	QVGA-skal i liggande format
-	
+
 QVGA240SQUARE_SKIN
 # SLT: QVGA refers to the "quarter VGA" resolution of the display
 #	CS	QVGA skin krajiny
 #	DA	QVGA-tema, liggende
-#	DE	QVGA-Querformat-Skin
+	DE	Quadratischer QVGA-Skin (240x240)
 	EN	QVGA 240x240 Square Skin
 #	ES	Máscara horizontal QVGA
 #	FI	QVGA-vaakaolemus
-#	FR	Habillage paysage QVGA
+	FR	Habillage carré QVGA (240x240)
 #	IT	Skin QVGA orizzontale
 #	NL	QVGA Landscape-skin
 #	NO	QVGA liggende skall
