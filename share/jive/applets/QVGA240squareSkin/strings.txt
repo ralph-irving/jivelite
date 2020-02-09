@@ -28,7 +28,7 @@ QVGA240SQUARE_SKIN
 #	FI	QVGA-vaakaolemus
 	FR	Habillage carré QVGA (240x240)
 #	IT	Skin QVGA orizzontale
-#	NL	QVGA Landscape-skin
+	NL	QVGA 240-Vierkant-skin
 #	NO	QVGA liggende skall
 #	PL	Karnacja pozioma QVGA
 #	RU	Обложка: QVGA, альбомная ориентация
