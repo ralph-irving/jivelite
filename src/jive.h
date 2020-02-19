@@ -15,6 +15,9 @@
 #include <SDL_gfxPrimitives.h>
 #include <SDL_rotozoom.h>
 
+#if defined(WIN32) && !defined(snprintf)
+#define snprintf(buf,len, format,...) _snprintf_s(buf, len,len, format, __VA_ARGS__)
+#endif
 
 /* target frame rate 14 fps (originally) - may be tuned per platform, should be /2 */
 /* max effective rate of scrolling on a fab4 is 22 */
