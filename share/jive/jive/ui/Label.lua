@@ -87,6 +87,10 @@ function __init(self, style, value)
 	obj:addListener(EVENT_FOCUS_GAINED, function() obj:animate(true) end)
 	obj:addListener(EVENT_FOCUS_LOST, function() obj:animate(false) end)
 
+	-- work around scrolling labels not returning to home
+	-- NowPlaying also needs fix, as this overwrites 'textStopCallback'
+	obj.textStopCallback = function(label) label:reDraw() end
+
 	return obj
 end
 
