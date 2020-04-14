@@ -1607,8 +1607,6 @@ function DotMatrix:getDotMatrixClockSkin(skinName)
         local _dotMatrixDigit = function(self, digit)
             local fileName = "Clocks/Dot_Matrix/dotmatrix_clock_" .. tostring(digit) .. ".png"
             return {
---                w = 61,
---                h = 134,
                 w = 61,
                 h = 100,
                 img = _loadImage(self, fileName),
@@ -1665,14 +1663,11 @@ function DotMatrix:getDotMatrixClockSkin(skinName)
     
         local _clockDigit = {
             position = LAYOUT_NONE,
---            w = 61,
             w = 61,
         }
 
         local leftDigit = 59
         local rightDigit = 132
---        local topDigit = 22
---        local bottomDigit = 160
         local topDigit = 18
         local bottomDigit = 126
 
@@ -1828,10 +1823,8 @@ function WordClock:getWordClockSkin(skinName)
             textdate = {
                 position = LAYOUT_NONE,
                 x = 0,
---                y = 300,
                 y = 220,
                 w = 240,
---                font = _font(8), --26 * (240/800)
                 font = _font(18),
                 align = 'bottom',
                 fg = { 0xff, 0xff, 0xff },
@@ -2952,12 +2945,10 @@ function Digital:getDigitalClockSkin(skinName)
             align = 'right',
             fg = { 0xcc, 0xcc, 0xcc },
             w = 62,
---            y = 123,
             y = 83,
             zOrder = 10,
         }
         local _digitShadow = _uses(_clockDigit, {
---            y = 185,
             y = 145,
             padding = { 4, 0, 0, 0 },
             zOrder = 1,
@@ -3026,7 +3017,6 @@ function Digital:getDigitalClockSkin(skinName)
             dots = _uses(_clockDigit, {
                 x = x.dots,
                 w = 18,
- --               y = 143,
                 y = 103,
             }),
             m1 = _uses(_clockDigit, {
@@ -3044,7 +3034,6 @@ function Digital:getDigitalClockSkin(skinName)
 
             today = {
                 position = LAYOUT_NORTH,
---                h = 83,
                 h = 65,
                 zOrder = 2,
                 w = WH_FILL,
@@ -3056,7 +3045,6 @@ function Digital:getDigitalClockSkin(skinName)
             ampm = {
                 position = LAYOUT_NONE,
                 x = 203,
---                y = 208,
                 y = 160,
                 font = _font(14),
                 align = 'bottom',
@@ -3065,30 +3053,24 @@ function Digital:getDigitalClockSkin(skinName)
             alarm = {
                 position = LAYOUT_NONE,
                 x = 12,
---                y = 209,
                 y = 50,
             },
             horizDivider = {
                 position = LAYOUT_NONE,
                 x = 0,
---                y = 320 - 84,
                 y = 173,
             },
 
 	            horizDivider2 = {
                 position = LAYOUT_NONE,
                 x = 0,
---                y = 84,
                 y = 67,
             },
-
---            horizDivider2 = { hidden = 1 },
 
             date = {
                 position = LAYOUT_SOUTH,
                 order = { 'month', 'vdivider1', 'dayofmonth' },
                 w = WH_FILL,
---                h = 83,
                 h = 65,
                 padding = { 0, 10, 0, 0 },
                 dayofweek = { hidden = 1 },
