@@ -293,6 +293,8 @@ int jiveL_label_layout(lua_State *L) {
 
 
 int jiveL_label_do_animate(lua_State *L) {
+	int pause_scroll = 0;
+
 	/* stack is:
 	 * 1: widget
 	 */
@@ -311,12 +313,12 @@ int jiveL_label_do_animate(lua_State *L) {
 	peer->scroll_offset += peer->scroll_offset_step;
 
 	if (peer->scroll_offset > peer->text_w  + SCROLL_PAD_RIGHT) {
-		peer->scroll_offset = SCROLL_PAD_LEFT;
-
-		if (jive_getmethod(L, 1, "textStopCallback")) {
-			lua_pushvalue(L, 1); // framework
-			lua_call(L, 1, 0);
-		}	
+		/*
+		 * Time to pause scrolling. But need to redraw the label
+		 * once more ensuring it finishes up at the left margin.
+		*/
+		peer->scroll_offset = 0;
+		pause_scroll = 1;
 	}
 
 	if (peer->scroll_offset < 0) {
@@ -325,6 +327,17 @@ int jiveL_label_do_animate(lua_State *L) {
 	jive_getmethod(L, 1, "reDraw");
 	lua_pushvalue(L, 1);
 	lua_call(L, 1, 0);
+
+	/* time to pause ? */
+	if (pause_scroll) {
+
+		peer->scroll_offset = SCROLL_PAD_LEFT;
+
+		if (jive_getmethod(L, 1, "textStopCallback")) {
+			lua_pushvalue(L, 1); // framework
+			lua_call(L, 1, 0);
+		}
+	}
 
 	return 0;
 }
