@@ -780,7 +780,7 @@ function _renderImage(self)
 		-- place scaled image centered to empty picture
 		local totImg = Surface:newRGBA(screenWidth, screenHeight)
 		totImg:filledRectangle(0, 0, screenWidth, screenHeight, 0x000000FF)
-		local x, y = (screenWidth - w) / 2, (screenHeight - h) / 2
+		local x, y = math.floor ((screenWidth - w) / 2), math.floor ((screenHeight - h) / 2)
 
 		-- draw image
 		image:blit(totImg, x, y)
