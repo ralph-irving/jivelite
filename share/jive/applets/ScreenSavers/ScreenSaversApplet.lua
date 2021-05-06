@@ -73,6 +73,7 @@ function init(self, ...)
 
 	self.active = {}
 	self.demoScreensaver = nil
+	self.isScreenSaverActive = false
 
 	-- wait for at least a minute after we start before activating a screensaver,
 	-- otherwise the screensaver may have started when you exit the bootscreen
@@ -175,6 +176,7 @@ function init(self, ...)
 	Framework:addListener(bit.bor(ACTION, EVENT_SCROLL, EVENT_MOUSE_PRESS, EVENT_MOUSE_HOLD, EVENT_MOUSE_DRAG, EVENT_KEY_ALL),
 		function(event)
 
+			self.isScreenSaverActive = false
 			-- screensaver is not active
 			if #self.active == 0 then
 				return EVENT_UNUSED
@@ -291,6 +293,7 @@ function _activate(self, the_screensaver, force, isServerRequest)
 		if instance[screensaver.method](instance, force, screensaver.methodParam) ~= false then
 			log:info("activating " .. screensaver.applet .. " screensaver")
 		end
+		self.isScreenSaverActive = true
 	-- special case for screensaver of NONE
 	else
 		log:info('There is no screensaver applet available for this mode')
@@ -591,7 +594,7 @@ end
 
 --service method
 function isScreensaverActive(self)
-	return self.active and #self.active > 0
+	return self.isScreenSaverActive
 end
 
 --service method
@@ -599,7 +602,11 @@ function deactivateScreensaver(self)
 
 	-- close all screensaver windows -0 do oldActive swap to avoid deleting iterated values when there is more than one window
 	local oldActive = self.active
-
+	
+	-- also set the state to false here, because this function could also be called externally through a service call
+	-- It's not enough to set it to false only here, since the addListener() events test for #self.active == 0 and exit if true
+	-- the now playing screen saver is not a screen saver, so the addListener() events exits there, and never call this function
+	self.isScreenSaverActive = false
 	if #oldActive == 0 then
 		-- screensaver is not active
 		return
