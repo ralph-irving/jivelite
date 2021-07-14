@@ -1,7 +1,7 @@
 cc = meson.get_compiler('c')
 
 sdl_dep = [dependency('sdl'), dependency('SDL_gfx'), dependency('SDL_image'), dependency('SDL_ttf')]
-lua_dep = [dependency('lua51'), dependency('lua5.1-bitop'), dependency('luajit'), dependency('lua5.1-filesystem'), dependency('lua5.1-socket'), dependency('lua5.1-cqueues')]
+lua_dep = [dependency('lua51'), dependency('lua5.1-bitop'), dependency('luajit'), dependency('lua5.1-filesystem'), dependency('lua5.1-socket'), dependency('lua5.1-cqueues'), dependency('lua5.1-cjson'), dependency('lua5.1-lgi')]
 m_dep = cc.find_library('m', required : true)
 shm_dep = cc.find_library('rt', required : true)
 thread_dep = dependency('threads')
