@@ -6,6 +6,7 @@ This fork adds meson/ninja build files and removes local included library depend
 Compile with:
 
 > meson setup build
+
 > ninja -C build
 
 In case you like to run jivelite without installing link the resources correct to the binary -> only suggested for developing jivelite itself
