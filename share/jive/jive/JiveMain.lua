@@ -266,6 +266,8 @@ end
 function JiveMain:__init()
 	log:info("JiveLite version ", JIVE_VERSION)
 
+	print(package.path)
+
 	-- Seed the rng
 	local initTime = os.time()
 	math.randomseed(initTime)
