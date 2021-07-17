@@ -1,0 +1,5 @@
+jivelite (0.1-1) unstable; urgency=medium
+
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- Andreas Volz <andreas.volz@tux-style.com>  Fri, 16 Jul 2021 13:18:35 +0200
