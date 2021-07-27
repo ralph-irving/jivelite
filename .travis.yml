@@ -7,7 +7,6 @@ before_install:
 - sudo apt-get install -y cdbs fakeroot libsdl1.2-dev libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-ttf2.0-dev libluajit-5.1-dev liblua5.1-0-dev lua-socket-dev lua-ljsyscall lua-lgi-dev lua-socket-dev lua-filesystem-dev lua-cqueues-dev lua-bitop-dev lua-cjson-dev libgirepository1.0-dev 
 
 script: 
-#- dpkg-buildpackage -us -uc -rfakeroot
 - meson setup build
 - meson configure build -Dprefix=/usr
 - ninja -C build
