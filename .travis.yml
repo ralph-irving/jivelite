@@ -4,11 +4,12 @@ dist: bionic
 
 before_install:
 - sudo apt-get -qq update
-- sudo apt-get install -y cdbs fakeroot debhelper
+- sudo apt-get install -y cdbs fakeroot debhelper 
 - sudo apt-get install -y meson ninja-build
 - sudo apt-get install -y libsdl1.2-dev libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-ttf2.0-dev libluajit-5.1-dev liblua5.1-0-dev lua-socket-dev lua-ljsyscall lua-lgi-dev lua-socket-dev lua-filesystem-dev lua-cqueues-dev lua-bitop-dev lua-cjson-dev libgirepository1.0-dev 
 
 script: 
+- apt-cache show debhelper
 - dpkg-checkbuilddeps
 - dpkg-buildpackage -us -uc -b -rfakeroot 
 
