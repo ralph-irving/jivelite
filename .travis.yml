@@ -9,18 +9,15 @@ before_install:
 - sudo apt-get install libsdl1.2-dev libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-ttf2.0-dev libluajit-5.1-dev liblua5.1-0-dev lua-socket-dev lua-ljsyscall lua-lgi-dev lua-socket-dev lua-filesystem-dev lua-cqueues-dev lua-bitop-dev lua-cjson-dev libgirepository1.0-dev 
 
 script: 
-- meson setup build
-- meson configure build -Dprefix=/usr
-- ninja -C build
+- dpkg-buildpackage -us -uc -rfakeroot
 
-deploy:
-  provider: releases
-  file_glob: true
-  overwrite: true
-  draft: true
-  file: 
-    - "../jivelite*.deb"
-    - "../jivelite*.tar.gz"
-  skip_cleanup: true
-  on:
-    repo: andreas-volz/jivelite
+#deploy:
+#  provider: releases
+#  file_glob: true
+#  overwrite: true
+#  draft: true
+#  file: 
+#    - "../jivelite*.deb"
+#  skip_cleanup: true
+#  on:
+#    repo: andreas-volz/jivelite
