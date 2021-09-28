@@ -73,16 +73,15 @@ function status(self, sink)
 	return self._status
 end
 
-function getfd(self)
-
-  -- deactivated both as this is platform specific
+--function getfd(self)
+  -- deactivated both as this is platform specific and not called anywhere in Jivelite source
   -- linux friendly and portable alternative could be to use POSIX lib
   --return ffi.C.fileno(self.fh)
   --return self.fh:fileno()
 
   -- FIXME: for now just return 1 as it seems the caller doesn't care about, but needs more testing!
-	return 1
-end
+--	return 1
+--end
 
 
 --[[
