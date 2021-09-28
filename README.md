@@ -23,3 +23,6 @@ Install:
 Install with relative dir:
 
 > DESTDIR=/tmp/jivelite ninja -C build install
+
+## Maintainer information
+Debian/Ubuntu build information and dependancies are maintained in .travis.yml which configures the Travis CI check.
