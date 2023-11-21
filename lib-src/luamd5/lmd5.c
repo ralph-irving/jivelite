@@ -97,7 +97,11 @@ static int Ltostring(lua_State *L)		/** tostring(c) */
  return 1;
 }
 
+#if defined(LUAJIT_VERSION) && LUAJIT_VERSION > 20
+static const luaL_Reg R[] =
+#else
 static const luaL_reg R[] =
+#endif
 {
 	{ "clone",	Lclone	},
 	{ "digest",	Ldigest	},

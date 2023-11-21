@@ -66,7 +66,11 @@ static lxp_userdata *createlxp (lua_State *L) {
 
 
 static void lxpclose (lua_State *L, lxp_userdata *xpu) {
+#if defined(LUAJIT_VERSION) && LUAJIT_VERSION > 20 
+  luaL_unref(L, LUA_REGISTRYINDEX, xpu->tableref);
+#else
   lua_unref(L, xpu->tableref);
+#endif
   xpu->tableref = LUA_REFNIL;
   if (xpu->parser)
     XML_ParserFree(xpu->parser);
@@ -225,7 +229,11 @@ static int f_ExternaEntity (XML_Parser p, const char *context,
   child->parser = XML_ExternalEntityParserCreate(p, context, NULL);
   if (!child->parser)
     luaL_error(L, "XML_ParserCreate failed");
+#if defined(LUAJIT_VERSION) && LUAJIT_VERSION > 20
+  lua_rawgeti(L, LUA_REGISTRYINDEX, xpu->tableref);
+#else
   lua_getref(L, xpu->tableref);  /* child uses the same table of its father */
+#endif
   child->tableref = luaL_ref(L, LUA_REGISTRYINDEX);
   lua_pushstring(L, base);
   lua_pushstring(L, systemId);
@@ -449,7 +457,11 @@ static int parse_aux (lua_State *L, lxp_userdata *xpu, const char *s,
   xpu->state = XPSok;
   xpu->b = &b;
   lua_settop(L, 2);
+#if defined(LUAJIT_VERSION) && LUAJIT_VERSION > 20
+  lua_rawgeti(L, LUA_REGISTRYINDEX, xpu->tableref);
+#else
   lua_getref(L, xpu->tableref);  /* to be used by handlers */
+#endif
   status = XML_Parse(xpu->parser, s, (int)len, s == NULL);
   if (xpu->state == XPSstring) dischargestring(xpu);
   if (xpu->state == XPSerror) {  /* callback error? */
@@ -517,7 +529,11 @@ static int lxp_stop (lua_State *L) {
   return 1;
 }
 
+#if defined(LUAJIT_VERSION) && LUAJIT_VERSION > 20
+static const struct luaL_Reg lxp_meths[] = {
+#else
 static const struct luaL_reg lxp_meths[] = {
+#endif
   {"parse", lxp_parse},
   {"close", lxp_close},
   {"__gc", parser_gc},
@@ -530,7 +546,11 @@ static const struct luaL_reg lxp_meths[] = {
   {NULL, NULL}
 };
 
+#if defined(LUAJIT_VERSION) && LUAJIT_VERSION > 20
+static const struct luaL_Reg lxp_funcs[] = {
+#else
 static const struct luaL_reg lxp_funcs[] = {
+#endif
   {"new", lxp_make_parser},
   {NULL, NULL}
 };

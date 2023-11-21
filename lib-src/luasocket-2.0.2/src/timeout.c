@@ -33,7 +33,11 @@
 static int timeout_lua_gettime(lua_State *L);
 static int timeout_lua_sleep(lua_State *L);
 
+#if defined(LUAJIT_VERSION) && LUAJIT_VERSION > 20
+static luaL_Reg func[] = {
+#else
 static luaL_reg func[] = {
+#endif
     { "gettime", timeout_lua_gettime },
     { "sleep", timeout_lua_sleep },
     { NULL, NULL }

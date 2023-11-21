@@ -1,7 +1,7 @@
 LDFLAGS ?= -lrt
 SOURCES ?= platform_linux.c
 
-CFLAGS  += -I. -I$(PREFIX)/include/luajit-2.0 -I/usr/include/SDL -Wall -fPIC
+CFLAGS  += -I. -I$(PREFIX)/include/luajit-$(LUAJIT_VERSION) -I/usr/include/SDL -ISDL_SavePNG -Wall -fPIC
 LDFLAGS += -lSDL -lSDL_ttf -lSDL_image -lSDL_gfx -lluajit-5.1 -lm -lpthread
 EXE = ../bin/jivelite
 

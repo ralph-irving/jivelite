@@ -2,7 +2,7 @@
 
 # change these to reflect your Lua installation
 #LUA= /tmp/lhf/lua-5.1.4
-LUAINC= $(PREFIX)/include/luajit-2.0
+LUAINC= $(PREFIX)/include/luajit-$(LUAJIT_VERSION)
 LUALIB= $(LUA)/lib
 LUABIN= $(LUA)/bin
 
@@ -74,7 +74,7 @@ MD5OBJ= $(MD5LIB)
 
 # probably no need to change anything below here
 CC= gcc
-CFLAGS= $(INCS) $(DEFS) $(WARN) -O2 $G -fPIC
+CFLAGS += $(INCS) $(DEFS) $(WARN) -O2 $G -fPIC
 WARN= #-ansi -pedantic -Wall
 INCS= -I$(LUAINC) $(MD5INC)
 

@@ -4,7 +4,7 @@ LUA_LIBDIR= $(PREFIX)/lib/lua/5.1
 # System's lua directory (where Lua libraries are installed)
 LUA_DIR= $(PREFIX)/share/lua/5.1
 # Lua includes directory
-LUA_INC= $(PREFIX)/include/luajit-2.0
+LUA_INC= $(PREFIX)/include/luajit-$(LUAJIT_VERSION)
 
 # OS dependent
 #LIB_OPTION= -shared #for Linux
@@ -29,5 +29,5 @@ CWARNS = -Wall -pedantic \
         -Wshadow \
         -Wwrite-strings
 
-CFLAGS = $(CWARNS) -ansi -O2 -I$(LUA_INC) -fPIC
+CFLAGS += $(CWARNS) -ansi -O2 -I$(LUA_INC) -fPIC
 CC = gcc

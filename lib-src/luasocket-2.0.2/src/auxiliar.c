@@ -24,7 +24,11 @@ int auxiliar_open(lua_State *L) {
 * Creates a new class with given methods
 * Methods whose names start with __ are passed directly to the metatable.
 \*-------------------------------------------------------------------------*/
+#if defined(LUAJIT_VERSION) && LUAJIT_VERSION > 20
+void auxiliar_newclass(lua_State *L, const char *classname, luaL_Reg *func) {
+#else
 void auxiliar_newclass(lua_State *L, const char *classname, luaL_reg *func) {
+#endif
     luaL_newmetatable(L, classname); /* mt */
     /* create __index table to place methods */
     lua_pushstring(L, "__index");    /* mt,"__index" */

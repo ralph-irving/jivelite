@@ -47,7 +47,11 @@ static int base_open(lua_State *L);
 /*-------------------------------------------------------------------------*\
 * Modules and functions
 \*-------------------------------------------------------------------------*/
+#if defined(LUAJIT_VERSION) && LUAJIT_VERSION > 20
+static const luaL_Reg mod[] = {
+#else
 static const luaL_reg mod[] = {
+#endif
     {"auxiliar", auxiliar_open},
     {"except", except_open},
     {"timeout", timeout_open},
@@ -59,7 +63,11 @@ static const luaL_reg mod[] = {
     {NULL, NULL}
 };
 
+#if defined(LUAJIT_VERSION) && LUAJIT_VERSION > 20
+static luaL_Reg func[] = {
+#else
 static luaL_reg func[] = {
+#endif
     {"skip",      global_skip},
     {"__unload",  global_unload},
     {NULL,        NULL}

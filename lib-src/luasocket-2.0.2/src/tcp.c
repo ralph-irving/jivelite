@@ -38,7 +38,11 @@ static int meth_setfd(lua_State *L);
 static int meth_dirty(lua_State *L);
 
 /* tcp object methods */
+#if defined(LUAJIT_VERSION) && LUAJIT_VERSION > 20
+static luaL_Reg tcp[] = {
+#else
 static luaL_reg tcp[] = {
+#endif
     {"__gc",        meth_close},
     {"__tostring",  auxiliar_tostring},
     {"accept",      meth_accept},
@@ -73,7 +77,11 @@ static t_opt opt[] = {
 };
 
 /* functions in library namespace */
+#if defined(LUAJIT_VERSION) && LUAJIT_VERSION > 20
+static luaL_Reg func[] = {
+#else
 static luaL_reg func[] = {
+#endif
     {"tcp", global_create},
     {NULL, NULL}
 };

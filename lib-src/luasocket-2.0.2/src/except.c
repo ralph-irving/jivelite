@@ -21,7 +21,11 @@ static int finalize(lua_State *L);
 static int do_nothing(lua_State *L);
 
 /* except functions */
+#if defined(LUAJIT_VERSION) && LUAJIT_VERSION > 20
+static luaL_Reg func[] = {
+#else
 static luaL_reg func[] = {
+#endif
     {"newtry",    global_newtry},
     {"protect",   global_protect},
     {NULL,        NULL}

@@ -1,4 +1,4 @@
-CFLAGS  += -I. -I/usr/local/include/luajit-2.0 -I/usr/include/SDL -Wall -fPIC
+CFLAGS  += -I. -I$(PREFIX)/include/luajit-$(LUAJIT_VERSION) -I/usr/include/SDL -Wall -fPIC
 LDFLAGS += -lluajit-5.1 -lm -lrt
 
 DEPS    = ../jive.h ../common.h ../log.h

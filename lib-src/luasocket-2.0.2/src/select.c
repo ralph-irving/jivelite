@@ -27,7 +27,11 @@ static void make_assoc(lua_State *L, int tab);
 static int global_select(lua_State *L);
 
 /* functions in library namespace */
+#if defined(LUAJIT_VERSION) && LUAJIT_VERSION > 20
+static luaL_Reg func[] = {
+#else
 static luaL_reg func[] = {
+#endif
     {"select", global_select},
     {NULL,     NULL}
 };

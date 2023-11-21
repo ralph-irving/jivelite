@@ -2,6 +2,7 @@
 # NB - repo has modified paths which assume use of luajit2.0 from source
 
 TARGET   ?= linux
+
 LD_FLAGS ?= "-shared"
 
 LIBS = cjson luaexpat luafilesystem luamd5 luasocket luazipfilter
