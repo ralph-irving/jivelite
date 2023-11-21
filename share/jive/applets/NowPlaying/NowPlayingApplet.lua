@@ -223,9 +223,12 @@ function getNPStyles(self)
 		if not self.selectedStyle then
 			self.selectedStyle = auditedNPStyles[1] and auditedNPStyles[1].style
 		end
-		
-		settings.selectedStyle = self.selectedStyle
-		self:storeSettings()
+
+		-- only update settings if they have changed
+		if settings.selectedStyle ~= self.selectedStyle then
+			settings.selectedStyle = self.selectedStyle
+			self:storeSettings()
+		end		
 	end
 
 	if self.window and self.window:getStyle() then
