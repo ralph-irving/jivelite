@@ -319,7 +319,7 @@ index b0cbc50..445ba03 100644
  LDFLAGS ?= -lrt
  SOURCES ?= platform_linux.c
  
--CFLAGS  += -I. -I$(PREFIX)/include/luajit-$(LUAJIT_VERSION) -I/usr/include/SDL -ISDL_SavePNG -Wall -fPIC
+-CFLAGS  += -I. -I$(PREFIX)/include/luajit-$(LUAJIT_VERSION) -I/usr/include/SDL -Wall -fPIC
 -LDFLAGS += -lSDL -lSDL_ttf -lSDL_image -lSDL_gfx -lluajit-5.1 -lm -lpthread
 +CFLAGS  += -I. -I$(PREFIX)/include -I$(PREFIX)/include/SDL -Wall -fPIC -DOPTJIVELITE -s -O3
 +LDFLAGS +=-lSDL -lSDL_ttf -lSDL_image -lSDL_gfx -L$(PREFIX)/lib -llua -lm -lpthread
