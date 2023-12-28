@@ -3822,6 +3822,26 @@ function skin1280x800(self, s, reload, useDefaultSize, w, h)
 	return s
 end
 
+function skin1280x720(self, s, reload, useDefaultSize, w, h)
+	self:skin(s, reload, useDefaultSize, w or 1280, h or 720)
+	
+	local c = s.CONSTANTS
+
+	s.nowplaying.nptitle.nptrack.font = _boldfont(c.NP_ARTISTALBUM_FONT_SIZE * 1.2) 
+	s.nowplaying.npartistgroup.npartist.font = _font(c.NP_ARTISTALBUM_FONT_SIZE * 1.2) 
+	s.nowplaying.npalbumgroup.npalbum.font = _font(c.NP_ARTISTALBUM_FONT_SIZE * 1.2) 
+
+	s.nowplaying_large_art.nptitle.nptrack.font = _boldfont(c.NP_ARTISTALBUM_FONT_SIZE * 1.2) 
+	s.nowplaying_large_art.npartistgroup.npartist.font = _font(c.NP_ARTISTALBUM_FONT_SIZE * 1.2) 
+	s.nowplaying_large_art.npalbumgroup.npalbum.font = _font(c.NP_ARTISTALBUM_FONT_SIZE * 1.2) 
+
+	-- put a space between volume controls and other buttons	
+	s.nowplaying.npcontrols.div5.w = 490
+	s.nowplaying.npcontrols.div5.img = false
+
+	return s
+end
+
 function skin1366x768(self, s, reload, useDefaultSize)
 	self:skin(s, reload, useDefaultSize, 1366, 768)
 
@@ -3857,6 +3877,10 @@ function skinCustom(self, s, reload, useDefaultSize)
 		s.nowplaying.npcontrols.div5.w = 230
 		s.nowplaying.npcontrols.div5.img = false
 	elseif screen_width == 1280 and screen_height == 800 then
+		s.nowplaying.npcontrols.div5.w = 490
+		s.nowplaying.npcontrols.div5.img = false
+		_largerFont()
+    elseif screen_width == 1280 and screen_height == 720 then
 		s.nowplaying.npcontrols.div5.w = 490
 		s.nowplaying.npcontrols.div5.img = false
 		_largerFont()
