@@ -11,10 +11,6 @@ local Task            = require("jive.ui.Task")
 local debug           = require("jive.utils.debug")
 local log             = require("jive.utils.log").logger("net.socket")
 
--- use ffi as luajit does not appear to support fileno as a method for io objects
-local ffi             = require("ffi")
-ffi.cdef[[int fileno(void *)]]
-
 module(..., oo.class)
 
 
@@ -77,10 +73,15 @@ function status(self, sink)
 	return self._status
 end
 
-function getfd(self)
-	--return self.fh:fileno()
-	return ffi.C.fileno(self.fh)
-end
+--function getfd(self)
+  -- deactivated both as this is platform specific and not called anywhere in Jivelite source
+  -- linux friendly and portable alternative could be to use POSIX lib
+  --return ffi.C.fileno(self.fh)
+  --return self.fh:fileno()
+
+  -- FIXME: for now just return 1 as it seems the caller doesn't care about, but needs more testing!
+--	return 1
+--end
 
 
 --[[
