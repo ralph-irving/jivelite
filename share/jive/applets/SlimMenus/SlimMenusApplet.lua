@@ -136,55 +136,6 @@ function init(self)
 end
 
 
-function notify_serverLinked(self, server)
-	if server:isSqueezeNetwork() then
-		local currentPlayer = appletManager:callService("getCurrentPlayer")
-		if currentPlayer and not (currentPlayer:getSlimServer() and currentPlayer:getSlimServer():isSqueezeNetwork()) then
-			--self:_addSwitchToSnMenuItem()
-		end
-	end
-end
-
-
-function _removeSwitchToSnMenuItem(self)
-	log:debug("_removeSwitchToSnMenuItem")
-
-	jiveMain:removeItemById("switchToSn")
-end
-
---service method
-function addSwitchToSnMenuItem(self)
-	--self:_addSwitchToSnMenuItem(self)
-end
-
---[[
-function _addSwitchToSnMenuItem(self)
-	log:debug("_addSwitchToSnMenuItem")
-
-	jiveMain:addItem({
-		id = 'switchToSn',
-		node = 'networkSettings',
-		iconStyle = 'hm_advancedSettings',
-		text = self:string('MENUS_SQUEEZENETWORK_SWITCH'),
-		sound = 'WINDOWSHOW',
-		weight = 90,
-		callback =      function(event, menuItem)
-					if not self:_getSqueezeNetwork() then
-						local windowStack = Framework.windowStack
-						Framework:playSound("BUMP")
-						windowStack[1]:bumpLeft()
-						return
-					end
-					self:_selectMusicSource(function()
-									jiveMain:goHome()
-								end,
-								self:_getSqueezeNetwork())
-				end
-		})
-
-end
---]]
-
 function notify_networkOrServerNotOK(self, iface)
 	log:warn('notify_networkOrServerNotOK')
 	if iface and iface:isNetworkError() then
@@ -811,17 +762,8 @@ local function _menuSink(self, isCurrentServer, server)
 			self.waitingForPlayerMenuStatus = false
 			jnt:notify("playerLoaded", _player)
 			appletManager:callService("hideConnectingToServer")
-
-			--[[
-			if _server:isSqueezeNetwork() then
-				self:_removeSwitchToSnMenuItem()
-			else
-				self:_addSwitchToSnMenuItem()
-			end
-			--]]
-
-		end
          end
+	end
 end
 
 

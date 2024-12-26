@@ -47,21 +47,6 @@ MENUS_INTERNET_RADIO
 	RU	Радиостанции
 	SV	Radio
 
-MENUS_SQUEEZENETWORK_SWITCH
-	CS	Přepnout na mysqueezebox.com
-	DA	Skift til mysqueezebox.com
-	DE	Zu mysqueezebox.com umschalten
-	EN	Switch to mysqueezebox.com
-	ES	Cambiar a mysqueezebox.com
-	FI	Vaihda mysqueezebox.com-verkkoon
-	FR	Se connecter à mysqueezebox.com
-	IT	Passa a mysqueezebox.com
-	NL	Overschakelen naar mysqueezebox.com
-	NO	Bytt til mysqueezebox.com
-	PL	Przełącz na mysqueezebox.com
-	RU	Переключиться в mysqueezebox.com
-	SV	Växla till mysqueezebox.com
-
 MENUS_OTHER_LIBRARY
 	CS	Přepnout knihovnu
 	DA	Skift bibliotek

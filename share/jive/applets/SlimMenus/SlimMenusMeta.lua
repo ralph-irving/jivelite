@@ -19,7 +19,6 @@ function registerApplet(self)
 	self:registerService('goHome')
 	self:registerService('hideConnectingToPlayer')
 	self:registerService('warnOnAnyNetworkFailure')
-	self:registerService('addSwitchToSnMenuItem')
 
 	-- add a menu item for myMusic
 	jiveMain:addItem(self:menuItem('myMusicSelector', 'home', 'MENUS_MY_MUSIC', function(applet, ...) applet:myMusicSelector(...) end, 2, nil, "hm_myMusicSelector"))
