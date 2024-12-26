@@ -560,8 +560,6 @@ local function _menuSink(self, isCurrentServer, server)
 				--ignore, if self.myAppsNode is set that means we're delivering My Apps via a node and opml home menu items
 			elseif item.id == "playerpower" and System:hasSoftPower() and System:getMachine() ~= 'squeezeplay' then
 				--ignore, playerpower no longer shown to users since we use power button, unless this is a device without a power button
-			elseif item.id == "settingsPIN" then
-				--ignore, pin no longer shown to users since we use user/pass now
 			elseif item.id == "settingsPlayerNameChange" and not isCurrentServer then
 				--ignore, only applicable to currently selected server
 			elseif item.id == "settingsSleep" and not isCurrentServer then

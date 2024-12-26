@@ -125,7 +125,7 @@ function configureApplet(meta)
 		-- change to a non-existant player to prevent browser connecting
 		settings.currentPlayer = "ff:ff:ff:ff:ff:fe"
 
-		-- wait until SN is connected so we know the PIN
+		-- wait until SN is connected so we know the PIN - FIXME
 		jnt:subscribe(meta)
 	end
 end
@@ -140,9 +140,6 @@ function notify_playerNew(meta, player)
 	jnt:unsubscribe(meta)
 
 	appletManager:callService("setupShowSelectPlayer", function() end)
-
-	appletManager:callService("forcePin", player)
-
 end
 
 

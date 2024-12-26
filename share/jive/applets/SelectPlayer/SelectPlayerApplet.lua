@@ -228,17 +228,6 @@ function _addPlayerItem(self, player)
 		playerWeight = LOCAL_PLAYER_WEIGHT
 	end
     
-	-- if waiting for a SN pin modify name
-	if player:getPin() then
-		if not self.setupMode then
-			-- Only include Activate SN during setup
-			return
-		end
-
-		playerName = self:string("SQUEEZEBOX_ACTIVATE", player:getName())
-		playerWeight = ACTIVATE_WEIGHT
-	end
-
 	local item = {
 		id = mac,
 		style = 'item',
@@ -453,16 +442,6 @@ end
 
 
 function selectPlayer(self, player)
-	-- if connecting to SqueezeNetwork, first check we are linked
-	if player:getPin() then
-		-- as we are not linked this is a dummy player, after we need linked we
-		-- need to return to the choose player screen
-		log:info("calling enterPin")
-		appletManager:callService("enterPin", nil, player)
-
-		return false
-	end
-
 	-- set the current player
 	self.selectedPlayer = player
 	appletManager:callService("setCurrentPlayer", player)

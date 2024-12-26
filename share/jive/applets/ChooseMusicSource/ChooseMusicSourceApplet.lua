@@ -646,15 +646,6 @@ end
 -- connect player to server
 function connectPlayerToServer(self, player, server)
 	log:info('connectPlayerToServer() ', player, " ", server)
-	-- if connecting to SqueezeNetwork, first check jive is linked
-	if server:getPin() then
-		appletManager:callService("enterPin", server, nil,
-			       function()
-				       self:connectPlayerToServer(player, server)
-			       end)
-		return
-	end
-
 
 	self:_showConnectToServer(player, server)
 
