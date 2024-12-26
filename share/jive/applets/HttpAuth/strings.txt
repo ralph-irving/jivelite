@@ -3,19 +3,19 @@
 # http://en.wikipedia.org/wiki/List_of_ISO_639_codes
 
 HTTP_AUTH
-	CS	Ochrana vašeho hesla do Logitech Media Server
-	DA	Beskyttelse af Logitech Media Server med adgangskode
-	DE	Logitech Media Server-Kennwortschutz
-	EN	Logitech Media Server Password Protection
-	ES	Protección por contraseña de Logitech Media Server
-	FI	Logitech Media Serverin salasanasuojaus
-	FR	Protection par mot de passe du Logitech Media Server
-	IT	Protezione con password Logitech Media Server
-	NL	Wachtwoordbeveiliging voor Logitech Media Server
-	NO	Logitech Media Server passordbeskyttelse
-	PL	Ochrona hasłem programu Logitech Media Server
-	RU	Парольная защита Logitech Media Server
-	SV	Lösenordsskydd för Logitech Media Server
+	CS	Ochrana vašeho hesla do Lyrion Music Server
+	DA	Beskyttelse af Lyrion Music Server med adgangskode
+	DE	Lyrion Music Server-Kennwortschutz
+	EN	Lyrion Music Server Password Protection
+	ES	Protección por contraseña de Lyrion Music Server
+	FI	Lyrion Music Serverin salasanasuojaus
+	FR	Protection par mot de passe du Lyrion Music Server
+	IT	Protezione con password Lyrion Music Server
+	NL	Wachtwoordbeveiliging voor Lyrion Music Server
+	NO	Lyrion Music Server passordbeskyttelse
+	PL	Ochrona hasłem programu Lyrion Music Server
+	RU	Парольная защита Lyrion Music Server
+	SV	Lösenordsskydd för Lyrion Music Server
 
 HTTP_AUTH_USERNAME
 	CS	Uživatelské jméno
@@ -63,34 +63,34 @@ HTTP_AUTH_HELP
 	SV	Hjälp
 
 HTTP_AUTH_USERNAME_HELP
-	CS	Zadejte heslo nastavené pro ochranu vašeho Logitech Media Server
-	DA	Angiv det brugernavn som bruges sammen med adgangskoden til at beskytte Logitech Media Server
-	DE	Geben Sie den für den Logitech Media Server-Kennwortschutz konfigurierten Benutzernamen ein
-	EN	Enter the Username configured for password protection on your Logitech Media Server
-	ES	Introduzca el nombre de usuario tal y como se haya configurado para protección por contraseña en Logitech Media Server
-	FI	Anna käyttäjätunnus, joka määritettiin salasanasuojausta varten Logitech Media Serverissä
-	FR	Saisissez le nom d'utilisateur configuré pour la protection par mot de passe du Logitech Media Server
-	IT	Inserire il nome utente configurato per la protezione con password in Logitech Media Server
-	NL	Voer de gebruikersnaam die voor wachtwoordbeveiliging is ingesteld, op je Logitech Media Server in
-	NO	Skriv inn brukernavnet som er konfigurert for passordbeskyttelse i Logitech Media Server
-	PL	Wprowadź nazwę użytkownika skonfigurowaną do ochrony hasłem w programie Logitech Media Server
-	RU	Введите имя пользователя, настроенное для парольной защиты в вашем Logitech Media Server
-	SV	Ange användarnamnet du konfigurerat för lösenordsskydd i Logitech Media Server
+	CS	Zadejte heslo nastavené pro ochranu vašeho Lyrion Music Server
+	DA	Angiv det brugernavn som bruges sammen med adgangskoden til at beskytte Lyrion Music Server
+	DE	Geben Sie den für den Lyrion Music Server-Kennwortschutz konfigurierten Benutzernamen ein
+	EN	Enter the Username configured for password protection on your Lyrion Music Server
+	ES	Introduzca el nombre de usuario tal y como se haya configurado para protección por contraseña en Lyrion Music Server
+	FI	Anna käyttäjätunnus, joka määritettiin salasanasuojausta varten Lyrion Music Serverissä
+	FR	Saisissez le nom d'utilisateur configuré pour la protection par mot de passe du Lyrion Music Server
+	IT	Inserire il nome utente configurato per la protezione con password in Lyrion Music Server
+	NL	Voer de gebruikersnaam die voor wachtwoordbeveiliging is ingesteld, op je Lyrion Music Server in
+	NO	Skriv inn brukernavnet som er konfigurert for passordbeskyttelse i Lyrion Music Server
+	PL	Wprowadź nazwę użytkownika skonfigurowaną do ochrony hasłem w programie Lyrion Music Server
+	RU	Введите имя пользователя, настроенное для парольной защиты в вашем Lyrion Music Server
+	SV	Ange användarnamnet du konfigurerat för lösenordsskydd i Lyrion Music Server
 
 HTTP_AUTH_PASSWORD_HELP
-	CS	Zadejte heslo nastavené pro ochranu vašeho Logitech Media Server
-	DA	Indtast den adgangskode som bruges til at beskytte Logitech Media Server
-	DE	Geben Sie das für den Logitech Media Server-Kennwortschutz konfigurierte Kennwort ein
-	EN	Enter the Password configured for password protection on your Logitech Media Server
-	ES	Introduzca la contraseña tal y como se haya configurado para protección por contraseña en Logitech Media Server
-	FI	Anna salasana, joka määritettiin salasanasuojausta varten Logitech Media Serverissä
-	FR	Saisissez le mot de passe configuré pour la protection par mot de passe du Logitech Media Server
-	IT	Inserire la password configurata per la protezione con password in Logitech Media Server
-	NL	Voer het wachtwoord dat voor wachtwoordbeveiliging is ingesteld, op je Logitech Media Server in
-	NO	Skriv inn passordet som er konfigurert for passordbeskyttelse i Logitech Media Server
-	PL	Wprowadź hasło skonfigurowane do ochrony hasłem w programie Logitech Media Server
-	RU	Введите пароль, настроенный для парольной защиты в вашем Logitech Media Server
-	SV	Ange lösenordet du konfigurerat för lösenordsskydd i Logitech Media Server
+	CS	Zadejte heslo nastavené pro ochranu vašeho Lyrion Music Server
+	DA	Indtast den adgangskode som bruges til at beskytte Lyrion Music Server
+	DE	Geben Sie das für den Lyrion Music Server-Kennwortschutz konfigurierte Kennwort ein
+	EN	Enter the Password configured for password protection on your Lyrion Music Server
+	ES	Introduzca la contraseña tal y como se haya configurado para protección por contraseña en Lyrion Music Server
+	FI	Anna salasana, joka määritettiin salasanasuojausta varten Lyrion Music Serverissä
+	FR	Saisissez le mot de passe configuré pour la protection par mot de passe du Lyrion Music Server
+	IT	Inserire la password configurata per la protezione con password in Lyrion Music Server
+	NL	Voer het wachtwoord dat voor wachtwoordbeveiliging is ingesteld, op je Lyrion Music Server in
+	NO	Skriv inn passordet som er konfigurert for passordbeskyttelse i Lyrion Music Server
+	PL	Wprowadź hasło skonfigurowane do ochrony hasłem w programie Lyrion Music Server
+	RU	Введите пароль, настроенный для парольной защиты в вашем Lyrion Music Server
+	SV	Ange lösenordet du konfigurerat för lösenordsskydd i Lyrion Music Server
 
 HTTP_AUTH_CONNECTING_TO
 #SLT: please keep this short (<30 characters)

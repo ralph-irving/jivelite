@@ -229,19 +229,19 @@ CONNECT_TO_THIS_LIBRARY
 	SV	Anslut till det här biblioteket
 
 SLIMSERVER_HELP
-	CS	Zadejte IP adresu PC, na kterém běží Logitech Media Server
-	DA	Angiv IP-adressen på den computer hvor Logitech Media Server kører
-	DE	IP-Adresse des Computers mit Logitech Media Server eingeben
-	EN	Enter the IP address of the computer running Logitech Media Server
-	ES	Escriba la dirección IP del ordenador que ejecuta Logitech Media Server
-	FI	Anna sen tietokoneen IP-osoite, johon Logitech Media Server on asennettu
-	FR	Spécifiez l'adresse IP de l'ordinateur exécutant Logitech Media Server
-	IT	Inserire l'indirizzo IP del computer in cui è in esecuzione Logitech Media Server
-	NL	Voer het IP-adres van de computer in waarop Logitech Media Server wordt uitgevoerd
-	NO	Oppgi IP-adressen til datamaskinen som kjører Logitech Media Server
-	PL	Wprowadź adres IP komputera, na którym działa program Logitech Media Server
-	RU	Введите IP-адрес компьютера, на котором используется Logitech Media Server
-	SV	Ange IP-adressen till datorn där Logitech Media Server körs
+	CS	Zadejte IP adresu PC, na kterém běží Lyrion Music Server
+	DA	Angiv IP-adressen på den computer hvor Lyrion Music Server kører
+	DE	IP-Adresse des Computers mit Lyrion Music Server eingeben
+	EN	Enter the IP address of the computer running Lyrion Music Server
+	ES	Escriba la dirección IP del ordenador que ejecuta Lyrion Music Server
+	FI	Anna sen tietokoneen IP-osoite, johon Lyrion Music Server on asennettu
+	FR	Spécifiez l'adresse IP de l'ordinateur exécutant Lyrion Music Server
+	IT	Inserire l'indirizzo IP del computer in cui è in esecuzione Lyrion Music Server
+	NL	Voer het IP-adres van de computer in waarop Lyrion Music Server wordt uitgevoerd
+	NO	Oppgi IP-adressen til datamaskinen som kjører Lyrion Music Server
+	PL	Wprowadź adres IP komputera, na którym działa program Lyrion Music Server
+	RU	Введите IP-адрес компьютера, на котором используется Lyrion Music Server
+	SV	Ange IP-adressen till datorn där Lyrion Music Server körs
 
 SLIMSERVER_CONNECTING_TO
 #SLT: please keep this message as short as possible
@@ -320,34 +320,34 @@ CHOOSE_OTHER_LIBRARY
 	SV	Byt bibliotek
 
 SQUEEZEBOX_PROBLEM_HELP_GENERIC
-	CS	Nepovedlo se připojení k %s. Pokud tento problém nadále přetrvá, zkontrolujte prosím Logitech Media Server, abyste se ujistili, že řádně pracuje a že máte spolehlivé síťové připojení.
-	DA	Der kunne ikke etableres forbindelse til %s. Hvis problemet varer ved, skal du tjekke at Logitech Media Server kører som den skal og at du har en stabil netværksforbindelse.
-	DE	Verbindung mit %s nicht möglich. Sollte das Problem weiterhin bestehen, prüfen Sie, ob der Logitech Media Server funktionstüchtig ist und Sie über eine zuverlässige Netzwerkverbindung verfügen.
-	EN	We couldn't connect to %s.  If this problem persists, please check Logitech Media Server to make sure it is running properly, and that you have a reliable network connection.
-	ES	No se ha podido establecer conexión con %s. Si el problema continúa, asegúrese de que Logitech Media Server se está ejecutando correctamente y de que la conexión de red es fiable.
-	FI	Emme voineet muodostaa yhteyttä kohteeseen %s.  Jos ongelma jatkuu, tarkista Logitech Media Serverin ja verkkoyhteyden toiminta.
-	FR	Connexion à %s impossible. Si le problème persiste, veuillez vérifier que le Logitech Media Server est correctement exécuté et que la connexion au réseau est fiable.
-	IT	Non è stato possibile connettersi a %s. Se il problema persiste, verificare che Logitech Media Server sia in esecuzione correttamente e che la connessione sia affidabile.
-	NL	Er kan geen verbinding worden gemaakt met %s. Blijft dit probleem zich voordoen, controleer dan of de Logitech Media Server goed functioneert en of je een betrouwbare netwerkverbinding hebt.
-	NO	Kan ikke kople til %s. Hvis dette problemet vedvarer, må du kontrollere at Logitech Media Server kjører som den skal, og at du har en stabil nettverkstilkopling.
-	PL	Nie można nawiązać połączenia z %s. Jeśli problem będzie się powtarzał, sprawdź działanie programu Logitech Media Server i połączenia sieciowego.
-	RU	Не удалось подключиться к %s. Если эта неполадка будет повторяться, проверьте, правильно ли работает Logitech Media Server и установлено ли надежное сетевое подключение.
-	SV	Det gick inte att ansluta till %s.  Om problemet kvarstår kontrollerar du Logitech Media Server och kontrollerar att den är igång, och att du har en stabil nätverksanslutning.
+	CS	Nepovedlo se připojení k %s. Pokud tento problém nadále přetrvá, zkontrolujte prosím Lyrion Music Server, abyste se ujistili, že řádně pracuje a že máte spolehlivé síťové připojení.
+	DA	Der kunne ikke etableres forbindelse til %s. Hvis problemet varer ved, skal du tjekke at Lyrion Music Server kører som den skal og at du har en stabil netværksforbindelse.
+	DE	Verbindung mit %s nicht möglich. Sollte das Problem weiterhin bestehen, prüfen Sie, ob der Lyrion Music Server funktionstüchtig ist und Sie über eine zuverlässige Netzwerkverbindung verfügen.
+	EN	We couldn't connect to %s.  If this problem persists, please check Lyrion Music Server to make sure it is running properly, and that you have a reliable network connection.
+	ES	No se ha podido establecer conexión con %s. Si el problema continúa, asegúrese de que Lyrion Music Server se está ejecutando correctamente y de que la conexión de red es fiable.
+	FI	Emme voineet muodostaa yhteyttä kohteeseen %s.  Jos ongelma jatkuu, tarkista Lyrion Music Serverin ja verkkoyhteyden toiminta.
+	FR	Connexion à %s impossible. Si le problème persiste, veuillez vérifier que le Lyrion Music Server est correctement exécuté et que la connexion au réseau est fiable.
+	IT	Non è stato possibile connettersi a %s. Se il problema persiste, verificare che Lyrion Music Server sia in esecuzione correttamente e che la connessione sia affidabile.
+	NL	Er kan geen verbinding worden gemaakt met %s. Blijft dit probleem zich voordoen, controleer dan of de Lyrion Music Server goed functioneert en of je een betrouwbare netwerkverbinding hebt.
+	NO	Kan ikke kople til %s. Hvis dette problemet vedvarer, må du kontrollere at Lyrion Music Server kjører som den skal, og at du har en stabil nettverkstilkopling.
+	PL	Nie można nawiązać połączenia z %s. Jeśli problem będzie się powtarzał, sprawdź działanie programu Lyrion Music Server i połączenia sieciowego.
+	RU	Не удалось подключиться к %s. Если эта неполадка будет повторяться, проверьте, правильно ли работает Lyrion Music Server и установлено ли надежное сетевое подключение.
+	SV	Det gick inte att ansluta till %s.  Om problemet kvarstår kontrollerar du Lyrion Music Server och kontrollerar att den är igång, och att du har en stabil nätverksanslutning.
 
 SQUEEZEBOX_PROBLEM_HELP
-	CS	Připojení k %s nebylo možné. Ujistěte se, že je váš počítač zapnutý a připojený k místní síti, a že je Logitech Media Server spuštěn.
-	DA	Der kunne ikke oprettes forbindelse til %s. Kontroller at computeren er tændt, at den er sluttet til det lokale netværk, og at Logitech Media Server kører.
-	DE	Verbindung mit %s nicht möglich. Vergewissern Sie sich, dass Ihr Computer eingeschaltet ist und mit dem lokalen Netzwerk verbunden ist. Stellen Sie sicher, das Logitech Media Server ausgeführt wird.
-	EN	We couldn't connect to %s.  Make sure your computer is turned on and connected to your local network, and that Logitech Media Server is currently running.
-	ES	No se ha podido establecer conexión con %s. Asegúrese de que el ordenador está encendido y conectado a la red local, y de que Logitech Media Server se está ejecutando en este momento.
-	FI	Yhteyttä kohteeseen %s ei voitu muodostaa. Tarkista, että tietokone on päällä ja että se on yhdistetty paikallisverkkoon. Tarkista myös, että Logitech Media Server on käynnissä.
-	FR	Connexion à %s impossible. Vérifiez que votre ordinateur est sous tension et connecté à votre réseau local et que le Logitech Media Server est en cours d'exécution.
-	IT	Impossibile connettersi a %s. Verificare che il computer sia acceso e connesso alla rete locale e che Logitech Media Server sia in esecuzione.
-	NL	Er kan geen verbinding worden gemaakt met %s. Controleer of je computer aanstaat en met je lokale netwerk is verbonden, en of Logitech Media Server actief is.
-	NO	Kunne ikke kople til %s. Kontroller at datamaskinen kjører og er koplet til det lokale nettverket, og at Logitech Media Server kjører.
-	PL	Nie można nawiązać połączenia z %s. Upewnij się, że komputer jest włączony i połączony z siecią lokalną, a program Logitech Media Server jest uruchomiony.
-	RU	Не удалось подключиться к %s. Убедитесь, что компьютер включен и подключен к локальной сети и что Logitech Media Server запущен.
-	SV	Det gick inte att ansluta till %s. Kontrollera att datorn är igång och ansluten till ditt lokala nätverk och att Logitech Media Server körs för närvarande.
+	CS	Připojení k %s nebylo možné. Ujistěte se, že je váš počítač zapnutý a připojený k místní síti, a že je Lyrion Music Server spuštěn.
+	DA	Der kunne ikke oprettes forbindelse til %s. Kontroller at computeren er tændt, at den er sluttet til det lokale netværk, og at Lyrion Music Server kører.
+	DE	Verbindung mit %s nicht möglich. Vergewissern Sie sich, dass Ihr Computer eingeschaltet ist und mit dem lokalen Netzwerk verbunden ist. Stellen Sie sicher, das Lyrion Music Server ausgeführt wird.
+	EN	We couldn't connect to %s.  Make sure your computer is turned on and connected to your local network, and that Lyrion Music Server is currently running.
+	ES	No se ha podido establecer conexión con %s. Asegúrese de que el ordenador está encendido y conectado a la red local, y de que Lyrion Music Server se está ejecutando en este momento.
+	FI	Yhteyttä kohteeseen %s ei voitu muodostaa. Tarkista, että tietokone on päällä ja että se on yhdistetty paikallisverkkoon. Tarkista myös, että Lyrion Music Server on käynnissä.
+	FR	Connexion à %s impossible. Vérifiez que votre ordinateur est sous tension et connecté à votre réseau local et que le Lyrion Music Server est en cours d'exécution.
+	IT	Impossibile connettersi a %s. Verificare che il computer sia acceso e connesso alla rete locale e che Lyrion Music Server sia in esecuzione.
+	NL	Er kan geen verbinding worden gemaakt met %s. Controleer of je computer aanstaat en met je lokale netwerk is verbonden, en of Lyrion Music Server actief is.
+	NO	Kunne ikke kople til %s. Kontroller at datamaskinen kjører og er koplet til det lokale nettverket, og at Lyrion Music Server kjører.
+	PL	Nie można nawiązać połączenia z %s. Upewnij się, że komputer jest włączony i połączony z siecią lokalną, a program Lyrion Music Server jest uruchomiony.
+	RU	Не удалось подключиться к %s. Убедитесь, что компьютер включен и подключен к локальной сети и что Lyrion Music Server запущен.
+	SV	Det gick inte att ansluta till %s. Kontrollera att datorn är igång och ansluten till ditt lokala nätverk och att Lyrion Music Server körs för närvarande.
 
 SQUEEZECENTER_VERSION
 	CS	Aktualizovat software
@@ -365,17 +365,17 @@ SQUEEZECENTER_VERSION
 	SV	Uppgradera
 
 SQUEEZECENTER_VERSION_HELP
-	CS	%s vyžaduje aktualizaci na novější verzi Logitech Media Server.\n\nPro stažení nejnovější verze navštivte laskavě mysqueezebox.com/downloads.
-	DA	%s skal opdateres til en nyere version af Logitech Media Server.\n\nGå til mysqueezebox.com/downloads, og hent den nyeste version.
-	DE	%s muss auf eine neue Version von Logitech Media Server aktualisiert werden.\n\nLaden Sie unter mysqueezebox.com/downloads die neueste Version herunter.
-	EN	%s needs to be updated to a newer version of the Logitech Media Server.\n\nPlease visit mysqueezebox.com/downloads to download the latest version.
-	ES	%s debe actualizarse a una versión nueva de Logitech Media Server.\n\nVisite mysqueezebox.com/downloads para descargar la versión más reciente.
-	FI	%s täytyy päivittää Logitech Media Serverin uudempaan versioon.\n\nLataa uusin versio osoitteesta mysqueezebox.com/downloads.
-	FR	Vous devez mettre %s à jour à la dernière version du Logitech Media Server.\n\nVisitez mysqueezebox.com/downloads pour télécharger la dernière version.
-	IT	È necessario aggiornare %s a una versione più recente di Logitech Media Server.\n\nVisitare mysqueezebox.com/downloads per scaricarla.
-	NL	%s moet worden bijgewerkt naar een recentere versie van de Logitech Media Server.\n\nGa naar mysqueezebox.com/downloads om de nieuwste versie te downloaden.
-	NO	%s må oppdateres til en nyere versjon av Logitech Media Server.\n\nGå til mysqueezebox.com/downloads for å laste ned den nyeste versjonen.
-	PL	%s wymaga aktualizacji do nowszej wersji programu Logitech Media Server.\n\nOdwiedź witrynę mysqueezebox.com/downloads, aby pobrać najnowszą wersję.
-	RU	%s необходимо обновить до более новой версии Logitech Media Server.\n\nПосетите mysqueezebox.com/downloads, чтобы загрузить последнюю версию.
-	SV	%s måste uppdateras till en senare version av Logitech Media Server.\n\nGå till mysqueezebox.com/downloads för att ladda ner den senaste versionen.
+	CS	%s vyžaduje aktualizaci na novější verzi Lyrion Music Server.\n\nPro stažení nejnovější verze navštivte laskavě lms-community.github.io/lms-server-repository.
+	DA	%s skal opdateres til en nyere version af Lyrion Music Server.\n\nGå til lms-community.github.io/lms-server-repository, og hent den nyeste version.
+	DE	%s muss auf eine neue Version von Lyrion Music Server aktualisiert werden.\n\nLaden Sie unter lms-community.github.io/lms-server-repository die neueste Version herunter.
+	EN	%s needs to be updated to a newer version of the Lyrion Music Server.\n\nPlease visit lms-community.github.io/lms-server-repository to download the latest version.
+	ES	%s debe actualizarse a una versión nueva de Lyrion Music Server.\n\nVisite lms-community.github.io/lms-server-repository para descargar la versión más reciente.
+	FI	%s täytyy päivittää Lyrion Music Serverin uudempaan versioon.\n\nLataa uusin versio osoitteesta lms-community.github.io/lms-server-repository.
+	FR	Vous devez mettre %s à jour à la dernière version du Lyrion Music Server.\n\nVisitez lms-community.github.io/lms-server-repository pour télécharger la dernière version.
+	IT	È necessario aggiornare %s a una versione più recente di Lyrion Music Server.\n\nVisitare lms-community.github.io/lms-server-repository per scaricarla.
+	NL	%s moet worden bijgewerkt naar een recentere versie van de Lyrion Music Server.\n\nGa naar lms-community.github.io/lms-server-repository om de nieuwste versie te downloaden.
+	NO	%s må oppdateres til en nyere versjon av Lyrion Music Server.\n\nGå til lms-community.github.io/lms-server-repository for å laste ned den nyeste versjonen.
+	PL	%s wymaga aktualizacji do nowszej wersji programu Lyrion Music Server.\n\nOdwiedź witrynę lms-community.github.io/lms-server-repository, aby pobrać najnowszą wersję.
+	RU	%s необходимо обновить до более новой версии Lyrion Music Server.\n\nПосетите lms-community.github.io/lms-server-repository, чтобы загрузить последнюю версию.
+	SV	%s måste uppdateras till en senare version av Lyrion Music Server.\n\nGå till lms-community.github.io/lms-server-repository för att ladda ner den senaste versionen.
 

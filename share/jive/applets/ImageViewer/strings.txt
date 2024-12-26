@@ -168,19 +168,19 @@ IMAGE_VIEWER_SOURCE_LOCAL_STORAGE
 	SV	Lokalt lagringsmedium
 
 IMAGE_VIEWER_SOURCE_SC
-	CS	Logitech Media Server
-	DA	Logitech Media Server
-	DE	Logitech Media Server
-	EN	Logitech Media Server
-	ES	Logitech Media Server
-	FI	Logitech Media Server
-	FR	Logitech Media Server
-	IT	Logitech Media Server
-	NL	Logitech Media Server
-	NO	Logitech Media Server
-	PL	Logitech Media Server
-	RU	Logitech Media Server
-	SV	Logitech Media Server
+	CS	Lyrion Music Server
+	DA	Lyrion Music Server
+	DE	Lyrion Music Server
+	EN	Lyrion Music Server
+	ES	Lyrion Music Server
+	FI	Lyrion Music Server
+	FR	Lyrion Music Server
+	IT	Lyrion Music Server
+	NL	Lyrion Music Server
+	NO	Lyrion Music Server
+	PL	Lyrion Music Server
+	RU	Lyrion Music Server
+	SV	Lyrion Music Server
 
 IMAGE_VIEWER_SOURCE_HTTP
 	CS	Seznam URL

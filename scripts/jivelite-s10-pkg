@@ -53,7 +53,7 @@ echo "PATH=/sbin:/usr/sbin:/usr/bin:/usr/sadm/install/bin" >> pkginfo
 echo "OAMBASE=/usr/sadm/sysadm" >> pkginfo
 echo "ARCH=sparc" >> pkginfo
 echo "PKG=${PKGNAME}" >> pkginfo
-echo "NAME=jivelite - client for the logitech streaming media server" >> pkginfo
+echo "NAME=jivelite - client for the lyrion streaming music server" >> pkginfo
 echo "VERSION=${VERSION},REV=`date '+%Y.%m.%d'`" >> pkginfo
 echo "CATEGORY=application" >> pkginfo
 echo "VENDOR=https://github.com/ralph-irving packaged by Ralph Irving" >> pkginfo
