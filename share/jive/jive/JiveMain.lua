@@ -265,6 +265,7 @@ end
 -- creates our JiveMain main object
 function JiveMain:__init()
 	log:info("JiveLite version ", JIVE_VERSION)
+	log:info("Package path: ", package.path)
 
 	-- Seed the rng
 	local initTime = os.time()
