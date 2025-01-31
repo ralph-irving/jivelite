@@ -7,6 +7,9 @@
 #include "common.h"
 #include "jive.h"
 
+#ifndef INT_MAX
+#include <limits.h>
+#endif
 
 typedef struct menu_widget {
 	JiveWidget w;
