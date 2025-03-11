@@ -29,12 +29,14 @@ User interface framework
 function _assert() end
 
 -- stuff we use
-local _assert, collectgarbage, jive, ipairs, load, pairs, require, setfenv, string, tostring, type, loadfile, bit = _assert, collectgarbage, jive, ipairs, load, pairs, require, setfenv, string, tostring, type, loadfile, bit
+local _assert, collectgarbage, jive, ipairs, load, pairs, require, setfenv, string, tostring, type, loadfile, bit = _assert, collectgarbage, jive, ipairs, load, pairs, require, setfenv, string, tostring, type, loadfile
 
 local oo            = require("loop.simple")
 local table         = require("jive.utils.table")
 
 local debug         = require("jive.utils.debug")
+
+local bit = require("bit")
 
 local EVENT_SHOW    = jive.ui.EVENT_SHOW
 local EVENT_HIDE    = jive.ui.EVENT_HIDE
