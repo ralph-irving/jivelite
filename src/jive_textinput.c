@@ -309,14 +309,20 @@ int jiveL_textinput_draw(lua_State *L) {
 	  
 		if (peer->is_sh) {
 			/* pre-cursor */
-			tsrf = jive_font_ndraw_text(peer->font, peer->sh, text, cursor - cursor_width);
-			jive_surface_blit(tsrf, srf, text_x + 1, text_y + offset_y + 1);
-			jive_surface_free(tsrf);
+			/* to suppress 'get_image_surface - no SDL surface available' error we only draw if there's something to draw */
+			if (len_1 > 0) {
+				tsrf = jive_font_ndraw_text(peer->font, peer->sh, text, cursor - cursor_width);
+				jive_surface_blit(tsrf, srf, text_x + 1, text_y + offset_y + 1);
+				jive_surface_free(tsrf);
+			}
 
 			/* cursor */
-			tsrf = jive_font_ndraw_text(peer->cursor_font, peer->sh, text + cursor - cursor_width, cursor_width);
-			jive_surface_blit(tsrf, srf, cursor_x + (cursor_w - len_2) / 2 + 1, text_y + offset_cursor_y + 1);
-			jive_surface_free(tsrf);
+			/* something to draw ? */
+			if (len_2 > 0) {
+				tsrf = jive_font_ndraw_text(peer->cursor_font, peer->sh, text + cursor - cursor_width, cursor_width);
+				jive_surface_blit(tsrf, srf, cursor_x + (cursor_w - len_2) / 2 + 1, text_y + offset_cursor_y + 1);
+				jive_surface_free(tsrf);
+			}
 
 			/* post-cursor */
 			if (cursor < text_len) {
@@ -327,14 +333,20 @@ int jiveL_textinput_draw(lua_State *L) {
 		}
 
 		/* pre-cursor */
-		tsrf = jive_font_ndraw_text(peer->font, peer->fg, text, cursor - cursor_width);
-		jive_surface_blit(tsrf, srf, text_x, text_y + offset_y);
-		jive_surface_free(tsrf);
+		/* something to draw ? */
+		if (len_1 > 0) {
+			tsrf = jive_font_ndraw_text(peer->font, peer->fg, text, cursor - cursor_width);
+			jive_surface_blit(tsrf, srf, text_x, text_y + offset_y);
+			jive_surface_free(tsrf);
+		}
 
 		/* cursor */
-		tsrf = jive_font_ndraw_text(peer->cursor_font, peer->cursor_color, text + cursor - cursor_width, cursor_width);
-		jive_surface_blit(tsrf, srf, cursor_x + (cursor_w - len_2) / 2, text_y + offset_cursor_y);
-		jive_surface_free(tsrf);
+		/* something to draw ? */
+		if (len_2 > 0) {
+			tsrf = jive_font_ndraw_text(peer->cursor_font, peer->cursor_color, text + cursor - cursor_width, cursor_width);
+			jive_surface_blit(tsrf, srf, cursor_x + (cursor_w - len_2) / 2, text_y + offset_cursor_y);
+			jive_surface_free(tsrf);
+		}
 
 		/* post-cursor */
 		if (cursor < text_len) {

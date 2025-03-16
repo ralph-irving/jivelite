@@ -467,17 +467,22 @@ int jiveL_textarea_draw(lua_State *L) {
 			break;
 		}
 
-		/* shadow text */
-		if (peer->is_sh) {
-			tsrf = jive_font_draw_text(peer->font, peer->sh, &text[line]);
-			jive_surface_blit(tsrf, srf, x + 1, y + 1);
+		/* to suppress 'get_image_surface - no SDL surface available' error we
+		   only draw if there's something to draw */
+		if (text[line] != '\0') {
+
+			/* shadow text */
+			if (peer->is_sh) {
+				tsrf = jive_font_draw_text(peer->font, peer->sh, &text[line]);
+				jive_surface_blit(tsrf, srf, x + 1, y + 1);
+				jive_surface_free(tsrf);
+			}
+
+			/* foreground text */
+			tsrf = jive_font_draw_text(peer->font, peer->fg, &text[line]);
+			jive_surface_blit(tsrf, srf, x, y);
 			jive_surface_free(tsrf);
 		}
-
-		/* foreground text */
-		tsrf = jive_font_draw_text(peer->font, peer->fg, &text[line]);
-		jive_surface_blit(tsrf, srf, x, y);
-		jive_surface_free(tsrf);
 
 		text[next] = c;
 		text[(next - 1)] = b;
