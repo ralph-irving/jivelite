@@ -95,7 +95,7 @@ local function _openPopup(self)
 	end
 
 	-- don't do this if we have fixed volume
-	if self.player:getDigitalVolumeControl() == 0 then
+	if self.player:useVolumeControl() == 0 then
 		return
 	end
 
@@ -184,7 +184,7 @@ function _updateVolume(self, mute, directSet, noAccel, minAccelDelta)
 	end
 
 	-- don't update volume if we're set for fixed volume
-	if self.player and self.player:getDigitalVolumeControl() == 0 then
+	if self.player and self.player:useVolumeControl() == 0 then
 		return
 	end
 

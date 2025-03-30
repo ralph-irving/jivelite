@@ -412,6 +412,7 @@ function updatePlayerInfo(self, slimServer, playerInfo, useSequenceNumber, isSeq
 	self.info.isUpgrading = tonumber(playerInfo.player_is_upgrading) == 1
 	self.info.pin = tostring(playerInfo.pin)
 	self.info.digitalVolumeControl = tonumber(playerInfo.digital_volume_control) 
+	self.info.useVolumeControl = tonumber(playerInfo.use_volume_control) 
 
 	self.lastSeen = Framework:getTicks()
 
@@ -466,7 +467,7 @@ function updatePlayerInfo(self, slimServer, playerInfo, useSequenceNumber, isSeq
 		self.jnt:notify('playerNewName', self, self.info.name)
 	end
 
-	-- Check if the player name has changed
+	-- Check if digital volume control has changed
 	if oldInfo.digitalVolumeControl ~= self.info.digitalVolumeControl then
 		log:debug('notify_playerDigitalVolumeControl: ', self.info.digitalVolumeControl)
 		self.jnt:notify('playerDigitalVolumeControl', self, self.info.digitalVolumeControl)
@@ -1187,6 +1188,7 @@ function _process_status(self, event)
 	playerInfo.uuid = self.info.uuid
 	playerInfo.name = event.data.player_name
 	playerInfo.digital_volume_control = event.data.digital_volume_control
+	playerInfo.use_volume_control = event.data.use_volume_control
 	playerInfo.model = self.info.model
 	playerInfo.connected = event.data.player_connected
 	playerInfo.power = event.data.power
@@ -1863,6 +1865,12 @@ end
 -- 1 is not-fixed volume (default, if nothing stored in player object)
 function getDigitalVolumeControl(self)
 	return self.info.digitalVolumeControl or 1
+end
+
+-- 0 is don't use volume control
+-- 1 is use volume control (default, if nothing stored in player object)
+function useVolumeControl(self)
+	return self.info.useVolumeControl or self.info.digitalVolumeControl or 1
 end
 
 
