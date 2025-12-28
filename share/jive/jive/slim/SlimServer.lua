@@ -1163,6 +1163,9 @@ function fetchArtwork(self, iconId, icon, size, imgFormat)
 				-- fetch image direct (previously used SN image resizer, rely on improved resizing in jivelite)
 				url = iconId
 			end
+		-- contributor artwork doesn't come with an extension
+		elseif string.find(iconId, "^contributor/%w+/image") then
+			url = iconId .. resizeFrag
 		else
 			url = string.gsub(iconId, "(.+)(%.%a+)", "%1" .. resizeFrag .. "%2")
 
