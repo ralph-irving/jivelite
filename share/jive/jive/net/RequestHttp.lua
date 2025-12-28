@@ -362,6 +362,8 @@ function t_setResponseBody(self, data)
 		elseif (code == 301 or code == 302 or code == 307) and self.t_httpRequest.method == 'GET' and
 		       (not self.redirect or self.redirect < 5) then
 
+		    -- do not process redirect until the full header has been read
+		    if not data then
 			local redirectUrl = self:t_getResponseHeader("Location")
 			log:info(code, " redirect: ", redirectUrl)
 
@@ -398,8 +400,8 @@ function t_setResponseBody(self, data)
 			self.t_httpResponse.body       = ""
 			self.t_httpResponse.done       = false
 
-			jive.net.SocketHttp(jnt, parsed.host, parsed.port, url):fetch(self)
-
+			jive.net.SocketHttp(jnt, parsed.host, parsed.port, parsed.path):fetch(self)
+		    end
 		-- handle errors
 		else
 			if not err then
