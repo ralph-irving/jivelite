@@ -1830,7 +1830,8 @@ function openScreensaver(self)
 	appletManager:callService("deactivateScreensaver") -- not needed currently, but is defensive if other cleanup gets added to deactivateScreensaver
 	appletManager:callService("restartScreenSaverTimer")
 
-	self:showNowPlaying()
+	-- Display the currently registered Now Playing screen
+	appletManager:callService("goNowPlaying")
 
 	return false
 end
