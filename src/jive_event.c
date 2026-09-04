@@ -118,7 +118,7 @@ int jiveL_event_get_ticks(lua_State *L) {
 		luaL_error(L, "invalid Event");
 	}
 
-	lua_pushinteger(L, (lua_Integer)event->ticks);
+	lua_pushnumber(L, (lua_Number)event->ticks);
 
 	return 1;
 }
@@ -321,8 +321,10 @@ int jiveL_event_tostring(lua_State* L) {
 	}
 
 	luaL_buffinit(L, &buf);
-	lua_pushfstring(L, "Event(ticks=%d type=", event->ticks);
+	luaL_addstring(&buf, "Event(ticks=");
+	lua_pushnumber(L, (lua_Number)event->ticks);
 	luaL_addvalue(&buf);
+	luaL_addstring(&buf, " type=");
 
 	switch (event->type) {
 	case JIVE_EVENT_NONE:
@@ -471,4 +473,3 @@ int jiveL_event_tostring(lua_State* L) {
 
 	return 1;
 }
-

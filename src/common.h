@@ -10,7 +10,7 @@
 #define HAVE_SOCKETPAIR    1
 #define HAVE_SYSLOG        1
 
-#if defined(linux)
+#if defined(linux) || defined(__sun)
 #define HAVE_CLOCK_GETTIME 1
 #endif
 
@@ -80,18 +80,10 @@ const char * system_get_arch(void);
 const char * system_get_version(void);
 const char * system_get_uuid_char(void);
 
-/* time */
-#if HAVE_CLOCK_GETTIME
-static inline u32_t jive_jiffies(void)
-{
-	struct timespec now;
-
-	clock_gettime(CLOCK_MONOTONIC, &now);
-	return (now.tv_sec*1000)+(now.tv_nsec/1000000);
-}
-#else
-#define jive_jiffies() SDL_GetTicks()
-#endif
+/* monotonic time in milliseconds */
+void jive_time_init(void);
+void jive_time_quit(void);
+u64_t jive_jiffies(void);
 
 
 #if WITH_DMALLOC
@@ -103,4 +95,3 @@ static inline u32_t jive_jiffies(void)
 #endif //defined(_MSC_VER)
 
 #endif // JIVE_COMMON_H
-

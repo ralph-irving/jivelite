@@ -200,7 +200,7 @@ static int dns_resolver_thread(void *p) {
 	size_t len;
 	char *buf;
 	char *failed_error = NULL;
-	Uint32 failed_timeout = 0;
+	u64_t failed_timeout = 0;
 
 	while (1) {
 		if (recv(fd, &len, sizeof(len), 0) < 0) {
@@ -225,7 +225,7 @@ static int dns_resolver_thread(void *p) {
 			#endif
 		}
 		else if (failed_error && !stat_resolv_conf()) {
-			Uint32 now = jive_jiffies();
+			u64_t now = jive_jiffies();
 			
 			if (now - failed_timeout < RESOLV_TIMEOUT) {
 				write_str(fd, failed_error);

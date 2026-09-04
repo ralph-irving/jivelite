@@ -273,7 +273,7 @@ struct jive_gesture_event {
 
 struct jive_event {
 	JiveEventType type;
-	Uint32 ticks;
+	u64_t ticks;
 
 	union {
 		struct jive_scroll_event scroll;
@@ -327,7 +327,7 @@ extern LOG_CATEGORY *log_ui;
 extern int (*jive_sdlevent_pump)(lua_State *L);
 
 extern int (*jive_sdlfilter_pump)(const SDL_Event *event);
-void jive_send_key_event(JiveEventType keyType, JiveKey keyCode, Uint32 ticks);
+void jive_send_key_event(JiveEventType keyType, JiveKey keyCode, u64_t ticks);
 void jive_send_gesture_event(JiveGesture code);
 void jive_send_char_press_event(Uint16 unicode);
 void jive_send_quit(void);

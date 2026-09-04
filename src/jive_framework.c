@@ -70,13 +70,13 @@ static enum jive_mouse_state {
 
 static JiveKey key_mask = 0;
 
-static Uint32 key_timeout = 0;
+static u64_t key_timeout = 0;
 
-static Uint32 mouse_timeout = 0;
-static Uint32 mouse_long_timeout = 0;
+static u64_t mouse_timeout = 0;
+static u64_t mouse_long_timeout = 0;
 static Uint32 mouse_timeout_arg;
 
-static Uint32 pointer_timeout = 0;
+static u64_t pointer_timeout = 0;
 static bool pointer_enable = true;
 
 static Uint16 mouse_origin_x, mouse_origin_y;
@@ -209,6 +209,7 @@ int jive_traceback (lua_State *L) {
 }
 
 void jive_quit(void) {
+	jive_time_quit();
 	SDL_Quit();
 }
 
@@ -240,6 +241,7 @@ static int jiveL_initSDL(lua_State *L) {
 		LOG_ERROR(log_ui_draw, "SDL_Init(V|T|A): %s\n", SDL_GetError());
 		exit(-1);
 	}
+	jive_time_init();
 
 	/* report video info */
 	if ((video_info = SDL_GetVideoInfo())) {
@@ -348,7 +350,7 @@ static int filter_events(const SDL_Event *event)
 	return 1;
 }
 
-void jive_send_key_event(JiveEventType keyType, JiveKey keyCode, Uint32 ticks) {
+void jive_send_key_event(JiveEventType keyType, JiveKey keyCode, u64_t ticks) {
 	JiveEvent keyEvent;
 	memset(&keyEvent, 0, sizeof(JiveEvent));
 	
@@ -1038,7 +1040,7 @@ int jiveL_event(lua_State *L) {
 
 
 int jiveL_get_ticks(lua_State *L) {
-	lua_pushinteger(L, jive_jiffies());
+	lua_pushnumber(L, (lua_Number)jive_jiffies());
 	return 1;
 }
 
@@ -1068,7 +1070,7 @@ static int do_dispatch_event(lua_State *L, JiveEvent *jevent) {
 
 static int process_event(lua_State *L, SDL_Event *event) {
 	JiveEvent jevent;
-	Uint32 now;
+	u64_t now;
 
 	memset(&jevent, 0, sizeof(JiveEvent));
 	jevent.ticks = now = jive_jiffies();
@@ -1390,7 +1392,7 @@ static int process_event(lua_State *L, SDL_Event *event) {
 
 static void process_timers(lua_State *L) {
 	JiveEvent jevent;
-	Uint32 now;
+	u64_t now;
 
 	memset(&jevent, 0, sizeof(JiveEvent));
 	jevent.ticks = now = jive_jiffies();
