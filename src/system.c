@@ -94,19 +94,18 @@ static int system_lua_get_machine(lua_State *L) {
 
 
 static int system_get_uptime(lua_State *L) {
-	Uint32 uptime;
-	int updays, upminutes, uphours;
+	u64_t uptime;
+	u64_t updays;
+	int upminutes, uphours;
 
-	// FIXME wraps around after 49.7 days
 	uptime = jive_jiffies() / 1000;
 
-	updays = (int) uptime / (60*60*24);
-	upminutes = (int) uptime / 60;
-	uphours = (upminutes / 60) % 24;
-	upminutes %= 60;
+	updays = uptime / (60*60*24);
+	uphours = (int)(uptime / (60*60)) % 24;
+	upminutes = (int)(uptime / 60) % 60;
 	
 	lua_newtable(L);
-	lua_pushinteger(L, updays);
+	lua_pushnumber(L, (lua_Number)updays);
 	lua_setfield(L, -2, "days");
 
 	lua_pushinteger(L, uphours);

@@ -13,15 +13,54 @@
 
 typedef SOCKET socket_t;
 #define CLOSESOCKET(s) closesocket(s)
+#define INVALID_SOCKET_FD INVALID_SOCKET
+#define SHUTDOWNSOCKET(s) shutdown((s), SD_BOTH)
+#define SOCKET_SEND_FLAGS 0
 
 #else
+#include <fcntl.h>
 #include <sys/stat.h>
 #include <resolv.h>
 
 typedef int socket_t;
 #define CLOSESOCKET(s) close(s)
+#define INVALID_SOCKET_FD (-1)
+#define SHUTDOWNSOCKET(s) shutdown((s), SHUT_RDWR)
+#ifndef MSG_NOSIGNAL
+#define MSG_NOSIGNAL 0
+#endif
+#define SOCKET_SEND_FLAGS MSG_NOSIGNAL
 
 #endif
+
+struct dns_userdata {
+	socket_t fd[2];
+	SDL_Thread *t;
+	SDL_mutex *mutex;
+	bool stopping;
+};
+
+
+static bool dns_is_stopping(struct dns_userdata *u) {
+	bool stopping;
+
+	if (SDL_LockMutex(u->mutex) != 0) {
+		return true;
+	}
+	stopping = u->stopping;
+	SDL_UnlockMutex(u->mutex);
+
+	return stopping;
+}
+
+
+static void dns_request_stop(struct dns_userdata *u) {
+	if (SDL_LockMutex(u->mutex) != 0) {
+		return;
+	}
+	u->stopping = true;
+	SDL_UnlockMutex(u->mutex);
+}
 
 /* fm - 01/12/2010
 Userland DNS resolve requests are queued into a pipe in jiveL_dns_write(), then
@@ -39,8 +78,6 @@ The 10 seconds timeout also makes reconnecting a lot quicker when the network is
 re-established. 
 */
 #define RESOLV_TIMEOUT (10 * 1000) /* 10 seconds (was 2 minutes) */
-
-
 /*
  * Some systems do not provide this so that we provide our own. It's not
  * marvelously fast, but it works just fine.
@@ -139,13 +176,188 @@ int socketpair(int domain, int type, int protocol, SOCKET socks[2])
 #endif
 
 
-/* write a string to the pipe fd */
-static void write_str(socket_t fd, char *str) {
-	size_t len;
+static bool socket_send_all(socket_t fd, const void *buf, size_t len) {
+	const char *p = buf;
 
-	len = strlen(str);
-	send(fd, &len, sizeof(len), 0);
-	send(fd, str, len, 0);
+	while (len > 0) {
+		ssize_t sent = send(fd, p, len, SOCKET_SEND_FLAGS);
+
+		if (sent < 0) {
+#ifdef _WIN32
+			if (WSAGetLastError() == WSAEINTR) {
+				continue;
+			}
+#else
+			if (errno == EINTR) {
+				continue;
+			}
+#endif
+			break;
+		}
+		if (sent == 0) {
+			break;
+		}
+
+		p += sent;
+		len -= sent;
+	}
+
+	return len == 0;
+}
+
+
+static bool socket_recv_all(socket_t fd, void *buf, size_t len) {
+	char *p = buf;
+
+	while (len > 0) {
+		ssize_t received = recv(fd, p, len, 0);
+
+		if (received < 0) {
+#ifdef _WIN32
+			if (WSAGetLastError() == WSAEINTR) {
+				continue;
+			}
+#else
+			if (errno == EINTR) {
+				continue;
+			}
+#endif
+			return false;
+		}
+		if (received == 0) {
+			return false;
+		}
+
+		p += received;
+		len -= received;
+	}
+
+	return true;
+}
+
+
+static bool socket_begin_nonblocking(socket_t fd, int *original_flags) {
+#ifdef _WIN32
+	u_long nonblocking = 1;
+
+	(void)original_flags;
+	return ioctlsocket(fd, FIONBIO, &nonblocking) == 0;
+#else
+	*original_flags = fcntl(fd, F_GETFL, 0);
+	return *original_flags >= 0 &&
+		fcntl(fd, F_SETFL, *original_flags | O_NONBLOCK) == 0;
+#endif
+}
+
+
+static bool socket_end_nonblocking(socket_t fd, int original_flags) {
+#ifdef _WIN32
+	u_long blocking = 0;
+
+	(void)original_flags;
+	return ioctlsocket(fd, FIONBIO, &blocking) == 0;
+#else
+	return fcntl(fd, F_SETFL, original_flags) == 0;
+#endif
+}
+
+
+static bool socket_wait_writable(struct dns_userdata *u) {
+	while (!dns_is_stopping(u)) {
+		fd_set writefds;
+		struct timeval timeout;
+		int result;
+
+		FD_ZERO(&writefds);
+		FD_SET(u->fd[1], &writefds);
+		timeout.tv_sec = 0;
+		timeout.tv_usec = 100000;
+#ifdef _WIN32
+		result = select(0, NULL, &writefds, NULL, &timeout);
+#else
+		result = select(u->fd[1] + 1, NULL, &writefds, NULL, &timeout);
+#endif
+		if (result > 0) {
+			return true;
+		}
+		if (result == 0) {
+			continue;
+		}
+#ifdef _WIN32
+		if (WSAGetLastError() != WSAEINTR) {
+			return false;
+		}
+#else
+		if (errno != EINTR) {
+			return false;
+		}
+#endif
+	}
+
+	return false;
+}
+
+
+static bool socket_send_all_interruptible(struct dns_userdata *u,
+					  const void *buf, size_t len) {
+	const char *p = buf;
+
+	while (len > 0 && !dns_is_stopping(u)) {
+		ssize_t sent = send(u->fd[1], p, len, SOCKET_SEND_FLAGS);
+
+		if (sent < 0) {
+#ifdef _WIN32
+			int error = WSAGetLastError();
+
+			if (error == WSAEINTR) {
+				continue;
+			}
+			if (error == WSAEWOULDBLOCK && socket_wait_writable(u)) {
+				continue;
+			}
+#else
+			if (errno == EINTR) {
+				continue;
+			}
+			if ((errno == EAGAIN || errno == EWOULDBLOCK) &&
+			    socket_wait_writable(u)) {
+				continue;
+			}
+#endif
+			break;
+		}
+		if (sent == 0) {
+			break;
+		}
+
+		p += sent;
+		len -= sent;
+	}
+
+	return len == 0;
+}
+
+
+static bool dns_write_str(struct dns_userdata *u, const char *str) {
+	int original_flags = 0;
+	size_t len = strlen(str);
+	bool sent;
+	bool restored;
+
+	if (!socket_begin_nonblocking(u->fd[1], &original_flags)) {
+		SHUTDOWNSOCKET(u->fd[1]);
+		return false;
+	}
+	sent = socket_send_all_interruptible(u, &len, sizeof(len)) &&
+		socket_send_all_interruptible(u, str, len);
+	restored = socket_end_nonblocking(u->fd[1], original_flags);
+	if (sent && restored) {
+		return true;
+	}
+
+	/* Make any partially delivered frame end in EOF instead of blocking Lua. */
+	SHUTDOWNSOCKET(u->fd[1]);
+	return false;
 }
 
 
@@ -154,7 +366,10 @@ static void read_pushstring(lua_State *L, socket_t fd) {
 	size_t len;
 	char *buf;
 
-	recv(fd, &len, sizeof(len), 0);
+	if (!socket_recv_all(fd, &len, sizeof(len))) {
+		lua_pushnil(L);
+		return;
+	}
 
 	if (len == 0) {
 		lua_pushnil(L);
@@ -163,11 +378,13 @@ static void read_pushstring(lua_State *L, socket_t fd) {
 		buf = malloc(len);
 		if ( buf == NULL )
 			lua_pushnil(L);
-		else {
-			recv(fd, buf, len, 0);
+		else if (socket_recv_all(fd, buf, len)) {
 			lua_pushlstring(L, buf, len);
-
 			free(buf);
+		}
+		else {
+			free(buf);
+			lua_pushnil(L);
 		}
 	}
 }
@@ -193,31 +410,45 @@ static int stat_resolv_conf(void) {
 
 /* dns resolver thread */
 static int dns_resolver_thread(void *p) {
-	socket_t fd = (long) p;
+	struct dns_userdata *u = p;
+	socket_t fd = u->fd[1];
 	struct hostent *hostent;
 	struct in_addr **addr, byaddr;
 	char **alias;
 	size_t len;
 	char *buf;
 	char *failed_error = NULL;
-	Uint32 failed_timeout = 0;
+	u64_t failed_timeout = 0;
 
 	while (1) {
-		if (recv(fd, &len, sizeof(len), 0) < 0) {
+		if (dns_is_stopping(u) ||
+		    !socket_recv_all(fd, &len, sizeof(len))) {
 			/* broken pipe */
 			return 0;
 		}
-
 		buf = malloc(len + 1);
 		if ( buf == NULL )
 			return 0;
 
-		if (recv(fd, buf, len, 0) < 0) {
+		if (dns_is_stopping(u) || !socket_recv_all(fd, buf, len)) {
 			/* broken pipe */
 			free(buf);
 			return 0;
 		}
 		buf[len] = '\0';
+#if defined(JIVE_DNS_TEST)
+		if (strcmp(buf, "__jive_dns_fill_send_buffer__") == 0) {
+			char response[4096];
+
+			free(buf);
+			memset(response, 'x', sizeof(response) - 1);
+			response[sizeof(response) - 1] = '\0';
+			while (!dns_is_stopping(u) && dns_write_str(u, response)) {
+				/* The test finalizer must stop the saturated writer. */
+			}
+			return 0;
+		}
+#endif
 		if (failed_error && stat_resolv_conf()) {
 			#ifndef _WIN32
 			//reload resolv.conf
@@ -225,10 +456,12 @@ static int dns_resolver_thread(void *p) {
 			#endif
 		}
 		else if (failed_error && !stat_resolv_conf()) {
-			Uint32 now = jive_jiffies();
+			u64_t now = jive_jiffies();
 			
 			if (now - failed_timeout < RESOLV_TIMEOUT) {
-				write_str(fd, failed_error);
+				if (!dns_write_str(u, failed_error)) {
+					return 0;
+				}
 				free(buf);
 				continue;
 			}
@@ -247,64 +480,83 @@ static int dns_resolver_thread(void *p) {
 			/* error */
 			switch (h_errno) {
 			case HOST_NOT_FOUND:
-				write_str(fd, "Not found");
+				if (!dns_write_str(u, "Not found")) return 0;
 				break;
 			case NO_DATA:
-				write_str(fd, "No data");
+				if (!dns_write_str(u, "No data")) return 0;
 				break;
 			case NO_RECOVERY:
 				failed_error = "No recovery";
 				failed_timeout = jive_jiffies();
-				write_str(fd, failed_error);
+				if (!dns_write_str(u, failed_error)) return 0;
 				break;
 			case TRY_AGAIN:
 				failed_error = "Try again"; 
 				failed_timeout = jive_jiffies();
-				write_str(fd, failed_error);
+				if (!dns_write_str(u, failed_error)) return 0;
 				break;
 			}
 		}
 		else {
-			write_str(fd, ""); // no error
-			write_str(fd, hostent->h_name);
+			if (!dns_write_str(u, "")) return 0; // no error
+			if (!dns_write_str(u, hostent->h_name)) return 0;
 
 			alias = hostent->h_aliases;
 			while (*alias) {
-				write_str(fd, *alias);
+				if (!dns_write_str(u, *alias)) return 0;
 				alias++;
 			}
-			write_str(fd, ""); // end of aliases
+			if (!dns_write_str(u, "")) return 0; // end of aliases
 
 			addr = (struct in_addr **) hostent->h_addr_list;
 			while (*addr) {
-				write_str(fd, inet_ntoa(**addr));
+				if (!dns_write_str(u, inet_ntoa(**addr))) return 0;
 				addr++;
 			}
-			write_str(fd, ""); // end if addrs
+			if (!dns_write_str(u, "")) return 0; // end of addrs
 		}
 	}
 }
 
 
-struct dns_userdata {
-	socket_t fd[2];
-	SDL_Thread *t;
-};
-
-
 static int jiveL_dns_open(lua_State *L) {
 	struct dns_userdata *u;
 	int r;
+#if defined(SO_NOSIGPIPE)
+	int no_sigpipe = 1;
+#endif
 
 	u = lua_newuserdata(L, sizeof(struct dns_userdata));
+	u->fd[0] = INVALID_SOCKET_FD;
+	u->fd[1] = INVALID_SOCKET_FD;
+	u->t = NULL;
+	u->mutex = SDL_CreateMutex();
+	u->stopping = false;
+	if (u->mutex == NULL) {
+		return luaL_error(L, "failed to create DNS worker mutex");
+	}
 
 	r = socketpair(AF_UNIX, SOCK_STREAM, 0, u->fd);
 	if (r < 0) {
+		SDL_DestroyMutex(u->mutex);
+		u->mutex = NULL;
 		return luaL_error(L, "socketpair failed: %s", strerror(r));
 	}
+#if defined(SO_NOSIGPIPE)
+	setsockopt(u->fd[0], SOL_SOCKET, SO_NOSIGPIPE,
+		   (const void *)&no_sigpipe, sizeof(no_sigpipe));
+	setsockopt(u->fd[1], SOL_SOCKET, SO_NOSIGPIPE,
+		   (const void *)&no_sigpipe, sizeof(no_sigpipe));
+#endif
 
-	u->t = SDL_CreateThread(dns_resolver_thread, (void *)(long)(u->fd[1]));
+	u->t = SDL_CreateThread(dns_resolver_thread, u);
 	if (u->t == NULL) {
+		CLOSESOCKET(u->fd[0]);
+		CLOSESOCKET(u->fd[1]);
+		u->fd[0] = INVALID_SOCKET_FD;
+		u->fd[1] = INVALID_SOCKET_FD;
+		SDL_DestroyMutex(u->mutex);
+		u->mutex = NULL;
 		return luaL_error(L, "create dns_resolver_thread failed");
 	}
 
@@ -319,8 +571,26 @@ static int jiveL_dns_gc(lua_State *L) {
 	struct dns_userdata *u;
 
 	u = lua_touserdata(L, 1);
-	CLOSESOCKET(u->fd[0]);
-	CLOSESOCKET(u->fd[1]);
+	if (u->t != NULL) {
+		/* Interrupt worker I/O, then keep the sockets valid until it stops. */
+		dns_request_stop(u);
+		SHUTDOWNSOCKET(u->fd[0]);
+		SHUTDOWNSOCKET(u->fd[1]);
+		SDL_WaitThread(u->t, NULL);
+		u->t = NULL;
+	}
+	if (u->fd[0] != INVALID_SOCKET_FD) {
+		CLOSESOCKET(u->fd[0]);
+		u->fd[0] = INVALID_SOCKET_FD;
+	}
+	if (u->fd[1] != INVALID_SOCKET_FD) {
+		CLOSESOCKET(u->fd[1]);
+		u->fd[1] = INVALID_SOCKET_FD;
+	}
+	if (u->mutex != NULL) {
+		SDL_DestroyMutex(u->mutex);
+		u->mutex = NULL;
+	}
 
 	return 0;
 }
@@ -390,8 +660,11 @@ static int jiveL_dns_write(lua_State *L) {
 	u = lua_touserdata(L, 1);
 	buf = lua_tolstring(L, 2, &len);
 
-	send(u->fd[0], &len, sizeof(len), 0);
-	send(u->fd[0], buf, len, 0);
+	if (!socket_send_all(u->fd[0], &len, sizeof(len)) ||
+	    !socket_send_all(u->fd[0], buf, len)) {
+		SHUTDOWNSOCKET(u->fd[0]);
+		return luaL_error(L, "DNS request pipe write failed");
+	}
 
 	return 0;
 }

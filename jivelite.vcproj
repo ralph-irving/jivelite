@@ -266,6 +266,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\src\jive_time.c"
+				>
+			</File>
+			<File
 				RelativePath=".\src\jive_utils.c"
 				>
 			</File>
